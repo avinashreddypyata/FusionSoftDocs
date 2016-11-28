@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.fusionsoft.docs.config.SecurityConfig;
-
+/*example*/
 @EnableWebMvc
 @Configuration
 @ComponentScan({ "com.fusionsoft.docs.*" })

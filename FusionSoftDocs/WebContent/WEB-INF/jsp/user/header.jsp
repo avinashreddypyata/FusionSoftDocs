@@ -1,3 +1,6 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
  <div class="page-wrapper-row">
                 <div class="page-wrapper-top">
                     <!-- BEGIN HEADER -->
@@ -54,15 +57,12 @@
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                     <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
+                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown">
                                             <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
-<!--                                         <form id="applicantviewinfo" method="post" action="applicantViewInfo"> -->
-<%--     <input type="hidden" name="userid" value="${profile.userid}" /> --%>
-<!-- </form> -->
+                                        <li>
                                             <a  href="applicantEditProfile"> Edit Profile/Upload Documents
                                                 <span class="arrow"></span>
                                             </a>
@@ -77,3 +77,13 @@
                     <!-- END HEADER --> 
                 </div>
             </div>
+         
+              <script type = "text/javascript">
+            $(document).on("click", 'ul li', function(){
+                $('ul li').removeClass('active');
+                $(this).addClass('active');
+            });
+            
+            
+   </script>
+          

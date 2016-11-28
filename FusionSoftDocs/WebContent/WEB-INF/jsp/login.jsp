@@ -65,8 +65,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <h3 class="form-title">Login to your account</h3>
         
         <div class="alert-danger" >
-       
-         <!--   <button class="close" data-close="alert"></button> -->
+       <!-- 
+          <button class="close" data-close="alert"></button>  -->
             
             <c:if test="${not empty error}"><span> ${error} </span></c:if>
             <c:if test="${not empty message}"><span>${message}</span></c:if>

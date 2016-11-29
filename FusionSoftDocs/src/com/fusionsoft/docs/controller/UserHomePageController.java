@@ -72,19 +72,6 @@ public class UserHomePageController {
 		model.addObject("profile", profile);
         return model;
 	}
-	@RequestMapping(value = "/applicantViewInfo", method = {RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView applicantViewInfo(@ModelAttribute("userid") int userid,HttpServletRequest request) {
-		ModelAndView model = new ModelAndView("user/applicantViewInfo");
-		HashMap<String,List> documents = new HashMap<String,List>();
-        Profile profile = new Profile();
-		int id = userid;
-		profile = userservice.findprofile(id);
-		documents = userservice.findparticulardocuments(id);
-	    model.addObject("profile", profile);
-		model.addObject("documents",documents);
-		model.addObject("fileBucket",new FileBucket());
-        return model;
-	}
 	@RequestMapping(value = "/applicantSaveProfile", method = RequestMethod.POST)
 	public ModelAndView applicantSaveProfile(@ModelAttribute("profile") Profile profile,  HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("forward:applicantEditProfile");
@@ -97,6 +84,15 @@ public class UserHomePageController {
 		model.addObject("profile", profile);
 		return model;
 	}
+	@RequestMapping(value = "/addnewdocument",method = RequestMethod.GET)
+	public ModelAndView addnewdocument(@ModelAttribute("fileBucket") FileBucket filebucket){
+	ModelAndView model = new ModelAndView("user/DocumentsForm");
+	model.addObject("fileBucket", new FileBucket());
+	model.addObject("userid", id);
+	return model;
+	
+		
+	}
 	@RequestMapping(value = "/uploaddocument",method = RequestMethod.POST)
 	public ModelAndView uploaddocument(@ModelAttribute("fileBucket") FileBucket fileBucket, HttpServletRequest request){
 	int userid = Integer.parseInt(fileBucket.getUserid());
@@ -106,7 +102,7 @@ public class UserHomePageController {
 	int docid = userservice.saveDocument(fileBucket,customuser);
 	System.out.println("The docid is"+docid);
 	System.out.println("The userid is"+fileBucket.getUserid());
-	ModelAndView model = new ModelAndView("forward:applicantViewInfo");
+	ModelAndView model = new ModelAndView("redirect:applicantdocument");
 	return model;
 	
 		
@@ -127,7 +123,7 @@ public class UserHomePageController {
      userservice.deletedoc(docid);
      System.out.println("The document id is "+docid);
 	 redirectAttributes.addFlashAttribute("userid",userid);
-	 ModelAndView model = new ModelAndView("redirect:applicantViewInfo");
+	 ModelAndView model = new ModelAndView("redirect:applicantdocument");
 	 return model;
 	
 	}

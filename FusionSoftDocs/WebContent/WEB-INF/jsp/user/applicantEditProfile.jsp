@@ -193,38 +193,14 @@ License: You must have a valid license purchased only from themeforest(the above
 																				<form:errors path="adminnotes" class="control-label" /> 
                                                                             </div>
                                                                             <div class="margiv-top-10">
-                                                                                <button type="submit" class="btn green"> Save Changes </button>
-                                                                                <a href="#" onclick="document.getElementById('applicantviewinfo').submit(); return false;"class="btn default"> Cancel </a>
+                                                                              <div class="btn-group btn-group btn-group-justified">
+                                                                <a href="home" class="btn blue"> Home </a>
+                                                                <button type="submit" class="btn green"> Save Changes </button>
+                                                            </div>
                                                                             </div>
+                                                               
+                                                        </div>
                                                                         </form:form>
-                                                                    </div>
-                                                                    <div id="tab_2-2" class="tab-pane">
-                                                                        <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                                                            nesciunt laborum eiusmod. </p>
-                                                                        <form action="#" role="form">
-                                                                            <div class="form-group">
-                                                                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
-                                                                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
-                                                                                    <div>
-                                                                                        <span class="btn default btn-file">
-                                                                                            <span class="fileinput-new"> Select image </span>
-                                                                                            <span class="fileinput-exists"> Change </span>
-                                                                                            <input type="file" name="..."> </span>
-                                                                                        <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="clearfix margin-top-10">
-                                                                                    <span class="label label-danger"> NOTE! </span>
-                                                                                    <span> Attached image thumbnail is supported in Latest Firefox, Chrome, Opera, Safari and Internet Explorer 10 only </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="margin-top-10">
-                                                                                <a href="javascript:;" class="btn green"> Submit </a>
-                                                                                <a href="javascript:;" class="btn default"> Cancel </a>
-                                                                            </div>
-                                                                        </form>
                                                                     </div>
                                                                     <div id="tab_3-3" class="tab-pane">
                                                                         <form action="#">
@@ -243,77 +219,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                             </div>
                                                                         </form>
                                                                     </div>
-                                                                    <div id="tab_4-4" class="tab-pane">
-                                                                        <form action="#">
-                                                                            <table class="table table-bordered table-striped">
-                                                                                <tr>
-                                                                                    <td> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus.. </td>
-                                                                                    <td>
-                                                                                        <div class="mt-radio-inline">
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="optionsRadios1" value="option1" /> Yes
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="optionsRadios1" value="option2" checked/> No
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
-                                                                                    <td>
-                                                                                        <div class="mt-radio-inline">
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="optionsRadios21" value="option1" /> Yes
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="optionsRadios21" value="option2" checked/> No
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
-                                                                                    <td>
-                                                                                        <div class="mt-radio-inline">
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="optionsRadios31" value="option1" /> Yes
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="optionsRadios31" value="option2" checked/> No
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td> Enim eiusmod high life accusamus terry richardson ad squid wolf moon </td>
-                                                                                    <td>
-                                                                                        <div class="mt-radio-inline">
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="optionsRadios41" value="option1" /> Yes
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="optionsRadios41" value="option2" checked/> No
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </table>
-                                                                            <!--end profile-settings-->
-                                                                            <div class="margin-top-10">
-                                                                                <a href="javascript:;" class="btn green"> Save Changes </a>
-                                                                                <a href="javascript:;" class="btn default"> Cancel </a>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                              
@@ -328,8 +234,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                                       <div class="clearfix margin-bottom-10"> </div>
                                                             <div class="btn-group btn-group btn-group-justified">
-                                                                <a href="javascript:;" class="btn red"> Back </a>
-                                                                <a href="javascript:;" class="btn blue"> Home </a>
+                                                                <a href="home" class="btn blue"> Home </a>
                                                                 <a href="javascript:;" class="btn green"> Save and Continue </a>
                                                             </div>
                                                         </div>

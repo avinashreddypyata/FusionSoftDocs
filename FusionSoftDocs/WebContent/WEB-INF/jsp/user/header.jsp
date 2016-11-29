@@ -30,12 +30,12 @@
                                                     <a href="home">
                                                         <i class="icon-user"></i> My Profile </a>
                                                 </li>
-                                                <li>
-                                                    <a href="app_inbox.html">
-                                                        <i class="icon-envelope-open"></i> My Inbox
-                                                        <span class="badge badge-danger"> 3 </span>
-                                                    </a>
-                                                </li>
+<!--                                                 <li> -->
+<!--                                                     <a href="app_inbox.html"> -->
+<!--                                                         <i class="icon-envelope-open"></i> My Inbox -->
+<!--                                                         <span class="badge badge-danger"> 3 </span> -->
+<!--                                                     </a> -->
+<!--                                                 </li> -->
                                                 <li>
                                                     <a href="http://localhost:8080/FusionSoftDocs/">
                                                         <i class="icon-key"></i> Log Out </a>

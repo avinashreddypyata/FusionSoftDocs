@@ -42,6 +42,7 @@ public class UserHomePageController {
 	@Autowired
 	public UserDao userDao;
 	private static int id;
+	private static int firstlogin;
 
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public ModelAndView userPage() {
@@ -53,6 +54,13 @@ public class UserHomePageController {
 			user = ((CustomUser) principal);
 		}
 		id = user.getUserid();
+		firstlogin = user.getFirstlogin();
+		if(firstlogin == 1){
+			model.setViewName("redirect:applicantEditProfile");
+			userservice.updatefirstlogin(id);
+		}
+		else{
+		System.out.println("The First Login is"+user.getFirstlogin());
 		System.out.println("The request Came From"+user.getUserid());
 		profile = userservice.findprofile(user.getUserid());
 		Immigration immigration = userservice.findimmigration(id);
@@ -63,6 +71,7 @@ public class UserHomePageController {
 		model.addObject("immigration",immigration);
 		model.addObject("experiences",experiences);
 	    model.setViewName("user/home");
+		}
 		return model;
 	}
 	@RequestMapping(value = "/applicantEditProfile", method = {RequestMethod.POST,RequestMethod.GET})

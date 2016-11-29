@@ -28,7 +28,14 @@ public class CustomUser implements UserDetails {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="USERID")
 	private int userid;
-
+    @Column(name ="firstlogin")
+    private int firstlogin;
+	public int getFirstlogin() {
+		return firstlogin;
+	}
+	public void setFirstlogin(int firstlogin) {
+		this.firstlogin = firstlogin;
+	}
 	@Column(name = "USERNAME")
 	private String username;
 

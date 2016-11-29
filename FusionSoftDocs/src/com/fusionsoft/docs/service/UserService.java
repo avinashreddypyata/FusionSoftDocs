@@ -63,5 +63,7 @@ public void updateimmigration(Immigration immigration);
 
 public void deleteeducation(int eduid);
 
+public void updatefirstlogin(int id);
+
 
 }

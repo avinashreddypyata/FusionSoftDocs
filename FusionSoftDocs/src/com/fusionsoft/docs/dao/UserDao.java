@@ -1,6 +1,5 @@
 package com.fusionsoft.docs.dao;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.fusionsoft.docs.model.CustomUser;
@@ -33,5 +32,6 @@ public interface UserDao {
 	public void deleteexperience(int expid);
 	public void updateimmigration(Immigration immigration);
 	public void deleteeducation(int eduid);
+	public void updatefirstlogin(int id);
 	
 }

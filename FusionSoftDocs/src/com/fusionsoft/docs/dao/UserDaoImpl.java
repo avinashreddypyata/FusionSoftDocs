@@ -332,4 +332,17 @@ public class UserDaoImpl implements UserDao {
 		}
 		session.getTransaction().commit();
 	}
+
+	@Override
+	public void updatefirstlogin(int id) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession().getSession();
+		Serializable userid = new Integer(id);
+		session.beginTransaction();
+	    CustomUser user = session.get(CustomUser.class, userid);
+	    user.setFirstlogin(0);
+	    session.save(user);
+	    session.getTransaction().commit();
+		
+	}
 }

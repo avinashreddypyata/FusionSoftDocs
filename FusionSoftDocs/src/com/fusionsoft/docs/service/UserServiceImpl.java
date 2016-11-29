@@ -173,6 +173,7 @@ public class UserServiceImpl implements UserService {
 		String password = generateRandomPassword();
 		customuser.setPassword(passwordEncoder.encode(password));
 		customuser.setUserrole(2);
+		customuser.setFirstlogin(1);
 		profile.setCustomuser(customuser);
 		customuser.setProfile(profile);
         int userid = userDao.saveProfile(customuser);
@@ -233,5 +234,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDao.deleteeducation(eduid);
 		
+	}
+	@Override
+	public void updatefirstlogin(int id) {
+		// TODO Auto-generated method stub
+		userDao.updatefirstlogin(id);
 	}
 }

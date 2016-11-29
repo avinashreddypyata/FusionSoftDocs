@@ -34,4 +34,5 @@ public interface UserDao {
 	public void deleteeducation(int eduid);
 	public void updatefirstlogin(int id);
 	
+/*test*/
 }

@@ -7,7 +7,7 @@ public class FirstAdminPassowrdEncode {
 
 		int i = 0;
 		while (i < 10) {
-			String password = "12345";
+			String password = "tom";
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			String hashedPassword = passwordEncoder.encode(password);
 

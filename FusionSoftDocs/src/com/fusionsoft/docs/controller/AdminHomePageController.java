@@ -152,7 +152,7 @@ public class AdminHomePageController {
 	}
 	@RequestMapping(value = "/addnewdocument",method = RequestMethod.GET)
 	public ModelAndView addnewdocument(@ModelAttribute("fileBucket") FileBucket filebucket){
-	ModelAndView model = new ModelAndView("user/DocumentsForm");
+	ModelAndView model = new ModelAndView("admin/DocumentsForm");
 	model.addObject("fileBucket", new FileBucket());
 	model.addObject("userid", id);
 	return model;
@@ -185,14 +185,14 @@ public class AdminHomePageController {
 	}
 	@RequestMapping(value = "/applicantqualification",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView applicantqualification() throws IOException{
-     ModelAndView model = new ModelAndView("user/ApplicantQualifications");
+     ModelAndView model = new ModelAndView("admin/ApplicantQualifications");
      List<Education> educationqualifications = userservice.findqualifications(id);
      model.addObject("educationalqualifications", educationqualifications);
 	 return model;
 	}
 	@RequestMapping(value = "/applicantdocument",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView applicantdocument() throws IOException{
-     ModelAndView model = new ModelAndView("user/ApplicantDocuments");
+     ModelAndView model = new ModelAndView("admin/ApplicantDocuments");
      HashMap<String,List> documents = new HashMap<String,List>();
      Profile profile = new Profile();
 		profile = userservice.findprofile(id);
@@ -216,13 +216,13 @@ public class AdminHomePageController {
 	public ModelAndView applicantexperience() throws IOException{
 	 List<Experience> experiences = userservice.findexperiences(id);
 	 System.out.println("The size of the backend list of experiences is"+experiences.size());
-     ModelAndView model = new ModelAndView("user/ApplicantExperience");
+     ModelAndView model = new ModelAndView("admin/ApplicantExperience");
      model.addObject("experiences",experiences);
 	 return model;
 	}
 	@RequestMapping(value = "/addexperience",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView addexperience() throws IOException{
-     ModelAndView model = new ModelAndView("user/experienceform");
+     ModelAndView model = new ModelAndView("admin/experienceform");
 	 return model;
 	}
 	@RequestMapping(value = "/saveexperience",method = RequestMethod.POST)
@@ -236,7 +236,7 @@ public class AdminHomePageController {
 	}
 	@RequestMapping(value = "/addeducation",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView addeducation(@ModelAttribute("experience")Experience experience) throws IOException{
-       ModelAndView model = new ModelAndView("user/qualificationsform");
+       ModelAndView model = new ModelAndView("admin/qualificationsform");
 	 return model;
 	}
 	@RequestMapping(value = "/saveeducation",method = RequestMethod.POST)
@@ -248,7 +248,7 @@ public class AdminHomePageController {
 	}
 	@RequestMapping(value = "/applicantimmigration",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView applicantimmigration(@ModelAttribute("immigration")Immigration immigration) throws IOException{
-    ModelAndView model = new ModelAndView("user/ApplicantImmigrationInfo");
+    ModelAndView model = new ModelAndView("admin/ApplicantImmigrationInfo");
     Immigration applicantimmigration = new Immigration();
     applicantimmigration = userservice.findimmigration(id);
     if(applicantimmigration == null){

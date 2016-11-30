@@ -100,42 +100,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <!-- END PAGE BREADCRUMBS -->
                                     <!-- BEGIN PAGE CONTENT INNER -->
                                     <div class="page-content-inner">
-                                        <div class="profile">
-                                            <div class="tabbable-line tabbable-full-width">
-                                                <ul class="nav nav-tabs">
-                                                    <li class="active">
-                                                        <a href="#tab_1_1" > Overview </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="applicantEditProfile?userid=${profile.userid}"> Account </a>
-                                                    </li>
-                                                </ul>
-                                                <div class="tab-content">
-                                                    <div class="tab-pane active" id="tab_1_1">
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                              
-                                                            </div>
-                                                            <div class="col-md-9">
-                                                                <div class="row">
-                                                                    <div class="col-md-8 profile-info">
-                                                                        <h1 class="font-green sbold uppercase">${profile.firstname} ${profile.lastname }</h1>
-                                                                        
-                                                                        <ul class="list-unstyled">
-                                                                            <li>
-                                                                                <i class="fa fa-map-marker"></i> ${profile.address} ${profile.city} ${profile.state} ${profile.zip} </li>
-                                                                            <li>
-                                                                                <i class="fa fa-envelope-o"></i> ${profile.email } </li>
-                                                                            <li>
-                                                                                <i class="fa fa-mobile"></i> ${profile.phone} </li>
-                                                                          
-                                                                        </ul>
-                                                                    </div>
-                                                                    <!--end col-md-8-->
-                                                                </div>
-                                                                </div>
-                                                                <!--end row-->
-                                                                 <div class="page-content-inner">
                                         <div class="mt-content-body">
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-6">
@@ -152,18 +116,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <div class="item">
                                                                         <div class="item-head">
                                                                             <div class="item-details">
-                                                                                First Name
+                                                                                Full Name
                                                                             </div>
                                                                         </div>
-                                                                        <div class="item-body"> ${profile.firstname} </div>
-                                                                    </div>
-                                                                    <div class="item">
-                                                                        <div class="item-head">
-                                                                            <div class="item-details">
-                                                                                Last Name
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item-body"> ${profile.lastname} </div>
+                                                                        <div class="item-body"> ${profile.firstname} ${profile.lastname}</div>
                                                                     </div>
                                                                    <div class="item">
                                                                         <div class="item-head">
@@ -179,39 +135,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 Address
                                                                             </div>
                                                                         </div>
-                                                                        <div class="item-body"> ${profile.address} </div>
-                                                                    </div>
-                                                                   <div class="item">
-                                                                        <div class="item-head">
-                                                                            <div class="item-details">
-                                                                                City
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item-body"> ${profile.city} </div>
-                                                                    </div>
-                                                                    <div class="item">
-                                                                        <div class="item-head">
-                                                                            <div class="item-details">
-                                                                                State
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item-body"> ${profile.state} </div>
-                                                                    </div>
-                                                                    <div class="item">
-                                                                        <div class="item-head">
-                                                                            <div class="item-details">
-                                                                                Country
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item-body"> ${profile.country} </div>
-                                                                    </div>
-                                                                    <div class="item">
-                                                                        <div class="item-head">
-                                                                            <div class="item-details">
-                                                                               Zip
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item-body"> ${profile.zip} </div>
+                                                                        <div class="item-body"> ${profile.address} ${profile.city} ${profile.state} ${profile.country} ${profile.zip}</div>
                                                                     </div>
                                                                     <div class="item">
                                                                         <div class="item-head">
@@ -399,14 +323,6 @@ License: You must have a valid license purchased only from themeforest(the above
                        
                                         </div>
                                     </div>
-                                                              
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--tab_1_2-->
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <!-- END PAGE CONTENT INNER -->
                                 </div>

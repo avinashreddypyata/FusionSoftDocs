@@ -79,19 +79,24 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="page-content">
                                 <div class="container">
                                     <!-- BEGIN PAGE BREADCRUMBS -->
-                                    <ul class="page-breadcrumb breadcrumb">
-                                        <li>
-                                            <a href="home">Home</a>
-                                            <i class="fa fa-circle"></i>
-                                        </li>
-                                        <li>
-                                            <a href="applicants">Applicants</a>
-                                            <i class="fa fa-circle"></i>
-                                        </li>
-                                        <li>
-                                            <span>Add/Edit Applicant</span>
-                                        </li>
-                                    </ul>
+                                  <ul class="nav nav-tabs">
+                                                 <li class="active" data-toggle="tab">
+                                                        <a>AccountInfo</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href = "applicantqualification"> Qualifications </a>
+                                                    </li>
+                                                     <li>
+                                                        <a href = "applicantexperience">Experience</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href = "applicantimmigration">Immigration</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href = "applicantdocument">Documents</a>
+                                                    </li>
+                                                   
+                                                </ul>
                                     <!-- END PAGE BREADCRUMBS -->
                                     <!-- BEGIN PAGE CONTENT INNER -->
                                     <div class="page-content-inner">

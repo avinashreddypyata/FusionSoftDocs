@@ -253,7 +253,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                       
                                                                                     </tbody>
                                                                                 </table>
-                                                                                
+                                                                                  <div class="btn-group btn-group btn-group-justified">
+                                                                                <a href ="home" type="submit" class="btn btn-danger">Back </a>
+                                                                                <a href ="home" type="submit" class="btn btn-info"> home </a>
+                                                                                <a href ="home" type="submit" class="btn btn-success"> Save And Continue </a>
+                                                                            </div>
                                                                                 </div>
                                                                             
                                                                         

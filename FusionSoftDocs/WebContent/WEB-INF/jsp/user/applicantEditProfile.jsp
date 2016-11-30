@@ -192,14 +192,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 <form:input path="adminnotes" type="text" class="form-control" id="adminnotes" placeholder="Admin Notes" />
 																				<form:errors path="adminnotes" class="control-label" /> 
                                                                             </div>
-                                                                            <div class="margiv-top-10">
-                                                                              <div class="btn-group btn-group btn-group-justified">
-                                                                <a href="home" class="btn blue"> Home </a>
-                                                                <button type="submit" class="btn green"> Save Changes </button>
-                                                            </div>
+                                                                             <div class="btn-group btn-group btn-group-justified">
+                                                                                <a href ="home" type="submit" class="btn btn-danger"> Home </a>
+                                                                                <button type="submit" class="btn blue"> Save And Continue </button>
                                                                             </div>
-                                                               
-                                                        </div>
                                                                         </form:form>
                                                                     </div>
                                                                     <div id="tab_3-3" class="tab-pane">
@@ -219,7 +215,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                             </div>
                                                                         </form>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
                                                              
@@ -232,11 +227,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </div>
                                                 
                                             </div>
-                                                      <div class="clearfix margin-bottom-10"> </div>
-                                                            <div class="btn-group btn-group btn-group-justified">
-                                                                <a href="home" class="btn blue"> Home </a>
-                                                                <a href="javascript:;" class="btn green"> Save and Continue </a>
-                                                            </div>
                                                         </div>
                                         </div>
                                         

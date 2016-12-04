@@ -200,9 +200,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <button type="submit" class="btn green">Submit</button>
                                             </div>
                                                 
-                                                
-                                        
-                                
+                                              
                                         </form>
                                         </div>
                                         

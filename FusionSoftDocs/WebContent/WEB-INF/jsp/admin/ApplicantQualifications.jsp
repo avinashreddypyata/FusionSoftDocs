@@ -97,7 +97,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="tabbable-line tabbable-full-width">
                                                <ul class="nav nav-tabs">
                                                <li>
-                                                        <a href = "applicantEditProfile">AccountInfo</a>
+                                                        <a href = "applicantViewInfo">Overview</a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "applicantEditProfile">Account Info</a>
                                                     </li>
                                                     <li data-toggle="tab" class="active">
                                                         <a> Qualifications </a>

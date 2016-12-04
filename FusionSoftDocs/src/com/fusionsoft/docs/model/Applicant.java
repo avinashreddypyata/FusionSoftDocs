@@ -3,11 +3,13 @@ package com.fusionsoft.docs.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -25,7 +27,7 @@ public class Applicant implements Serializable{
 	 */
 	private static final long serialVersionUID = -5466915864589861286L;
 	@Id
-	@Column(name="USERID", unique=true, nullable=false)
+	@Column(name="userid", unique=true, nullable=false)
 	@GeneratedValue(generator="gen")
 	@GenericGenerator(name="gen", strategy="foreign", parameters={@Parameter(name="property", value="customuser")})
 	private int userid;
@@ -75,14 +77,14 @@ public class Applicant implements Serializable{
 	private Date currentvisaexpirydate;
 	@Column(name ="currentvisastatus")
 	private String currentvisastatus;
-	@Column(name = "USERNOTES")
+	@Column(name = "usernotes")
 	private String usernotes;
-	@Column(name = "ADMINNOTES")
+	@Column(name = "adminnotes")
 	private String adminnotes;
 	@Column(name = "status")
 	private String status;
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userid")
 	private CustomUser customuser;	
 	public int getUserid() {
 		return userid;

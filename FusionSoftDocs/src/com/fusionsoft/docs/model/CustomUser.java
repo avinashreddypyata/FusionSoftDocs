@@ -1,18 +1,22 @@
 package com.fusionsoft.docs.model;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
 import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.userdetails.UserDetails;
 @Entity
@@ -26,7 +30,7 @@ public class CustomUser implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="USERID")
+	@Column(name="userid")
 	private int userid;
     @Column(name ="firstlogin")
     private int firstlogin;
@@ -65,6 +69,8 @@ public class CustomUser implements UserDetails {
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	private Profile profile;
 	@OneToOne(mappedBy="customuser")
+	@JoinColumns({
+	    @JoinColumn(name="userid", referencedColumnName="userid")})
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	private Applicant applicant;
 	public Applicant getApplicant() {

@@ -53,10 +53,26 @@ public class CustomUser implements UserDetails {
     
 	@Column(name = "CREATEDBY")
 	private String createdby;
-	
+	@Column(name = "LASTLOGIN")
+	private Date lastlogin;
+	public Date getLastlogin() {
+		return lastlogin;
+	}
+	public void setLastlogin(Date lastlogin) {
+		this.lastlogin = lastlogin;
+	}
 	@OneToOne(mappedBy="customuser")
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	private Profile profile;
+	@OneToOne(mappedBy="customuser")
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	private Applicant applicant;
+	public Applicant getApplicant() {
+		return applicant;
+	}
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
+	}
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Document> documents;

@@ -1,40 +1,106 @@
 package com.fusionsoft.docs.model;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class Applicant {
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+@Entity
+@Table(name = "application")
+public class Applicant implements Serializable{
 
-	private int id;
-
-	private String username;
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5466915864589861286L;
+	@Id
+	@Column(name="USERID", unique=true, nullable=false)
+	@GeneratedValue(generator="gen")
+	@GenericGenerator(name="gen", strategy="foreign", parameters={@Parameter(name="property", value="customuser")})
+	private int userid;
+	@Id
+	@Column(name="applicationid")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int applicationid;
+	@Column(name = "ApplicationType")
+	private String applicationtype;
+	@Column(name = "firstname")
 	private String firstname;
-	
+	@Column(name = "middlename")
+	private String middlename;
+	@Column(name = "lastname")
 	private String lastname;
-	
-	private String country;
-
-	private String city;
-
-	private String zip;
-
-	private String email;
-	
-	private String phone;
-	public int getId() {
-		return id;
+	@Column(name = "maidenname")
+	private String maidenname;
+	@Column(name = "fullname")
+	private String fullname;
+	@Column(name = "dateofbirth")
+	@Temporal(TemporalType.DATE)
+	private Date dateofbirth;
+	@Column(name = "countryofbirth")
+	private String countryofbirth;
+	@Column(name = "provinceofbirth")
+	private String provinceofbirth;
+	@Column(name = "citizenship")
+	private String citizenship;
+	@Column(name = "usvisit")
+	private String usvisit;
+	@Column(name = "socialsecuritynumber")
+	private String socialsecuritynumber;
+	@Column(name = "latesti94number")
+	private String latesti94number;
+	@Column(name = "lastentrydatetous")
+	@Temporal(TemporalType.DATE)
+	private Date lastentrydatetous;
+	@Column(name ="aliennumber")
+	private String aliennumber;
+	@Column(name ="eadvalidupto")
+	@Temporal(TemporalType.DATE)
+	private Date eadvalidupto;
+	@Column(name ="currentemployerpetitionnumber")
+	private String currentemployerpetitionnumber;
+	@Column(name ="currentvisaexpirydate")
+	@Temporal(TemporalType.DATE)
+	private Date currentvisaexpirydate;
+	@Column(name ="currentvisastatus")
+	private String currentvisastatus;
+	@Column(name = "USERNOTES")
+	private String usernotes;
+	@Column(name = "ADMINNOTES")
+	private String adminnotes;
+	@Column(name = "status")
+	private String status;
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private CustomUser customuser;	
+	public int getUserid() {
+		return userid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
-	public String getUsername() {
-		return username;
+	public int getApplicationid() {
+		return applicationid;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setApplicationid(int applicationid) {
+		this.applicationid = applicationid;
+	}
+	public String getApplicationtype() {
+		return applicationtype;
+	}
+	public void setApplicationtype(String applicationtype) {
+		this.applicationtype = applicationtype;
 	}
 	public String getFirstname() {
 		return firstname;
@@ -42,44 +108,131 @@ public class Applicant {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
+	public String getMiddlename() {
+		return middlename;
+	}
+	public void setMiddlename(String middlename) {
+		this.middlename = middlename;
+	}
 	public String getLastname() {
 		return lastname;
 	}
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public String getCountry() {
-		return country;
+	public String getMaidenname() {
+		return maidenname;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setMaidenname(String maidenname) {
+		this.maidenname = maidenname;
 	}
-	public String getCity() {
-		return city;
+	public String getFullname() {
+		return fullname;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
-	public String getZip() {
-		return zip;
+	public Date getDateofbirth() {
+		return dateofbirth;
 	}
-	public void setZip(String zip) {
-		this.zip = zip;
+	public void setDateofbirth(Date dateofbirth) {
+		this.dateofbirth = dateofbirth;
 	}
-	public String getEmail() {
-		return email;
+	public String getCountryofbirth() {
+		return countryofbirth;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCountryofbirth(String countryofbirth) {
+		this.countryofbirth = countryofbirth;
 	}
-	public String getPhone() {
-		return phone;
+	public String getProvinceofbirth() {
+		return provinceofbirth;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setProvinceofbirth(String provinceofbirth) {
+		this.provinceofbirth = provinceofbirth;
 	}
-	
-	
-
+	public String getCitizenship() {
+		return citizenship;
+	}
+	public void setCitizenship(String citizenship) {
+		this.citizenship = citizenship;
+	}
+	public String getUsvisit() {
+		return usvisit;
+	}
+	public void setUsvisit(String usvisit) {
+		this.usvisit = usvisit;
+	}
+	public String getSocialsecuritynumber() {
+		return socialsecuritynumber;
+	}
+	public void setSocialsecuritynumber(String socialsecuritynumber) {
+		this.socialsecuritynumber = socialsecuritynumber;
+	}
+	public String getLatesti94number() {
+		return latesti94number;
+	}
+	public void setLatesti94number(String latesti94number) {
+		this.latesti94number = latesti94number;
+	}
+	public Date getLastentrydatetous() {
+		return lastentrydatetous;
+	}
+	public void setLastentrydatetous(Date lastentrydatetous) {
+		this.lastentrydatetous = lastentrydatetous;
+	}
+	public String getAliennumber() {
+		return aliennumber;
+	}
+	public void setAliennumber(String aliennumber) {
+		this.aliennumber = aliennumber;
+	}
+	public Date getEadvalidupto() {
+		return eadvalidupto;
+	}
+	public void setEadvalidupto(Date eadvalidupto) {
+		this.eadvalidupto = eadvalidupto;
+	}
+	public String getCurrentemployerpetitionnumber() {
+		return currentemployerpetitionnumber;
+	}
+	public void setCurrentemployerpetitionnumber(String currentemployerpetitionnumber) {
+		this.currentemployerpetitionnumber = currentemployerpetitionnumber;
+	}
+	public Date getCurrentvisaexpirydate() {
+		return currentvisaexpirydate;
+	}
+	public void setCurrentvisaexpirydate(Date currentvisaexpirydate) {
+		this.currentvisaexpirydate = currentvisaexpirydate;
+	}
+	public String getCurrentvisastatus() {
+		return currentvisastatus;
+	}
+	public void setCurrentvisastatus(String currentvisastatus) {
+		this.currentvisastatus = currentvisastatus;
+	}
+	public String getUsernotes() {
+		return usernotes;
+	}
+	public void setUsernotes(String usernotes) {
+		this.usernotes = usernotes;
+	}
+	public String getAdminnotes() {
+		return adminnotes;
+	}
+	public void setAdminnotes(String adminnotes) {
+		this.adminnotes = adminnotes;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public CustomUser getCustomuser() {
+		return customuser;
+	}
+	public void setCustomuser(CustomUser customuser) {
+		this.customuser = customuser;
+	}
 }
 

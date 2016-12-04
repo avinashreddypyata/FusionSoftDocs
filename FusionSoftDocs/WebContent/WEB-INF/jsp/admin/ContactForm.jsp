@@ -29,7 +29,6 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #3 for user profile sample" name="description" />
         <meta content="" name="author" />
-        <style>#docContainer .fb_cond_applied{ display:none; }</style><noscript><style>#docContainer .fb_cond_applied{ display:inline-block; }</style></noscript>
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="http://localhost:854/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -2528,12 +2527,12 @@ data-form="preview">
   </div>
   <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
   style="display: none; cursor: default;">
-    <img src="editordata/images/recaptchawhite.png" />
   </div>
-  <div class="fb-item-alignment-left fb-footer" id="fb-submit-button-div"
+  <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
   style="min-height: 1px;">
-  <div style="padding-left: 320px;"><button type="submit" class="btn green">Save And Continue</button></div>
-    
+    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/passportformjsfiles/theme/default/images/btn_submit.png');"
+    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/passportformjsfiles/theme/default/images/btn_submit.png')"
+    value="SaveAndContinue" />
   </div>
 </form>
 <div class="btn-group btn-group btn-group-justified">

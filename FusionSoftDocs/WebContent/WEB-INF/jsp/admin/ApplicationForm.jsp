@@ -144,10 +144,46 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </a>
                                         </li>
                                         <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
-                                            <a>Application Form
+                                            <a>Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
+                                        <li>
+                                        <a>Contact
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                         <a>Passport
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                         <a>Travel 
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                       <a>Education
+                                               
+                                            </a>
+                                        </li>
+                                        <li>
+                                      <a>Experience
+                                                
+                                            </a>
+                                        </li>
+                                        <li>
+                                      <a>Certification
+                                          
+                                            </a>
+                                        </li>
+                                        <li>
+                                      <a>Documents
+                                          
+                                            </a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->

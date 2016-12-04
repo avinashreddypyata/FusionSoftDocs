@@ -137,17 +137,51 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                    <ul class="nav navbar-nav">
+                                   <ul class="nav navbar-nav">
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
-                                            <a>Application Form
+                                        <li>
+                                            <a>Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
+                                        <li >
+                                        <a>Contact
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                         <a>Passport
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                         <a>Travel 
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                       <a>Education
+                                               
+                                            </a>
+                                        </li>
+                                        <li>
+                                      <a>Experience
+                                                
+                                            </a>
+                                        </li>
+                                        <li >
+                                      <a>Certification</a>
+                                        </li>
+                                        <li>
+                                      <a>Documents
+                                          
+                                            </a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -174,7 +208,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                  <form class="fb-100-item-column selected-object" id="docContainer" action=""
 enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="preview">
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/passportformjsfiles/common/images/image_default.png"/></a>
   </div>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
@@ -227,7 +261,7 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
   </div>
   <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
   style="display: none; cursor: default;">
-    <img src="editordata/images/recaptchawhite.png" />
+    <img src="http://localhost:854/LoginPage/assets/passportformjsfiles/editordata/images/recaptchawhite.png" />
   </div>
   <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
   style="min-height: 1px;">

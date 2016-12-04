@@ -60,7 +60,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+        <script src="http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyCoQaQ7_auZERrZRV3j0QzK1i553InKWAse" type="text/javascript"></script>
         <script src="http://localhost:854/LoginPage/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
@@ -137,17 +137,51 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                    <ul class="nav navbar-nav">
+                                       <ul class="nav navbar-nav">
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
-                                            <a> Visa And Travel Information
+                                        <li>
+                                            <a>Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                        <a>Contact
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                         <a>Passport
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                         <a>Travel 
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                       <a>Education
+                                               
+                                            </a>
+                                        </li>
+                                        <li>
+                                      <a>Experience
+                                                
+                                            </a>
+                                        </li>
+                                        <li >
+                                      <a>Certification</a>
+                                        </li>
+                                        <li>
+                                      <a>Documents
+                                          
+                                            </a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -175,7 +209,7 @@ License: You must have a valid license purchased only from themeforest(the above
 action="" enctype="multipart/form-data" method="POST" novalidate="novalidate"
 data-form="preview">
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/contactformjsfiles/common/images/image_default.png"/></a>
   </div>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
@@ -2530,8 +2564,8 @@ data-form="preview">
   </div>
   <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
   style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/passportformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/passportformjsfiles/theme/default/images/btn_submit.png')"
+    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/contactformjsfiles/theme/default/images/btn_submit.png');"
+    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/contactformjsfiles/theme/default/images/btn_submit.png')"
     value="SaveAndContinue" />
   </div>
 </form>

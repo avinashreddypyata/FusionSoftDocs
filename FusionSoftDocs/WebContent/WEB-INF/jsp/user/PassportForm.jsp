@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ page session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -205,8 +207,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                                 <form class="fb-100-item-column selected-object" id="docContainer" action=""
-enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="preview">
+                                 <form:form class="fb-100-item-column selected-object" id="docContainer" action="saveorupdatepassport"
+enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="preview" modelAttribute="passport">
   <div class="fb-form-header" id="fb-form-header1">
     <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/passportformjsfiles/common/images/image_default.png"/></a>
   </div>
@@ -224,9 +226,8 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
           <label id="item2_label_0" style="display: inline;">Latest Passport Number</label>
         </div>
         <div class="fb-input-box">
-          <input name="latestpassportnumber" id="item2_text_1" required type="text"
-          maxlength="254" placeholder="Latest Passport Number" data-hint="" autocomplete="off"
-          />
+          <form:input name="latestpassportnumber" id="item2_text_1" required="required" type="text"
+          maxlength="254" placeholder="Latest Passport Number" data-hint="" autocomplete="off" path="latestpassportnumber"/>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item3">
@@ -234,8 +235,8 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
           <label id="item3_label_0" style="display: inline;">Passport Issuance Date</label>
         </div>
         <div class="fb-input-date">
-          <input name="passportissuancedate" class="datepicker" id="item3_date_1"
-          required type="text" data-hint="" />
+          <form:input name="passportissuancedate" class="datepicker" id="item3_date_1"
+          required="required" type="text" data-hint="" path="passportissuancedate"/>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item4">
@@ -243,8 +244,8 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
           <label id="item4_label_0" style="display: inline;">Passport Expiry Date</label>
         </div>
         <div class="fb-input-date">
-          <input name="passportexpirydate" class="datepicker" id="item4_date_1"
-          required type="text" data-hint="" />
+          <form:input name="passportexpirydate" class="datepicker" id="item4_date_1"
+          required="required" type="text" data-hint="" path="passportexpirydate"/>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item5">
@@ -252,9 +253,8 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
           <label id="item5_label_0" style="display: inline;">Passport Issued Location</label>
         </div>
         <div class="fb-input-box">
-          <input name="passportissuedlocation" id="item5_text_1" required type="text"
-          maxlength="254" placeholder="Passport Issued Location" data-hint="" autocomplete="off"
-          />
+          <form:input name="passportissuedlocation" id="item5_text_1" required="required" type="text"
+          maxlength="254" placeholder="Passport Issued Location" data-hint="" autocomplete="off" path="passportissuedlocation"/>
         </div>
       </div>
     </div>
@@ -269,7 +269,7 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
     type="submit" data-regular="url('http://localhost:854/LoginPage/assets/passportformjsfiles/theme/default/images/btn_submit.png')"
     value="SaveAndContinue" />
   </div>
-</form>
+</form:form>
 <div class="btn-group btn-group btn-group-justified">
                                                                  <a href="javascript:;" class="btn red"> Back </a>
                                                                     <a href="javascript:;" class="btn blue"> Home </a>
@@ -291,18 +291,23 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
                 <div class="page-wrapper-bottom">
                     <!-- BEGIN FOOTER -->
                     <!-- BEGIN PRE-FOOTER -->
-                    <div class="page-prefooter">
+                     <div class="page-prefooter">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                                     <h2>About</h2>
-                                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam dolore. </p>
+                                    <p> Fusionsoft is a minority owned business, incorporated in
+									2005 and headquartered in Atlanta, Georgia, Fusionsoft delivers
+									solutions for technology & engineering services, staffing
+									services and solutions to public and private sector clients.
+									Fusionsoft offers its clients professional consulting services
+									and project management services </p>
                                 </div>
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                                     <h2>Contacts</h2>
-                                    <address class="margin-bottom-40"> Phone: 800 123 3456
+                                    <address class="margin-bottom-40"> Phone: 770.881.8118
                                         <br> Email:
-                                        <a href="mailto:info@metronic.com">info@metronic.com</a>
+                                        <a href="mailto:admin@fusionsoftinc.com">admin@fusionsoftinc.com</a>
                                     </address>
                                 </div>
                             </div>

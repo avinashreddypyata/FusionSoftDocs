@@ -22,6 +22,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fusionsoft.docs.dao.UserDao;
+import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
@@ -29,6 +31,7 @@ import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Immigration;
+import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
 
 @Service
@@ -239,5 +242,56 @@ public class UserServiceImpl implements UserService {
 	public void updatefirstlogin(int id) {
 		// TODO Auto-generated method stub
 		userDao.updatefirstlogin(id);
+	}
+	@Override
+	public Applicant findapplicant(int id) {
+		// TODO Auto-generated method stub
+		return userDao.findapplicant(id);
+	}
+	@Override
+	public void saveapplication(CustomUser customuser, Applicant applicant) {
+		// TODO Auto-generated method stub
+		applicant.setCustomuser(customuser);
+		userDao.saveapplication(applicant);
+	}
+	@Override
+	public void updateapplication(Applicant applicant) {
+		// TODO Auto-generated method stub
+		userDao.updateapplication(applicant);
+		
+	}
+	@Override
+	public Contact findcontact(int userid) {
+		// TODO Auto-generated method stub
+		return userDao.findcontact(userid);
+	}
+	@Override
+	public void savecontact(CustomUser customuser, Contact contact) {
+		// TODO Auto-generated method stub
+		contact.setCustomuser(customuser);
+		userDao.savecontact(contact);
+	}
+	@Override
+	public void updatecontact(Contact contact) {
+		// TODO Auto-generated method stub
+		userDao.updatecontact(contact);
+		
+	}
+	@Override
+	public Passport findpassport(int userid) {
+		
+		return userDao.findpassport(userid);
+	}
+	@Override
+	public void savepassport(CustomUser customuser, Passport passport) {
+		// TODO Auto-generated method stub
+		passport.setCustomuser(customuser);
+		userDao.savepassport(passport);
+		
+	}
+	@Override
+	public void updatepassport(Passport passport) {
+		// TODO Auto-generated method stub
+		userDao.updatepassport(passport);
 	}
 }

@@ -5,23 +5,28 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomRole;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.Immigration;
+import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
 import com.fusionsoft.docs.service.UserService;
 
@@ -90,6 +95,7 @@ public class UserDaoImpl implements UserDao {
 						.add(Projections.property("phone"), "phone").add(Projections.property("userid"), "userid"))
 				.setResultTransformer(Transformers.aliasToBean(Profile.class));
 		profiles = cr.list();
+		
 		return profiles;
 	}
 	@Override
@@ -100,7 +106,7 @@ public class UserDaoImpl implements UserDao {
 		Profile profile = session.get(Profile.class, userid);
 		System.out.println("The required Name is" + profile.getLastname());
 		session.getTransaction().commit();
-
+		session.close();
 		return profile;
 	}
 
@@ -124,7 +130,7 @@ public class UserDaoImpl implements UserDao {
 		query.setParameter("userid", userid);
 		id = query.executeUpdate();
 		session.getTransaction().commit();
-		
+		session.close();
 
 		return id;
 	}
@@ -153,6 +159,7 @@ public class UserDaoImpl implements UserDao {
 		session.beginTransaction();
 		Document document = session.get(Document.class, docid);
 		session.getTransaction().commit();
+		session.close();
 		return document;
 	}
     @SuppressWarnings("deprecation")
@@ -181,7 +188,7 @@ public class UserDaoImpl implements UserDao {
 	public CustomUser findCustomUser(int userid) {
 		Session session = sessionFactory.openSession().getSession();
 		CustomUser customuser = session.get(CustomUser.class, userid);
-		
+		session.close();
 		return customuser;
 	}
 
@@ -195,6 +202,7 @@ public class UserDaoImpl implements UserDao {
 		    session.delete(persistentInstance);
 		}
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override
@@ -219,6 +227,7 @@ public class UserDaoImpl implements UserDao {
 		session.beginTransaction();
 		int userid = (int) session.save(customuser);
 		session.getTransaction().commit();
+		session.close();
 		return userid;
 	}
 
@@ -247,6 +256,7 @@ public class UserDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession().getSession();
 		Immigration immigration = session.get(Immigration.class, id);
+		session.close();
 		return immigration;
 	}
 
@@ -269,6 +279,7 @@ public class UserDaoImpl implements UserDao {
     	Query query = session.createQuery("FROM Experience Where userid = ?");
     	query.setParameter(0, id);
     	List<Experience> experiences = query.list();
+    	session.close();
 		return experiences;
 	}
 
@@ -280,6 +291,7 @@ public class UserDaoImpl implements UserDao {
     	query.setParameter(0, id);
     	List<Education> educationqualifications = query.list();
     	System.out.println("In Dao The List Size is"+educationqualifications.size());
+    	session.close();
 		return educationqualifications;
 	}
 
@@ -294,6 +306,7 @@ public class UserDaoImpl implements UserDao {
 		    session.delete(persistentInstance);
 		}
 		session.getTransaction().commit();
+		session.close();
 		
 		
 	}
@@ -331,6 +344,7 @@ public class UserDaoImpl implements UserDao {
 		    session.delete(persistentInstance);
 		}
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override
@@ -343,6 +357,203 @@ public class UserDaoImpl implements UserDao {
 	    user.setFirstlogin(0);
 	    session.save(user);
 	    session.getTransaction().commit();
+	    session.close();
 		
 	}
+
+	@Override
+	public Applicant findapplicant(int id) {
+		// Getting The Applicant Details From The DataBase
+		Applicant applicant;
+		Session session = sessionFactory.openSession();
+        session.getTransaction().begin();
+		@SuppressWarnings("rawtypes")
+		TypedQuery query = session.createQuery("from Applicant where userid = :userid ");
+		query.setParameter("userid", id);
+		if(query.getResultList().size() == 0)
+		{
+			applicant = new Applicant();
+		}
+		else{
+		   applicant = (Applicant) query.getResultList().get(0);
+		}
+		session.getTransaction().commit();
+		session.close();
+		return applicant;
+	}
+
+	@Override
+	/*Saving A new Application as User enters The Application Information For The First Time*/
+	public void saveapplication(Applicant applicant) {
+		Session session = getSessionFactory().openSession();
+		session.beginTransaction();
+		session.save(applicant);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	/*Updating The Application as User Makes Changes to Aplication*/
+	public void updateapplication(Applicant applicant) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		Applicant updatedapplicant = session.get(Applicant.class, applicant.getUserid());
+		session.beginTransaction();
+		updatedapplicant.setAdminnotes(applicant.getAdminnotes());
+		updatedapplicant.setAliennumber(applicant.getAliennumber());
+		updatedapplicant.setApplicationtype(applicant.getApplicationtype());
+		updatedapplicant.setCitizenship(applicant.getCitizenship());
+		updatedapplicant.setCountryofbirth(applicant.getCountryofbirth());
+		updatedapplicant.setCurrentemployerpetitionnumber(applicant.getCurrentemployerpetitionnumber());
+		updatedapplicant.setCurrentvisaexpirydate(applicant.getCurrentvisaexpirydate());
+		updatedapplicant.setDateofbirth(applicant.getDateofbirth());
+		updatedapplicant.setEadvalidupto(applicant.getEadvalidupto());
+		updatedapplicant.setFirstname(applicant.getFirstname());
+		updatedapplicant.setFullname(applicant.getFullname());
+		updatedapplicant.setLastentrydatetous(applicant.getLastentrydatetous());
+		updatedapplicant.setLastname(applicant.getLastname());
+		updatedapplicant.setLatesti94number(applicant.getLatesti94number());
+		updatedapplicant.setMaidenname(applicant.getMaidenname());
+		updatedapplicant.setMiddlename(applicant.getMiddlename());
+		updatedapplicant.setPrefix(applicant.getPrefix());
+		updatedapplicant.setProvinceofbirth(applicant.getProvinceofbirth());
+		updatedapplicant.setSocialsecuritynumber(applicant.getSocialsecuritynumber());
+		updatedapplicant.setStatus(applicant.getStatus());
+		updatedapplicant.setUsernotes(applicant.getUsernotes());
+		updatedapplicant.setUsvisit(applicant.getUsvisit());
+		session.saveOrUpdate(updatedapplicant);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	public Contact findcontact(int userid) {
+		// finding contact details
+		Session session = getSessionFactory().openSession();
+		Contact contact =  new Contact();
+		try{
+			session.beginTransaction();
+			contact = session.get(Contact.class, userid);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		return contact;
+	}
+
+	@Override
+	public void savecontact(Contact contact) {
+		// saving contact details
+				Session session = getSessionFactory().openSession();
+				try{
+					session.beginTransaction();
+					session.save(contact);
+					session.getTransaction().commit();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				
+				finally{
+					session.close();
+				}
+			}
+
+	@Override
+	public void updatecontact(Contact contact) {
+		// updating contact details
+				Session session = getSessionFactory().openSession();
+				try{
+					session.beginTransaction();
+					Contact updatecontact = session.get(Contact.class, contact.getUserid());
+					updatecontact.setAddress1(contact.getAddress1());
+					updatecontact.setAddress2(contact.getAddress2());
+					updatecontact.setAddress3(contact.getAddress3());
+					updatecontact.setCity(contact.getCity());
+					updatecontact.setCity2(contact.getCity2());
+					updatecontact.setCity3(contact.getCity3());
+					updatecontact.setCountry(contact.getCountry());
+					updatecontact.setCountry2(contact.getCountry2());
+					updatecontact.setCountry3(contact.getCountry3());
+					updatecontact.setEmail(contact.getEmail());
+					updatecontact.setHomephonenumber(contact.getHomephonenumber());
+					updatecontact.setPhonenumber(contact.getPhonenumber());
+					updatecontact.setState(contact.getState());
+					updatecontact.setState2(contact.getState2());
+					updatecontact.setState3(contact.getState3());
+					updatecontact.setZipcode(contact.getZipcode());
+					updatecontact.setZipcode2(contact.getZipcode2());
+					updatecontact.setZipcode3(contact.getZipcode3());
+					session.save(updatecontact);
+					session.getTransaction().commit();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				
+				finally{
+					session.close();
+				}
+			}
+
+	@Override
+	public Passport findpassport(int userid) {
+		// finding passport in the database
+		Session session = getSessionFactory().openSession();
+		Passport passport = new Passport();
+		try{
+			session.beginTransaction();
+			passport = session.get(Passport.class, userid);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		return passport;
+	}
+
+	@Override
+	public void savepassport(Passport passport) {
+		// saving passport details
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			session.save(passport);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public void updatepassport(Passport passport) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		try{
+			Transaction tx = session.beginTransaction();
+			Passport updatedpassport = session.get(Passport.class, passport.getUserid());
+			updatedpassport.setLatestpassportnumber(passport.getLatestpassportnumber());
+			updatedpassport.setPassportexpirydate(passport.getPassportexpirydate());
+			updatedpassport.setPassportissuancedate(passport.getPassportissuancedate());
+			updatedpassport.setPassportissuedlocation(passport.getPassportissuedlocation());
+			session.save(updatedpassport);
+			tx.commit();
+	}catch(Exception e){
+		session.getTransaction().rollback();
+		e.printStackTrace();
+	}
+		finally{
+			session.close();
+		}
+	}
 }
+		

@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ page session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -228,9 +230,6 @@ method="POST" novalidate="novalidate" data-form="preview" data-percentage="90">
         </div>
         <div class="fb-dropdown">
           <select name="applicationtype" id="item2_select_1" required data-hint="">
-            <option id="item2_0_option" selected value="">
-              Choose one
-            </option>
             <option id="item2_1_option" value="New">
               New
             </option>

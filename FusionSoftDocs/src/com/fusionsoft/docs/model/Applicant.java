@@ -11,32 +11,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 @Entity
 @Table(name = "application")
 public class Applicant implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5466915864589861286L;
 	@Id
 	@Column(name="userid", unique=true, nullable=false)
 	@GeneratedValue(generator="gen")
 	@GenericGenerator(name="gen", strategy="foreign", parameters={@Parameter(name="property", value="customuser")})
 	private int userid;
-	@Id
-	@Column(name="applicationid")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int applicationid;
-	@Column(name = "ApplicationType")
+	@Column(name = "applicationtype")
 	private String applicationtype;
+	@Column(name="prefix")
+	private String prefix;
+	public String getPrefix() {
+		return prefix;
+	}
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@Column(name = "firstname")
 	private String firstname;
 	@Column(name = "middlename")
@@ -91,12 +94,6 @@ public class Applicant implements Serializable{
 	}
 	public void setUserid(int userid) {
 		this.userid = userid;
-	}
-	public int getApplicationid() {
-		return applicationid;
-	}
-	public void setApplicationid(int applicationid) {
-		this.applicationid = applicationid;
 	}
 	public String getApplicationtype() {
 		return applicationtype;

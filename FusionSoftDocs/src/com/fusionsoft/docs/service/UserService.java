@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
@@ -12,6 +14,7 @@ import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Immigration;
+import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
 
 
@@ -64,6 +67,24 @@ public void updateimmigration(Immigration immigration);
 public void deleteeducation(int eduid);
 
 public void updatefirstlogin(int id);
+
+public Applicant findapplicant(int id);
+
+public void saveapplication(CustomUser customuser, Applicant applicant);
+
+public void updateapplication(Applicant applicant);
+
+public Contact findcontact(int userid);
+
+public void savecontact(CustomUser customuser, Contact contact);
+
+public void updatecontact(Contact contact);
+
+public Passport findpassport(int userid);
+
+public void savepassport(CustomUser customuser, Passport passport);
+
+public void updatepassport(Passport passport);
 
 
 }

@@ -79,9 +79,29 @@ public class CustomUser implements UserDetails {
 	public void setApplicant(Applicant applicant) {
 		this.applicant = applicant;
 	}
+	@OneToOne(mappedBy="customuser")
+	@JoinColumns({
+	    @JoinColumn(name="userid", referencedColumnName="userid")})
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	private Contact contact;
+	public Contact getContact() {
+		return contact;
+	}
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Document> documents;
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
+	private List<Travel> travel;
+	public List<Travel> getTravel() {
+		return travel;
+	}
+	public void setTravel(List<Travel> travel) {
+		this.travel = travel;
+	}
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Inbox> messages;

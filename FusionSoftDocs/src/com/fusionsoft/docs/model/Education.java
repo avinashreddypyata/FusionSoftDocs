@@ -27,6 +27,70 @@ public class Education {
 	private String location;
 	@Column(name= "levelofeducation")
 	private String levelofeducation;
+	@Column(name ="address")
+	private String address;
+	@Column(name = "city")
+	private String city;
+	@Column(name = "state")
+	private String state;
+	@Column(name ="zipcode")
+	private String zipcode;
+	@Column(name = "country")
+	private String country;
+	@Column(name = "yearofpassing")
+	private String yearofpassing;
+	@Column(name = "monthofpassing")
+	private String monthofpassing;
+	@Column(name = "ussevisnumber")
+	private String ussevisnumber;
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getYearofpassing() {
+		return yearofpassing;
+	}
+	public void setYearofpassing(String yearofpassing) {
+		this.yearofpassing = yearofpassing;
+	}
+	public String getMonthofpassing() {
+		return monthofpassing;
+	}
+	public void setMonthofpassing(String monthofpassing) {
+		this.monthofpassing = monthofpassing;
+	}
+	public String getUssevisnumber() {
+		return ussevisnumber;
+	}
+	public void setUssevisnumber(String ussevisnumber) {
+		this.ussevisnumber = ussevisnumber;
+	}
 	public String getCourse() {
 		return course;
 	}
@@ -63,39 +127,22 @@ public class Education {
 	public void setUniversity(String university) {
 		this.university = university;
 	}
-	public Date getStartdate() {
-		return startdate;
-	}
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
-	}
-	public Date getGraduationdate() {
-		return graduationdate;
-	}
-	public void setGraduationdate(Date graduationdate) {
-		this.graduationdate = graduationdate;
-	}
 	public String getGrade() {
 		return gpa;
 	}
 	public void setGrade(String grade) {
 		this.gpa = grade;
 	}
-	public Profile getProfile() {
-		return profile;
+	public CustomUser getCustomuser() {
+		return customuser;
 	}
-	public void setProfile(Profile profile) {
-		this.profile = profile;
+	public void setCustomuser(CustomUser customuser) {
+		this.customuser = customuser;
 	}
-	@Temporal(TemporalType.DATE)
-	@Column(name = "startdate")
-private Date startdate;
-	@Temporal(TemporalType.DATE)
-	@Column(name = "graduationdate")
-private Date graduationdate;
+
 	@Column(name = "gpa")
 private String gpa;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USERID", nullable = false)
-private Profile profile;
+private CustomUser customuser;
 }

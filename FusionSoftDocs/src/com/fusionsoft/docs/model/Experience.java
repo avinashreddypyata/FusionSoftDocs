@@ -27,24 +27,54 @@ public class Experience {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "enddate")
 	private Date enddate;
-	@Column(name = "role")
-	private String role;
+	@Column(name = "designation")
+	private String designation;
+	@Column(name = "state")
+	private String state;
+	@Column(name ="country")
+	private String country;
+	@Column(name = "totalmonthsworked")
+	private String totalmonthsworked;
 	
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getTotalmonthsworked() {
+		return totalmonthsworked;
+	}
+	public void setTotalmonthsworked(String totalmonthsworked) {
+		this.totalmonthsworked = totalmonthsworked;
+	}
 	public int getExpid() {
 		return expid;
 	}
 	public void setExpid(int expid) {
 		this.expid = expid;
 	}
-	public String getRole() {
-		return role;
+	public String getdesignation() {
+		return designation;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setdesignation(String designation) {
+		this.designation = designation;
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USERID", nullable = false)
-	private Profile profile;
+	private CustomUser customuser;
 	public String getEmployer() {
 		return employer;
 	}
@@ -63,10 +93,10 @@ public class Experience {
 	public void setEnddate(Date enddate) {
 		this.enddate = enddate;
 	}
-	public Profile getProfile() {
-		return profile;
+	public CustomUser getCustomuser() {
+		return customuser;
 	}
-	public void setProfile(Profile profile) {
-		this.profile = profile;
+	public void setCustomuser(CustomUser customuser) {
+		this.customuser = customuser;
 	}
 }

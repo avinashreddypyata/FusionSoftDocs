@@ -137,17 +137,51 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                    <ul class="nav navbar-nav">
+                                      <ul class="nav navbar-nav">
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
-                                            <a> Visa And Travel Information
+                                        <li>
+                                            <a>Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
+                                        <li >
+                                        <a>Contact
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li >
+                                         <a>Passport
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                         <a>Travel 
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                       <a>Education
+                                               
+                                            </a>
+                                        </li>
+                                        <li>
+                                      <a>Experience
+                                                
+                                            </a>
+                                        </li>
+                                        <li >
+                                      <a>Certification</a>
+                                        </li>
+                                        <li>
+                                      <a>Documents
+                                          
+                                            </a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -171,38 +205,21 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
+                                <div class="row">
+                                            <div class="col-md-12">
                                 <div class="portlet light ">
                                                     <div class="portlet-body">
                                                         <div class="table-toolbar">
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="btn-group">
-                                                                        <button id="sample_editable_1_new" class="btn sbold green"> Add More Travel History
+                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="editorcreatenewtravel"> Add More Travel History
                                                                             <i class="fa fa-plus"></i>
-                                                                        </button>
+                                                                        </a>
+                                                                        
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="btn-group pull-right">
-                                                                        <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
-                                                                            <i class="fa fa-angle-down"></i>
-                                                                        </button>
-                                                                        <ul class="dropdown-menu pull-right">
-                                                                            <li>
-                                                                                <a href="javascript:;">
-                                                                                    <i class="fa fa-print"></i> Print </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="javascript:;">
-                                                                                    <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="javascript:;">
-                                                                                    <i class="fa fa-file-excel-o"></i> Export to Excel </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
+                                                              
                                                             </div>
                                                         </div>
                                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
@@ -212,66 +229,72 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         Port Of Entry
                                                                     </th>
                                                                     <th> Entry Date To US </th>
-                                                                    <th> Exit </th>
-                                                                    <th> Status </th>
-                                                                    <th> Joined </th>
-                                                                    <th> Actions </th>
+                                                                    <th> Exit Date From Us</th>
+                                                                    <th> Status At The Time Of Entry</th>
+                                                                    <th> Status Valid From </th>
+                                                                    <th> Status Valid Till </th>
+                                                                    <th>Total Months Outside Us</th>
+                                                                    <th>Actions</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                               <c:forEach items="${traveldetails}" var="traveldetail">
+                                                            
                                                                 <tr class="odd gradeX">
+                                                                    <td><c:out value="${traveldetail.portofentry}" /></td>
                                                                     <td>
-                                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                                            <input type="checkbox" class="checkboxes" value="1" />
-                                                                            <span></span>
-                                                                        </label>
-                                                                    </td>
-                                                                    <td> looper </td>
-                                                                    <td>
-                                                                        <a href="mailto:looper90@gmail.com"> looper90@gmail.com </a>
+                                                                        <c:out value="${traveldetail.entrydatetous}" /> 
                                                                     </td>
                                                                     <td>
-                                                                        <span class="label label-sm label-warning"> Suspended </span>
+                                                                        <c:out value="${traveldetail.exitdatefromus}" /> 
                                                                     </td>
-                                                                    <td class="center"> 12.12.2011 </td>
+                                                                    <td>
+                                                                       <c:out value="${traveldetail.statusattimeofentry}" /> 
+                                                                    </td>
+                                                                    <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
+                                                                    <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
+                                                                    <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
                                                                     <td>
                                                                         <div class="btn-group">
                                                                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
                                                                                 <i class="fa fa-angle-down"></i>
                                                                             </button>
-                                                                            <ul class="dropdown-menu" role="menu">
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
                                                                                 <li>
-                                                                                    <a href="javascript:;">
-                                                                                        <i class="icon-docs"></i> New Post </a>
+                                                                                    <a href="applicantEditexperience?expid=${experience.expid}">
+                                                                                        <i class="icon-docs"></i> Edit </a>
                                                                                 </li>
                                                                                 <li>
-                                                                                    <a href="javascript:;">
-                                                                                        <i class="icon-tag"></i> New Comment </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="javascript:;">
-                                                                                        <i class="icon-user"></i> New User </a>
-                                                                                </li>
-                                                                                <li class="divider"> </li>
-                                                                                <li>
-                                                                                    <a href="javascript:;">
-                                                                                        <i class="icon-flag"></i> Comments
-                                                                                        <span class="badge badge-success">4</span>
-                                                                                    </a>
+                                                                                    <a href="applicantDeleteexperience?expid=${experience.expid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
+															</c:forEach>
                                                             </tbody>
                                                         </table>
+                                                        <form action ="educationdetails">
+                                                        <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
+  style="min-height: 1px;">
+    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png');"
+    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png')"
+    value="SaveAndContinue" />
+  </div>
+  </form>
                                                     </div>
+                                                    
                                                 </div>
+                                                </div>
+                                                </div>
+                               
 <div class="btn-group btn-group btn-group-justified">
                                                                  
                                                                     <a href="javascript:;" class="btn blue"> Home </a>
                                                                     <a href="javascript:;" class="btn green"> Save Changes And Return </a>
                                                                 </div>
+                                                                
 
 
                                 </div>

@@ -227,27 +227,27 @@ public class AdminHomePageController {
      ModelAndView model = new ModelAndView("admin/experienceform");
 	 return model;
 	}
-	@RequestMapping(value = "/saveexperience",method = RequestMethod.POST)
-	public ModelAndView saveexperience(@ModelAttribute("experience")Experience experience,BindingResult result) throws IOException{
-		 Profile profile = userservice.findprofile(id);
-		 userservice.saveexperience(profile,experience);
-		 System.out.println("The experience date is"+experience.getJoineddate());
-
-     ModelAndView model = new ModelAndView("redirect:applicantexperience");
-	 return model;
-	}
+//	@RequestMapping(value = "/saveexperience",method = RequestMethod.POST)
+//	public ModelAndView saveexperience(@ModelAttribute("experience")Experience experience,BindingResult result) throws IOException{
+//		 Profile profile = userservice.findprofile(id);
+//		 userservice.saveexperience(profile,experience);
+//		 System.out.println("The experience date is"+experience.getJoineddate());
+//
+//     ModelAndView model = new ModelAndView("redirect:applicantexperience");
+//	 return model;
+//	}
 	@RequestMapping(value = "/addeducation",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView addeducation(@ModelAttribute("experience")Experience experience) throws IOException{
        ModelAndView model = new ModelAndView("admin/qualificationsform");
 	 return model;
 	}
-	@RequestMapping(value = "/saveeducation",method = RequestMethod.POST)
-	public ModelAndView saveeducation(@ModelAttribute("education")Education education,BindingResult result) throws IOException{
-		 Profile profile = userservice.findprofile(id);
-		 userservice.saveeducation(profile,education);
-    ModelAndView model = new ModelAndView("redirect:applicantqualification");
-	 return model;
-	}
+//	@RequestMapping(value = "/saveeducation",method = RequestMethod.POST)
+//	public ModelAndView saveeducation(@ModelAttribute("education")Education education,BindingResult result) throws IOException{
+//		 Profile profile = userservice.findprofile(id);
+//		 userservice.saveeducation(profile,education);
+//    ModelAndView model = new ModelAndView("redirect:applicantqualification");
+//	 return model;
+//	}
 	@RequestMapping(value = "/applicantimmigration",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView applicantimmigration(@ModelAttribute("immigration")Immigration immigration) throws IOException{
     ModelAndView model = new ModelAndView("admin/ApplicantImmigrationInfo");

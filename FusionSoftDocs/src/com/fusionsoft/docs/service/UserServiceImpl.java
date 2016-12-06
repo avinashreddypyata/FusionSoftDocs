@@ -185,16 +185,16 @@ public class UserServiceImpl implements UserService {
         return useridpassword;
 	}
 	@Override
-	public int saveexperience(Profile profile,Experience experience) {
+	public int saveexperience(CustomUser customuser,Experience experience) {
 		// TODO Auto-generated method stub
-		experience.setProfile(profile);
+		experience.setCustomuser(customuser);
 		int userid = userDao.saveexperience(experience);
 		return userid;
 	}
 	@Override
-	public int saveeducation(Profile profile, Education education) {
+	public int saveeducation(CustomUser user, Education education) {
 		// TODO Auto-generated method stub
-		education.setProfile(profile);
+		education.setCustomuser(user);
 		int userid = userDao.saveeducation(education);
 		return userid;
 	}
@@ -317,6 +317,16 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDao.updatetravel(travel);
 		
+	}
+	@Override
+	public void updateeducation(Education education) {
+		// TODO Auto-generated method stub
+		userDao.updateeducation(education);
+	}
+	@Override
+	public void updateexperience(Experience experience) {
+		// TODO Auto-generated method stub
+		userDao.updateexperience(experience);
 	}
 	
 }

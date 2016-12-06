@@ -219,7 +219,7 @@ public class UserHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
 	@RequestMapping(value = "/saveorupdatetravel", method = RequestMethod.POST)
 	public ModelAndView saveorupdatetravel(@ModelAttribute("travel") Travel travel) {
-		ModelAndView model = new ModelAndView("redirect:editorcreatenewpassport");
+		ModelAndView model = new ModelAndView("redirect:traveldetails");
 		CustomUser user = getCustomUser();
 		if(travel.getTravelid() == 0){
 		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
@@ -227,6 +227,99 @@ public class UserHomePageController {
 		}
 		    else{
 		    	userservice.updatetravel(travel);
+		    }
+		    return model;
+			}
+	@RequestMapping(value = "/educationdetails", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView educationdetails() {
+		ModelAndView model = new ModelAndView();
+		 CustomUser user = getCustomUser();
+         List<Education> educationdetails = userservice.findqualifications(user.getUserid());
+         if(educationdetails.isEmpty()){
+        	 /*If Entering First Time redirects to empty form with travel form*/
+        	 model.setViewName("redirect:editorcreateneweducation");
+         }
+         else{
+        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
+		model.setViewName("user/EducationDetails");
+		System.out.println("The size is"+educationdetails.size());
+		model.addObject("educationdetails", educationdetails);
+         }
+        return model;
+        
+	}
+	@RequestMapping(value = "/editorcreateneweducation", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView editorcreateneweducation(@ModelAttribute("education") Education education,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("user/EducationForm");
+		 CustomUser user = getCustomUser();
+		 if(request == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Education());
+         }
+         else{
+        /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+//        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
+        	 model.addObject("education", new Education());
+         }
+        return model;
+        
+	}
+	@RequestMapping(value = "/saveorupdateeducation", method = RequestMethod.POST)
+	public ModelAndView saveorupdateeducation(@ModelAttribute("education") Education education) {
+		ModelAndView model = new ModelAndView("redirect:educationdetails");
+		CustomUser user = getCustomUser();
+		if(education.getEduid() == 0){
+		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
+		    userservice.saveeducation(customuser, education);
+		}
+		    else{
+		    	userservice.updateeducation(education);
+		    }
+		    return model;
+			}
+	@RequestMapping(value = "/experiencedetails", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView experiencedetails() {
+		ModelAndView model = new ModelAndView();
+		 CustomUser user = getCustomUser();
+         List<Experience> experiencedetails = userservice.findexperiences(user.getUserid());
+         if(experiencedetails.isEmpty()){
+        	 /*If Entering First Time redirects to empty form with travel form*/
+        	 model.setViewName("redirect:editorcreatenewexperience");
+         }
+         else{
+        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
+		model.setViewName("user/ExperienceDetails");
+		model.addObject("experiencedetails", experiencedetails);
+         }
+        return model;
+        
+	}
+	@RequestMapping(value = "/editorcreatenewexperience", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView editorcreatenewexperience(@ModelAttribute("experience") Experience experience,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("user/ExperienceForm");
+		 CustomUser user = getCustomUser();
+		 if(request == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Experience());
+         }
+         else{
+        /*If applicant wants to edit already present information then existing appli cant object is taken from the database and sent back to view*/
+//        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
+        	 model.addObject("experience", new Experience());
+         }
+        return model;
+        
+	}
+	@RequestMapping(value = "/saveorupdateexperience", method = RequestMethod.POST)
+	public ModelAndView saveorupdateexperience(@ModelAttribute("experience") Experience experience) {
+		ModelAndView model = new ModelAndView("redirect:experiencedetails");
+		CustomUser user = getCustomUser();
+		if(experience.getExpid() == 0){
+		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
+		    userservice.saveexperience(customuser, experience);
+		}
+		    else{
+		    	userservice.updateexperience(experience);
 		    }
 		    return model;
 			}
@@ -249,8 +342,7 @@ public class UserHomePageController {
 	System.out.println("The docid is"+docid);
 	System.out.println("The userid is"+fileBucket.getUserid());
 	ModelAndView model = new ModelAndView("redirect:applicantdocument");
-	return model;
-	
+	return model;	
 		
 	}
 	@RequestMapping(value = "/downloadDoc",method = RequestMethod.GET)
@@ -305,27 +397,27 @@ public class UserHomePageController {
      ModelAndView model = new ModelAndView("user/experienceform");
 	 return model;
 	}
-	@RequestMapping(value = "/saveexperience",method = RequestMethod.POST)
-	public ModelAndView saveexperience(@ModelAttribute("experience")Experience experience,BindingResult result) throws IOException{
-		 Profile profile = userservice.findprofile(id);
-		 userservice.saveexperience(profile,experience);
-		 System.out.println("The experience date is"+experience.getJoineddate());
-
-     ModelAndView model = new ModelAndView("redirect:applicantexperience");
-	 return model;
-	}
+//	@RequestMapping(value = "/saveexperience",method = RequestMethod.POST)
+//	public ModelAndView saveexperience(@ModelAttribute("experience")Experience experience,BindingResult result) throws IOException{
+//		 Profile profile = userservice.findprofile(id);
+//		 userservice.saveexperience(profile,experience);
+//		 System.out.println("The experience date is"+experience.getJoineddate());
+//
+//     ModelAndView model = new ModelAndView("redirect:applicantexperience");
+//	 return model;
+//	}
 	@RequestMapping(value = "/addeducation",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView addeducation(@ModelAttribute("experience")Experience experience) throws IOException{
        ModelAndView model = new ModelAndView("user/qualificationsform");
 	 return model;
 	}
-	@RequestMapping(value = "/saveeducation",method = RequestMethod.POST)
-	public ModelAndView saveeducation(@ModelAttribute("education")Education education,BindingResult result) throws IOException{
-		 Profile profile = userservice.findprofile(id);
-		 userservice.saveeducation(profile,education);
-    ModelAndView model = new ModelAndView("redirect:applicantqualification");
-	 return model;
-	}
+//	@RequestMapping(value = "/saveeducation",method = RequestMethod.POST)
+//	public ModelAndView saveeducation(@ModelAttribute("education")Education education,BindingResult result) throws IOException{
+//		 Profile profile = userservice.findprofile(id);
+//		 userservice.saveeducation(profile,education);
+//    ModelAndView model = new ModelAndView("redirect:applicantqualification");
+//	 return model;
+//	}
 	@RequestMapping(value = "/applicantimmigration",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView applicantimmigration(@ModelAttribute("immigration")Immigration immigration) throws IOException{
     ModelAndView model = new ModelAndView("user/ApplicantImmigrationInfo");

@@ -49,9 +49,9 @@ public Map<Integer, String> saveProfile(Profile profile);
 
 public String generateRandomPassword();
 
-public int saveexperience(Profile profile,Experience experience);
+public int saveexperience(CustomUser customuser,Experience experience);
 
-public int saveeducation(Profile profile, Education education);
+public int saveeducation(CustomUser user, Education education);
 
 public Immigration findimmigration(int id);
 
@@ -94,6 +94,10 @@ public Travel findtravel(int travelid);
 public void savetravel(CustomUser customuser, Travel travel);
 
 public void updatetravel(Travel travel);
+
+public void updateeducation(Education education);
+
+public void updateexperience(Experience experience);
 
 
 }

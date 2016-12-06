@@ -27,18 +27,18 @@ public class Profile implements Serializable {
 	@GeneratedValue(generator="gen")
 	@GenericGenerator(name="gen", strategy="foreign", parameters={@Parameter(name="property", value="customuser")})
 	private int userid;
-	public List<Experience> getExperience() {
-		return experience;
-	}
-	public void setExperience(List<Experience> experience) {
-		this.experience = experience;
-	}
-	public List<Education> getEducation() {
-		return education;
-	}
-	public void setEducation(List<Education> education) {
-		this.education = education;
-	}
+//	public List<Experience> getExperience() {
+//		return experience;
+//	}
+//	public void setExperience(List<Experience> experience) {
+//		this.experience = experience;
+//	}
+//	public List<Education> getEducation() {
+//		return education;
+//	}
+//	public void setEducation(List<Education> education) {
+//		this.education = education;
+//	}
 	public Immigration getImmigration() {
 		return immigration;
 	}
@@ -77,12 +77,12 @@ public class Profile implements Serializable {
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	private CustomUser customuser;
-	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
-	private List<Experience> experience;
-	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
-	private List<Education> education;
+//	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
+//	private List<Experience> experience;
+//	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
+//	private List<Education> education;
 	@OneToOne(mappedBy="profile")
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	private Immigration immigration;

@@ -50,6 +50,8 @@ public interface UserDao {
 	public Travel findtravel(int travelid);
 	public void savetravel(Travel travel);
 	public void updatetravel(Travel travel);
+	public void updateeducation(Education education);
+	public void updateexperience(Experience experience);
 	
 /*test*/
 }

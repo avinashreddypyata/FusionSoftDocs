@@ -96,12 +96,24 @@ public class CustomUser implements UserDetails {
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Travel> travel;
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
+	private List<Education> education;
+	public List<Education> getEducation() {
+		return education;
+	}
+	public void setEducation(List<Education> education) {
+		this.education = education;
+	}
 	public List<Travel> getTravel() {
 		return travel;
 	}
 	public void setTravel(List<Travel> travel) {
 		this.travel = travel;
 	}
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
+	private List<Experience> experience;
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Inbox> messages;

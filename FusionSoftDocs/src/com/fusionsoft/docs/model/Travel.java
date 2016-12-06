@@ -28,6 +28,7 @@ public class Travel {
 	@Column(name = "entrydatetous")
 	@Temporal(TemporalType.DATE)
 	private Date entrydatetous;
+	@Temporal(TemporalType.DATE)
 	@Column(name ="exitdatefromus")
 	private Date exitdatefromus;
 	@Column(name ="statusattimeofentry")

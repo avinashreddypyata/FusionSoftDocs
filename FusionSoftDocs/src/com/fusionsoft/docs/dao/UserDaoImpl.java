@@ -638,5 +638,62 @@ public class UserDaoImpl implements UserDao {
 			session.close();
 		}
 	}
+
+	@Override
+	public void updateeducation(Education education) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			Education updateeducation = session.get(Education.class, education.getEduid());
+			updateeducation.setAddress(education.getAddress());
+			updateeducation.setCity(education.getCity());
+			updateeducation.setCountry(education.getCountry());
+			updateeducation.setCourse(education.getCourse());
+			updateeducation.setGpa(education.getGrade());
+			updateeducation.setLevelofeducation(education.getLevelofeducation());
+			updateeducation.setLocation(education.getLocation());
+			updateeducation.setMonthofpassing(education.getMonthofpassing());
+			updateeducation.setState(education.getState());
+			updateeducation.setUniversity(education.getUniversity());
+			updateeducation.setUssevisnumber(education.getUssevisnumber());
+			updateeducation.setYearofpassing(education.getYearofpassing());
+			updateeducation.setZipcode(education.getZipcode());
+			session.save(updateeducation);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		
+	}
+
+	@Override
+	public void updateexperience(Experience experience) {
+		// TODO Auto-generated method stub
+		Session session =getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			Experience updatedexperience = session.get(Experience.class, experience.getExpid());
+			updatedexperience.setCountry(experience.getCountry());
+			updatedexperience.setdesignation(experience.getdesignation());
+			updatedexperience.setEmployer(experience.getEmployer());
+			updatedexperience.setEnddate(experience.getEnddate());
+			updatedexperience.setJoineddate(experience.getJoineddate());
+			updatedexperience.setState(experience.getState());
+			updatedexperience.setTotalmonthsworked(experience.getTotalmonthsworked());
+			session.save(updatedexperience);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+	}
 }
 		

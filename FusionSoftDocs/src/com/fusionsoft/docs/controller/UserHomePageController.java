@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -35,6 +36,7 @@ import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
+import com.fusionsoft.docs.model.Travel;
 import com.fusionsoft.docs.service.UserService;
 
 @Controller
@@ -72,6 +74,7 @@ public class UserHomePageController {
 		model.addObject("educationalqualifications", educationqualifications);
 		model.addObject("immigration",immigration);
 		model.addObject("experiences",experiences);
+//		model.setViewName("user/TravelHistory");
 	    model.setViewName("redirect:editorcreatenewapplication");
 		}
 		return model;
@@ -151,6 +154,7 @@ public class UserHomePageController {
 	public ModelAndView editorcreatenewpassport(@ModelAttribute("passport") Passport passport) {
 		ModelAndView model = new ModelAndView("user/PassportForm");
 		 CustomUser user = getCustomUser();
+		 System.out.println("The passport id is"+passport.getUserid());
          passport = userservice.findpassport(user.getUserid());
          if(passport == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
@@ -166,7 +170,7 @@ public class UserHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
 	@RequestMapping(value = "/saveorupdatepassport", method = RequestMethod.POST)
 	public ModelAndView saveorupdatepassport(@ModelAttribute("passport") Passport passport) {
-		ModelAndView model = new ModelAndView("redirect:editorcreatenewpassport");
+		ModelAndView model = new ModelAndView("redirect:traveldetails");
 		CustomUser user = getCustomUser();
 		if(passport.getUserid() == 0){
 		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
@@ -174,6 +178,55 @@ public class UserHomePageController {
 		}
 		    else{
 		    	userservice.updatepassport(passport);
+		    }
+		    return model;
+			}
+	//checks whether the user has atleast one entry in travel history
+	@RequestMapping(value = "/traveldetails", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView traveldetails() {
+		ModelAndView model = new ModelAndView();
+		 CustomUser user = getCustomUser();
+         List<Travel> traveldetails = userservice.findtraveldetails(user.getUserid());
+         if(traveldetails.isEmpty()){
+        	 /*If Entering First Time redirects to empty form with travel form*/
+        	 model.setViewName("redirect:editorcreatenewtravel");
+         }
+         else{
+        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
+		model.setViewName("user/TravelHistory");
+		model.addObject("traveldetails", traveldetails);
+         }
+        return model;
+        
+	}
+	@RequestMapping(value = "/editorcreatenewtravel", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView editorcreatenewtravel(@ModelAttribute("travel") Travel travel,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("user/TravelForm");
+		 CustomUser user = getCustomUser();
+		 if(request == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Travel());
+         }
+         else{
+        /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+//        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
+        	 travel = userservice.findtravel(2);
+        	 model.addObject("travel", new Travel());
+         }
+        return model;
+        
+	}
+	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
+	@RequestMapping(value = "/saveorupdatetravel", method = RequestMethod.POST)
+	public ModelAndView saveorupdatetravel(@ModelAttribute("travel") Travel travel) {
+		ModelAndView model = new ModelAndView("redirect:editorcreatenewpassport");
+		CustomUser user = getCustomUser();
+		if(travel.getTravelid() == 0){
+		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
+		    userservice.savetravel(customuser,travel);
+		}
+		    else{
+		    	userservice.updatetravel(travel);
 		    }
 		    return model;
 			}

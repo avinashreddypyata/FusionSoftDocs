@@ -28,6 +28,7 @@ import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
+import com.fusionsoft.docs.model.Travel;
 import com.fusionsoft.docs.service.UserService;
 
 @Repository
@@ -547,6 +548,88 @@ public class UserDaoImpl implements UserDao {
 			updatedpassport.setPassportissuedlocation(passport.getPassportissuedlocation());
 			session.save(updatedpassport);
 			tx.commit();
+	}catch(Exception e){
+		session.getTransaction().rollback();
+		e.printStackTrace();
+	}
+		finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public List<Travel> findtraveldetails(int userid) {
+		// pulling up the list of travel details to be shown in the view
+		List<Travel> traveldetails = new ArrayList<Travel>();
+		Session session = sessionFactory.openSession();
+		try{
+        session.getTransaction().begin();
+		@SuppressWarnings("unchecked")
+		TypedQuery<Travel> query = session.createQuery("from Travel where userid = :userid ");
+		query.setParameter("userid", userid);
+		traveldetails = query.getResultList();
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return traveldetails;
+	}
+
+	@Override
+	public Travel findtravel(int travelid) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		Travel travel = new Travel();
+		try{
+			session.beginTransaction();
+			travel = session.get(Travel.class, travelid);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		return travel;
+	}
+
+	@Override
+	public void savetravel(Travel travel) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			session.save(travel);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public void updatetravel(Travel travel) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			Travel updatedtravel = session.get(Travel.class, travel.getTravelid());
+			updatedtravel.setEntrydatetous(travel.getEntrydatetous());
+			updatedtravel.setExitdatefromus(travel.getExitdatefromus());
+			updatedtravel.setPortofentry(travel.getPortofentry());
+			updatedtravel.setStatusattimeofentry(travel.getStatusattimeofentry());
+			updatedtravel.setStatusvalidfrom(travel.getStatusvalidfrom());
+			updatedtravel.setStatusvalidtill(travel.getStatusvalidtill());
+			updatedtravel.setTotalmonthsoutsideus(travel.getTotalmonthsoutsideus());
+			session.getTransaction().commit();
 	}catch(Exception e){
 		session.getTransaction().rollback();
 		e.printStackTrace();

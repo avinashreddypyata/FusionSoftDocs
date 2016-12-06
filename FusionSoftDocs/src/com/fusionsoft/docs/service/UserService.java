@@ -16,6 +16,7 @@ import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
+import com.fusionsoft.docs.model.Travel;
 
 
 public interface UserService {
@@ -85,6 +86,14 @@ public Passport findpassport(int userid);
 public void savepassport(CustomUser customuser, Passport passport);
 
 public void updatepassport(Passport passport);
+
+public List<Travel> findtraveldetails(int userid);
+
+public Travel findtravel(int travelid);
+
+public void savetravel(CustomUser customuser, Travel travel);
+
+public void updatetravel(Travel travel);
 
 
 }

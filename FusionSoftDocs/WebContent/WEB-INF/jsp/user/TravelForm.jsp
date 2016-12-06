@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ page session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -172,9 +174,9 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                                 <form class="fb-toplabel fb-100-item-column selected-object" id="docContainer" action="test" enctype="multipart/form-data" method="get" novalidate="novalidate" data-form="preview">
+                                 <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer" action="saveorupdatetravel" enctype="multipart/form-data" method="post" novalidate="novalidate" data-form="preview" modelAttribute="travel">
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/common/images/image_default.png"/></a>
   </div>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
@@ -190,8 +192,8 @@ License: You must have a valid license purchased only from themeforest(the above
           <label id="item3_label_0" style="display: inline;">Port Of Entry</label>
         </div>
         <div class="fb-input-box">
-          <input name="portofentry" id="item3_text_1" required type="text" maxlength="254"
-          placeholder="Port Of Entry" data-hint="" autocomplete="off" required/>
+          <form:input name="portofentry" id="item3_text_1" type="text" maxlength="254"
+          placeholder="Port Of Entry" data-hint="" autocomplete="off" required="required" path="portofentry"/>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item4">
@@ -199,8 +201,8 @@ License: You must have a valid license purchased only from themeforest(the above
           <label id="item4_label_0" style="display: inline;">Entry Date To US</label>
         </div>
         <div class="fb-input-date">
-          <input name="entrydate" class="datepicker" id="item4_date_1" type="text"
-          data-hint="You Can Find This Information Uscis Site Using Your I94 Number"
+          <form:input name="entrydate" class="datepicker" id="item4_date_1" type="text"
+          data-hint="You Can Find This Information Uscis Site Using Your I94 Number" path="entrydatetous"
           />
           <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
             You Can Find This Information Uscis Site Using Your I94 Number
@@ -212,8 +214,8 @@ License: You must have a valid license purchased only from themeforest(the above
           <label id="item5_label_0" style="display: inline;">Exit Date From US</label>
         </div>
         <div class="fb-input-date">
-          <input name="exitdatefromus" class="datepicker" id="item5_date_1" type="text"
-          data-hint="" />
+          <form:input name="exitdatefromus" class="datepicker" id="item5_date_1" type="text"
+          data-hint="" path="exitdatefromus"/>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item6" style="opacity: 1;">
@@ -221,32 +223,29 @@ License: You must have a valid license purchased only from themeforest(the above
           <label id="item6_label_0" style="display: inline;">Status At The Time Of Entry</label>
         </div>
         <div class="fb-dropdown">
-          <select name="Status" id="item6_select_1" required data-hint="">
-            <option id="item6_0_option" selected value="">
-              Choose one
-            </option>
-            <option id="item6_1_option" value="H1">
+          <form:select name="Status" id="item6_select_1" required="required" data-hint="" path="statusattimeofentry">
+            <form:option id="item6_1_option" value="H1">
               H1
-            </option>
-            <option id="item6_2_option" value="H4">
+            </form:option>
+            <form:option id="item6_2_option" value="H4">
               H4
-            </option>
-            <option id="item6_3_option" value="F1">
+            </form:option>
+            <form:option id="item6_3_option" value="F1">
               F1
-            </option>
-            <option id="item6_4_option" value="B1">
+            </form:option>
+            <form:option id="item6_4_option" value="B1">
               B1
-            </option>
-            <option id="item6_5_option" value="B2">
+            </form:option>
+            <form:option id="item6_5_option" value="B2">
               B2
-            </option>
-            <option id="item6_6_option" value="L1">
+            </form:option>
+            <form:option id="item6_6_option" value="L1">
               L1
-            </option>
-            <option id="item6_7_option" value="Other">
+            </form:option>
+            <form:option id="item6_7_option" value="Other">
               Other
-            </option>
-          </select>
+            </form:option>
+          </form:select>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item8">
@@ -254,9 +253,9 @@ License: You must have a valid license purchased only from themeforest(the above
           <label id="item8_label_0" style="display: inline;">Status Valid From</label>
         </div>
         <div class="fb-input-date">
-          <input name="statusvalidfrom" class="datepicker" id="item8_date_1" type="text"
+          <form:input name="statusvalidfrom" class="datepicker" id="item8_date_1" type="text"
           data-hint="Mention The Validity Information Of The Status At The Time Of Entry"
-          />
+          path="statusvalidfrom"/>
           <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
             Mention The Validity Information Of The Status At The Time Of Entry
           </div>
@@ -267,8 +266,8 @@ License: You must have a valid license purchased only from themeforest(the above
           <label id="item9_label_0">Status Valid Till</label>
         </div>
         <div class="fb-input-date">
-          <input name="date9" class="datepicker" id="item9_date_1" type="text" data-hint=""
-          />
+          <form:input name="date9" class="datepicker" id="item9_date_1" type="text" data-hint=""
+          path="statusvalidtill"/>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item11">
@@ -276,9 +275,9 @@ License: You must have a valid license purchased only from themeforest(the above
           <label id="item11_label_0" style="display: inline;">Total Months and Days Outside US</label>
         </div>
         <div class="fb-input-box">
-          <input name="totalmonthsoutsideus" id="item11_text_1" type="text" maxlength="254"
+          <form:input name="totalmonthsoutsideus" id="item11_text_1" type="text" maxlength="254"
           placeholder="Total Months and Days Outside US" data-hint="If You are out for one and half month mention 1  month and 15 days"
-          autocomplete="off" />
+          autocomplete="off" path="totalmonthsoutsideus"/>
           <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
             If You are out for one and half month mention 1 month and 15 days
           </div>
@@ -288,13 +287,15 @@ License: You must have a valid license purchased only from themeforest(the above
   </div>
   <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
   style="display: none; cursor: default;">
-    <img src="editordata/images/recaptchawhite.png" />
+    <img src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/editordata/images/recaptchawhite.png" />
   </div>
-  <div class="fb-item-alignment-left fb-footer" id="fb-submit-button-div"
+   <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
   style="min-height: 1px;">
-   <button type="submit" class="btn green" id="fb-submit-button">Next</button>
+    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png');"
+    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/images/btn_submit.png')"
+    value="SaveAndContinue" />
   </div>
-</form>
+</form:form>
 <div class="btn-group btn-group btn-group-justified">
                                                                  
                                                                     <a href="javascript:;" class="btn blue"> Home </a>
@@ -316,18 +317,23 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="page-wrapper-bottom">
                     <!-- BEGIN FOOTER -->
                     <!-- BEGIN PRE-FOOTER -->
-                    <div class="page-prefooter">
+                   <div class="page-prefooter">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                                     <h2>About</h2>
-                                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam dolore. </p>
+                                    <p> Fusionsoft is a minority owned business, incorporated in
+									2005 and headquartered in Atlanta, Georgia, Fusionsoft delivers
+									solutions for technology & engineering services, staffing
+									services and solutions to public and private sector clients.
+									Fusionsoft offers its clients professional consulting services
+									and project management services </p>
                                 </div>
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                                     <h2>Contacts</h2>
-                                    <address class="margin-bottom-40"> Phone: 800 123 3456
+                                    <address class="margin-bottom-40"> Phone: 770.881.8118
                                         <br> Email:
-                                        <a href="mailto:info@metronic.com">info@metronic.com</a>
+                                        <a href="mailto:admin@fusionsoftinc.com">admin@fusionsoftinc.com</a>
                                     </address>
                                 </div>
                             </div>

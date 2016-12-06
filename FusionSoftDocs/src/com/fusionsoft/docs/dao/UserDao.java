@@ -11,6 +11,7 @@ import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
+import com.fusionsoft.docs.model.Travel;
 
 public interface UserDao {
 	
@@ -45,6 +46,10 @@ public interface UserDao {
 	public Passport findpassport(int userid);
 	public void savepassport(Passport passport);
 	public void updatepassport(Passport passport);
+	public List<Travel> findtraveldetails(int userid);
+	public Travel findtravel(int travelid);
+	public void savetravel(Travel travel);
+	public void updatetravel(Travel travel);
 	
 /*test*/
 }

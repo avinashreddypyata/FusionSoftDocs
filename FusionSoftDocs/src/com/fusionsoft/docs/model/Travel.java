@@ -28,8 +28,8 @@ public class Travel {
 	@Column(name = "entrydatetous")
 	@Temporal(TemporalType.DATE)
 	private Date entrydatetous;
-	@Column(name ="exitdatetous")
-	private Date exitdatetous;
+	@Column(name ="exitdatefromus")
+	private Date exitdatefromus;
 	@Column(name ="statusattimeofentry")
 	private String statusattimeofentry;
 	@Column(name = "statusvalidfrom")
@@ -64,11 +64,11 @@ public class Travel {
 	public void setEntrydatetous(Date entrydatetous) {
 		this.entrydatetous = entrydatetous;
 	}
-	public Date getExitdatetous() {
-		return exitdatetous;
+	public Date getExitdatefromus() {
+		return exitdatefromus;
 	}
-	public void setExitdatetous(Date exitdatetous) {
-		this.exitdatetous = exitdatetous;
+	public void setExitdatefromus(Date Exitdatefromus) {
+		this.exitdatefromus = Exitdatefromus;
 	}
 	public String getStatusattimeofentry() {
 		return statusattimeofentry;

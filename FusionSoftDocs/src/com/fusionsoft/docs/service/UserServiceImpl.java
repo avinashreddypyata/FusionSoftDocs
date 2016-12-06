@@ -33,6 +33,7 @@ import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
+import com.fusionsoft.docs.model.Travel;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -294,4 +295,28 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDao.updatepassport(passport);
 	}
+	@Override
+	public List<Travel> findtraveldetails(int userid) {
+		// TODO Auto-generated method stub
+		return userDao.findtraveldetails(userid);
+	}
+	@Override
+	public Travel findtravel(int travelid) {
+		// TODO Auto-generated method stub
+		return userDao.findtravel(travelid);
+	}
+	@Override
+	public void savetravel(CustomUser customuser, Travel travel) {
+		// TODO Auto-generated method stub
+		travel.setCustomuser(customuser);
+		userDao.savetravel(travel);
+		
+	}
+	@Override
+	public void updatetravel(Travel travel) {
+		// TODO Auto-generated method stub
+		userDao.updatetravel(travel);
+		
+	}
+	
 }

@@ -1,8 +1,6 @@
-<%@ page session="false"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -62,7 +60,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyCoQaQ7_auZERrZRV3j0QzK1i553InKWAse" type="text/javascript"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
         <script src="http://localhost:854/LoginPage/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
@@ -77,9 +75,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
 <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="http://localhost:854/LoginPage/assets/contactformjsfiles/datepicker.js"></script>
+<script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/datepicker.js"></script>
      
-    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/contactformjsfiles/theme/default/css/default.css"
+    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
@@ -139,51 +137,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                       <ul class="nav navbar-nav">
+                                    <ul class="nav navbar-nav">
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a>Application
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
+                                            <a> Visa And Travel Information
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
-                                        <a>Contact
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                         <a>Passport
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                         <a>Travel 
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                       <a>Education
-                                               
-                                            </a>
-                                        </li>
-                                        <li>
-                                      <a>Experience
-                                                
-                                            </a>
-                                        </li>
-                                        <li >
-                                      <a>Certification</a>
-                                        </li>
-                                        <li>
-                                      <a>Documents
-                                          
-                                            </a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -207,214 +171,104 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                                <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
-action="saveorupdatecontact" enctype="multipart/form-data" method="POST" novalidate="novalidate"
-data-form="preview" modelAttribute="contact">
-<form:hidden path="userid" value="${contact.userid}"/>
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/contactformjsfiles/common/images/image_default.png"/></a>
-  </div>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
-        <div class="fb-header fb-item-alignment-center">
-          <h2 style="display: inline;">
-            Contact Information
-          </h2>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item21" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item21_label_0">Phone Number</label>
-        </div>
-        <div class="fb-phone">
-          <form:input name="phonenumber" id="item21_tel_1" required="required" type="tel" placeholder="Phone Number"
-          data-hint="" path="phonenumber"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item22">
-        <div class="fb-grouplabel">
-          <label id="item22_label_0" style="display: inline;">Home Phone(Optional)</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="homephone" id="item22_text_1" type="text" maxlength="254"
-          placeholder="Home Phone" data-hint="" autocomplete="off" path="homephonenumber"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item23">
-        <div class="fb-grouplabel">
-          <label id="item23_label_0">Email</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="email23" id="item23_email_1" required="required" type="email" maxlength="254"
-          placeholder="you@domain.com" data-hint="" autocomplete="off" path ="email"/>
-        </div>
-      </div>
-      <div class="fb-item" id="item24">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">Address1</label>
-        </div>
-        <div class="fb-textarea">
-          <form:textarea name="address1" id="item4_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          required="required" maxlength="1000" placeholder="" data-hint="" path="address1"></form:textarea>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item5">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">City</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="city" id="item5_text_1" required="required" type="text" maxlength="254"
-          placeholder="City" data-hint="" autocomplete="off" path ="city"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">State</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="state" id="item6_text_1" required="required" type="text" maxlength="254"
-          placeholder="State" data-hint="" autocomplete="off" path ="state"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item7" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item7_label_0" style="display: inline;">Zip Code</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="zipcode" id="item7_text_1"  type="text" maxlength="254"
-          placeholder="Zip Code" data-hint="" autocomplete="off" path ="zipcode"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item8" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item8_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="country" id="item7_text_1" required="required" type="text" maxlength="254"
-          placeholder="Country" data-hint="" autocomplete="off" path ="country" />
-        </div>
-      </div>
-      <div class="fb-item" id="item9">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item10" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item10_label_0" style="display: inline;">Address2(Optional)</label>
-        </div>
-        <div class="fb-textarea">
-          <textarea name="address2" id="item10_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          maxlength="1000" placeholder="" data-hint=""></textarea>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item11" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item11_label_0" style="display: inline;">City</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="city2" id="item11_text_1" type="text" maxlength="254" placeholder="City"
-          data-hint="" autocomplete="off" path ="city2"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item12" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item12_label_0" style="display: inline;">State</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="state2" id="item12_text_1" type="text" maxlength="254" placeholder="State"
-          data-hint="" autocomplete="off" path ="state2"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item13" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item13_label_0" style="display: inline;">Zip Code</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="zipcode2" id="item13_text_1" type="text" maxlength="254"
-          placeholder="Zip Code" data-hint="" autocomplete="off" path ="zipcode2"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item14" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item14_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="country" id="item7_text_1"  type="text" maxlength="254"
-          placeholder="Country" data-hint="" autocomplete="off" path ="country2"/>
-        </div>
-      </div>
-      <div class="fb-item" id="item15">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item16" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item16_label_0" style="display: inline;">Address3(Optional)</label>
-        </div>
-        <div class="fb-textarea">
-          <textarea name="address3" id="item16_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          maxlength="1000" placeholder="" data-hint=""></textarea>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item17" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item17_label_0" style="display: inline;">City</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="city3" id="item17_text_1" type="text" maxlength="254" placeholder="City"
-          data-hint="" autocomplete="off" path ="city3"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item18" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item18_label_0" style="display: inline;">State</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="state3" id="item18_text_1" type="text" maxlength="254" placeholder="State"
-          data-hint="" autocomplete="off" path ="state3"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item19" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item19_label_0" style="display: inline;">Zip Code</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="zipcode3" id="item19_text_1" type="text" maxlength="254"
-          placeholder="Zip Code" data-hint="" autocomplete="off" path ="zipcode3"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item20" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item20_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="country" id="item7_text_1"  type="text" maxlength="254"
-          placeholder="Country" data-hint="" autocomplete="off" path ="country3"/>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
-  style="display: none; cursor: default;">
-    <img src="http://localhost:854/LoginPage/assets/contactformjsfiles/editordata/images/recaptchawhite.png" />
-  </div>
-  <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
-  style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/contactformjsfiles/theme/default/images/btn_submit.png')"
-    value="SaveAndContinue" />
-  </div>
-</form:form>
+                                <div class="portlet light ">
+                                                    <div class="portlet-body">
+                                                        <div class="table-toolbar">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="btn-group">
+                                                                        <button id="sample_editable_1_new" class="btn sbold green"> Add More Travel History
+                                                                            <i class="fa fa-plus"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="btn-group pull-right">
+                                                                        <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                                                                            <i class="fa fa-angle-down"></i>
+                                                                        </button>
+                                                                        <ul class="dropdown-menu pull-right">
+                                                                            <li>
+                                                                                <a href="javascript:;">
+                                                                                    <i class="fa fa-print"></i> Print </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="javascript:;">
+                                                                                    <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="javascript:;">
+                                                                                    <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Port Of Entry
+                                                                    </th>
+                                                                    <th> Entry Date To US </th>
+                                                                    <th> Exit </th>
+                                                                    <th> Status </th>
+                                                                    <th> Joined </th>
+                                                                    <th> Actions </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="odd gradeX">
+                                                                    <td>
+                                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                                            <input type="checkbox" class="checkboxes" value="1" />
+                                                                            <span></span>
+                                                                        </label>
+                                                                    </td>
+                                                                    <td> looper </td>
+                                                                    <td>
+                                                                        <a href="mailto:looper90@gmail.com"> looper90@gmail.com </a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="label label-sm label-warning"> Suspended </span>
+                                                                    </td>
+                                                                    <td class="center"> 12.12.2011 </td>
+                                                                    <td>
+                                                                        <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu" role="menu">
+                                                                                <li>
+                                                                                    <a href="javascript:;">
+                                                                                        <i class="icon-docs"></i> New Post </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="javascript:;">
+                                                                                        <i class="icon-tag"></i> New Comment </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="javascript:;">
+                                                                                        <i class="icon-user"></i> New User </a>
+                                                                                </li>
+                                                                                <li class="divider"> </li>
+                                                                                <li>
+                                                                                    <a href="javascript:;">
+                                                                                        <i class="icon-flag"></i> Comments
+                                                                                        <span class="badge badge-success">4</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
 <div class="btn-group btn-group btn-group-justified">
-                                                                 <a href="javascript:;" class="btn red"> Back </a>
+                                                                 
                                                                     <a href="javascript:;" class="btn blue"> Home </a>
                                                                     <a href="javascript:;" class="btn green"> Save Changes And Return </a>
                                                                 </div>
@@ -434,7 +288,7 @@ data-form="preview" modelAttribute="contact">
                 <div class="page-wrapper-bottom">
                     <!-- BEGIN FOOTER -->
                     <!-- BEGIN PRE-FOOTER -->
-                     <div class="page-prefooter">
+                <div class="page-prefooter">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
@@ -466,7 +320,7 @@ data-form="preview" modelAttribute="contact">
                 </div>
             </div>
         </div>
-        <script src="http://localhost:854/LoginPage/assets/contactformjsfiles/formvalidation.js"></script>
+        <script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/formvalidation.js"></script>
         <!--[if lt IE 9]>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script> 

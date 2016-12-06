@@ -209,6 +209,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="container">
                                  <form:form class="fb-100-item-column selected-object" id="docContainer" action="saveorupdatepassport"
 enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="preview" modelAttribute="passport">
+<form:hidden path="userid" value="${passport.userid}"/>
   <div class="fb-form-header" id="fb-form-header1">
     <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/passportformjsfiles/common/images/image_default.png"/></a>
   </div>

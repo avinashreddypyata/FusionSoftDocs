@@ -267,14 +267,60 @@ method="POST" novalidate="novalidate" data-form="preview" data-percentage="90" m
           </form:select>
         </div>
       </div>
-      <jsp:include page="names.jsp"></jsp:include>
+      <div class="fb-item fb-50-item-column" id="item4">
+        <div class="fb-grouplabel">
+          <label id="item4_label_0" style="display: inline;">First Name</label>
+        </div>
+        Avinash Reddy Pyata is doing his work silently
+<!--         <div class="fb-input-box"> -->
+<%--           <form:input name="firstname" id="item4_text_1" required="required" type="text" maxlength="254" --%>
+<%--           placeholder="First Name" data-hint="" autocomplete="on" path="firstname"/> --%>
+<!--         </div> -->
+      </div>
+      <div class="fb-item fb-50-item-column" id="item5" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item5_label_0" style="display: inline;">Middle Name</label>
+        </div>
+        <div class="fb-input-box">
+          <form:input name="middlename" id="item5_text_1" type="text" maxlength="254"
+          placeholder="middlename" data-hint="" autocomplete="off" path="middlename" />
+        </div>
+      </div>
+      <div class="fb-item fb-50-item-column" id="item6">
+        <div class="fb-grouplabel">
+          <label id="item6_label_0" style="display: inline;">Last Name</label>
+        </div>
+        <div class="fb-input-box">
+          <form:input name="lastname" id="item6_text_1" required="required" type="text" maxlength="254"
+          placeholder="Last Name" data-hint="" autocomplete="off" path="lastname"/>
+        </div>
+      </div>
+      <div class="fb-item fb-50-item-column" id="item7">
+        <div class="fb-grouplabel">
+          <label id="item7_label_0" style="display: inline;">Maiden Name(If Applicable)</label>
+        </div>
+        <div class="fb-input-box">
+          <form:input name="maidenname" id="item7_text_1" type="text" maxlength="254"
+          placeholder="Maiden Name" data-hint="" autocomplete="off" path="maidenname"/>
+        </div>
+      </div>
+      <div class="fb-item fb-100-item-column" id="item8">
+        <div class="fb-grouplabel">
+          <label id="item8_label_0" style="display: inline;">Full Name(Exactly As In Passport)</label>
+        </div>
+        <div class="fb-input-box">
+          <form:input name="fullname" id="item8_text_1" required="required" type="text" maxlength="254"
+          placeholder="Full Name" data-hint="" autocomplete="off" path="fullname"/>
+        </div>
+      </div>
       <div class="fb-item fb-50-item-column" id="item10" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item10_label_0" style="display: inline;">Date Of Birth</label>
         </div>
         <div class="fb-input-date">
-          <form:input name="dateofbirth" class="datepicker" id="item10_date_1" type="text"
-          data-hint="" path="dateofbirth"/>
+        09/28/1992
+<%--           <form:input name="dateofbirth" class="datepicker" id="item10_date_1" type="text" --%>
+<%--           data-hint="" path="dateofbirth"/> --%>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item21">

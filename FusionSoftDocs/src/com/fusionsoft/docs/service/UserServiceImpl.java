@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fusionsoft.docs.dao.UserDao;
 import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Certification;
 import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
@@ -318,6 +319,27 @@ public class UserServiceImpl implements UserService {
 		userDao.updatetravel(travel);
 		
 	}
+	
+	@Override
+	public List<Certification> findcertificationdetails(int userid) {
+		// TODO Auto-generated method stub
+		return userDao.findcertificationdetails(userid);
+	}
+	
+	@Override
+	public void savecertification(CustomUser customuser, Certification certification) {
+		// TODO Auto-generated method stub
+		certification.setCustomuser(customuser);
+		userDao.savecertification(certification);
+	}
+	
+	@Override
+	public void updatecertification(Certification certification) {
+		// TODO Auto-generated method stub
+		userDao.updatecertification(certification);
+		
+	}
+	
 	@Override
 	public void updateeducation(Education education) {
 		// TODO Auto-generated method stub
@@ -328,5 +350,6 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDao.updateexperience(experience);
 	}
+	
 	
 }

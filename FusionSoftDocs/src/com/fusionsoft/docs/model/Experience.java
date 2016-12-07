@@ -33,6 +33,14 @@ public class Experience {
 	private String state;
 	@Column(name ="country")
 	private String country;
+	@Column(name = "city")
+	private String city;
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
 	@Column(name = "totalmonthsworked")
 	private String totalmonthsworked;
 	

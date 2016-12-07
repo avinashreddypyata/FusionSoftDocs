@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Certification;
 import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
@@ -94,6 +95,12 @@ public Travel findtravel(int travelid);
 public void savetravel(CustomUser customuser, Travel travel);
 
 public void updatetravel(Travel travel);
+
+public List<Certification> findcertificationdetails(int userid);
+
+public void savecertification(CustomUser customuser, Certification certification);
+
+public void updatecertification(Certification certification);
 
 public void updateeducation(Education education);
 

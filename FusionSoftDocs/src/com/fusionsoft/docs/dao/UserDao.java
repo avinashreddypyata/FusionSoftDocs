@@ -3,6 +3,7 @@ package com.fusionsoft.docs.dao;
 import java.util.List;
 
 import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Certification;
 import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
@@ -50,6 +51,9 @@ public interface UserDao {
 	public Travel findtravel(int travelid);
 	public void savetravel(Travel travel);
 	public void updatetravel(Travel travel);
+	public List<Certification> findcertificationdetails(int userid);
+	public void savecertification(Certification certification);
+	public void updatecertification(Certification certification);
 	public void updateeducation(Education education);
 	public void updateexperience(Experience experience);
 	

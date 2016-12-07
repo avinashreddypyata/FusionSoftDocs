@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fusionsoft.docs.dao.UserDao;
 import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Certification;
 import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
@@ -266,7 +267,7 @@ public class UserHomePageController {
 	}
 	@RequestMapping(value = "/saveorupdateeducation", method = RequestMethod.POST)
 	public ModelAndView saveorupdateeducation(@ModelAttribute("education") Education education) {
-		ModelAndView model = new ModelAndView("redirect:educationdetails");
+		ModelAndView model = new ModelAndView("redirect:experiencedetails");
 		CustomUser user = getCustomUser();
 		if(education.getEduid() == 0){
 		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
@@ -288,7 +289,7 @@ public class UserHomePageController {
          }
          else{
         	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
-		model.setViewName("user/ExperienceDetails");
+		model.setViewName("user/ExperienceHistory");
 		model.addObject("experiencedetails", experiencedetails);
          }
         return model;
@@ -312,7 +313,7 @@ public class UserHomePageController {
 	}
 	@RequestMapping(value = "/saveorupdateexperience", method = RequestMethod.POST)
 	public ModelAndView saveorupdateexperience(@ModelAttribute("experience") Experience experience) {
-		ModelAndView model = new ModelAndView("redirect:experiencedetails");
+		ModelAndView model = new ModelAndView("redirect:certificateDetails");
 		CustomUser user = getCustomUser();
 		if(experience.getExpid() == 0){
 		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
@@ -323,6 +324,58 @@ public class UserHomePageController {
 		    }
 		    return model;
 			}
+	//check whether user has atleast one entry in certification details
+		@RequestMapping(value = "/certificateDetails", method = {RequestMethod.POST,RequestMethod.GET})
+		public ModelAndView certificateDetails() {
+			ModelAndView model = new ModelAndView();
+			 CustomUser user = getCustomUser();
+	         List<Certification> certificationdetails = userservice.findcertificationdetails(user.getUserid());
+	         if(certificationdetails.isEmpty()){
+	        	 /*If Entering First Time redirects to empty form with travel form*/
+	        	 model.setViewName("redirect:editorcreatenewcertificate");
+	         }
+	         else{
+	        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
+			model.setViewName("user/certificationDetails");
+			model.addObject("certificationdetails", certificationdetails);
+	         }
+	        return model;
+	        
+		}
+		
+		//if the user wants to create or edit certification which exists
+		
+		@RequestMapping(value = "/editorcreatenewcertificate", method = {RequestMethod.POST,RequestMethod.GET})
+		public ModelAndView editorcreatenewtravel(@ModelAttribute("certification") Certification certification,HttpServletRequest request) {
+			ModelAndView model = new ModelAndView("user/CertificateForm");
+			 CustomUser user = getCustomUser();
+			 if(request == null){
+	        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+	        	 model.addObject(new Certification());
+	         }
+	         else{
+	        /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+//	        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
+	        	 model.addObject("certification", new Certification());
+	         }
+	        return model;
+	        
+		}
+		
+		/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
+		@RequestMapping(value = "/saveorupdatecertification", method = RequestMethod.POST)
+		public ModelAndView saveorupdatetravel(@ModelAttribute("certification") Certification certification) {
+			ModelAndView model = new ModelAndView("redirect:certificateDetails");
+			CustomUser user = getCustomUser();
+			if(certification.getCertificationId()== 0){
+			    CustomUser customuser = userservice.findCustomUser(user.getUserid());
+			    userservice.savecertification(customuser,certification);
+			}
+			    else{
+			    	userservice.updatecertification(certification);
+			    }
+			    return model;
+				}
 	@RequestMapping(value = "/addnewdocument",method = RequestMethod.GET)
 	public ModelAndView addnewdocument(@ModelAttribute("fileBucket") FileBucket filebucket){
 	ModelAndView model = new ModelAndView("user/DocumentsForm");

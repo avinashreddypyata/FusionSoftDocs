@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Certification;
 import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomRole;
 import com.fusionsoft.docs.model.CustomUser;
@@ -638,6 +639,28 @@ public class UserDaoImpl implements UserDao {
 			session.close();
 		}
 	}
+	
+	@Override
+	public List<Certification> findcertificationdetails(int userid) {
+		// pulling up the list of travel details to be shown in the view
+		List<Certification> certificationdetails = new ArrayList<Certification>();
+		Session session = sessionFactory.openSession();
+		try{
+        session.getTransaction().begin();
+		@SuppressWarnings("unchecked")
+		TypedQuery<Certification> query = session.createQuery("from Certification where userid = :userid ");
+		query.setParameter("userid", userid);
+		certificationdetails = query.getResultList();
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return certificationdetails;
+	}
 
 	@Override
 	public void updateeducation(Education education) {
@@ -674,7 +697,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updateexperience(Experience experience) {
 		// TODO Auto-generated method stub
-		Session session =getSessionFactory().openSession();
+		Session session = getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
 			Experience updatedexperience = session.get(Experience.class, experience.getExpid());
@@ -694,6 +717,55 @@ public class UserDaoImpl implements UserDao {
 		finally{
 			session.close();
 		}
+	}
+
+	@Override
+	public void savecertification(Certification certification) {
+		// TODO Auto-generated method stubSession session = getSessionFactory().openSession();
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			session.save(certification);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		
+		
+		
+	}
+
+	@Override
+	public void updatecertification(Certification certification) {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+				Session session = getSessionFactory().openSession();
+				try{
+					session.beginTransaction();
+					Certification updatedcertification = session.get(Certification.class,certification.getCertificationId());
+					updatedcertification.setAddress(certification.getAddress());
+					updatedcertification.setCertificationName(certification.getCertificationName());
+					updatedcertification.setCity(certification.getCity());
+					updatedcertification.setCountry(certification.getCountry());
+					updatedcertification.setMonthOfPassing(certification.getMonthOfPassing());
+					updatedcertification.setOrganisation(certification.getOrganisation());
+					updatedcertification.setSpecialisation(certification.getSpecialisation());
+					updatedcertification.setState(certification.getState());
+					updatedcertification.setYearOfPassing(certification.getYearOfPassing());
+					updatedcertification.setZipcode(certification.getZipcode());
+					session.getTransaction().commit();
+			}catch(Exception e){
+				session.getTransaction().rollback();
+				e.printStackTrace();
+			}
+				finally{
+					session.close();
+				}
+		
 	}
 }
 		

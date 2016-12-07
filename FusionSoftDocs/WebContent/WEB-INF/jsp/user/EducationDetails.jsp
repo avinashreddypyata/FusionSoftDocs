@@ -278,12 +278,13 @@ License: You must have a valid license purchased only from themeforest(the above
 															</c:forEach>
                                                             </tbody>
                                                         </table>
-                                                        <form action ="educationdetails">
+                                                        <form action ="experiencedetails">
                                                         <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
   style="min-height: 1px;">
     <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png');"
     type="submit" data-regular="url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png')"
     value="SaveAndContinue" />
+    
   </div>
   </form>
                                                     </div>

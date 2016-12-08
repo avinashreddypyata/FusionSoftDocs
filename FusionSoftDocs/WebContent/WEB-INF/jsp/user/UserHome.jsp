@@ -81,6 +81,8 @@ License: You must have a valid license purchased only from themeforest(the above
      
     <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/theme/default/css/default.css"
     id="theme" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/theme/default/css/default.css"
+    id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     
@@ -506,8 +508,6 @@ data-form="preview">
   </div>
   <div class="fb-item-alignment-left fb-footer" id="fb-submit-button-div"
   style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" type="submit" data-regular="url('file:///C:/Users/abhi/AppData/Local/Temp/FormBuilder/theme/default/images/btn_submit.png')"
-    value="Submit" />
   </div>
 </form>
                                     
@@ -530,17 +530,278 @@ data-form="preview">
                                             <a href="javascript:;" class="remove"> </a>
                                         </div>
                                     </div>
-                                    <div class="portlet-body form portlet-empty"> </div>
+                                    <div class="portlet-body form portlet-empty"> <form class="fb-toplabel fb-100-item-column fb-large selected-object"
+id="docContainer" style="width: 90%; max-width: 800px;" action="" enctype="multipart/form-data"
+method="POST" novalidate="novalidate" data-form="preview" data-percentage="90">
+  <div class="fb-form-header" id="fb-form-header1">
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+  </div>
+  <div class="section" id="section1">
+    <div class="column ui-sortable" id="column1">
+      <div class="fb-item fb-100-item-column" id="item1">
+        <div class="fb-header fb-item-alignment-center">
+          <h2 style="display: inline;">
+            Applicant Details
+          </h2>
+        </div>
+      </div>
+      <div class="fb-item fb-25-item-column" id="item2">
+        <div class="fb-grouplabel">
+          <label id="item2_label_0" style="color: rgb(10, 10, 10); display: inline;">Application Type</label>
+        </div>
+        <div class="fb-dropdown">
+          <select name="applicationtype" id="item2_select_1" required data-hint="">
+            <option id="item2_0_option" selected value="">
+              Choose one
+            </option>
+            <option id="item2_1_option" value="New">
+              New
+            </option>
+            <option id="item2_2_option" value="Transfer">
+              Transfer
+            </option>
+            <option id="item2_3_option" value="Extension">
+              Extension
+            </option>
+            <option id="item2_4_option" value="Masters to H1">
+              Masters to H1
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="fb-item fb-25-item-column" id="item3">
+        <div class="fb-grouplabel">
+          <label id="item3_label_0" style="display: inline;">Prefix</label>
+        </div>
+        <div class="fb-dropdown">
+          <select name="prefix" id="item3_select_1" required data-hint="">
+            <option id="item3_0_option" selected value="">
+              Choose one
+            </option>
+            <option id="item3_1_option" value="Mr">
+              Mr
+            </option>
+            <option id="item3_2_option" value="Mrs">
+              Mrs
+            </option>
+            <option id="item3_3_option" value="Option 3">
+              Option 3
+            </option>
+            <option id="item3_4_option" value="Dr">
+              Dr
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item4">
+        <div class="fb-grouplabel">
+          <label id="item4_label_0" style="display: inline;">First Name</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="firstname" id="item4_text_1" required type="text" maxlength="254"
+          placeholder="First Name" data-hint="" autocomplete="on" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item5" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item5_label_0" style="display: inline;">Middle Name</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="middlename" id="item5_text_1" type="text" maxlength="254"
+          placeholder="middlename" data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item6">
+        <div class="fb-grouplabel">
+          <label id="item6_label_0" style="display: inline;">Last Name</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="lastname" id="item6_text_1" required type="text" maxlength="254"
+          placeholder="Last Name" data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item7">
+        <div class="fb-grouplabel">
+          <label id="item7_label_0" style="display: inline;">Maiden Name(If Applicable)</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="maidenname" id="item7_text_1" type="text" maxlength="254"
+          placeholder="Maiden Name" data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item8">
+        <div class="fb-grouplabel">
+          <label id="item8_label_0" style="display: inline;">Full Name(Exactly As In Passport)</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="fullname" id="item8_text_1" required type="text" maxlength="254"
+          placeholder="Full Name" data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item10" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item10_label_0" style="display: inline;">Date Of Birth</label>
+        </div>
+        <div class="fb-input-date">
+          <input name="dateofbirth" class="datepicker" id="item10_date_1" type="text"
+          data-hint="" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item40" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item40_label_0" style="display: inline;">Country</label>
+        </div>
+        <div class="fb-input-date">
+          <input name="text40" class="datepicker" id="item40_text_1" type="text"
+          data-hint="" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item22">
+        <div class="fb-grouplabel">
+          <label id="item22_label_0" style="display: inline;">Province Of Birth(City, State)</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="text22" id="item22_text_1" type="text" maxlength="254" placeholder=""
+          data-hint="Please fill them according to passport" autocomplete="off" />
+          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
+            Please fill them according to passport
+          </div>
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item41">
+        <div class="fb-grouplabel">
+          <label id="item41_label_0" style="display: inline;">Citizenship</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="text41" id="item41_text_1" type="text" maxlength="254" placeholder=""
+          data-hint="Please fill them according to passport" autocomplete="off" />
+          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
+            Please fill them according to passport
+          </div>
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item24" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item24_label_0" style="display: inline;">Have You Visited US Before Or Are You Currently Living In United States</label>
+        </div>
+        <div class="fb-dropdown">
+          <select name="usvisit" id="item24_select_1" required data-hint="">
+            <option id="item24_0_option" selected value="">
+              Choose one
+            </option>
+            <option id="item24_1_option" value="Yes">
+              Yes
+            </option>
+            <option id="item24_2_option" value="No">
+              No
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column fb_cond_applied" id="item25">
+        <div class="fb-grouplabel">
+          <label id="item25_label_0" style="display: inline;">Social Security Number(If Applicable)</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="socialsecuritynumber" id="item25_text_1" type="text" maxlength="254"
+          placeholder="Social Security Number" data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column fb_cond_applied" id="item26">
+        <div class="fb-grouplabel">
+          <label id="item26_label_0" style="display: inline;">Latest I94 Number</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="i94number" id="item26_text_1" type="text" maxlength="254"
+          placeholder="I94 Number" data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column fb_cond_applied" id="item27">
+        <div class="fb-grouplabel">
+          <label id="item27_label_0" style="display: inline;">Last Entry To United States</label>
+        </div>
+        <div class="fb-input-date">
+          <input name="lastentrytounitedstates" class="datepicker" id="item27_date_1"
+          required type="text" data-hint="" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column fb_cond_applied" id="item28" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item28_label_0" style="display: inline;">A#</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="a" id="item28_text_1" type="text" maxlength="254" placeholder=""
+          data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column fb_cond_applied" id="item29" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item29_label_0" style="display: inline;">EAD Valid Upto</label>
+        </div>
+        <div class="fb-input-date">
+          <input name="eadvalidupto" class="datepicker" id="item29_date_1" type="text"
+          data-hint="" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column fb_cond_applied" id="item34" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item34_label_0" style="display: inline;">Current Employer Petition Number</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="currentemployerpetitionnumber" id="item34_text_1" type="text"
+          maxlength="254" placeholder="Current Employer Petition Number" data-hint=""
+          autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column fb_cond_applied" id="item33" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item33_label_0" style="display: inline;">Current Visa Expiry Date</label>
+        </div>
+        <div class="fb-input-date">
+          <input name="currentvisaexpiry" class="datepicker" id="item33_date_1"
+          required type="text" data-hint="" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column fb_cond_applied" id="item31">
+        <div class="fb-grouplabel">
+          <label id="item31_label_0" style="display: inline;">Current Visa Status</label>
+        </div>
+        <div class="fb-dropdown">
+          <select name="currentvisastatus" id="item31_select_1" required data-hint="">
+            <option id="item31_0_option" selected value="">
+              Choose one
+            </option>
+            <option id="item31_1_option" value="H1">
+              H1
+            </option>
+            <option id="item31_2_option" value="H4">
+              H4
+            </option>
+            <option id="item31_3_option" value="F1">
+              F1
+            </option>
+            <option id="item31_4_option" value="B1">
+              B1
+            </option>
+            <option id="item31_5_option" value="B2">
+              B2
+            </option>
+            <option id="item31_6_option" value="L1">
+              L1
+            </option>
+            <option id="item31_7_option" value="Other">
+              Other
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</form></div>
                                 </div>
                                 <!-- END Portlet PORTLET-->
                             </div>
                         </div>
-                              
-<div class="btn-group btn-group btn-group-justified">
-                                                                 <a href="javascript:;" class="btn red"> Back </a>
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
-                                                                </div>
 
 
                                 </div>

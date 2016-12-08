@@ -146,7 +146,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </a>
                                         </li>
                                         <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
-                                            <a>Application
+                                            <a href = "">Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>

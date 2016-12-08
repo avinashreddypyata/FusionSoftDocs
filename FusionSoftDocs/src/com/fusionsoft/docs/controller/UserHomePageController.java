@@ -424,13 +424,6 @@ public class UserHomePageController {
 	 return model;
 	
 	}
-	@RequestMapping(value = "/applicantqualification",method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView applicantqualification() throws IOException{
-     ModelAndView model = new ModelAndView("user/ApplicantQualifications");
-     List<Education> educationqualifications = userservice.findqualifications(id);
-     model.addObject("educationalqualifications", educationqualifications);
-	 return model;
-	}
 	@RequestMapping(value = "/applicantdocument",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView applicantdocument() throws IOException{
      ModelAndView model = new ModelAndView("user/ApplicantDocuments");
@@ -442,19 +435,6 @@ public class UserHomePageController {
 		model.addObject("documents",documents);
 		model.addObject("fileBucket",new FileBucket());
      return model;
-	}
-	@RequestMapping(value = "/applicantexperience",method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView applicantexperience() throws IOException{
-	 List<Experience> experiences = userservice.findexperiences(id);
-	 System.out.println("The size of the backend list of experiences is"+experiences.size());
-     ModelAndView model = new ModelAndView("user/ApplicantExperience");
-     model.addObject("experiences",experiences);
-	 return model;
-	}
-	@RequestMapping(value = "/addexperience",method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView addexperience() throws IOException{
-     ModelAndView model = new ModelAndView("user/experienceform");
-	 return model;
 	}
 //	@RequestMapping(value = "/saveexperience",method = RequestMethod.POST)
 //	public ModelAndView saveexperience(@ModelAttribute("experience")Experience experience,BindingResult result) throws IOException{

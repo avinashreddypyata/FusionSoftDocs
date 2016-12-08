@@ -48,7 +48,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 
-		ModelAndView model = new ModelAndView("admin/ApplicationForm");
+		ModelAndView model = new ModelAndView("admin/home");
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		CustomUser logedinUser = null;

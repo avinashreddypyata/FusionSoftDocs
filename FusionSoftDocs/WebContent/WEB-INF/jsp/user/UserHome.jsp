@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -62,7 +62,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+        <script src="http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyCoQaQ7_auZERrZRV3j0QzK1i553InKWAs" type="text/javascript"></script>
         <script src="http://localhost:854/LoginPage/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
@@ -77,9 +77,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
 <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="http://localhost:854/LoginPage/assets/applicationformjsfiles/datepicker.js"></script>
+<script src="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/datepicker.js"></script>
      
-    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/css/default.css"
+    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
@@ -139,23 +139,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                    <ul class="nav navbar-nav">
+                                   <ul class="nav navbar-nav">
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
+                                        <li>
                                             <a>Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li >
                                         <a>Contact
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
                                          <a>Passport
                                                 <span class="arrow"></span>
                                             </a>
@@ -175,10 +175,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 
                                             </a>
                                         </li>
-                                        <li>
-                                      <a>Certification
-                                          
-                                            </a>
+                                        <li >
+                                      <a>Certification</a>
                                         </li>
                                         <li>
                                       <a>Documents
@@ -208,283 +206,338 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- END PAGE HEAD-->
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
-                                <div class="container">
-                                 <form:form class="fb-toplabel fb-100-item-column fb-large selected-object" action="saveorupdateapplication"
-id="docContainer" style="width: 90%; max-width: 800px;" enctype="multipart/form-data"
-method="POST" novalidate="novalidate" data-form="preview" data-percentage="90" modelAttribute="applicant">
-<form:hidden path="userid" value="${applicant.userid}"/>
+                                <div class="row">
+                            <div class="col-md-6">
+                                <!-- BEGIN Portlet PORTLET-->
+                                <div class="portlet">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-gift"></i>Load On Demand </div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" data-url="portlet_ajax_content_3.html" class="reload"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body portlet-empty"> <form class="fb-100-item-column selected-object" id="docContainer" action=""
+enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="preview">
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/applicationformjsfiles/common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
   </div>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
+      <div class="fb-item fb-100-item-column" id="item1" style="opacity: 1;">
         <div class="fb-header fb-item-alignment-center">
           <h2 style="display: inline;">
-            Applicant Details
+            Passport Details Form
           </h2>
         </div>
       </div>
-      <div class="fb-item fb-33-item-column" id="item2">
+      <div class="fb-item fb-50-item-column" id="item2">
         <div class="fb-grouplabel">
-          <label id="item2_label_0" style="color: rgb(10, 10, 10); display: inline;">Application Type</label>
+          <label id="item2_label_0" style="display: inline;">Latest Passport Number</label>
         </div>
-        <div class="fb-dropdown">
-          <form:select name="applicationtype" id="item2_select_1" required="required" data-hint="" path="applicationtype">
-            <form:option id="item2_1_option" value="New">
-              New
-            </form:option>
-            <form:option id="item2_2_option" value="Transfer">
-              Transfer
-            </form:option>
-            <form:option id="item2_3_option" value="Extension">
-              Extension
-            </form:option>
-            <form:option id="item2_4_option" value="Masters to H1">
-              Masters to H1
-            </form:option>
-          </form:select>
+        <div class="fb-input-box">
+          <input name="latestpassportnumber" id="item2_text_1" required type="text"
+          maxlength="254" placeholder="Latest Passport Number" data-hint="" autocomplete="off"
+          />
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item3">
         <div class="fb-grouplabel">
-          <label id="item3_label_0" style="display: inline;">Prefix</label>
+          <label id="item3_label_0" style="display: inline;">Passport Issuance Date</label>
         </div>
-        <div class="fb-dropdown">
-          <form:select name="prefix" id="item3_select_1" required="required" data-hint="" path="prefix">
-            <form:option id="item3_1_option" value="Mr">
-              Mr
-            </form:option>
-            <form:option id="item3_2_option" value="Mrs">
-              Mrs
-            </form:option>
-            <form:option id="item3_3_option" value="Option 3">
-              Option 3
-            </form:option>
-            <form:option id="item3_4_option" value="Dr">
-              Dr
-            </form:option>
-          </form:select>
+        <div class="fb-input-date">
+          <input name="passportissuancedate" class="datepicker" id="item3_date_1"
+          required type="text" data-hint="" />
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item4">
         <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">First Name</label>
-        </div>
-        Avinash Reddy Pyata is doing his work silently
-<!--         <div class="fb-input-box"> -->
-<%--           <form:input name="firstname" id="item4_text_1" required="required" type="text" maxlength="254" --%>
-<%--           placeholder="First Name" data-hint="" autocomplete="on" path="firstname"/> --%>
-<!--         </div> -->
-      </div>
-      <div class="fb-item fb-50-item-column" id="item5" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">Middle Name</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="middlename" id="item5_text_1" type="text" maxlength="254"
-          placeholder="middlename" data-hint="" autocomplete="off" path="middlename" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Last Name</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="lastname" id="item6_text_1" required="required" type="text" maxlength="254"
-          placeholder="Last Name" data-hint="" autocomplete="off" path="lastname"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item7">
-        <div class="fb-grouplabel">
-          <label id="item7_label_0" style="display: inline;">Maiden Name(If Applicable)</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="maidenname" id="item7_text_1" type="text" maxlength="254"
-          placeholder="Maiden Name" data-hint="" autocomplete="off" path="maidenname"/>
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item8">
-        <div class="fb-grouplabel">
-          <label id="item8_label_0" style="display: inline;">Full Name(Exactly As In Passport)</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="fullname" id="item8_text_1" required="required" type="text" maxlength="254"
-          placeholder="Full Name" data-hint="" autocomplete="off" path="fullname"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item10" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item10_label_0" style="display: inline;">Date Of Birth</label>
+          <label id="item4_label_0" style="display: inline;">Passport Expiry Date</label>
         </div>
         <div class="fb-input-date">
-          <form:input name="dateofbirth" class="datepicker dateofbirth" id="dateofbirth" type="text"
-          data-hint="" path="dateofbirth"/> 
+          <input name="passportexpirydate" class="datepicker" id="item4_date_1"
+          required type="text" data-hint="" />
         </div>
       </div>
-      <div class="fb-item fb-50-item-column" id="item21">
+      <div class="fb-item fb-50-item-column" id="item5">
         <div class="fb-grouplabel">
-          <label id="item21_label_0" style="display: inline;">Country Of Birth</label>
+          <label id="item5_label_0" style="display: inline;">Passport Issued Location</label>
         </div>
         <div class="fb-input-box">
-          <form:input name="countryofbirth" id="item25_text_1" type="text" maxlength="254"
-          placeholder="Country Of Birth" data-hint="" autocomplete="off" path="countryofbirth" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item22">
-        <div class="fb-grouplabel">
-          <label id="item22_label_0" style="display: inline;">Province Of Birth(City, State)</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="text22" id="item22_text_1" type="text" maxlength="254" placeholder=""
-          data-hint="Please fill them according to passport" autocomplete="off" path="provinceofbirth"/>
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            Please fill them according to passport
-          </div>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item23">
-        <div class="fb-grouplabel">
-          <label id="item23_label_0" style="display: inline;">Citizenship</label>
-        </div>
-<%--        <jsp:include page="Countries.jsp"></jsp:include> --%>
-<div class="fb-input-box">
-          <form:input name="citizenship" id="item25_text_1" type="text" maxlength="254"
-          placeholder="Citizenship" data-hint="" autocomplete="off" path="citizenship" />
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item24" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item24_label_0" style="display: inline;">Have You Visited US Before Or Are You Currently Living In United States</label>
-        </div>
-        <div class="fb-dropdown">
-          <form:select name="usvisit" id="usvisit" required="required" data-hint="" path="usvisit">
-            
-            <form:option id="yes" value="Yes">
-              Yes
-            </form:option>
-            <form:option id="no" value="No">
-              No
-            </form:option>
-          </form:select>
-        </div>
-      </div>
-      <div id ="personalinfo">
-      <div class="fb-item fb-50-item-column fb_cond_applied" id="item25">
-        <div class="fb-grouplabel">
-          <label id="item25_label_0" style="display: inline;">Social Security Number(If Applicable)</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="socialsecuritynumber" id="item25_text_1" type="text" maxlength="254"
-          placeholder="Social Security Number" data-hint="" autocomplete="off" path="socialsecuritynumber" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column fb_cond_applied" id="item26">
-        <div class="fb-grouplabel">
-          <label id="item26_label_0" style="display: inline;">Latest I94 Number</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="i94number" id="item26_text_1" type="text" maxlength="254"
-          placeholder="I94 Number" data-hint="" autocomplete="off" path="latesti94number" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column fb_cond_applied" id="item27">
-        <div class="fb-grouplabel">
-          <label id="item27_label_0" style="display: inline;">Last Entry To United States</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="lastentrytounitedstates" class="datepicker" id="item27_date_1"
-           type="text" data-hint="" path="lastentrydatetous"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column fb_cond_applied" id="item28" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item28_label_0" style="display: inline;">A#</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="a" id="item28_text_1" type="text" maxlength="254" placeholder=""
-          data-hint="" autocomplete="off" path="aliennumber"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column fb_cond_applied" id="item29" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item29_label_0" style="display: inline;">EAD Valid Upto</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="eadvalidupto" class="datepicker" id="item29_date_1" type="text"
-          data-hint="" path="eadvalidupto"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column fb_cond_applied" id="item34" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item34_label_0" style="display: inline;">Current Employer Petition Number</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="currentemployerpetitionnumber" id="item34_text_1" type="text"
-          maxlength="254" placeholder="Current Employer Petition Number" data-hint=""
-          autocomplete="off" path="currentemployerpetitionnumber"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column fb_cond_applied" id="item33" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item33_label_0" style="display: inline;">Current Visa Expiry Date</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="currentvisaexpiry" class="datepicker" id="item33_date_1"
-           type="text" data-hint="" path="currentvisaexpirydate"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column fb_cond_applied" id="item31">
-        <div class="fb-grouplabel">
-          <label id="item31_label_0" style="display: inline;">Current Visa Status</label>
-        </div>
-        <div class="fb-dropdown">
-          <form:select name="currentvisastatus" id="item31_select_1"  data-hint="" required="required" path="currentvisastatus">
-           
-            <form:option id="item31_1_option" value="H1">
-              H1
-            </form:option>
-            <form:option id="item31_2_option" value="H4">
-              H4
-            </form:option>
-            <form:option id="item31_3_option" value="F1">
-              F1
-            </form:option>
-            <form:option id="item31_4_option" value="B1">
-              B1
-            </form:option>
-            <form:option id="item31_5_option" value="B2">
-              B2
-            </form:option>
-            <form:option id="item31_6_option" value="L1">
-              L1
-            </form:option>
-            <form:option id="item31_7_option" value="Other">
-              Other
-            </form:option>
-          </form:select>
-        </div>
-      </div>
-      </div>
-      <div class="fb-item" id="item39">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
+          <input name="passportissuedlocation" id="item5_text_1" required type="text"
+          maxlength="254" placeholder="Passport Issued Location" data-hint="" autocomplete="off"
+          />
         </div>
       </div>
     </div>
   </div>
   <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
   style="display: none; cursor: default;">
-    <img src="http://localhost:854/LoginPage/assets/applicationformjsfiles/editordata/images/recaptchawhite.png" />
+    <img src="editordata/images/recaptchawhite.png" />
   </div>
   <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
   style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png')"
-    value="SaveAndContinue" />
+    <input class="fb-button-special" id="fb-submit-button" style="background-image: url('theme/default/images/btn_submit.png');"
+    type="submit" data-regular="url('file:///C:/Users/abhi/AppData/Local/Temp/FormBuilder/theme/default/images/btn_submit.png')"
+    value="Next" />
   </div>
- </form:form>
+</form> </div>
+                                </div>
+                                <!-- END Portlet PORTLET-->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- BEGIN Portlet PORTLET-->
+                                <div class="portlet solid green" id="my_portlet">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-gift"></i>Custom Reload Handler </div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" class="reload"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <p> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
+                                            eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. </p>
+                                    </div>
+                                </div>
+                                <!-- END Portlet PORTLET-->
+                            </div>
+                        </div>
+                                <div class="row">
+                            <div class="col-md-6">
+                                <!-- BEGIN Portlet PORTLET-->
+                                <div class="portlet box blue">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-gift"></i>Scrollable Content </div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" data-load="true" data-url="portlet_ajax_content_1.html" class="reload"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body portlet-empty"> 
+                                    <form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
+action="" enctype="multipart/form-data" method="POST" novalidate="novalidate"
+data-form="preview">
+  <div class="fb-form-header" id="fb-form-header1">
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+  </div>
+  <div class="section" id="section1">
+    <div class="column ui-sortable" id="column1">
+      <div class="fb-item fb-100-item-column" id="item1">
+        <div class="fb-header fb-item-alignment-center">
+          <h2 style="display: inline;">
+            Contact Information
+          </h2>
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item21" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item21_label_0">Phone Number</label>
+        </div>
+        
+      </div>
+      <div class="fb-item fb-33-item-column" id="item22">
+        <div class="fb-grouplabel">
+          <label id="item22_label_0" style="display: inline;">Home Phone(Optional)</label>
+        </div>
+        890099999
+      </div>
+      <div class="fb-item fb-33-item-column" id="item6">
+        <div class="fb-grouplabel">
+          <label id="item6_label_0" style="display: inline;">Email</label>
+        </div>
+       South Carolina hjgsadsdhdjksa
+      </div>
+      <div class="fb-item" id="item24">
+        <div class="fb-sectionbreak">
+          <hr style="max-width: 960px;">
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item4">
+        <div class="fb-grouplabel">
+          <label id="item4_label_0" style="display: inline;">Address1</label>
+        </div>
+        1631 Deer Field Point hjgdyusadiusadsaodiusadosaid
+      </div>
+      <div class="fb-item fb-33-item-column" id="item5">
+        <div class="fb-grouplabel">
+          <label id="item5_label_0" style="display: inline;">City</label>
+        </div>
+        Hyderabad
+      </div>
+      <div class="fb-item fb-33-item-column" id="item6">
+        <div class="fb-grouplabel">
+          <label id="item6_label_0" style="display: inline;">State</label>
+        </div>
+       South Carolina hjgsadsdhdjksa
+      </div>
+      <div class="fb-item fb-33-item-column" id="item7" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item7_label_0" style="display: inline;">Zip Code</label>
+        </div>
+        ${zipcode} 90899
+      </div>
+      <div class="fb-item fb-33-item-column" id="item25" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item25_label_0" style="display: inline;">Country</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="text25" id="item25_text_1" type="text" maxlength="254" placeholder=""
+          data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item" id="item9">
+        <div class="fb-sectionbreak">
+          <hr style="max-width: 960px;">
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item10" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item10_label_0" style="display: inline;">Address2(Optional)</label>
+        </div>
+        <div class="fb-textarea">
+          <textarea name="address2" id="item10_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
+          maxlength="1000" placeholder="" data-hint=""></textarea>
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item11" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item11_label_0" style="display: inline;">City</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="city2" id="item11_text_1" type="text" maxlength="254" placeholder="City"
+          data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item12" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item12_label_0" style="display: inline;">State</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="state2" id="item12_text_1" type="text" maxlength="254" placeholder="State"
+          data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item13" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item13_label_0" style="display: inline;">Zip Code</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="zipcode2" id="item13_text_1" type="text" maxlength="254"
+          placeholder="Zip Code" data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item26" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item26_label_0" style="display: inline;">Country</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="text26" id="item26_text_1" type="text" maxlength="254" placeholder=""
+          data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item" id="item15">
+        <div class="fb-sectionbreak">
+          <hr style="max-width: 960px;">
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item16" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item16_label_0" style="display: inline;">Address3(Optional)</label>
+        </div>
+        <div class="fb-textarea">
+          <textarea name="address3" id="item16_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
+          maxlength="1000" placeholder="" data-hint=""></textarea>
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item17" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item17_label_0" style="display: inline;">City</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="city3" id="item17_text_1" type="text" maxlength="254" placeholder="City"
+          data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item18" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item18_label_0" style="display: inline;">State</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="state3" id="item18_text_1" type="text" maxlength="254" placeholder="State"
+          data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item19_label_0" style="display: inline;">Zip Code</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="zipcode3" id="item19_text_1" type="text" maxlength="254"
+          placeholder="Zip Code" data-hint="" autocomplete="off" />
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item28" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item28_label_0" style="display: inline;">Country</label>
+        </div>
+        <div class="fb-input-box">
+          <input name="text28" id="item28_text_1" type="text" maxlength="254" placeholder=""
+          data-hint="" autocomplete="off" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
+  style="display: none; cursor: default;">
+    <img src="editordata/images/recaptchawhite.png" />
+  </div>
+  <div class="fb-item-alignment-left fb-footer" id="fb-submit-button-div"
+  style="min-height: 1px;">
+    <input class="fb-button-special" id="fb-submit-button" type="submit" data-regular="url('file:///C:/Users/abhi/AppData/Local/Temp/FormBuilder/theme/default/images/btn_submit.png')"
+    value="Submit" />
+  </div>
+</form>
+                                    
+                                    
+                                    </div>
+                                </div>
+                                <!-- END Portlet PORTLET-->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- BEGIN Portlet PORTLET-->
+                                <div class="portlet box red">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-gift"></i>Advance Form </div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form portlet-empty"> </div>
+                                </div>
+                                <!-- END Portlet PORTLET-->
+                            </div>
+                        </div>
+                              
 <div class="btn-group btn-group btn-group-justified">
+                                                                 <a href="javascript:;" class="btn red"> Back </a>
                                                                     <a href="javascript:;" class="btn blue"> Home </a>
                                                                     <a href="javascript:;" class="btn green"> Save Changes And Return </a>
                                                                 </div>
@@ -500,11 +553,11 @@ method="POST" novalidate="novalidate" data-form="preview" data-percentage="90" m
                     <!-- END CONTAINER -->
                 </div>
             </div>
-         <div class="page-wrapper-row">
+            <div class="page-wrapper-row">
                 <div class="page-wrapper-bottom">
                     <!-- BEGIN FOOTER -->
                     <!-- BEGIN PRE-FOOTER -->
-                    <div class="page-prefooter">
+                     <div class="page-prefooter">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
@@ -536,8 +589,7 @@ method="POST" novalidate="novalidate" data-form="preview" data-percentage="90" m
                 </div>
             </div>
         </div>
-        <script src="http://localhost:854/LoginPage/assets/applicationformjsfiles/conditions.js"></script>
-        <script src="http://localhost:854/LoginPage/assets/applicationformjsfiles/formvalidation.js"></script>
+        <script src="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/formvalidation.js"></script>
         <!--[if lt IE 9]>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script> 

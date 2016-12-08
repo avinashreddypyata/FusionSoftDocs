@@ -238,41 +238,33 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <thead>
                                                                 <tr>
                                                                     <th>
-                                                                        Certification
+                                                                        Type Of The Doc
                                                                     </th>
                                                                     <th>Specialisation</th>
-                                                                    <th>Organisation</th>
-                                                                    <th>Address</th>
-                                                                    <th>City</th>
-                                                                    <th> State</th>
-                                                                    <th>Zipcode</th>
-                                                                    <th>Country</th>
+                                                                    
                                                                     <th>Month Of Passing</th>
-                                                                    <th>Year Of Passing</th>
+                                                                  
+                                                                    <th>File Upload(Do It in a Single PDF)</th>
                                                                     <th>Actions</th>
-                                                                    <th>File Upload </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                               <c:forEach items="${certificationdetails}" var="certificationdetail">
+                                                               
                                                             
                                                                 <tr class="odd gradeX">
-                                                                    <td><c:out value="${certificationdetail.certificationName}" /></td>
+                                                                    <td> I94</td>
                                                                     <td>
-                                                                        <c:out value="${certificationdetail.specialisation}" /> 
+                                                                       Describe
                                                                     </td>
-                                                                    <td>
-                                                                        <c:out value="${certificationdetail.organisation}" /> 
-                                                                    </td>
-                                                                    <td>
-                                                                       <c:out value="${certificationdetail.address}" /> 
-                                                                    </td>
-                                                                    <td> <c:out value="${certificationdetail.city}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.state}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.zipcode}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.country}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.monthOfPassing}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.yearOfPassing}" /> </td>
+                                                               
+                                                                    
+                                                                    <td> test </td>
+                                                                    <td>  <div class="form-group">
+                                                
+                                                <div class="col-md-3">
+                                                    <input type="file" id="exampleInputFile">
+                                                </div>
+                                            </div></td>
                                                                     <td>
                                                                     
                                                                         <div class="btn-group">
@@ -295,7 +287,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         </div>
                                                                     </td>
                                                                 </tr>
-															</c:forEach>
                                                             </tbody>
                                                         </table>
                                                         <form action ="educationdetails">

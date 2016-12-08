@@ -76,7 +76,7 @@ public class UserHomePageController {
 		model.addObject("immigration",immigration);
 		model.addObject("experiences",experiences);
 //		model.setViewName("user/TravelHistory");
-	    model.setViewName("redirect:editorcreatenewapplication");
+	    model.setViewName("user/UserHome");
 		}
 		return model;
 	}
@@ -105,9 +105,15 @@ public class UserHomePageController {
         return model;
         
 	}
+	@InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+     dateFormat.setLenient(false);
+     webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+     }
 	/*Saving Or Updating The Changes Made By Applicant*/
 	@RequestMapping(value = "/saveorupdateapplication", method = RequestMethod.POST)
-	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant,  HttpServletRequest request) {
+	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant,  BindingResult result) {
 		ModelAndView model = new ModelAndView("redirect:editorcreatenewcontact");
 		CustomUser user = getCustomUser();
 		if(applicant.getUserid() == 0){
@@ -484,12 +490,7 @@ public class UserHomePageController {
     
 	 return model;
 	}
-	@InitBinder
-    public void initBinder(WebDataBinder webDataBinder) {
-     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-     dateFormat.setLenient(false);
-     webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-     }
+	
 
 	@RequestMapping(value = "/saveimmigration",method = RequestMethod.POST)
 	public ModelAndView saveimmigration(@ModelAttribute("immigration")Immigration immigration, BindingResult result) throws IOException{

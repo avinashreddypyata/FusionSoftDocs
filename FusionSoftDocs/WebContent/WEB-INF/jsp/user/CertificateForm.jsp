@@ -140,50 +140,49 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                        <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
-                                            <a> Home
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                            <a href="home"> Home
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li >
+                                            <a href = "editorcreatenewapplication">Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a>Application
+                                        <a href="editorcreatenewcontact">Contact
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li >
+                                         <a href="editorcreatenewpassport">Passport
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                        <a>Contact
+                                         <a href="traveldetails">Travel 
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                         <a>Passport
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                         <a>Travel 
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                       <a>Education
+                                       <a href="educationdetails">Education
                                                
                                             </a>
                                         </li>
                                         <li>
-                                      <a>Experience
+                                      <a href="experiencedetails">Experience
                                                 
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
-                                      <a>Certification</a>
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
+                                      <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a>Documents
+                                      <a href="addnewdocument">Documents
                                           
                                             </a>
                                         </li>
-                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->

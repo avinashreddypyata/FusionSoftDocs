@@ -139,47 +139,47 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                    <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
-                                            <a> Home
+                                     <ul class="nav navbar-nav">
+                                        <li>
+                                            <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a>Application
+                                            <a href="editorcreatenewapplication">Application
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                        <a href="editorcreatenewcontact">Contact
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li >
-                                        <a>Contact
+                                         <a href="editorcreatenewpassport">Passport
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                         <a>Passport
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                         <a>Travel 
+                                         <a href="traveldetails">Travel 
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
-                                       <a>Education
+                                       <a href="educationdetails">Education
                                                
                                             </a>
                                         </li>
                                         <li>
-                                      <a>Experience
+                                      <a href="experiencedetails">Experience
                                                 
                                             </a>
                                         </li>
                                         <li >
-                                      <a>Certification</a>
+                                      <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a>Documents
+                                      <a href="addnewdocument">Documents
                                           
                                             </a>
                                         </li>

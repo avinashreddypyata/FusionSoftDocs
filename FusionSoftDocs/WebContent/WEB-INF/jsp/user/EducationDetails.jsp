@@ -138,46 +138,46 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                       <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
-                                            <a> Home
+                                        <li>
+                                            <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a>Application
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                        <a>Contact
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                         <a>Passport
+                                            <a href="editorcreatenewapplication">Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                         <a>Travel 
+                                        <a href="editorcreatenewcontact">Contact
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li >
+                                         <a href="editorcreatenewpassport">Passport
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                         <a href="traveldetails">Travel 
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
-                                       <a>Education
+                                       <a href="educationdetails">Education
                                                
                                             </a>
                                         </li>
                                         <li>
-                                      <a>Experience
+                                      <a href="experiencedetails">Experience
                                                 
                                             </a>
                                         </li>
                                         <li >
-                                      <a>Certification</a>
+                                      <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a>Documents
+                                      <a href="addnewdocument">Documents
                                           
                                             </a>
                                         </li>
@@ -226,12 +226,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <thead>
                                                                 <tr>
                                                                     <th>
-                                                                        Level Of Education
+                                                                       Passing Year 
                                                                     </th>
                                                                     <th> Specialization </th>
+                                                                    <th> Level Of Education</th>
                                                                     <th> University/School/College</th>
                                                                     <th> University Address</th>
-                                                                    <th> Year Of Passing</th>
                                                                     <th> Month Of Passing </th>
                                                                     <th>US Sevis Number</th>
                                                                     <th>G.P.A</th>
@@ -242,22 +242,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                <c:forEach items="${educationdetails}" var="educationdetail">
                                                             
                                                                 <tr class="odd gradeX">
-                                                                    <td><c:out value="${educationdetail.levelofeducation}" /></td>
+                                                                    <td> <c:out value="${educationdetail.yearofpassing}" /> </td>
                                                                     <td>
                                                                         <c:out value="${educationdetail.course}" /> 
                                                                     </td>
+                                                                    <td><c:out value="${educationdetail.levelofeducation}" /></td>
                                                                     <td>
                                                                         <c:out value="${educationdetail.university}" /> 
                                                                     </td>
+                                                                     
                                                                     <td>
                                                                        <c:out value="${educationdetail.address}" /> <c:out value="${educationdetail.city}" /> <c:out value="${educationdetail.state}" /> <c:out value="${educationdetail.zipcode}" /> <c:out value="${educationdetail.country}" />
                                                                     </td>
-                                                                    <td> <c:out value="${educationdetail.yearofpassing}" /> </td>
+                                                                   
                                                                     <td> <c:out value="${educationdetail.monthofpassing}" /> </td>
                                                                     <td> <c:out value="${educationdetail.ussevisnumber}" /> </td>
                                                                      <td> <c:out value="${educationdetail.gpa}" /> </td>
-                                                                    
-                                                                    <td>
+                                                                   <td>
                                                                         <div class="btn-group">
                                                                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
                                                                                 <i class="fa fa-angle-down"></i>

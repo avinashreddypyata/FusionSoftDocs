@@ -350,6 +350,25 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDao.updateexperience(experience);
 	}
+	@Override
+	public String saveapplicant(String email) {
+		// TODO Auto-generated method stub
+		CustomUser customuser = new CustomUser();
+		customuser.setUsername(email);
+		String password = generateRandomPassword();
+		customuser.setPassword(passwordEncoder.encode(password));
+		customuser.setUserrole(2);
+		customuser.setFirstlogin(1);
+        int userid = userDao.savecustomuser(customuser);
+		return password;
+	}
+	@Override
+	public List<Applicant> findallapplicants() {
+		// Calling The Dao Layer for getting the all applicants from the Dao Layer
+		List<Applicant> applicants = userDao.findallapplicants();
+		// TODO Auto-generated method stub
+		return applicants;
+	}
 	
 	
 }

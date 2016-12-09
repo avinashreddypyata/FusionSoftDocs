@@ -84,10 +84,28 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <style>
+        table{
+        table-layout: fixed;
+         overflow-y: auto;
+           word-wrap:break-word;
+          width: 100%;
+        }
+        
+        th{
+          float: center;
+         vertical-align: top;
+          word-wrap:break-word;
+            text-align:right;
+             border: 1px solid #000;
+             width: 25%;
+  text-align: right;
+        }
+        </style>
+         </head>
     
     <!-- END HEAD -->
-
     <body class="page-container-bg-solid">
         <div class="page-wrapper">
             <div class="page-wrapper-row">
@@ -142,46 +160,46 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                    <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
-                                            <a> Home
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                            <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a>Application
+                                            <a href="editorcreatenewapplication">Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li >
-                                        <a>Contact
+                                        <a href="editorcreatenewcontact">Contact
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
-                                         <a>Passport
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                         <a>Travel 
+                                        <li >
+                                         <a href="editorcreatenewpassport">Passport
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                       <a>Education
+                                         <a href="traveldetails">Travel 
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                       <a href="educationdetails">Education
                                                
                                             </a>
                                         </li>
                                         <li>
-                                      <a>Experience
+                                      <a href="experiencedetails">Experience
                                                 
                                             </a>
                                         </li>
                                         <li >
-                                      <a>Certification</a>
+                                      <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a>Documents
+                                      <a href="addnewdocument">Documents
                                           
                                             </a>
                                         </li>
@@ -208,22 +226,24 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- END PAGE HEAD-->
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
-                                <div class="row">
-                            <div class="col-md-6">
-                                <!-- BEGIN Portlet PORTLET-->
-                                <div class="portlet">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-gift"></i>Load On Demand </div>
-                                        <div class="tools">
+                            <!-- -beginning row -->
+                               <div class="row">
+                               <div class="col-md-6">
+                               <div class="portlet box blue">
+                               <div class="portlet-title">
+                               <div class="caption">
+                               <i class="fa fa-gift"></i>Passport Details </div>
+                               <div class="tools">
                                             <a href="javascript:;" class="collapse"> </a>
                                             <a href="#portlet-config" data-toggle="modal" class="config"> </a>
                                             <a href="javascript:;" data-url="portlet_ajax_content_3.html" class="reload"> </a>
                                             <a href="javascript:;" class="fullscreen"> </a>
                                             <a href="javascript:;" class="remove"> </a>
                                         </div>
-                                    </div>
-                                    <div class="portlet-body portlet-empty"> <form class="fb-100-item-column selected-object" id="docContainer" action=""
+                               </div>
+                               <!-- - portlet body beginning -->
+                               <div class="portlet-body portlet-empty">
+                               <form class="fb-100-item-column selected-object" id="docContainer" action=""
 enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="preview">
   <div class="fb-form-header" id="fb-form-header1">
     <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
@@ -232,48 +252,32 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
     <div class="column ui-sortable" id="column1">
       <div class="fb-item fb-100-item-column" id="item1" style="opacity: 1;">
         <div class="fb-header fb-item-alignment-center">
-          <h2 style="display: inline;">
-            Passport Details Form
-          </h2>
+         
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item2">
         <div class="fb-grouplabel">
           <label id="item2_label_0" style="display: inline;">Latest Passport Number</label>
         </div>
-        <div class="fb-input-box">
-          <input name="latestpassportnumber" id="item2_text_1" required type="text"
-          maxlength="254" placeholder="Latest Passport Number" data-hint="" autocomplete="off"
-          />
-        </div>
+        ${passport.latestpassportnumber}
       </div>
       <div class="fb-item fb-50-item-column" id="item3">
         <div class="fb-grouplabel">
           <label id="item3_label_0" style="display: inline;">Passport Issuance Date</label>
         </div>
-        <div class="fb-input-date">
-          <input name="passportissuancedate" class="datepicker" id="item3_date_1"
-          required type="text" data-hint="" />
-        </div>
+         ${passport.passportissuancedate}
       </div>
       <div class="fb-item fb-50-item-column" id="item4">
         <div class="fb-grouplabel">
           <label id="item4_label_0" style="display: inline;">Passport Expiry Date</label>
         </div>
-        <div class="fb-input-date">
-          <input name="passportexpirydate" class="datepicker" id="item4_date_1"
-          required type="text" data-hint="" />
-        </div>
+       ${passport.passportexpirydate}
       </div>
       <div class="fb-item fb-50-item-column" id="item5">
         <div class="fb-grouplabel">
           <label id="item5_label_0" style="display: inline;">Passport Issued Location</label>
         </div>
-        <div class="fb-input-box">
-          <input name="passportissuedlocation" id="item5_text_1" required type="text"
-          maxlength="254" placeholder="Passport Issued Location" data-hint="" autocomplete="off"
-          />
-        </div>
+          ${passport.passportissuedlocation}
       </div>
     </div>
   </div>
@@ -281,22 +285,20 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
   style="display: none; cursor: default;">
     <img src="editordata/images/recaptchawhite.png" />
   </div>
-  <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
-  style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="background-image: url('theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('file:///C:/Users/abhi/AppData/Local/Temp/FormBuilder/theme/default/images/btn_submit.png')"
-    value="Next" />
-  </div>
-</form> </div>
-                                </div>
-                                <!-- END Portlet PORTLET-->
-                            </div>
-                            <div class="col-md-6">
-                                <!-- BEGIN Portlet PORTLET-->
+ 
+</form>
+                               </div>
+                               <!-- -portlet body end -->
+                               </div>
+                               <!-- -portlet ending -->
+                               </div>
+                               <!-- -column ending -->
+                               <div class="col-md-6">
+                               <!-- BEGIN Portlet PORTLET-->
                                 <div class="portlet solid green" id="my_portlet">
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            <i class="fa fa-gift"></i>Custom Reload Handler </div>
+                                            <i class="fa fa-gift"></i>Status </div>
                                         <div class="tools">
                                             <a href="javascript:;" class="collapse"> </a>
                                             <a href="#portlet-config" data-toggle="modal" class="config"> </a>
@@ -306,30 +308,34 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
                                         </div>
                                     </div>
                                     <div class="portlet-body">
-                                        <p> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
-                                            eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. </p>
+                                        <p>Under Review </p>
                                     </div>
                                 </div>
                                 <!-- END Portlet PORTLET-->
-                            </div>
-                        </div>
+                               </div>
+                               </div>
+                                <!-- -ending row -->
+                                
+                                <!--  beginning row -->
+                                
                                 <div class="row">
-                            <div class="col-md-6">
-                                <!-- BEGIN Portlet PORTLET-->
+                                <div class="col-md-6">
                                 <div class="portlet box blue">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-gift"></i>Scrollable Content </div>
-                                        <div class="tools">
+                                <div class="portlet-title">
+                                <div class="caption">  <i class="fa fa-gift"></i>Contact Information
+                                </div>
+                                <div class="tools">
                                             <a href="javascript:;" class="collapse"> </a>
                                             <a href="#portlet-config" data-toggle="modal" class="config"> </a>
                                             <a href="javascript:;" data-load="true" data-url="portlet_ajax_content_1.html" class="reload"> </a>
                                             <a href="javascript:;" class="fullscreen"> </a>
                                             <a href="javascript:;" class="remove"> </a>
                                         </div>
-                                    </div>
-                                    <div class="portlet-body portlet-empty"> 
-                                    <form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
+                                </div>
+                                <!-- -ending portlet title -->
+                                <!-- beginning portlet body -->
+                                <div class="portlet-body portlet-empty">
+                                                           <form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
 action="" enctype="multipart/form-data" method="POST" novalidate="novalidate"
 data-form="preview">
   <div class="fb-form-header" id="fb-form-header1">
@@ -339,28 +345,27 @@ data-form="preview">
     <div class="column ui-sortable" id="column1">
       <div class="fb-item fb-100-item-column" id="item1">
         <div class="fb-header fb-item-alignment-center">
-          <h2 style="display: inline;">
-            Contact Information
-          </h2>
+         
         </div>
       </div>
       <div class="fb-item fb-33-item-column" id="item21" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item21_label_0">Phone Number</label>
         </div>
+        ${contact.phonenumber}
         
       </div>
       <div class="fb-item fb-33-item-column" id="item22">
         <div class="fb-grouplabel">
           <label id="item22_label_0" style="display: inline;">Home Phone(Optional)</label>
         </div>
-        890099999
+        ${contact.homephonenumber}
       </div>
       <div class="fb-item fb-33-item-column" id="item6">
         <div class="fb-grouplabel">
           <label id="item6_label_0" style="display: inline;">Email</label>
         </div>
-       South Carolina hjgsadsdhdjksa
+        ${contact.email}
       </div>
       <div class="fb-item" id="item24">
         <div class="fb-sectionbreak">
@@ -371,34 +376,31 @@ data-form="preview">
         <div class="fb-grouplabel">
           <label id="item4_label_0" style="display: inline;">Address1</label>
         </div>
-        1631 Deer Field Point hjgdyusadiusadsaodiusadosaid
+         ${contact.address1}
       </div>
       <div class="fb-item fb-33-item-column" id="item5">
         <div class="fb-grouplabel">
           <label id="item5_label_0" style="display: inline;">City</label>
         </div>
-        Hyderabad
+           ${contact.city}
       </div>
       <div class="fb-item fb-33-item-column" id="item6">
         <div class="fb-grouplabel">
           <label id="item6_label_0" style="display: inline;">State</label>
         </div>
-       South Carolina hjgsadsdhdjksa
+       ${contact.state}
       </div>
       <div class="fb-item fb-33-item-column" id="item7" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item7_label_0" style="display: inline;">Zip Code</label>
         </div>
-        ${zipcode} 90899
+          ${contact.zipcode}
       </div>
       <div class="fb-item fb-33-item-column" id="item25" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item25_label_0" style="display: inline;">Country</label>
         </div>
-        <div class="fb-input-box">
-          <input name="text25" id="item25_text_1" type="text" maxlength="254" placeholder=""
-          data-hint="" autocomplete="off" />
-        </div>
+          ${contact.country}
       </div>
       <div class="fb-item" id="item9">
         <div class="fb-sectionbreak">
@@ -409,46 +411,31 @@ data-form="preview">
         <div class="fb-grouplabel">
           <label id="item10_label_0" style="display: inline;">Address2(Optional)</label>
         </div>
-        <div class="fb-textarea">
-          <textarea name="address2" id="item10_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          maxlength="1000" placeholder="" data-hint=""></textarea>
-        </div>
+          ${contact.address2}
       </div>
       <div class="fb-item fb-33-item-column" id="item11" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item11_label_0" style="display: inline;">City</label>
         </div>
-        <div class="fb-input-box">
-          <input name="city2" id="item11_text_1" type="text" maxlength="254" placeholder="City"
-          data-hint="" autocomplete="off" />
-        </div>
+         ${contact.city2}
       </div>
       <div class="fb-item fb-33-item-column" id="item12" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item12_label_0" style="display: inline;">State</label>
         </div>
-        <div class="fb-input-box">
-          <input name="state2" id="item12_text_1" type="text" maxlength="254" placeholder="State"
-          data-hint="" autocomplete="off" />
-        </div>
+          ${contact.state2}
       </div>
       <div class="fb-item fb-33-item-column" id="item13" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item13_label_0" style="display: inline;">Zip Code</label>
         </div>
-        <div class="fb-input-box">
-          <input name="zipcode2" id="item13_text_1" type="text" maxlength="254"
-          placeholder="Zip Code" data-hint="" autocomplete="off" />
-        </div>
+          ${contact.zipcode2}
       </div>
       <div class="fb-item fb-33-item-column" id="item26" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item26_label_0" style="display: inline;">Country</label>
         </div>
-        <div class="fb-input-box">
-          <input name="text26" id="item26_text_1" type="text" maxlength="254" placeholder=""
-          data-hint="" autocomplete="off" />
-        </div>
+        ${contact.country2}
       </div>
       <div class="fb-item" id="item15">
         <div class="fb-sectionbreak">
@@ -459,46 +446,31 @@ data-form="preview">
         <div class="fb-grouplabel">
           <label id="item16_label_0" style="display: inline;">Address3(Optional)</label>
         </div>
-        <div class="fb-textarea">
-          <textarea name="address3" id="item16_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          maxlength="1000" placeholder="" data-hint=""></textarea>
-        </div>
+          ${contact.address3}
       </div>
       <div class="fb-item fb-33-item-column" id="item17" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item17_label_0" style="display: inline;">City</label>
         </div>
-        <div class="fb-input-box">
-          <input name="city3" id="item17_text_1" type="text" maxlength="254" placeholder="City"
-          data-hint="" autocomplete="off" />
-        </div>
+           ${contact.city3}
       </div>
       <div class="fb-item fb-33-item-column" id="item18" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item18_label_0" style="display: inline;">State</label>
         </div>
-        <div class="fb-input-box">
-          <input name="state3" id="item18_text_1" type="text" maxlength="254" placeholder="State"
-          data-hint="" autocomplete="off" />
-        </div>
+         ${contact.state3}
       </div>
       <div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item19_label_0" style="display: inline;">Zip Code</label>
         </div>
-        <div class="fb-input-box">
-          <input name="zipcode3" id="item19_text_1" type="text" maxlength="254"
-          placeholder="Zip Code" data-hint="" autocomplete="off" />
-        </div>
+         ${contact.zipcode3}
       </div>
       <div class="fb-item fb-33-item-column" id="item28" style="opacity: 1;">
         <div class="fb-grouplabel">
           <label id="item28_label_0" style="display: inline;">Country</label>
         </div>
-        <div class="fb-input-box">
-          <input name="text28" id="item28_text_1" type="text" maxlength="254" placeholder=""
-          data-hint="" autocomplete="off" />
-        </div>
+        ${contact.country3}
       </div>
     </div>
   </div>
@@ -510,18 +482,198 @@ data-form="preview">
   style="min-height: 1px;">
   </div>
 </form>
-                                    
-                                    
-                                    </div>
                                 </div>
-                                <!-- END Portlet PORTLET-->
-                            </div>
-                            <div class="col-md-6">
-                                <!-- BEGIN Portlet PORTLET-->
-                                <div class="portlet box red">
-                                    <div class="portlet-title">
+                                <!-- ending portlet body -->
+                                </div>
+                                </div>
+                      <div class="col-md-6">
+                                <div class="portlet box blue">
+                                <div class="portlet-title">
+                                <div class="caption">  <i class="fa fa-gift"></i>Application Details
+                                </div>
+                                <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" data-load="true" data-url="portlet_ajax_content_1.html" class="reload"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                </div>
+                                <!-- -ending portlet title -->
+                                <!-- beginning portlet body -->
+                                <div class="portlet-body portlet-empty">
+                                                           <form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
+action="" enctype="multipart/form-data" method="POST" novalidate="novalidate"
+data-form="preview">
+  <div class="fb-form-header" id="fb-form-header1">
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+  </div>
+  <div class="section" id="section1">
+    <div class="column ui-sortable" id="column1">
+      <div class="fb-item fb-100-item-column" id="item1">
+        <div class="fb-header fb-item-alignment-center">
+         
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item21" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item21_label_0">Application Type</label>
+        </div>
+       ${applicant.applicationtype}
+        
+      </div>
+      <div class="fb-item fb-33-item-column" id="item22">
+        <div class="fb-grouplabel">
+          <label id="item22_label_0" style="display: inline;">Prefix</label>
+        </div>
+         ${applicant.prefix}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item6">
+        <div class="fb-grouplabel">
+          <label id="item6_label_0" style="display: inline;">First Name</label>
+        </div>
+          ${applicant.firstname}
+      </div>
+      <div class="fb-item" id="item24">
+        <div class="fb-sectionbreak">
+          <hr style="max-width: 960px;">
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item4">
+        <div class="fb-grouplabel">
+          <label id="item4_label_0" style="display: inline;">Middle Name</label>
+        </div>
+        ${applicant.middlename}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item5">
+        <div class="fb-grouplabel">
+          <label id="item5_label_0" style="display: inline;">Last Name</label>
+        </div>
+           ${applicant.lastname}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item6">
+        <div class="fb-grouplabel">
+          <label id="item6_label_0" style="display: inline;">Maiden Name</label>
+        </div>
+       ${applicant.maidenname}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item7" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item7_label_0" style="display: inline;">Full Name</label>
+        </div>
+          ${applicant.fullname}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item25" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item25_label_0" style="display: inline;">Date Of Birth</label>
+        </div>
+           ${applicant.dateofbirth}
+      </div>
+      <div class="fb-item" id="item9">
+        <div class="fb-sectionbreak">
+          <hr style="max-width: 960px;">
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item10" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item10_label_0" style="display: inline;">Province Of Birth</label>
+        </div>
+           ${applicant.provinceofbirth}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item11" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item11_label_0" style="display: inline;">City</label>
+        </div>
+         ${contact.city2}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item12" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item12_label_0" style="display: inline;">Citizenship</label>
+        </div>
+          ${applicant.citizenship}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item13" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item13_label_0" style="display: inline;">Have You Visited US Before Or Are You Currently Living In United States</label>
+        </div>
+           ${applicant.usvisit}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item26" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item26_label_0" style="display: inline;">Social Security Number</label>
+        </div>
+       ${applicant.socialsecuritynumber}
+      </div>
+      <div class="fb-item" id="item15">
+        <div class="fb-sectionbreak">
+          <hr style="max-width: 960px;">
+        </div>
+      </div>
+      <div class="fb-item fb-33-item-column" id="item16" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item16_label_0" style="display: inline;">Latest I94 Number</label>
+        </div>
+          ${applicant.latesti94number}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item17" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item17_label_0" style="display: inline;">Last Entry To United States</label>
+        </div>
+            ${applicant.lastentrydatetous}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item18" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item18_label_0" style="display: inline;">A#</label>
+        </div>
+         ${applicant.aliennumber}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item19_label_0" style="display: inline;">EAD Valid Upto</label>
+        </div>
+        ${applicant.aliennumber}
+      </div>
+      <div class="fb-item fb-33-item-column" id="item28" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item28_label_0" style="display: inline;">Current Employer Petition Number</label>
+        </div>
+       ${applicant.currentemployerpetitionnumber}
+      </div>
+
+<div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item19_label_0" style="display: inline;">Current Visa Expiry Date</label>
+        </div>
+         ${applicant.currentvisaexpirydate}
+      </div>
+
+<div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item19_label_0" style="display: inline;">Current Visa Status</label>
+        </div>
+         ${applicant.currentvisastatus}
+      </div>
+
+    </div>
+  </div>
+  
+ 
+</form>
+                                </div>
+                                <!-- ending portlet body -->
+                                </div>
+                                </div>
+                                </div>
+                                
+                                <!-- ending row -->
+                                
+                               
+                                <div class="row">
+                                <!-- <div class="col-md-8"> -->
+                                 <div class="portlet box blue">
+                                 <div class="portlet-title">
                                         <div class="caption">
-                                            <i class="fa fa-gift"></i>Advance Form </div>
+                                            <i class="fa fa-gift"></i>Travel History</div>
                                         <div class="tools">
                                             <a href="javascript:;" class="collapse"> </a>
                                             <a href="#portlet-config" data-toggle="modal" class="config"> </a>
@@ -530,289 +682,399 @@ data-form="preview">
                                             <a href="javascript:;" class="remove"> </a>
                                         </div>
                                     </div>
-                                    <div class="portlet-body form portlet-empty"> <form class="fb-toplabel fb-100-item-column fb-large selected-object"
-id="docContainer" style="width: 90%; max-width: 800px;" action="" enctype="multipart/form-data"
-method="POST" novalidate="novalidate" data-form="preview" data-percentage="90">
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
-  </div>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
-        <div class="fb-header fb-item-alignment-center">
-          <h2 style="display: inline;">
-            Applicant Details
-          </h2>
-        </div>
-      </div>
-      <div class="fb-item fb-25-item-column" id="item2">
-        <div class="fb-grouplabel">
-          <label id="item2_label_0" style="color: rgb(10, 10, 10); display: inline;">Application Type</label>
-        </div>
-        <div class="fb-dropdown">
-          <select name="applicationtype" id="item2_select_1" required data-hint="">
-            <option id="item2_0_option" selected value="">
-              Choose one
-            </option>
-            <option id="item2_1_option" value="New">
-              New
-            </option>
-            <option id="item2_2_option" value="Transfer">
-              Transfer
-            </option>
-            <option id="item2_3_option" value="Extension">
-              Extension
-            </option>
-            <option id="item2_4_option" value="Masters to H1">
-              Masters to H1
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="fb-item fb-25-item-column" id="item3">
-        <div class="fb-grouplabel">
-          <label id="item3_label_0" style="display: inline;">Prefix</label>
-        </div>
-        <div class="fb-dropdown">
-          <select name="prefix" id="item3_select_1" required data-hint="">
-            <option id="item3_0_option" selected value="">
-              Choose one
-            </option>
-            <option id="item3_1_option" value="Mr">
-              Mr
-            </option>
-            <option id="item3_2_option" value="Mrs">
-              Mrs
-            </option>
-            <option id="item3_3_option" value="Option 3">
-              Option 3
-            </option>
-            <option id="item3_4_option" value="Dr">
-              Dr
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">First Name</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="firstname" id="item4_text_1" required type="text" maxlength="254"
-          placeholder="First Name" data-hint="" autocomplete="on" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item5" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">Middle Name</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="middlename" id="item5_text_1" type="text" maxlength="254"
-          placeholder="middlename" data-hint="" autocomplete="off" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Last Name</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="lastname" id="item6_text_1" required type="text" maxlength="254"
-          placeholder="Last Name" data-hint="" autocomplete="off" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item7">
-        <div class="fb-grouplabel">
-          <label id="item7_label_0" style="display: inline;">Maiden Name(If Applicable)</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="maidenname" id="item7_text_1" type="text" maxlength="254"
-          placeholder="Maiden Name" data-hint="" autocomplete="off" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item8">
-        <div class="fb-grouplabel">
-          <label id="item8_label_0" style="display: inline;">Full Name(Exactly As In Passport)</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="fullname" id="item8_text_1" required type="text" maxlength="254"
-          placeholder="Full Name" data-hint="" autocomplete="off" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item10" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item10_label_0" style="display: inline;">Date Of Birth</label>
-        </div>
-        <div class="fb-input-date">
-          <input name="dateofbirth" class="datepicker" id="item10_date_1" type="text"
-          data-hint="" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item40" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item40_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-date">
-          <input name="text40" class="datepicker" id="item40_text_1" type="text"
-          data-hint="" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item22">
-        <div class="fb-grouplabel">
-          <label id="item22_label_0" style="display: inline;">Province Of Birth(City, State)</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="text22" id="item22_text_1" type="text" maxlength="254" placeholder=""
-          data-hint="Please fill them according to passport" autocomplete="off" />
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            Please fill them according to passport
-          </div>
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item41">
-        <div class="fb-grouplabel">
-          <label id="item41_label_0" style="display: inline;">Citizenship</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="text41" id="item41_text_1" type="text" maxlength="254" placeholder=""
-          data-hint="Please fill them according to passport" autocomplete="off" />
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            Please fill them according to passport
-          </div>
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item24" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item24_label_0" style="display: inline;">Have You Visited US Before Or Are You Currently Living In United States</label>
-        </div>
-        <div class="fb-dropdown">
-          <select name="usvisit" id="item24_select_1" required data-hint="">
-            <option id="item24_0_option" selected value="">
-              Choose one
-            </option>
-            <option id="item24_1_option" value="Yes">
-              Yes
-            </option>
-            <option id="item24_2_option" value="No">
-              No
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column fb_cond_applied" id="item25">
-        <div class="fb-grouplabel">
-          <label id="item25_label_0" style="display: inline;">Social Security Number(If Applicable)</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="socialsecuritynumber" id="item25_text_1" type="text" maxlength="254"
-          placeholder="Social Security Number" data-hint="" autocomplete="off" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column fb_cond_applied" id="item26">
-        <div class="fb-grouplabel">
-          <label id="item26_label_0" style="display: inline;">Latest I94 Number</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="i94number" id="item26_text_1" type="text" maxlength="254"
-          placeholder="I94 Number" data-hint="" autocomplete="off" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column fb_cond_applied" id="item27">
-        <div class="fb-grouplabel">
-          <label id="item27_label_0" style="display: inline;">Last Entry To United States</label>
-        </div>
-        <div class="fb-input-date">
-          <input name="lastentrytounitedstates" class="datepicker" id="item27_date_1"
-          required type="text" data-hint="" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column fb_cond_applied" id="item28" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item28_label_0" style="display: inline;">A#</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="a" id="item28_text_1" type="text" maxlength="254" placeholder=""
-          data-hint="" autocomplete="off" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column fb_cond_applied" id="item29" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item29_label_0" style="display: inline;">EAD Valid Upto</label>
-        </div>
-        <div class="fb-input-date">
-          <input name="eadvalidupto" class="datepicker" id="item29_date_1" type="text"
-          data-hint="" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column fb_cond_applied" id="item34" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item34_label_0" style="display: inline;">Current Employer Petition Number</label>
-        </div>
-        <div class="fb-input-box">
-          <input name="currentemployerpetitionnumber" id="item34_text_1" type="text"
-          maxlength="254" placeholder="Current Employer Petition Number" data-hint=""
-          autocomplete="off" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column fb_cond_applied" id="item33" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item33_label_0" style="display: inline;">Current Visa Expiry Date</label>
-        </div>
-        <div class="fb-input-date">
-          <input name="currentvisaexpiry" class="datepicker" id="item33_date_1"
-          required type="text" data-hint="" />
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column fb_cond_applied" id="item31">
-        <div class="fb-grouplabel">
-          <label id="item31_label_0" style="display: inline;">Current Visa Status</label>
-        </div>
-        <div class="fb-dropdown">
-          <select name="currentvisastatus" id="item31_select_1" required data-hint="">
-            <option id="item31_0_option" selected value="">
-              Choose one
-            </option>
-            <option id="item31_1_option" value="H1">
-              H1
-            </option>
-            <option id="item31_2_option" value="H4">
-              H4
-            </option>
-            <option id="item31_3_option" value="F1">
-              F1
-            </option>
-            <option id="item31_4_option" value="B1">
-              B1
-            </option>
-            <option id="item31_5_option" value="B2">
-              B2
-            </option>
-            <option id="item31_6_option" value="L1">
-              L1
-            </option>
-            <option id="item31_7_option" value="Other">
-              Other
-            </option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
-</form></div>
+                                     <div class="portlet-body form portlet-empty">
+                                <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1" align="center">
+                              
+                                                            <thead>
+                                                            
+                                                                <tr>
+                                                                    <th> Port Of Entry </th>
+                                                                        
+                                                                    <th> Entry Date To US </th>
+                                                                    <th> Exit Date From Us</th>
+                                                                    <th> Status At The Time Of Entry</th>
+                                                                    <th> Status Valid From </th>
+                                                                    <th> Status Valid Till </th>
+                                                                    <th>Total Months Outside Us</th>
+                                                              
+                                                                </tr>
+                                                                
+                                                            </thead>
+                                                            <tbody>
+                                                            
+                                                               <c:forEach items="${traveldetails}" var="traveldetail">
+                                                            
+                                                                <tr class="odd gradeX">
+                                                                    <td><c:out value="${traveldetail.portofentry}" /></td>
+                                                                    <td>
+                                                                        <c:out value="${traveldetail.entrydatetous}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                        <c:out value="${traveldetail.exitdatefromus}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                       <c:out value="${traveldetail.statusattimeofentry}" /> 
+                                                                    </td>
+                                                                    <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
+                                                                    <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
+                                                                    <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
+                                                                  
+                                                                </tr>
+															</c:forEach>
+                                                            </tbody>
+                                                        </table>
+                                                        </div>
+                                                        </div>
                                 </div>
-                                <!-- END Portlet PORTLET-->
-                            </div>
-                        </div>
+                                <div class="row">
+                                  <div class="portlet box blue">
+                                 <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-gift"></i>Experience Details</div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                     <div class="portlet-body form portlet-empty">
+    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Employer
+                                                                    </th>
+                                                                    <th> City </th>
+                                                                    <th> State</th>
+                                                                    <th> Country</th>
+                                                                    <th> Start Date</th>
+                                                                    <th> End Date</th>
+                                                                    <th>Designation</th>
+                                                                    <th>Total Months Worked</th>
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <c:forEach items="${experiencedetails}" var="experiencedetail">
+                                                            
+                                                                <tr class="odd gradeX">
+                                                                    <td><c:out value="${experiencedetail.employer}" /></td>
+                                                                    <td>
+                                                                        <c:out value="${experiencedetail.city}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                        <c:out value="${experiencedetail.state}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                       <c:out value="${experiencedetail.country}" /> 
+                                                                    </td>
+                                                                    <td> <c:out value="${experiencedetail.joineddate}" /> </td>
+                                                                    <td> <c:out value="${experiencedetail.enddate}" /> </td>
+                                                                    <td> <c:out value="${experiencedetail.designation}" /> </td>
+                                                                    <td> <c:out value="${experiencedetail.totalmonthsworked}" /> </td>
+                                                                   
+                                                                </tr>
+															</c:forEach>
+                                                            </tbody>
+                                                        </table>
+
+                                                        </div>
+                                                        </div>
+                                </div>
+                                <!-- </div> -->
+                                <div class="row">
+                                        <!-- <div class="col-md-9"> -->
+                                        <div class="portlet box blue">
+                                        <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-gift"></i>Certification Details</div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form portlet-empty">
+                                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Certification
+                                                                    </th>
+                                                                    <th>Specialisation</th>
+                                                                    <th>Organisation</th>
+                                                                    <th>Address</th>
+                                                                    <th>City</th>
+                                                                    <th> State</th>
+                                                                    <th>Zipcode</th>
+                                                                    <th>Country</th>
+                                                                    <th>Month Of Passing</th>
+                                                                    <th>Year Of Passing</th>
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <c:forEach items="${certificationdetails}" var="certificationdetail">
+                                                            
+                                                                <tr class="odd gradeX">
+                                                                    <td><c:out value="${certificationdetail.certificationName}" /></td>
+                                                                    <td>
+                                                                        <c:out value="${certificationdetail.specialisation}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                        <c:out value="${certificationdetail.organisation}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                       <c:out value="${certificationdetail.address}" /> 
+                                                                    </td>
+                                                                    <td> <c:out value="${certificationdetail.city}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.state}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.zipcode}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.country}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.monthOfPassing}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.yearOfPassing}" /> </td>
+                                                                 
+                                                                </tr>
+															</c:forEach>
+                                                            </tbody>
+                                                        </table>
+                                    </div>
+                                    
+                                        </div>
+                                        </div>
+                                
+                               <!--  </div> --><!-- column ending -->
+                               <!--  <div class="col-md-3"> -->
+                               <div class="row">
+                                <div class="portlet box blue">
+                                 <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-gift"></i>Document Details</div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                      <div class="portlet-body form portlet-empty">
+                                       <table class="table table-striped table-bordered table-advance table-hover">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                <i class="fa fa-briefcase"></i>Experience Documents</th>
+                                                                                            <th class="hidden-xs">
+                                                                                                <i class="fa fa-question"></i> Description </th>
+                                                                                            <th>
+                                                                                                <i class="fa fa-bookmark"></i> Status </th>
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.experiencedocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
+                                                                                            <td></td>
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                                </div>
+                                                                                <div class="portlet-body">
+                                                                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                <i class="fa fa-briefcase"></i>Education Documents</th>
+                                                                                            <th class="hidden-xs">
+                                                                                                <i class="fa fa-question"></i> Description </th>
+                                                                                            <th>
+                                                                                                <i class="fa fa-bookmark"></i> Status </th>
+                                                                                            <th> Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    <c:forEach items="${documents.educationaldocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
+                                                                                            <td></td>
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                                               </div>
+                                                                                               <div class="portlet-body">
+                                                                                               
+                                                                                
+                                                                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                                                                    <thead>
+                                                                                    
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                <i class="fa fa-briefcase"></i>Miscellaneous Documents</th>
+                                                                                            <th class="hidden-xs">
+                                                                                                <i class="fa fa-question"></i> Description </th>
+                                                                                            <th>
+                                                                                                <i class="fa fa-bookmark"></i> Status </th>
+                                                                                            <th> </th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                          <c:forEach items="${documents.miscellaneousdocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
+                                                                                            <td></td>
+                                                                                            <td>
+                                                                                               <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                      
+                                                                                    </tbody>
+                                                                                </table>
+                                      </div>
+                                </div>
+                                </div>
+                                
+                                </div>
+                                <div class="row">
+                                 <div class="portlet box blue">
+                                 <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-gift"></i>Education Details</div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                     <div class="portlet-body form portlet-empty">
+    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1" align="center">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Level Of Education
+                                                                    </th>
+                                                                    <th> Specialization </th>
+                                                                    <th> University/School/College</th>
+                                                                    <th> University Address</th>
+                                                                    <th> Year Of Passing</th>
+                                                                    <th> Month Of Passing </th>
+                                                                    <th>US Sevis Number</th>
+                                                                    <th>G.P.A</th>
+                                                                    
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                 <c:forEach items="${educationdetails}" var="educationdetail">
+                                                            
+                                                               <tr class="odd gradeX">
+                                                                    <td><c:out value="${educationdetail.levelofeducation}" /></td>
+                                                                    <td>
+                                                                        <c:out value="${educationdetail.course}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                        <c:out value="${educationdetail.university}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                       <c:out value="${educationdetail.address}" /> <c:out value="${educationdetail.city}" /> <c:out value="${educationdetail.state}" /> <c:out value="${educationdetail.zipcode}" /> <c:out value="${educationdetail.country}" />
+                                                                    </td>
+                                                                    <td> <c:out value="${educationdetail.yearofpassing}" /> </td>
+                                                                    <td> <c:out value="${educationdetail.monthofpassing}" /> </td>
+                                                                    <td> <c:out value="${educationdetail.ussevisnumber}" /> </td>
+                                                                     <td> <c:out value="${educationdetail.gpa}" /> </td>
+                                                                   
+                                                                </tr>
+															</c:forEach>
+                                                            </tbody>
+                                                        </table>
+
+                                                        </div>
+                                                        </div>
+                                </div>
+                                
+                                </div>
+                               
+                
 
 
                                 </div>
+                                <!-- -page content ending -->
+                              
                             </div>
-                            <!-- END PAGE CONTENT BODY -->
+                            <!-- END PAGE CONTENT  wrapper BODY -->
                             <!-- END CONTENT BODY -->
                         </div>
-                        <!-- END CONTENT -->
+                        <!-- END CONTAINER -->
                     </div>
-                    <!-- END CONTAINER -->
+                    <!-- END page wrapper middle -->
                 </div>
+                <!-- -page wrapper row full height -->
             </div>
             <div class="page-wrapper-row">
                 <div class="page-wrapper-bottom">
@@ -859,5 +1121,5 @@ method="POST" novalidate="novalidate" data-form="preview" data-percentage="90">
         <!-- BEGIN CORE PLUGINS -->
         
     </body>
-
-</html>
+    </html>
+    

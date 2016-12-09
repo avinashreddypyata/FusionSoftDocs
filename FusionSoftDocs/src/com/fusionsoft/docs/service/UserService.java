@@ -106,5 +106,9 @@ public void updateeducation(Education education);
 
 public void updateexperience(Experience experience);
 
+public String saveapplicant(String email);
+
+public List<Applicant> findallapplicants();
+
 
 }

@@ -25,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fusionsoft.docs.dao.UserDao;
+import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
@@ -32,7 +34,9 @@ import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Immigration;
+import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Profile;
+import com.fusionsoft.docs.model.Travel;
 import com.fusionsoft.docs.service.UserService;
 
 @Controller
@@ -40,7 +44,7 @@ import com.fusionsoft.docs.service.UserService;
 public class AdminHomePageController {
 	@Autowired
 	public UserDao userDao;
-	private static int id;
+	private static int id = 10;
 
 	@Autowired
 	private UserService userservice;
@@ -48,7 +52,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 
-		ModelAndView model = new ModelAndView("admin/home");
+		ModelAndView model = new ModelAndView("redirect:applicants");
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		CustomUser logedinUser = null;
@@ -65,8 +69,9 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/applicants", method = RequestMethod.GET)
 	public ModelAndView applicants(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("admin/applicants");
-      	List<Profile> profiles = userservice.findalluserprofiles();
-      	model.addObject("applicants", profiles);
+      	List<Applicant> applicants = userservice.findallapplicants();
+      	System.out.println("The Application is "+applicants.get(0).getFullname());
+      	model.addObject("applicants", applicants);
         return model;
 	}
 	public UserDao getUserDao() {
@@ -88,7 +93,7 @@ public class AdminHomePageController {
         Profile profile = new Profile();
 		String userid = request.getParameter("userid");
 		if(userid != null){
-			 id = Integer.parseInt(userid);
+//			 id = Integer.parseInt(userid);
 		}
 		System.out.println("The user id dshfkdjshfkjdsfj is "+id);
 		profile = userservice.findprofile(id);
@@ -96,7 +101,211 @@ public class AdminHomePageController {
 	    model.addObject("profile", profile);
         return model;
 	}
-
+	@RequestMapping(value = "/addnewapplicant", method = RequestMethod.GET)
+	public ModelAndView addnewapplicant(@ModelAttribute("username") String username,  HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("admin/NewApplicant");
+		 return model;
+	}
+	@RequestMapping(value = "/savenewapplicant", method = RequestMethod.POST)
+	public ModelAndView savenewapplicant(@ModelAttribute("username") String username,  HttpServletRequest request) {
+		ModelAndView model = new ModelAndView();
+		String emailmessage;
+		String password = userservice.saveapplicant(username);
+		 emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n"+"Username:"+username+"\nPassword:"+password;
+			model.setViewName("redirect:applicants");
+		Email email = new Email(username,emailmessage);
+		try{
+			userservice.emailapplicant(email);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		   return model;
+	}
+	@RequestMapping(value = "/editorcreatenewapplication", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView editorcreatenewapplication(@ModelAttribute("applicant") Applicant applicant,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("admin/ApplicationInfo");
+//		 CustomUser user = getCustomUser();
+         applicant = userservice.findapplicant(10);
+         if(applicant == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Applicant());
+         }
+         else{
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("applicant", applicant);
+         }
+        return model;
+        
+	}
+	/*Saving Or Updating The Changes Made By Applicant*/
+	@RequestMapping(value = "/saveorupdateapplication", method = RequestMethod.POST)
+	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant) {
+		ModelAndView model = new ModelAndView("redirect:editorcreatenewcontact");
+//		CustomUser user = getCustomUser();
+		if(applicant.getUserid() == 0){
+		    CustomUser customuser = userservice.findCustomUser(id);
+		    userservice.saveapplication(customuser,applicant);
+		}
+		    else{
+		    	userservice.updateapplication(applicant);
+		    }
+		    return model;
+			}
+	/*create a new application or edit existing contact details based on the changes made by the user*/
+	@RequestMapping(value = "/editorcreatenewcontact", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView editorcreatenewcontact(@ModelAttribute("contact") Contact contact) {
+		ModelAndView model = new ModelAndView("admin/ContactInfo");
+//		 CustomUser user = getCustomUser();
+         contact = userservice.findcontact(id);
+         if(contact == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Contact());
+         }
+         else{
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("contact", contact);
+         }
+        return model;
+        
+	}
+	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
+	@RequestMapping(value = "/saveorupdatecontact", method = RequestMethod.POST)
+	public ModelAndView saveorupdatecontact(@ModelAttribute("contact") Contact contact) {
+		ModelAndView model = new ModelAndView("redirect:editorcreatenewpassport");
+//		CustomUser user = getCustomUser();
+		if(contact.getUserid() == 0){
+		    CustomUser customuser = userservice.findCustomUser(id);
+		    userservice.savecontact(customuser,contact);
+		}
+		    else{
+		    	userservice.updatecontact(contact);
+		    }
+		    return model;
+			}
+	/*create a new application or edit existing contact details based on the changes made by the user*/
+	@RequestMapping(value = "/editorcreatenewpassport", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView editorcreatenewpassport(@ModelAttribute("passport") Passport passport) {
+		ModelAndView model = new ModelAndView("admin/PassportInfo");
+//		 CustomUser user = getCustomUser();
+		 System.out.println("The passport id is"+passport.getUserid());
+         passport = userservice.findpassport(id);
+         if(passport == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Passport());
+         }
+         else{
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("passport", passport);
+         }
+        return model;
+        
+	}
+	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
+	@RequestMapping(value = "/saveorupdatepassport", method = RequestMethod.POST)
+	public ModelAndView saveorupdatepassport(@ModelAttribute("passport") Passport passport) {
+		ModelAndView model = new ModelAndView("redirect:traveldetails");
+//		CustomUser user = getCustomUser();
+		if(passport.getUserid() == 0){
+		    CustomUser customuser = userservice.findCustomUser(id);
+		    userservice.savepassport(customuser,passport);
+		}
+		    else{
+		    	userservice.updatepassport(passport);
+		    }
+		    return model;
+			}
+	@RequestMapping(value = "/traveldetails", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView traveldetails() {
+		ModelAndView model = new ModelAndView();
+//		 CustomUser user = getCustomUser();
+         List<Travel> traveldetails = userservice.findtraveldetails(id);
+       
+        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
+		model.setViewName("admin/TravelInfo");
+		model.addObject("traveldetails", traveldetails);
+        return model;
+        
+	}
+	@RequestMapping(value = "/editorcreatenewtravel", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView editorcreatenewtravel(@ModelAttribute("travel") Travel travel,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("admin/TravelForm");
+//		 CustomUser user = getCustomUser();
+		 if(request == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Travel());
+         }
+         else{
+        /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+//        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
+        	 travel = userservice.findtravel(2);
+        	 model.addObject("travel", new Travel());
+         }
+        return model;
+        
+	}
+	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
+	@RequestMapping(value = "/saveorupdatetravel", method = RequestMethod.POST)
+	public ModelAndView saveorupdatetravel(@ModelAttribute("travel") Travel travel) {
+		ModelAndView model = new ModelAndView("redirect:traveldetails");
+//		CustomUser user = getCustomUser();
+		if(travel.getTravelid() == 0){
+		    CustomUser customuser = userservice.findCustomUser(id);
+		    userservice.savetravel(customuser,travel);
+		}
+		    else{
+		    	userservice.updatetravel(travel);
+		    }
+		    return model;
+			}
+	@RequestMapping(value = "/educationdetails", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView educationdetails() {
+		ModelAndView model = new ModelAndView();
+//		 CustomUser user = getCustomUser();
+         List<Education> educationdetails = userservice.findqualifications(id);
+         if(educationdetails.isEmpty()){
+        	 /*If Entering First Time redirects to empty form with travel form*/
+        	 model.setViewName("redirect:editorcreateneweducation");
+         }
+         else{
+        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
+		model.setViewName("user/EducationInfo");
+		System.out.println("The size is"+educationdetails.size());
+		model.addObject("educationdetails", educationdetails);
+         }
+        return model;
+        
+	}
+	@RequestMapping(value = "/editorcreateneweducation", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView editorcreateneweducation(@ModelAttribute("education") Education education,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("user/EducationForm");
+//		 CustomUser user = getCustomUser();
+		 if(request == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Education());
+         }
+         else{
+        /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+//        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
+        	 model.addObject("education", new Education());
+         }
+        return model;
+        
+	}
+	@RequestMapping(value = "/saveorupdateeducation", method = RequestMethod.POST)
+	public ModelAndView saveorupdateeducation(@ModelAttribute("education") Education education) {
+		ModelAndView model = new ModelAndView("redirect:experiencedetails");
+//		CustomUser user = getCustomUser();
+		if(education.getEduid() == 0){
+		    CustomUser customuser = userservice.findCustomUser(id);
+		    userservice.saveeducation(customuser, education);
+		}
+		    else{
+		    	userservice.updateeducation(education);
+		    }
+		    return model;
+			}
 	@RequestMapping(value = "/applicantEditProfile", method = RequestMethod.GET)
 	public ModelAndView applicantEditProfile(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("admin/applicantEditProfile");
@@ -123,35 +332,7 @@ public class AdminHomePageController {
         return model;
 	}
 	
-	@RequestMapping(value = "/applicantSaveProfile", method = RequestMethod.POST)
-	public ModelAndView applicantSaveProfile(@ModelAttribute("profile") Profile profile,  HttpServletRequest request) {
-		ModelAndView model = new ModelAndView();
-		Map<Integer,String> useridpassword = new HashMap<Integer, String>();
-		String emailmessage;
-		System.out.println("The name is"+profile.getFirstname());
-		System.out.println("The Last Name is"+profile.getLastname());
-		if(profile.getUserid() == 0){
-			useridpassword = userservice.saveProfile(profile);
-			Map.Entry<Integer,String> entry=useridpassword.entrySet().iterator().next();
-			 Integer userid= entry.getKey();
-			 String password=entry.getValue();
-		 emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n"+"Username:"+profile.getEmail()+"\nPassword:"+password;
-			model.setViewName("redirect:applicantEditProfile?userid="+userid);
-		}else{
-		model.setViewName("redirect:applicantEditProfile?userid="+profile.getUserid());
-		userservice.updateprofile(profile,profile.getUserid());
-	     emailmessage ="Your Profile is Updated By The Admin Kindly check them";
-		}
-		Email email = new Email(profile.getEmail(),emailmessage);
-		try{
-			userservice.emailapplicant(email);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		   return model;
-	}
+	
 	@RequestMapping(value = "/addnewdocument",method = RequestMethod.GET)
 	public ModelAndView addnewdocument(@ModelAttribute("fileBucket") FileBucket filebucket){
 	ModelAndView model = new ModelAndView("admin/DocumentsForm");

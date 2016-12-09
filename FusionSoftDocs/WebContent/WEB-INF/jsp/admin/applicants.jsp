@@ -98,7 +98,7 @@ License: You must have a val license purchased only from themeforest(the above l
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="btn-group">
-                                                                        <a href="applicantEditProfile" id="sample_editable_1_new" class="btn sbold green"> Add New
+                                                                        <a href="addnewapplicant" id="sample_editable_1_new" class="btn sbold green"> Add New
                                                                             <i class="fa fa-plus"></i>
                                                                         </a>
                                                                     </div>
@@ -129,26 +129,21 @@ License: You must have a val license purchased only from themeforest(the above l
                                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                                             <thead>
                                                                 <tr>
-                                                                    <th> First Name </th>
-                                                                    <th> Last Name </th>
-                                                                    <th> Email </th>
-                                                                    <th> Phone </th>
+                                                                    <th> Status </th>
+                                                                    <th> Full Name </th>
+                                                                    <th> Application Type </th>
                                                                     <th> Actions </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
  	
-															<c:forEach items="${applicants}" var="profile">
+															<c:forEach items="${applicants}" var="applicant">
                                                             
                                                                 <tr class="odd gradeX">
-                                                                    <td> <a href="applicantViewInfo?userid=${profile.userid}"> <c:out value="${profile.firstname}" /> </a> </td>
+                                                                    <td><c:out value="${applicant.applicationtype}" /></td>
                                                                     <td>
-                                                                        <c:out value="${profile.lastname}" /> 
+                                                                        <c:out value="${applicant.fullname}" /> 
                                                                     </td>
-                                                                    <td>
-                                                                        <a href="mailto:<c:out value="${profile.email}" />"> <c:out value="${profile.email}" /> </a>
-                                                                    </td>
-                                                                    <td class="center"> <c:out value="${profile.phone}" /> </td>
                                                                     <td>
                                                                         <div class="btn-group">
                                                                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -156,7 +151,7 @@ License: You must have a val license purchased only from themeforest(the above l
                                                                             </button>
                                                                             <ul class="dropdown-menu pull-left" role="menu">
                                                                                 <li>
-                                                                                    <a href="applicantEditProfile?userid=${profile.userid}">
+                                                                                    <a href="applicantEditProfile?userid=${applicant.userid}">
                                                                                         <i class="icon-docs"></i> Edit </a>
                                                                                 </li>
                                                                                 <li>
@@ -165,6 +160,9 @@ License: You must have a val license purchased only from themeforest(the above l
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
+                                                                    </td>
+                                                                    <td>
+                                                                    Not Reviewed
                                                                     </td>
                                                                 </tr>
 															</c:forEach>

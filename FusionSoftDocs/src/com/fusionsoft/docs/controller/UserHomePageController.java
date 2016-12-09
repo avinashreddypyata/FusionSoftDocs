@@ -65,17 +65,25 @@ public class UserHomePageController {
 			userservice.updatefirstlogin(id);
 		}
 		else{
-		System.out.println("The First Login is"+user.getFirstlogin());
-		System.out.println("The request Came From"+user.getUserid());
-		profile = userservice.findprofile(user.getUserid());
-		Immigration immigration = userservice.findimmigration(id);
-		List<Experience> experiences = userservice.findexperiences(id);
-		List<Education>  educationqualifications = userservice.findqualifications(id);
-		model.addObject("profile", profile);
-		model.addObject("educationalqualifications", educationqualifications);
-		model.addObject("immigration",immigration);
-		model.addObject("experiences",experiences);
-//		model.setViewName("user/TravelHistory");
+            Passport passport=userservice.findpassport(user.getUserid());
+			model.addObject(passport);
+			Contact contact=userservice.findcontact(user.getUserid());
+			model.addObject(contact);
+			Applicant applicant=userservice.findapplicant(user.getUserid());
+			model.addObject(applicant);
+			List<Travel> traveldetails=userservice.findtraveldetails(user.getUserid());
+			model.addObject("traveldetails",traveldetails);
+			System.out.println(traveldetails.size());
+			List<Experience> experiencedetails=userservice.findexperiences(user.getUserid());
+			model.addObject("experiencedetails",experiencedetails);
+			System.out.println(experiencedetails.size());
+			List<Education> educationdetails=userservice.findqualifications(user.getUserid());
+			model.addObject("educationdetails",educationdetails);
+			Document document=userservice.finddocument(user.getUserid());
+			HashMap<String, List> documentdetails=userservice.findparticulardocuments(user.getUserid());
+			model.addObject("documentdetails",documentdetails);
+			List<Certification> certificationdetails=userservice.findcertificationdetails(user.getUserid());
+			model.addObject("certificationdetails",certificationdetails);
 	    model.setViewName("user/UserHome");
 		}
 		return model;
@@ -113,7 +121,7 @@ public class UserHomePageController {
      }
 	/*Saving Or Updating The Changes Made By Applicant*/
 	@RequestMapping(value = "/saveorupdateapplication", method = RequestMethod.POST)
-	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant,  BindingResult result) {
+	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant) {
 		ModelAndView model = new ModelAndView("redirect:editorcreatenewcontact");
 		CustomUser user = getCustomUser();
 		if(applicant.getUserid() == 0){

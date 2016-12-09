@@ -56,6 +56,8 @@ public interface UserDao {
 	public void updatecertification(Certification certification);
 	public void updateeducation(Education education);
 	public void updateexperience(Experience experience);
+	public int savecustomuser(CustomUser customuser);
+	public List<Applicant> findallapplicants();
 	
 /*test*/
 }

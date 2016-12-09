@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
@@ -767,5 +770,47 @@ public class UserDaoImpl implements UserDao {
 				}
 		
 	}
+
+	@Override
+	public int savecustomuser(CustomUser customuser) {
+		// TODO Auto-generated method stub
+		int id = 0;
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			id = (int) session.save(customuser);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		
+		
+		return id;
+	}
+
+	@Override
+	public List<Applicant> findallapplicants() {
+		// List Of All Applications are taken from the database and result is sent back
+		Session session = getSessionFactory().openSession();
+		List<Applicant> applicants = new ArrayList<Applicant>();
+		try{
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Applicant> criteria = builder.createQuery(Applicant.class);
+			Root<Applicant> applicantRoot = criteria.from(Applicant.class);
+	        criteria.select(applicantRoot);
+			applicants = session.createQuery(criteria).getResultList();
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+		finally{
+			session.close();
+		}
+		return applicants;
+	}
+	
 }
 		

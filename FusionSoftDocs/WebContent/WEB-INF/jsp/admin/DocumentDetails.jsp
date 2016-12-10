@@ -116,7 +116,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="tab-pane active" id="tab_1_1">
                                                      <div class="portlet light ">
                                                                         <div class="btn-group"> 
-                                                                        <a href="addnewdocument" id="sample_editable_1_new" class="btn sbold green"> Add New Document
+                                                                        <a href="addnewdocument" class="btn sbold green"> Add New Document
                                                                             <i class="fa fa-plus"></i>
                                                                         </a>
                                                                     </div>
@@ -178,7 +178,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
-                                                                                    <c:forEach items="${documents.educationaldocuments}" var="document">
+                                                                                    <c:forEach items="${documents.educationdocuments}" var="document">
                                                                                         <tr>
                                                                                             <td>
                                                                         <c:out value="${document.doctitle}" /> 

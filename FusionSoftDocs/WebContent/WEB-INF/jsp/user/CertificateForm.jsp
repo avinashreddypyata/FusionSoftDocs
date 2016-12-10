@@ -179,7 +179,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                       <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a href="addnewdocument">Documents
+                                      <a href="applicantdocument">Documents
                                           
                                             </a>
                                         </li>

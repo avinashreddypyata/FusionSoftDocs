@@ -79,9 +79,8 @@ public class UserHomePageController {
 			System.out.println(experiencedetails.size());
 			List<Education> educationdetails=userservice.findqualifications(user.getUserid());
 			model.addObject("educationdetails",educationdetails);
-			Document document=userservice.finddocument(user.getUserid());
-			HashMap<String, List> documentdetails=userservice.findparticulardocuments(user.getUserid());
-			model.addObject("documentdetails",documentdetails);
+			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+			model.addObject("documents",documents);
 			List<Certification> certificationdetails=userservice.findcertificationdetails(user.getUserid());
 			model.addObject("certificationdetails",certificationdetails);
 	    model.setViewName("user/UserHome");
@@ -281,7 +280,7 @@ public class UserHomePageController {
 	}
 	@RequestMapping(value = "/saveorupdateeducation", method = RequestMethod.POST)
 	public ModelAndView saveorupdateeducation(@ModelAttribute("education") Education education) {
-		ModelAndView model = new ModelAndView("redirect:experiencedetails");
+		ModelAndView model = new ModelAndView("redirect:educationdetails");
 		CustomUser user = getCustomUser();
 		if(education.getEduid() == 0){
 		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
@@ -327,7 +326,7 @@ public class UserHomePageController {
 	}
 	@RequestMapping(value = "/saveorupdateexperience", method = RequestMethod.POST)
 	public ModelAndView saveorupdateexperience(@ModelAttribute("experience") Experience experience) {
-		ModelAndView model = new ModelAndView("redirect:certificateDetails");
+		ModelAndView model = new ModelAndView("redirect:experiencedetails");
 		CustomUser user = getCustomUser();
 		if(experience.getExpid() == 0){
 		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
@@ -390,24 +389,23 @@ public class UserHomePageController {
 			    }
 			    return model;
 				}
-	@RequestMapping(value = "/addnewdocument",method = RequestMethod.GET)
-	public ModelAndView addnewdocument(@ModelAttribute("fileBucket") FileBucket filebucket){
-	ModelAndView model = new ModelAndView("user/DocumentsForm");
-	model.addObject("fileBucket", new FileBucket());
-	model.addObject("userid", id);
+	@RequestMapping(value = "/editorcreatenewdocument",method = RequestMethod.GET)
+	public ModelAndView editorcreatenewdocument(@ModelAttribute("fileBucket") FileBucket filebucket){
+	
+	ModelAndView model = new ModelAndView("user/DocumentForm");
+	model.addObject("filebucket", new FileBucket());
+	
 	return model;
 	
 		
 	}
 	@RequestMapping(value = "/uploaddocument",method = RequestMethod.POST)
 	public ModelAndView uploaddocument(@ModelAttribute("fileBucket") FileBucket fileBucket, HttpServletRequest request){
-	int userid = Integer.parseInt(fileBucket.getUserid());
-	System.out.println("The userid is"+userid);
+	CustomUser customuser = getCustomUser();
+	System.out.println("The userid is"+customuser.getUserid());
 	System.out.println("The doctype is"+fileBucket.getDoctype());
-	CustomUser customuser = userservice.findCustomUser(userid);
 	int docid = userservice.saveDocument(fileBucket,customuser);
 	System.out.println("The docid is"+docid);
-	System.out.println("The userid is"+fileBucket.getUserid());
 	ModelAndView model = new ModelAndView("redirect:applicantdocument");
 	return model;	
 		
@@ -433,15 +431,19 @@ public class UserHomePageController {
 	
 	}
 	@RequestMapping(value = "/applicantdocument",method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView applicantdocument() throws IOException{
-     ModelAndView model = new ModelAndView("user/ApplicantDocuments");
-     HashMap<String,List> documents = new HashMap<String,List>();
-     Profile profile = new Profile();
-		profile = userservice.findprofile(id);
-		documents = userservice.findparticulardocuments(id);
-	    model.addObject("profile", profile);
-		model.addObject("documents",documents);
-		model.addObject("fileBucket",new FileBucket());
+	public ModelAndView applicantdocument(@ModelAttribute("filebucket") FileBucket filebucket) throws IOException{
+     ModelAndView model = new ModelAndView();
+     HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
+     documents = userservice.findparticulardocuments(10);
+     System.out.println("The Size Of Document is"+documents.size());
+        if(documents.isEmpty()){
+        	model.setViewName("user/DocumentForm");
+        	model.addObject("filebucket", new FileBucket());
+        }else{
+        	model.addObject("documents",documents);
+        	model.setViewName("user/DocumentDetails");
+        }
+		
      return model;
 	}
 //	@RequestMapping(value = "/saveexperience",method = RequestMethod.POST)

@@ -104,12 +104,16 @@ public class UserServiceImpl implements UserService {
         return fileBytes;
     }
 	@Override
-	public HashMap<String,List> findparticulardocuments(int userid) {
+	public HashMap<String,List<Document>> findparticulardocuments(int userid) {
 		// TODO Auto-generated method stub
-		HashMap<String,List> documents = new HashMap<String,List>();
-		documents.put("experiencedocuments", userDao.findparticulardocuments(userid, "experience"));
-		documents.put("educationaldocuments", userDao.findparticulardocuments(userid, "educational"));
-		documents.put("miscellaneousdocuments",userDao.findparticulardocuments(userid, "miscellaneous"));
+		HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
+		documents.put("experiencedocuments", userDao.findparticulardocuments(userid, "Experience"));
+		documents.put("passportdocuments", userDao.findparticulardocuments(userid, "Passport"));
+		documents.put("educationdocuments",userDao.findparticulardocuments(userid, "Education"));
+		documents.put("traveldocuments",userDao.findparticulardocuments(userid, "Travel"));
+		documents.put("certificatedocuments",userDao.findparticulardocuments(userid, "Certificate"));
+		documents.put("otherdocuments",userDao.findparticulardocuments(userid, "Other"));
+		System.out.println("The Documents in The Servvice Layer are"+userDao.findparticulardocuments(userid, "Education").size());
 		return documents;
 	}
 	@Override

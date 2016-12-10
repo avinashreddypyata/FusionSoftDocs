@@ -38,7 +38,7 @@ public CustomUser findCustomUser(int userid);
 
 public int saveDocument(FileBucket fileBucket, CustomUser customuser);
 
-public HashMap<String, List> findparticulardocuments(int userid);
+public HashMap<String, List<Document>> findparticulardocuments(int userid);
 
 public Document finddocument(int docid);
 

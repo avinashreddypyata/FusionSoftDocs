@@ -170,7 +170,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">>
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
                                       <a href="experiencedetails">Experience
                                                 
                                             </a>
@@ -179,7 +179,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                       <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a href="addnewdocument">Documents
+                                      <a href="applicantdocument">Documents
                                           
                                             </a>
                                         </li>

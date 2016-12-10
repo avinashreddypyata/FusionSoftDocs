@@ -140,7 +140,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                     <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                        <li>
                                             <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
@@ -179,7 +179,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                       <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a href="addnewdocument">Documents
+                                      <a href="applicantdocument">Documents
                                           
                                             </a>
                                         </li>

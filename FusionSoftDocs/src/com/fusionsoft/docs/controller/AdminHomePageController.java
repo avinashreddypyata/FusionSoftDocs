@@ -52,7 +52,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 
-		ModelAndView model = new ModelAndView("redirect:applicants");
+		ModelAndView model = new ModelAndView("redirect:traveldetails");
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		CustomUser logedinUser = null;
@@ -89,7 +89,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/applicantViewInfo", method = RequestMethod.GET)
 	public ModelAndView applicantViewInfo(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("admin/applicantViewInfo");
-		HashMap<String,List> documents = new HashMap<String,List>();
+		HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
         Profile profile = new Profile();
 		String userid = request.getParameter("userid");
 		if(userid != null){
@@ -342,20 +342,20 @@ public class AdminHomePageController {
 	
 		
 	}
-	@RequestMapping(value = "/uploaddocument",method = RequestMethod.POST)
-	public ModelAndView uploaddocument(@ModelAttribute("fileBucket") FileBucket fileBucket, HttpServletRequest request){
-	int userid = Integer.parseInt(fileBucket.getUserid());
-	System.out.println("The userid is"+userid);
-	System.out.println("The doctype is"+fileBucket.getDoctype());
-	CustomUser customuser = userservice.findCustomUser(userid);
-	int docid = userservice.saveDocument(fileBucket,customuser);
-	System.out.println("The docid is"+docid);
-	System.out.println("The userid is"+fileBucket.getUserid());
-	ModelAndView model = new ModelAndView("redirect:applicantdocument");
-	return model;
-	
-		
-	}
+//	@RequestMapping(value = "/uploaddocument",method = RequestMethod.POST)
+//	public ModelAndView uploaddocument(@ModelAttribute("fileBucket") FileBucket fileBucket, HttpServletRequest request){
+//	int userid = Integer.parseInt(fileBucket.getUserid());
+//	System.out.println("The userid is"+userid);
+//	System.out.println("The doctype is"+fileBucket.getDoctype());
+//	CustomUser customuser = userservice.findCustomUser(userid);
+//	int docid = userservice.saveDocument(fileBucket,customuser);
+//	System.out.println("The docid is"+docid);
+//	System.out.println("The userid is"+fileBucket.getUserid());
+//	ModelAndView model = new ModelAndView("redirect:applicantdocument");
+//	return model;
+//	
+//		
+//	}
 	@RequestMapping(value = "/deleteDoc",method = RequestMethod.GET)
 	public ModelAndView deleteDoc(@ModelAttribute("docid") int docid,HttpServletResponse response, HttpServletRequest request,RedirectAttributes redirectAttributes) throws IOException{
      int userid = userservice.finduseridbydocid(docid);
@@ -376,7 +376,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/applicantdocument",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView applicantdocument() throws IOException{
      ModelAndView model = new ModelAndView("admin/ApplicantDocuments");
-     HashMap<String,List> documents = new HashMap<String,List>();
+     HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
      Profile profile = new Profile();
 		profile = userservice.findprofile(id);
 		documents = userservice.findparticulardocuments(id);

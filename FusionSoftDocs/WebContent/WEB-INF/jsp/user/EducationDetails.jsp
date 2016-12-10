@@ -36,8 +36,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
+       <!-- BEGIN PAGE LEVEL PLUGINS -->
         <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -153,12 +155,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li >
+                                        <li>
                                          <a href="editorcreatenewpassport">Passport
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li  >
                                          <a href="traveldetails">Travel 
                                                 <span class="arrow"></span>
                                             </a>
@@ -168,7 +170,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                
                                             </a>
                                         </li>
-                                        <li>
+                                        <li >
                                       <a href="experiencedetails">Experience
                                                 
                                             </a>
@@ -177,7 +179,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                       <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a href="addnewdocument">Documents
+                                      <a href="applicantdocument">Documents
                                           
                                             </a>
                                         </li>
@@ -207,90 +209,66 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="container">
                                 <div class="row">
                                             <div class="col-md-12">
-                                <div class="portlet light ">
-                                                    <div class="portlet-body">
-                                                        <div class="table-toolbar">
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="btn-group">
+                                             <div class="btn-group">
                                                                         <a id="sample_editable_1_new" class="btn sbold green" href="editorcreateneweducation"> Add More Education Details
                                                                             <i class="fa fa-plus"></i>
                                                                         </a>
                                                                         
                                                                     </div>
-                                                                </div>
-                                                              
-                                                            </div>
-                                                        </div>
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-                                                            <thead>
+                                        <div class="portlet light ">
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Education Details</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
                                                                 <tr>
                                                                     <th>
-                                                                       Passing Year 
+                                                                        Level Of Education
                                                                     </th>
                                                                     <th> Specialization </th>
-                                                                    <th> Level Of Education</th>
                                                                     <th> University/School/College</th>
                                                                     <th> University Address</th>
+                                                                    <th> Year Of Passing</th>
                                                                     <th> Month Of Passing </th>
                                                                     <th>US Sevis Number</th>
                                                                     <th>G.P.A</th>
-                                                                    <th>Actions</th>
+                                                                    
+                                                                   
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                               <c:forEach items="${educationdetails}" var="educationdetail">
+                                       <tbody>
+                                                                 <c:forEach items="${educationdetails}" var="educationdetail">
                                                             
-                                                                <tr class="odd gradeX">
-                                                                    <td> <c:out value="${educationdetail.yearofpassing}" /> </td>
+                                                               <tr class="odd gradeX">
+                                                                    <td><c:out value="${educationdetail.levelofeducation}" /></td>
                                                                     <td>
                                                                         <c:out value="${educationdetail.course}" /> 
                                                                     </td>
-                                                                    <td><c:out value="${educationdetail.levelofeducation}" /></td>
                                                                     <td>
                                                                         <c:out value="${educationdetail.university}" /> 
                                                                     </td>
-                                                                     
                                                                     <td>
                                                                        <c:out value="${educationdetail.address}" /> <c:out value="${educationdetail.city}" /> <c:out value="${educationdetail.state}" /> <c:out value="${educationdetail.zipcode}" /> <c:out value="${educationdetail.country}" />
                                                                     </td>
-                                                                   
+                                                                    <td> <c:out value="${educationdetail.yearofpassing}" /> </td>
                                                                     <td> <c:out value="${educationdetail.monthofpassing}" /> </td>
                                                                     <td> <c:out value="${educationdetail.ussevisnumber}" /> </td>
                                                                      <td> <c:out value="${educationdetail.gpa}" /> </td>
-                                                                   <td>
-                                                                        <div class="btn-group">
-                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                                                <i class="fa fa-angle-down"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu pull-left" role="menu">
-                                                                                <li>
-                                                                                    <a href="applicantEditexperience?expid=${experience.expid}">
-                                                                                        <i class="icon-docs"></i> Edit </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="applicantDeleteexperience?expid=${experience.expid}">
-                                                                                        <i class="icon-tag"></i> Delete </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </td>
+                                                                   
                                                                 </tr>
 															</c:forEach>
                                                             </tbody>
-                                                        </table>
-                                                        <form action ="experiencedetails">
-                                                        <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
-  style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png')"
-    value="SaveAndContinue" />
-    
-  </div>
+                                    </table>
+                                     <form action ="educationdetails">
+<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Loading state </button>
+
   </form>
-                                                    </div>
-                                                    
-                                                </div>
+                                </div>
+                            </div>
                                                 </div>
                                                 </div>
                                
@@ -323,7 +301,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <h2>About</h2>
                                     <p> Fusionsoft is a minority owned business, incorporated in
 									2005 and headquartered in Atlanta, Georgia, Fusionsoft delivers
-									solutions for technology & engineering services, staffing
+									solutions for technology and engineering services, staffing
 									services and solutions to public and private sector clients.
 									Fusionsoft offers its clients professional consulting services
 									and project management services </p>
@@ -355,6 +333,29 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
+            <!-- BEGIN PAGE LEVEL PLUGINS -->
+            <script src="http://localhost:854/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+            <!-- END PAGE LEVEL PLUGINS -->
+            <!-- BEGIN THEME GLOBAL SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
+            <!-- END THEME GLOBAL SCRIPTS -->
+            <!-- BEGIN PAGE LEVEL SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/pages/scripts/table-datatables-rowreorder.min.js" type="text/javascript"></script>
+            <!-- END PAGE LEVEL SCRIPTS -->
+            <!-- BEGIN THEME LAYOUT SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         
     </body>
 

@@ -82,16 +82,6 @@ License: You must have a valid license purchased only from themeforest(the above
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" />
-        <style>
-        table{
-        width:100px;
-        height: 50px;
-        word-wrap:break-word;
-        table-layout: fixed;
-        }
-        
-        
-        </style>
          </head>
     
     <!-- END HEAD -->
@@ -150,46 +140,46 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                       <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
-                                            <a> Home
+                                        <li>
+                                            <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a>Application
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                        <a>Contact
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                         <a>Passport
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                         <a>Travel 
+                                            <a href="editorcreatenewapplication">Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                       <a>Education
+                                        <a href="editorcreatenewcontact">Contact
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li >
+                                         <a href="editorcreatenewpassport">Passport
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                         <a href="traveldetails">Travel 
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                       <a href="educationdetails">Education
                                                
                                             </a>
                                         </li>
                                         <li>
-                                      <a>Experience
+                                      <a href="experiencedetails">Experience
                                                 
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active" >
-                                      <a>Certification</a>
+                                        <li >
+                                      <a href="certificateDetails">Certification</a>
                                         </li>
-                                        <li>
-                                      <a>Documents
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                      <a href="applicantdocument">Documents
                                           
                                             </a>
                                         </li>
@@ -217,32 +207,29 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                                <div class="row">
-                                            <div class="col-md-12">
-                                <div class="portlet light ">
-                                                    <div class="portlet-body">
-                                                        <div class="table-toolbar">
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="btn-group">
-                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="editorcreatenewcertificate"> Add Certification
+                                
+                                        <div class="portlet light ">
+                                         <div class="btn-group">
+                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="editorcreatenewdocument"> Add More Documents
                                                                             <i class="fa fa-plus"></i>
                                                                         </a>
                                                                         
                                                                     </div>
-                                                                </div>
-                                                              
-                                                            </div>
-                                                        </div>
-                                                       <table class="table table-striped table-bordered table-advance table-hover">
-                                                                                    <thead>
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Experience Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
                                                                                         <tr>
                                                                                             <th>
-                                                                                                <i class="fa fa-briefcase"></i>Experience Documents</th>
-                                                                                            <th class="hidden-xs">
-                                                                                                <i class="fa fa-question"></i> Description </th>
-                                                                                            <th>
-                                                                                                <i class="fa fa-bookmark"></i> Status </th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                          
                                                                                             <th>Actions</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -252,8 +239,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                             <td>
                                                                         <c:out value="${document.doctitle}" /> 
                                                                     </td>
-                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
-                                                                                            <td></td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                            
                                                                                             <td>
                                                                                                 <div class="btn-group">
                                                                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -274,29 +261,35 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         </tr>
                                                                                         </c:forEach>
                                                                                     </tbody>
-                                                                                </table>
-                                                                                </div>
-                                                                                <div class="portlet-body">
-                                                                                    <table class="table table-striped table-bordered table-advance table-hover">
-                                                                                    <thead>
+                                    </table>
+                                </div>
+                               
+                                               <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Education Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
                                                                                         <tr>
                                                                                             <th>
-                                                                                                <i class="fa fa-briefcase"></i>Education Documents</th>
-                                                                                            <th class="hidden-xs">
-                                                                                                <i class="fa fa-question"></i> Description </th>
+                                                                                                Document</th>
                                                                                             <th>
-                                                                                                <i class="fa fa-bookmark"></i> Status </th>
-                                                                                            <th> Actions</th>
+                                                                                                Description </th>
+                                                                                            
+                                                                                            <th>Actions</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
-                                                                                    <c:forEach items="${documents.educationaldocuments}" var="document">
+                                                                                        <c:forEach items="${documents.educationdocuments}" var="document">
                                                                                         <tr>
                                                                                             <td>
                                                                         <c:out value="${document.doctitle}" /> 
                                                                     </td>
-                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
-                                                                                            <td></td>
+                                                                                            <td> ${document.keywords} </td>
+                                                                                            
                                                                                             <td>
                                                                                                 <div class="btn-group">
                                                                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -317,34 +310,37 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         </tr>
                                                                                         </c:forEach>
                                                                                     </tbody>
-                                                                                </table>
-                                                                                               </div>
-                                                                                               <div class="portlet-body">
-                                                                                               
-                                                                                
-                                                                                    <table class="table table-striped table-bordered table-advance table-hover">
-                                                                                    <thead>
-                                                                                    
+                                    </table>
+                                </div>
+                               
+                                               <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Passport Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
                                                                                         <tr>
                                                                                             <th>
-                                                                                                <i class="fa fa-briefcase"></i>Miscellaneous Documents</th>
-                                                                                            <th class="hidden-xs">
-                                                                                                <i class="fa fa-question"></i> Description </th>
-                                                                                            <th>
-                                                                                                <i class="fa fa-bookmark"></i> Status </th>
-                                                                                            <th> </th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                            
+                                                                                            <th>Actions</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
-                                                                                          <c:forEach items="${documents.miscellaneousdocuments}" var="document">
+                                                                                        <c:forEach items="${documents.passportdocuments}" var="document">
                                                                                         <tr>
                                                                                             <td>
                                                                         <c:out value="${document.doctitle}" /> 
                                                                     </td>
-                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
-                                                                                            <td></td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                          
                                                                                             <td>
-                                                                                               <div class="btn-group">
+                                                                                                <div class="btn-group">
                                                                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
                                                                                 <i class="fa fa-angle-down"></i>
                                                                             </button>
@@ -362,22 +358,158 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                             </td>
                                                                                         </tr>
                                                                                         </c:forEach>
-                                                                                      
                                                                                     </tbody>
-                                                                                </table>
-                                                        <form action ="educationdetails">
-                                                        <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
-  style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/images/btn_submit.png')"
-    value="SaveAndContinue" />
-  </div>
-  </form>
-                                                    </div>
-                                                    
-                                                </div>
-                                                </div>
-                                                </div>
+                                    </table>
+                                </div>
+                                
+                                
+                                               <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Travel Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                          
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.traveldocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                           
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                               
+                                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Certificate Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                          
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.certificatedocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                           
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                               
+                                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Other Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                          
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.otherdocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                           
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
                                
 <div class="btn-group btn-group btn-group-justified">
                                                                  
@@ -408,7 +540,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <h2>About</h2>
                                     <p> Fusionsoft is a minority owned business, incorporated in
 									2005 and headquartered in Atlanta, Georgia, Fusionsoft delivers
-									solutions for technology & engineering services, staffing
+									solutions for technology and engineering services, staffing
 									services and solutions to public and private sector clients.
 									Fusionsoft offers its clients professional consulting services
 									and project management services </p>
@@ -439,7 +571,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script> 
 <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
         
     </body>
 

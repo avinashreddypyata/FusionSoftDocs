@@ -126,6 +126,7 @@ License: You must have a val license purchased only from themeforest(the above l
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        
                                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                                             <thead>
                                                                 <tr>
@@ -140,10 +141,12 @@ License: You must have a val license purchased only from themeforest(the above l
 															<c:forEach items="${applicants}" var="applicant">
                                                             
                                                                 <tr class="odd gradeX">
-                                                                    <td><c:out value="${applicant.applicationtype}" /></td>
-                                                                    <td>
-                                                                        <c:out value="${applicant.fullname}" /> 
+                                                                <td>Not Reviewed</td>
+                                                                <td>
+                                                                       <a href = "editorcreatenewapplication"><c:out value="${applicant.fullname}" /> </a> 
                                                                     </td>
+                                                                    <td><c:out value="${applicant.applicationtype}" /></td>
+                                                                    
                                                                     <td>
                                                                         <div class="btn-group">
                                                                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -160,9 +163,6 @@ License: You must have a val license purchased only from themeforest(the above l
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
-                                                                    </td>
-                                                                    <td>
-                                                                    Not Reviewed
                                                                     </td>
                                                                 </tr>
 															</c:forEach>

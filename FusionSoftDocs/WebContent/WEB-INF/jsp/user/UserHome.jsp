@@ -53,56 +53,13 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyCoQaQ7_auZERrZRV3j0QzK1i553InKWAs" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/datepicker.js"></script>
-     
-    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/theme/default/css/default.css"
+        <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/theme/default/css/default.css"
     id="theme" />
     <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/theme/default/css/default.css"
     id="theme" />
+    
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" />
-        <style>
-        table{
-        table-layout: fixed;
-         overflow-y: auto;
-           word-wrap:break-word;
-          width: 100%;
-        }
-        
-        th{
-          float: center;
-         vertical-align: top;
-          word-wrap:break-word;
-            text-align:right;
-             border: 1px solid #000;
-             width: 25%;
-  text-align: right;
-        }
-        </style>
          </head>
     
     <!-- END HEAD -->
@@ -199,7 +156,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                       <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
-                                      <a href="addnewdocument">Documents
+                                      <a href="applicantdocument">Documents
                                           
                                             </a>
                                         </li>
@@ -227,26 +184,20 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                             <!-- -beginning row -->
-                               <div class="row">
+                              <div class="row">
                                <div class="col-md-6">
                                <div class="portlet box blue">
                                <div class="portlet-title">
                                <div class="caption">
                                <i class="fa fa-gift"></i>Passport Details </div>
-                               <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" data-url="portlet_ajax_content_3.html" class="reload"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
+           
                                </div>
                                <!-- - portlet body beginning -->
                                <div class="portlet-body portlet-empty">
                                <form class="fb-100-item-column selected-object" id="docContainer" action=""
 enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="preview">
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text"/></a>
   </div>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
@@ -281,10 +232,6 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
       </div>
     </div>
   </div>
-  <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
-  style="display: none; cursor: default;">
-    <img src="editordata/images/recaptchawhite.png" />
-  </div>
  
 </form>
                                </div>
@@ -299,13 +246,6 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
                                     <div class="portlet-title">
                                         <div class="caption">
                                             <i class="fa fa-gift"></i>Status </div>
-                                        <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" class="reload"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
                                     </div>
                                     <div class="portlet-body">
                                         <p>Under Review </p>
@@ -314,7 +254,7 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
                                 <!-- END Portlet PORTLET-->
                                </div>
                                </div>
-                                <!-- -ending row -->
+                                 <!-- -ending row -->
                                 
                                 <!--  beginning row -->
                                 
@@ -324,13 +264,6 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
                                 <div class="portlet-title">
                                 <div class="caption">  <i class="fa fa-gift"></i>Contact Information
                                 </div>
-                                <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" data-load="true" data-url="portlet_ajax_content_1.html" class="reload"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
                                 </div>
                                 <!-- -ending portlet title -->
                                 <!-- beginning portlet body -->
@@ -339,7 +272,7 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
 action="" enctype="multipart/form-data" method="POST" novalidate="novalidate"
 data-form="preview">
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text"/></a>
   </div>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
@@ -474,13 +407,6 @@ data-form="preview">
       </div>
     </div>
   </div>
-  <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
-  style="display: none; cursor: default;">
-    <img src="editordata/images/recaptchawhite.png" />
-  </div>
-  <div class="fb-item-alignment-left fb-footer" id="fb-submit-button-div"
-  style="min-height: 1px;">
-  </div>
 </form>
                                 </div>
                                 <!-- ending portlet body -->
@@ -491,13 +417,6 @@ data-form="preview">
                                 <div class="portlet-title">
                                 <div class="caption">  <i class="fa fa-gift"></i>Application Details
                                 </div>
-                                <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" data-load="true" data-url="portlet_ajax_content_1.html" class="reload"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
                                 </div>
                                 <!-- -ending portlet title -->
                                 <!-- beginning portlet body -->
@@ -506,7 +425,7 @@ data-form="preview">
 action="" enctype="multipart/form-data" method="POST" novalidate="novalidate"
 data-form="preview">
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text"/></a>
   </div>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
@@ -664,44 +583,29 @@ data-form="preview">
                                 </div>
                                 </div>
                                 </div>
-                                
-                                <!-- ending row -->
-                                
-                               
-                                <div class="row">
-                                <!-- <div class="col-md-8"> -->
-                                 <div class="portlet box blue">
-                                 <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-gift"></i>Travel History</div>
-                                        <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
+                                <div class="portlet light ">
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Travel Details</span>
                                     </div>
-                                     <div class="portlet-body form portlet-empty">
-                                <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1" align="center">
-                              
-                                                            <thead>
-                                                            
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+ <thead>
                                                                 <tr>
-                                                                    <th> Port Of Entry </th>
-                                                                        
+                                                                    <th>
+                                                                        Port Of Entry
+                                                                    </th>
                                                                     <th> Entry Date To US </th>
                                                                     <th> Exit Date From Us</th>
                                                                     <th> Status At The Time Of Entry</th>
                                                                     <th> Status Valid From </th>
                                                                     <th> Status Valid Till </th>
                                                                     <th>Total Months Outside Us</th>
-                                                              
+                                                                    <th>Actions</th>
                                                                 </tr>
-                                                                
                                                             </thead>
-                                                            <tbody>
-                                                            
+                                        <tbody>
                                                                <c:forEach items="${traveldetails}" var="traveldetail">
                                                             
                                                                 <tr class="odd gradeX">
@@ -718,160 +622,45 @@ data-form="preview">
                                                                     <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
                                                                     <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
                                                                     <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
-                                                                  
+                                                                    <td>
+                                                                        <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="applicantEditexperience?expid=${experience.expid}">
+                                                                                        <i class="icon-docs"></i> Edit </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="applicantDeleteexperience?expid=${experience.expid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </td>
                                                                 </tr>
 															</c:forEach>
                                                             </tbody>
-                                                        </table>
-                                                        </div>
-                                                        </div>
+                                    </table>
                                 </div>
-                                <div class="row">
-                                  <div class="portlet box blue">
-                                 <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-gift"></i>Experience Details</div>
-                                        <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
+                            </div>
+                               <div class="portlet light">
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Experience Documents</span>
                                     </div>
-                                     <div class="portlet-body form portlet-empty">
-    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                        Employer
-                                                                    </th>
-                                                                    <th> City </th>
-                                                                    <th> State</th>
-                                                                    <th> Country</th>
-                                                                    <th> Start Date</th>
-                                                                    <th> End Date</th>
-                                                                    <th>Designation</th>
-                                                                    <th>Total Months Worked</th>
-                                                                   
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                               <c:forEach items="${experiencedetails}" var="experiencedetail">
-                                                            
-                                                                <tr class="odd gradeX">
-                                                                    <td><c:out value="${experiencedetail.employer}" /></td>
-                                                                    <td>
-                                                                        <c:out value="${experiencedetail.city}" /> 
-                                                                    </td>
-                                                                    <td>
-                                                                        <c:out value="${experiencedetail.state}" /> 
-                                                                    </td>
-                                                                    <td>
-                                                                       <c:out value="${experiencedetail.country}" /> 
-                                                                    </td>
-                                                                    <td> <c:out value="${experiencedetail.joineddate}" /> </td>
-                                                                    <td> <c:out value="${experiencedetail.enddate}" /> </td>
-                                                                    <td> <c:out value="${experiencedetail.designation}" /> </td>
-                                                                    <td> <c:out value="${experiencedetail.totalmonthsworked}" /> </td>
-                                                                   
-                                                                </tr>
-															</c:forEach>
-                                                            </tbody>
-                                                        </table>
-
-                                                        </div>
-                                                        </div>
+                                    <div class="tools"> </div>
                                 </div>
-                                <!-- </div> -->
-                                <div class="row">
-                                        <!-- <div class="col-md-9"> -->
-                                        <div class="portlet box blue">
-                                        <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-gift"></i>Certification Details</div>
-                                        <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body form portlet-empty">
-                                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                        Certification
-                                                                    </th>
-                                                                    <th>Specialisation</th>
-                                                                    <th>Organisation</th>
-                                                                    <th>Address</th>
-                                                                    <th>City</th>
-                                                                    <th> State</th>
-                                                                    <th>Zipcode</th>
-                                                                    <th>Country</th>
-                                                                    <th>Month Of Passing</th>
-                                                                    <th>Year Of Passing</th>
-                                                                   
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                               <c:forEach items="${certificationdetails}" var="certificationdetail">
-                                                            
-                                                                <tr class="odd gradeX">
-                                                                    <td><c:out value="${certificationdetail.certificationName}" /></td>
-                                                                    <td>
-                                                                        <c:out value="${certificationdetail.specialisation}" /> 
-                                                                    </td>
-                                                                    <td>
-                                                                        <c:out value="${certificationdetail.organisation}" /> 
-                                                                    </td>
-                                                                    <td>
-                                                                       <c:out value="${certificationdetail.address}" /> 
-                                                                    </td>
-                                                                    <td> <c:out value="${certificationdetail.city}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.state}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.zipcode}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.country}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.monthOfPassing}" /> </td>
-                                                                    <td> <c:out value="${certificationdetail.yearOfPassing}" /> </td>
-                                                                 
-                                                                </tr>
-															</c:forEach>
-                                                            </tbody>
-                                                        </table>
-                                    </div>
-                                    
-                                        </div>
-                                        </div>
-                                
-                               <!--  </div> --><!-- column ending -->
-                               <!--  <div class="col-md-3"> -->
-                               <div class="row">
-                                <div class="portlet box blue">
-                                 <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-gift"></i>Document Details</div>
-                                        <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
-                                    </div>
-                                      <div class="portlet-body form portlet-empty">
-                                       <table class="table table-striped table-bordered table-advance table-hover">
-                                                                                    <thead>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
                                                                                         <tr>
                                                                                             <th>
-                                                                                                <i class="fa fa-briefcase"></i>Experience Documents</th>
-                                                                                            <th class="hidden-xs">
-                                                                                                <i class="fa fa-question"></i> Description </th>
-                                                                                            <th>
-                                                                                                <i class="fa fa-bookmark"></i> Status </th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                          
                                                                                             <th>Actions</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -881,8 +670,8 @@ data-form="preview">
                                                                                             <td>
                                                                         <c:out value="${document.doctitle}" /> 
                                                                     </td>
-                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
-                                                                                            <td></td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                            
                                                                                             <td>
                                                                                                 <div class="btn-group">
                                                                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -903,162 +692,255 @@ data-form="preview">
                                                                                         </tr>
                                                                                         </c:forEach>
                                                                                     </tbody>
-                                                                                </table>
-                                                                                </div>
-                                                                                <div class="portlet-body">
-                                                                                    <table class="table table-striped table-bordered table-advance table-hover">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                <i class="fa fa-briefcase"></i>Education Documents</th>
-                                                                                            <th class="hidden-xs">
-                                                                                                <i class="fa fa-question"></i> Description </th>
-                                                                                            <th>
-                                                                                                <i class="fa fa-bookmark"></i> Status </th>
-                                                                                            <th> Actions</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                    <c:forEach items="${documents.educationaldocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
-                                                                                            <td></td>
-                                                                                            <td>
-                                                                                                <div class="btn-group">
-                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                                                <i class="fa fa-angle-down"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu pull-left" role="menu">
-                                                                                <li>
-                                                                                    <a href="downloadDoc?docid=${document.docid}">
-                                                                                        <i class="icon-docs"></i> Download </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="deleteDoc?docid=${document.docid}">
-                                                                                        <i class="icon-tag"></i> Delete </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                                               </div>
-                                                                                               <div class="portlet-body">
-                                                                                               
-                                                                                
-                                                                                    <table class="table table-striped table-bordered table-advance table-hover">
-                                                                                    <thead>
-                                                                                    
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                <i class="fa fa-briefcase"></i>Miscellaneous Documents</th>
-                                                                                            <th class="hidden-xs">
-                                                                                                <i class="fa fa-question"></i> Description </th>
-                                                                                            <th>
-                                                                                                <i class="fa fa-bookmark"></i> Status </th>
-                                                                                            <th> </th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                          <c:forEach items="${documents.miscellaneousdocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td class="hidden-xs"> ${document.keywords} </td>
-                                                                                            <td></td>
-                                                                                            <td>
-                                                                                               <div class="btn-group">
-                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                                                <i class="fa fa-angle-down"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu pull-left" role="menu">
-                                                                                <li>
-                                                                                    <a href="downloadDoc?docid=${document.docid}">
-                                                                                        <i class="icon-docs"></i> Download </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="deleteDoc?docid=${document.docid}">
-                                                                                        <i class="icon-tag"></i> Delete </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                      
-                                                                                    </tbody>
-                                                                                </table>
-                                      </div>
+                                    </table>
                                 </div>
-                                </div>
-                                
-                                </div>
-                                <div class="row">
-                                 <div class="portlet box blue">
-                                 <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-gift"></i>Education Details</div>
-                                        <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" class="reload" data-load="true" data-url="portlet_ajax_content_2.html"> </a>
-                                            <a href="javascript:;" class="fullscreen"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
+                               
+                                               <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Education Documents</span>
                                     </div>
-                                     <div class="portlet-body form portlet-empty">
-    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1" align="center">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                        Level Of Education
-                                                                    </th>
-                                                                    <th> Specialization </th>
-                                                                    <th> University/School/College</th>
-                                                                    <th> University Address</th>
-                                                                    <th> Year Of Passing</th>
-                                                                    <th> Month Of Passing </th>
-                                                                    <th>US Sevis Number</th>
-                                                                    <th>G.P.A</th>
-                                                                    
-                                                                   
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                 <c:forEach items="${educationdetails}" var="educationdetail">
-                                                            
-                                                               <tr class="odd gradeX">
-                                                                    <td><c:out value="${educationdetail.levelofeducation}" /></td>
-                                                                    <td>
-                                                                        <c:out value="${educationdetail.course}" /> 
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                            <th>
+                                                                                                Description </th>
+                                                                                            
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.educationdocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
                                                                     </td>
-                                                                    <td>
-                                                                        <c:out value="${educationdetail.university}" /> 
+                                                                                            <td> ${document.keywords} </td>
+                                                                                            
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                               
+                                               <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Passport Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                            
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.passportdocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
                                                                     </td>
-                                                                    <td>
-                                                                       <c:out value="${educationdetail.address}" /> <c:out value="${educationdetail.city}" /> <c:out value="${educationdetail.state}" /> <c:out value="${educationdetail.zipcode}" /> <c:out value="${educationdetail.country}" />
-                                                                    </td>
-                                                                    <td> <c:out value="${educationdetail.yearofpassing}" /> </td>
-                                                                    <td> <c:out value="${educationdetail.monthofpassing}" /> </td>
-                                                                    <td> <c:out value="${educationdetail.ussevisnumber}" /> </td>
-                                                                     <td> <c:out value="${educationdetail.gpa}" /> </td>
-                                                                   
-                                                                </tr>
-															</c:forEach>
-                                                            </tbody>
-                                                        </table>
-
-                                                        </div>
-                                                        </div>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                          
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
                                 </div>
                                 
+                                
+                                               <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Travel Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
                                 </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                          
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.traveldocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                           
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                               
+                                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Certificate Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                          
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.certificatedocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                           
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                               
+                                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Other Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                          
+                                                                                            <th>Actions</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents.otherdocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                           
+                                                                                            <td>
+                                                                                                <div class="btn-group">
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                                                <i class="fa fa-angle-down"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                                                <li>
+                                                                                    <a href="downloadDoc?docid=${document.docid}">
+                                                                                        <i class="icon-docs"></i> Download </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="deleteDoc?docid=${document.docid}">
+                                                                                        <i class="icon-tag"></i> Delete </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
                                
                 
 
@@ -1111,14 +993,12 @@ data-form="preview">
                     <!-- END FOOTER -->
                 </div>
             </div>
-        </div>
-        <script src="http://localhost:854/LoginPage/assets/contactformdisplayjsfiles/formvalidation.js"></script>
         <!--[if lt IE 9]>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script> 
 <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
+        
         
     </body>
     </html>

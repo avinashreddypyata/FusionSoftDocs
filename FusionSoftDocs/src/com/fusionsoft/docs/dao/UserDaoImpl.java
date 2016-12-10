@@ -167,14 +167,14 @@ public class UserDaoImpl implements UserDao {
 		session.close();
 		return document;
 	}
-    @SuppressWarnings("deprecation")
-	public List<Document> findparticulardocuments(int userid,String doctitle){
+	public List<Document> findparticulardocuments(int userid,String doctype){
     	List<Document> particulardocuments = new ArrayList<Document>();
     	Session session = sessionFactory.openSession();
-    	Query query = session.createQuery("FROM Document Where userid = ? and doctype = ?");
+    	System.out.println("The Userid and Doctype are "+userid+"The Doctype are"+doctype);
+    	Query<Document> query = session.createQuery("FROM Document Where userid = ? and doctype = ?");
         query.setParameter(0, userid);
-        query.setParameter(1, doctitle);
-    	particulardocuments = query.list();
+        query.setParameter(1, doctype);
+    	particulardocuments = query.getResultList();
     	session.close();
     	System.out.println("The list in DAO is "+particulardocuments.size());
     	return particulardocuments;

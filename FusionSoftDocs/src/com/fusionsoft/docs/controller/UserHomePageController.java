@@ -1,4 +1,4 @@
-package com.fusionsoft.docs.controller;
+ package com.fusionsoft.docs.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.http.HttpRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
@@ -31,12 +32,9 @@ import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
-import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
-import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
-import com.fusionsoft.docs.model.Profile;
 import com.fusionsoft.docs.model.Travel;
 import com.fusionsoft.docs.service.UserService;
 
@@ -53,8 +51,7 @@ public class UserHomePageController {
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public ModelAndView userPage() {
 		ModelAndView model = new ModelAndView();
-		Profile profile = new Profile();
-	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		CustomUser user = null;
 		if (principal instanceof CustomUser) {
 			user = ((CustomUser) principal);
@@ -120,7 +117,7 @@ public class UserHomePageController {
      }
 	/*Saving Or Updating The Changes Made By Applicant*/
 	@RequestMapping(value = "/saveorupdateapplication", method = RequestMethod.POST)
-	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant) {
+	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant, BindingResult result) {
 		ModelAndView model = new ModelAndView("redirect:editorcreatenewcontact");
 		CustomUser user = getCustomUser();
 		if(applicant.getUserid() == 0){
@@ -217,16 +214,9 @@ public class UserHomePageController {
 	public ModelAndView editorcreatenewtravel(@ModelAttribute("travel") Travel travel,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("user/TravelForm");
 		 CustomUser user = getCustomUser();
-		 if(request == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Travel());
-         }
-         else{
-        /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
-//        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
-        	 travel = userservice.findtravel(2);
-        	 model.addObject("travel", new Travel());
-         }
+
         return model;
         
 	}
@@ -234,6 +224,7 @@ public class UserHomePageController {
 	@RequestMapping(value = "/saveorupdatetravel", method = RequestMethod.POST)
 	public ModelAndView saveorupdatetravel(@ModelAttribute("travel") Travel travel) {
 		ModelAndView model = new ModelAndView("redirect:traveldetails");
+		System.out.println("The Travel Id in saveorupdate controller is"+travel.getTravelid());
 		CustomUser user = getCustomUser();
 		if(travel.getTravelid() == 0){
 		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
@@ -242,6 +233,22 @@ public class UserHomePageController {
 		    else{
 		    	userservice.updatetravel(travel);
 		    }
+		    return model;
+			}
+	@RequestMapping(value = "/deletetravel", method = RequestMethod.POST)
+	public ModelAndView deletetravel(@ModelAttribute("travelid") int travelid) {
+		ModelAndView model = new ModelAndView("forward:traveldetails");
+		System.out.println("The Travel Id is "+travelid);
+		userservice.deletetravel(travelid);
+		    return model;
+			}
+	@RequestMapping(value = "/edittravel", method = RequestMethod.POST)
+	public ModelAndView edittravel(@ModelAttribute("travelid") int travelid) {
+		ModelAndView model = new ModelAndView("user/TravelForm");
+		System.out.println("The TravelId for edit travel is"+travelid);
+		Travel travel = userservice.findtravel(travelid);
+		model.addObject("travel",travel);
+		System.out.println("The Travel Id is "+travelid);
 		    return model;
 			}
 	@RequestMapping(value = "/educationdetails", method = {RequestMethod.POST,RequestMethod.GET})
@@ -291,6 +298,22 @@ public class UserHomePageController {
 		    }
 		    return model;
 			}
+	@RequestMapping(value = "/deleteeducation", method = RequestMethod.POST)
+	public ModelAndView deleteeducation(@ModelAttribute("eduid") int eduid) {
+		ModelAndView model = new ModelAndView("forward:educationdetails");
+		System.out.println("The Travel Id is "+eduid);
+		userservice.deleteeducation(eduid);
+		    return model;
+			}
+	@RequestMapping(value = "/editeducation", method = RequestMethod.POST)
+	public ModelAndView editeducation(@ModelAttribute("eduid") int eduid) {
+		ModelAndView model = new ModelAndView("user/EducationForm");
+		System.out.println("The TravelId for edit travel is"+eduid);
+		Education education = userservice.findeducation(eduid);
+		model.addObject("education",education);
+		System.out.println("The Travel Id is "+eduid);
+		    return model;
+			}
 	@RequestMapping(value = "/experiencedetails", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView experiencedetails() {
 		ModelAndView model = new ModelAndView();
@@ -337,6 +360,20 @@ public class UserHomePageController {
 		    }
 		    return model;
 			}
+	@RequestMapping(value = "/deleteexperience", method = RequestMethod.POST)
+	public ModelAndView deleteexperience(@ModelAttribute("expid") int expid) {
+		ModelAndView model = new ModelAndView("forward:experiencedetails");
+		System.out.println("The Travel Id is "+expid);
+		userservice.deleteexperience(expid);
+		    return model;
+			}
+	@RequestMapping(value = "/editexperience", method = RequestMethod.POST)
+	public ModelAndView editexperience(@ModelAttribute("expid") int expid) {
+		ModelAndView model = new ModelAndView("user/ExperienceForm");
+		Experience experience = userservice.findexperience(expid);
+		model.addObject("experience",experience);
+		    return model;
+			}
 	//check whether user has atleast one entry in certification details
 		@RequestMapping(value = "/certificateDetails", method = {RequestMethod.POST,RequestMethod.GET})
 		public ModelAndView certificateDetails() {
@@ -349,7 +386,7 @@ public class UserHomePageController {
 	         }
 	         else{
 	        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
-			model.setViewName("user/certificationDetails");
+			model.setViewName("user/CertificationDetails");
 			model.addObject("certificationdetails", certificationdetails);
 	         }
 	        return model;
@@ -389,6 +426,20 @@ public class UserHomePageController {
 			    }
 			    return model;
 				}
+		@RequestMapping(value = "/deletecertificate", method = RequestMethod.POST)
+		public ModelAndView deletecertificate(@ModelAttribute("certificationid") int certificationid) {
+			ModelAndView model = new ModelAndView("forward:certificateDetails");
+			System.out.println("The Travel Id is "+certificationid);
+			userservice.deletecertificate(certificationid);
+			    return model;
+				}
+		@RequestMapping(value = "/editcertificate", method = RequestMethod.POST)
+		public ModelAndView editcertificate(@ModelAttribute("certificationid") int certificationid) {
+			ModelAndView model = new ModelAndView("user/CertificateForm");
+			Certification certification = userservice.findcertificate(certificationid);
+			model.addObject("certification",certification);
+			    return model;
+				}
 	@RequestMapping(value = "/editorcreatenewdocument",method = RequestMethod.GET)
 	public ModelAndView editorcreatenewdocument(@ModelAttribute("fileBucket") FileBucket filebucket){
 	
@@ -410,9 +461,9 @@ public class UserHomePageController {
 	return model;	
 		
 	}
-	@RequestMapping(value = "/downloadDoc",method = RequestMethod.GET)
-	public void downloaddocument(HttpServletResponse response, HttpServletRequest request) throws IOException{
-	int docid = Integer.parseInt(request.getParameter("docid"));
+	@RequestMapping(value = "/downloadDoc",method = RequestMethod.POST)
+	public void downloaddocument(@ModelAttribute("docid") int docid, HttpServletResponse response) throws IOException{
+	System.out.println("The Docid is"+docid);
 	Document document =  userservice.finddocument(docid);
 	response.setContentType(document.getDoctype());
 	response.setContentLength(document.getAttachment().length);
@@ -446,52 +497,10 @@ public class UserHomePageController {
 		
      return model;
 	}
-//	@RequestMapping(value = "/saveexperience",method = RequestMethod.POST)
-//	public ModelAndView saveexperience(@ModelAttribute("experience")Experience experience,BindingResult result) throws IOException{
-//		 Profile profile = userservice.findprofile(id);
-//		 userservice.saveexperience(profile,experience);
-//		 System.out.println("The experience date is"+experience.getJoineddate());
-//
-//     ModelAndView model = new ModelAndView("redirect:applicantexperience");
-//	 return model;
-//	}
 	@RequestMapping(value = "/addeducation",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView addeducation(@ModelAttribute("experience")Experience experience) throws IOException{
        ModelAndView model = new ModelAndView("user/qualificationsform");
 	 return model;
-	}
-//	@RequestMapping(value = "/saveeducation",method = RequestMethod.POST)
-//	public ModelAndView saveeducation(@ModelAttribute("education")Education education,BindingResult result) throws IOException{
-//		 Profile profile = userservice.findprofile(id);
-//		 userservice.saveeducation(profile,education);
-//    ModelAndView model = new ModelAndView("redirect:applicantqualification");
-//	 return model;
-//	}
-	@RequestMapping(value = "/applicantimmigration",method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView applicantimmigration(@ModelAttribute("immigration")Immigration immigration) throws IOException{
-    ModelAndView model = new ModelAndView("user/ApplicantImmigrationInfo");
-    Immigration applicantimmigration = new Immigration();
-    applicantimmigration = userservice.findimmigration(id);
-    if(applicantimmigration == null){
-    	model.addObject("immigration", new Immigration());
-    }else{
-    	model.addObject("immigration",applicantimmigration);
-    }
-    
-	 return model;
-	}
-	
-
-	@RequestMapping(value = "/saveimmigration",method = RequestMethod.POST)
-	public ModelAndView saveimmigration(@ModelAttribute("immigration")Immigration immigration, BindingResult result) throws IOException{
-    ModelAndView model = new ModelAndView("redirect:applicantimmigration");
-    if(immigration.getUserid() == 0){
-    Profile profile = userservice.findprofile(id);
-    userservice.saveimmigration(profile, immigration);
-    }else{
-    	userservice.updateimmigration(immigration);
-    }
-    return model;
 	}
 	@RequestMapping(value = "/applicantDeleteexperience",method = RequestMethod.GET)
 	public ModelAndView applicantDeleteexperience(HttpServletRequest request){
@@ -509,6 +518,22 @@ public class UserHomePageController {
     
     return model;
 	}
+	@RequestMapping(value = "/confirmsubmission",method = RequestMethod.GET)
+	public ModelAndView confirmsubmission(){
+    ModelAndView model = new ModelAndView("user/ConfirmSubmission");
+    
+    return model;
+	}
+	
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    if (auth != null){    
+	        new SecurityContextLogoutHandler().logout(request, response, auth);
+	    }
+	    return "redirect:/login";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
+	}
+	
 }
 
 

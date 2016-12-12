@@ -1,23 +1,15 @@
 package com.fusionsoft.docs.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,9 +25,7 @@ import com.fusionsoft.docs.model.Education;
 import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
-import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
-import com.fusionsoft.docs.model.Profile;
 import com.fusionsoft.docs.model.Travel;
 import com.fusionsoft.docs.service.UserService;
 
@@ -52,7 +42,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 
-		ModelAndView model = new ModelAndView("redirect:traveldetails");
+		ModelAndView model = new ModelAndView("admin/home");
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		CustomUser logedinUser = null;
@@ -70,7 +60,6 @@ public class AdminHomePageController {
 	public ModelAndView applicants(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("admin/applicants");
       	List<Applicant> applicants = userservice.findallapplicants();
-      	System.out.println("The Application is "+applicants.get(0).getFullname());
       	model.addObject("applicants", applicants);
         return model;
 	}
@@ -85,21 +74,6 @@ public class AdminHomePageController {
 	}
 	public void setUserservice(UserService userservice) {
 		this.userservice = userservice;
-	}
-	@RequestMapping(value = "/applicantViewInfo", method = RequestMethod.GET)
-	public ModelAndView applicantViewInfo(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView("admin/applicantViewInfo");
-		HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
-        Profile profile = new Profile();
-		String userid = request.getParameter("userid");
-		if(userid != null){
-//			 id = Integer.parseInt(userid);
-		}
-		System.out.println("The user id dshfkdjshfkjdsfj is "+id);
-		profile = userservice.findprofile(id);
-		documents = userservice.findparticulardocuments(id);
-	    model.addObject("profile", profile);
-        return model;
 	}
 	@RequestMapping(value = "/addnewapplicant", method = RequestMethod.GET)
 	public ModelAndView addnewapplicant(@ModelAttribute("username") String username,  HttpServletRequest request) {
@@ -306,31 +280,6 @@ public class AdminHomePageController {
 		    }
 		    return model;
 			}
-	@RequestMapping(value = "/applicantEditProfile", method = RequestMethod.GET)
-	public ModelAndView applicantEditProfile(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView("admin/applicantEditProfile");
-        Profile profile = new Profile();
-        if(request.getParameter("userid") == null){
-        	model.addObject("profile", profile);
-            return model;
-        }
-        else{
-		System.out.println("The id is" + request.getParameter("userid"));
-		int userid = Integer.parseInt(request.getParameter("userid"));
-		profile = userservice.findprofile(userid);
-		model.addObject("profile", profile);
-        return model;
-        }
-	}
-
-	@RequestMapping(value = "/applicantDeleteProfile", method = RequestMethod.GET)
-	public ModelAndView employeeoverview(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView("redirect:applicants");
-		System.out.println("The id is" + request.getParameter("userid"));
-		int userid = Integer.parseInt(request.getParameter("userid"));
-		userservice.deleteprofile(userid);
-        return model;
-	}
 	
 	
 	@RequestMapping(value = "/addnewdocument",method = RequestMethod.GET)
@@ -372,18 +321,6 @@ public class AdminHomePageController {
      List<Education> educationqualifications = userservice.findqualifications(id);
      model.addObject("educationalqualifications", educationqualifications);
 	 return model;
-	}
-	@RequestMapping(value = "/applicantdocument",method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView applicantdocument() throws IOException{
-     ModelAndView model = new ModelAndView("admin/ApplicantDocuments");
-     HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
-     Profile profile = new Profile();
-		profile = userservice.findprofile(id);
-		documents = userservice.findparticulardocuments(id);
-	    model.addObject("profile", profile);
-		model.addObject("documents",documents);
-		model.addObject("fileBucket",new FileBucket());
-     return model;
 	}
 	@RequestMapping(value = "/downloadDoc", method = RequestMethod.GET)
 	public void downloadDoc(HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -429,36 +366,6 @@ public class AdminHomePageController {
 //    ModelAndView model = new ModelAndView("redirect:applicantqualification");
 //	 return model;
 //	}
-	@RequestMapping(value = "/applicantimmigration",method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView applicantimmigration(@ModelAttribute("immigration")Immigration immigration) throws IOException{
-    ModelAndView model = new ModelAndView("admin/ApplicantImmigrationInfo");
-    Immigration applicantimmigration = new Immigration();
-    applicantimmigration = userservice.findimmigration(id);
-    if(applicantimmigration == null){
-    	model.addObject("immigration", new Immigration());
-    }else{
-    	model.addObject("immigration",applicantimmigration);
-    }
-    
-	 return model;
-	}
-	@InitBinder
-    public void initBinder(WebDataBinder webDataBinder) {
-     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-     dateFormat.setLenient(false);
-     webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-     }
-	@RequestMapping(value = "/saveimmigration",method = RequestMethod.POST)
-	public ModelAndView saveimmigration(@ModelAttribute("immigration")Immigration immigration, BindingResult result) throws IOException{
-    ModelAndView model = new ModelAndView("redirect:applicantimmigration");
-    if(immigration.getUserid() == 0){
-    Profile profile = userservice.findprofile(id);
-    userservice.saveimmigration(profile, immigration);
-    }else{
-    	userservice.updateimmigration(immigration);
-    }
-    return model;
-	}
 	@RequestMapping(value = "/applicantDeleteexperience",method = RequestMethod.GET)
 	public ModelAndView applicantDeleteexperience(HttpServletRequest request){
 	int expid = Integer.parseInt(request.getParameter("expid"));

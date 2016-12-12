@@ -210,6 +210,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
 action="saveorupdateeducation" enctype="multipart/form-data" method="POST" novalidate="novalidate" modelAttribute="education"
 data-form="preview">
+  <form:hidden path="eduid" value="${education.eduid}"/>
   <div class="fb-form-header" id="fb-form-header1">
     <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/educationformjsfiles/common/images/image_default.png"/></a>
   </div>
@@ -276,8 +277,8 @@ data-form="preview">
           <label id="item7_label_0" style="display: inline;">Exact University/College/School Address</label>
         </div>
         <div class="fb-textarea">
-          <textarea name="universityaddress" id="item7_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          required="required" maxlength="1000" placeholder="" data-hint=""></textarea>
+          <form:textarea name="universityaddress" id="item7_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
+          required="required" maxlength="1000" placeholder="" data-hint="" path="address"></form:textarea>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item8">
@@ -407,9 +408,9 @@ data-form="preview">
   </div>
 </form:form>
 <div class="btn-group btn-group btn-group-justified">
-                                                                 <a href="javascript:;" class="btn red"> Back </a>
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+                                                                 <a href="traveldetails" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
 
 

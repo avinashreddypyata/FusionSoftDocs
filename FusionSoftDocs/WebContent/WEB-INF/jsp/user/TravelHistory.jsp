@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ page session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -235,7 +236,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <th> Status Valid From </th>
                                                                     <th> Status Valid Till </th>
                                                                     <th>Total Months Outside Us</th>
-                                                                    <th>Actions</th>
+                                                                    <th>Action</th>
+                                                                    <th>Action</th>
                                                                 </tr>
                                                             </thead>
                                         <tbody>
@@ -255,29 +257,29 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
                                                                     <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
                                                                     <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
+                                                                     <td>
+
+                                                              <form action="edittravel" method="POST">
+                                                              <input type="hidden" value="${traveldetail.travelid}" name="travelid">
+                                                                <button type="submit" class="btn green btn-outline">Edit</button>
+                                                                </form>
+                                                                 
+                                                                
+                                                                    </td>
                                                                     <td>
-                                                                        <div class="btn-group">
-                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                                                <i class="fa fa-angle-down"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu pull-left" role="menu">
-                                                                                <li>
-                                                                                    <a href="applicantEditexperience?expid=${experience.expid}">
-                                                                                        <i class="icon-docs"></i> Edit </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="applicantDeleteexperience?expid=${experience.expid}">
-                                                                                        <i class="icon-tag"></i> Delete </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
+<form action="deletetravel" method="POST">
+                                                              <input type="hidden" value="${traveldetail.travelid}" name="travelid">
+                                                                <button type="submit" class="btn red btn-outline">Delete</button>
+                                                                </form>
+                                                                 
+                                                                
                                                                     </td>
                                                                 </tr>
 															</c:forEach>
                                                             </tbody>
                                     </table>
                                      <form action ="educationdetails">
-<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Loading state </button>
+<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Save And Continue  </button>
 
   </form>
                                 </div>
@@ -286,9 +288,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </div>
                                
 <div class="btn-group btn-group btn-group-justified">
-                                                                 
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+                                                                  <a href="editorcreatenewpassport" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
                                                                 
 

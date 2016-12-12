@@ -212,6 +212,7 @@ License: You must have a valid license purchased only from themeforest(the above
   <div class="fb-form-header" id="fb-form-header1">
     <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/common/images/image_default.png"/></a>
   </div>
+  <form:hidden path="travelid" value="${travel.travelid}"/>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
       <div class="fb-item fb-100-item-column" id="item1">
@@ -331,9 +332,9 @@ License: You must have a valid license purchased only from themeforest(the above
   </div>
 </form:form>
 <div class="btn-group btn-group btn-group-justified">
-                                                                 
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+                                                                 <a href="editorcreatenewpassport" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
 
 

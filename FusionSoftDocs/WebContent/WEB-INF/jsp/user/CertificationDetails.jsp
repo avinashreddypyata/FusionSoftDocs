@@ -1,8 +1,7 @@
-<%@ page session="false"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -60,9 +59,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
         <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
+       <!-- BEGIN PAGE LEVEL PLUGINS -->
         <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyCoQaQ7_auZERrZRV3j0QzK1i553InKWAs" type="text/javascript"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
         <script src="http://localhost:854/LoginPage/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
@@ -77,12 +76,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
 <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="http://localhost:854/LoginPage/assets/experienceformjsfiles/datepicker.js"></script>
+<script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/datepicker.js"></script>
      
-    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/experienceformjsfiles/theme/default/css/default.css"
+    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="favicon.ico" />
+         </head>
     
     <!-- END HEAD -->
 
@@ -139,7 +139,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                    <ul class="nav navbar-nav">
+                                      <ul class="nav navbar-nav">
                                         <li>
                                             <a href="home"> Home
                                                 <span class="arrow"></span>
@@ -150,7 +150,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li >
                                         <a href="editorcreatenewcontact">Contact
                                                 <span class="arrow"></span>
                                             </a>
@@ -165,17 +165,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li >
+                                        <li>
                                        <a href="educationdetails">Education
                                                
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                        <li>
                                       <a href="experiencedetails">Experience
                                                 
                                             </a>
                                         </li>
-                                        <li >
+                                        <li  aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
                                       <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
@@ -207,121 +207,98 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                               <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
-action="saveorupdateexperience" enctype="multipart/form-data" method="POST" novalidate="novalidate"
-data-form="preview" modelAttribute="experience">
-<form:hidden path="expid" value="${experience.expid}"/>
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/experienceformjsfiles/common/images/image_default.png"/></a>
-  </div>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
-        <div class="fb-header fb-item-alignment-center">
-          <h2 style="display: inline;">
-            Experience Form
-          </h2>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item2">
-        <div class="fb-grouplabel">
-          <label id="item2_label_0" style="display: inline;">Employer</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="employer" id="item2_text_1" required="required" type="text" maxlength="254"
-          placeholder="Employer" autocomplete="off" data-hint="No Need To Mention Client Information"
-          path="employer"/>
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            No Need To Mention Client Information
-          </div>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item3">
-        <div class="fb-grouplabel">
-          <label id="item3_label_0" style="display: inline;">City</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="city" id="item3_text_1" required="required" type="text" maxlength="254"
-          placeholder="City" autocomplete="off" data-hint="" path="city"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">State</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="state" id="item4_text_1" required="required" type="text" maxlength="254"
-          placeholder="State" autocomplete="off" data-hint="" path="state"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item10" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item10_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="text10" id="item10_text_1" type="text" maxlength="254" placeholder="Country"
-          autocomplete="off" data-hint="" path="country"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Start Date</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="startdate" class="datepicker" id="item6_date_1" type="text"
-          data-hint="" path="joineddate"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item7">
-        <div class="fb-grouplabel">
-          <label id="item7_label_0" style="display: inline;">End Date</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="enddate" class="datepicker" id="item7_date_1" type="text"
-          data-hint="" path="enddate"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item8">
-        <div class="fb-grouplabel">
-          <label id="item8_label_0" style="display: inline;">Designation</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="designation" id="item8_text_1" type="text" maxlength="254"
-          placeholder="Designation" autocomplete="off" data-hint="" path="designation"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item9">
-        <div class="fb-grouplabel">
-          <label id="item9_label_0" style="display: inline;">Total Number Of Months Worked</label>
-        </div>
-        <div class="fb-input-number">
-          <form:input name="numberofmonthsworked" id="item9_number_1" type="number" min="0"
-          max="999999999" step="1" placeholder="Total Number Of Months Worked" autocomplete="off"
-          data-hint="Mention The number of months You have worked under that employer"
-          path="totalmonthsworked"/>
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            Mention The number of months You have worked under that employer
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
-  style="display: none; cursor: default;">
-    <img src="http://localhost:854/LoginPage/assets/experienceformjsfiles/editordata/images/recaptchawhite.png" />
-  </div>
-  <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
-  style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="background-image: url('http://localhost:854/LoginPage/assets/experienceformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/experienceformjsfiles/theme/default/images/btn_submit.png')"
-    value="Submit" />
-  </div>
-</form:form>
+                                <div class="row">
+                                            <div class="col-md-12">
+                                             <div class="portlet light ">
+                                         <div class="btn-group">
+                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="editorcreatenewcertificate"> Add More Certificate Details
+                                                                            <i class="fa fa-plus"></i>
+                                                                        </a>
+                                                                        
+                                                                    </div>
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Certificate Details</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Certification
+                                                                    </th>
+                                                                    <th>Specialisation</th>
+                                                                    <th>Organisation</th>
+                                                                    <th>Address</th>
+                                                                    <th>City</th>
+                                                                    <th> State</th>
+                                                                    <th>Zipcode</th>
+                                                                    <th>Country</th>
+                                                                    <th>Month Of Passing</th>
+                                                                    <th>Year Of Passing</th>
+                                                                    <th>Action </th>
+                                                                    <th>Action </th>
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <c:forEach items="${certificationdetails}" var="certificationdetail">
+                                                            
+                                                                <tr class="odd gradeX">
+                                                                    <td><c:out value="${certificationdetail.certificationName}" /></td>
+                                                                    <td>
+                                                                        <c:out value="${certificationdetail.specialisation}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                        <c:out value="${certificationdetail.organisation}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                       <c:out value="${certificationdetail.address}" /> 
+                                                                    </td>
+                                                                    <td> <c:out value="${certificationdetail.city}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.state}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.zipcode}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.country}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.monthOfPassing}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.yearOfPassing}" /> </td>
+                                                                    <td>
+
+                                                              <form action="editcertificate" method="POST">
+                                                              <input type="hidden" value="${certificationdetail.certificationId}" name="certificationid">
+                                                                <button type="submit" class="btn green btn-outline">Edit</button>
+                                                                </form>
+                                                                 
+                                                                
+                                                                    </td>
+                                                                    <td>
+<form action="deletecertificate" method="POST">
+                                                              <input type="hidden" value="${certificationdetail.certificationId}" name="certificationid">
+                                                                <button type="submit" class="btn red btn-outline">Delete</button>
+                                                                </form>
+                                                                </td>
+                                                                 
+                                                                </tr>
+															</c:forEach>
+                                                            </tbody>
+                                    </table>
+                                     <form action ="applicantdocument">
+<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Save And Continue </button>
+
+  </form>
+                                </div>
+                            </div>
+                                                </div>
+                                                </div>
+                               
 <div class="btn-group btn-group btn-group-justified">
-                                                                  <a href="educationdetails" class="btn red"> Back </a>
+                                                                 
+                                                                    <a href="experiencedetails" class="btn red"> Back </a>
                                                                     <a href="home" class="btn blue"> Home </a>
                                                                     <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
+                                                                
 
 
                                 </div>
@@ -338,14 +315,14 @@ data-form="preview" modelAttribute="experience">
                 <div class="page-wrapper-bottom">
                     <!-- BEGIN FOOTER -->
                     <!-- BEGIN PRE-FOOTER -->
-                    <div class="page-prefooter">
+                <div class="page-prefooter">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                                     <h2>About</h2>
                                     <p> Fusionsoft is a minority owned business, incorporated in
 									2005 and headquartered in Atlanta, Georgia, Fusionsoft delivers
-									solutions for technology & engineering services, staffing
+									solutions for technology and engineering services, staffing
 									services and solutions to public and private sector clients.
 									Fusionsoft offers its clients professional consulting services
 									and project management services </p>
@@ -370,13 +347,36 @@ data-form="preview" modelAttribute="experience">
                 </div>
             </div>
         </div>
-        <script src="http://localhost:854/LoginPage/assets/experienceformjsfiles/formvalidation.js"></script>
+        <script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/formvalidation.js"></script>
         <!--[if lt IE 9]>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script> 
 <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
+       <!-- BEGIN CORE PLUGINS -->
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
+            <!-- BEGIN PAGE LEVEL PLUGINS -->
+            <script src="http://localhost:854/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+            <!-- END PAGE LEVEL PLUGINS -->
+            <!-- BEGIN THEME GLOBAL SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
+            <!-- END THEME GLOBAL SCRIPTS -->
+            <!-- BEGIN PAGE LEVEL SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/pages/scripts/table-datatables-rowreorder.min.js" type="text/javascript"></script>
+            <!-- END PAGE LEVEL SCRIPTS -->
+            <!-- BEGIN THEME LAYOUT SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         
     </body>
 

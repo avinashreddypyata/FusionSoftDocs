@@ -272,9 +272,9 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
   </div>
 </form:form>
 <div class="btn-group btn-group btn-group-justified">
-                                                                 <a href="javascript:;" class="btn red"> Back </a>
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+                                                                 <a href="editorcreatenewcontact" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
 
 

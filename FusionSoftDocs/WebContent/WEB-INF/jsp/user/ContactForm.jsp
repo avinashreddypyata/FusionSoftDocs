@@ -414,9 +414,9 @@ data-form="preview" modelAttribute="contact">
   </div>
 </form:form>
 <div class="btn-group btn-group btn-group-justified">
-                                                                 <a href="javascript:;" class="btn red"> Back </a>
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+                                                                 <a href="editorcreatenewapplication" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
 
 
@@ -441,7 +441,7 @@ data-form="preview" modelAttribute="contact">
                                     <h2>About</h2>
                                     <p> Fusionsoft is a minority owned business, incorporated in
 									2005 and headquartered in Atlanta, Georgia, Fusionsoft delivers
-									solutions for technology & engineering services, staffing
+									solutions for technology and engineering services, staffing
 									services and solutions to public and private sector clients.
 									Fusionsoft offers its clients professional consulting services
 									and project management services </p>

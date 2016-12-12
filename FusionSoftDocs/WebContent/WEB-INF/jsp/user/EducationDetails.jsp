@@ -236,7 +236,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <th> Month Of Passing </th>
                                                                     <th>US Sevis Number</th>
                                                                     <th>G.P.A</th>
-                                                                    
+                                                                    <th> Action </th>
+                                                                    <th> Action </th>
                                                                    
                                                                 </tr>
                                                             </thead>
@@ -258,13 +259,27 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <td> <c:out value="${educationdetail.monthofpassing}" /> </td>
                                                                     <td> <c:out value="${educationdetail.ussevisnumber}" /> </td>
                                                                      <td> <c:out value="${educationdetail.gpa}" /> </td>
-                                                                   
+                                                                                   <td>
+
+                                                              <form action="editeducation" method="POST">
+                                                              <input type="hidden" value="${educationdetail.eduid}" name="eduid">
+                                                                <button type="submit" class="btn green btn-outline">Edit</button>
+                                                                </form>
+                                                                 
+                                                                
+                                                                    </td>
+                                                                    <td>
+<form action="deleteeducation" method="POST">
+                                                              <input type="hidden" value="${educationdetail.eduid}" name="eduid">
+                                                                <button type="submit" class="btn red btn-outline">Delete</button>
+                                                                </form>
+                                                                </td>
                                                                 </tr>
 															</c:forEach>
                                                             </tbody>
                                     </table>
-                                     <form action ="educationdetails">
-<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Loading state </button>
+                                     <form action ="experiencedetails">
+<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Save And Continue </button>
 
   </form>
                                 </div>
@@ -274,8 +289,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                
 <div class="btn-group btn-group btn-group-justified">
                                                                  
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+                                                                    <a href="traveldetails" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
                                                                 
 

@@ -3,7 +3,6 @@ package com.fusionsoft.docs.service;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.fusionsoft.docs.model.Applicant;
 import com.fusionsoft.docs.model.Certification;
@@ -14,21 +13,12 @@ import com.fusionsoft.docs.model.Education;
 import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
-import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
-import com.fusionsoft.docs.model.Profile;
 import com.fusionsoft.docs.model.Travel;
 
 
 public interface UserService {
 
-public void updateprofile(Profile profile, int id);
-
-public void deleteprofile(int userid);
-
-public Profile findprofile(int userid);
-
-public List<Profile> findalluserprofiles();
 
 public void  emailapplicant(Email email);
 
@@ -46,25 +36,17 @@ public void deletedoc(int docid);
 
 public int finduseridbydocid(int docid);
 
-public Map<Integer, String> saveProfile(Profile profile);
 
 public String generateRandomPassword();
 
 public int saveexperience(CustomUser customuser,Experience experience);
 
 public int saveeducation(CustomUser user, Education education);
-
-public Immigration findimmigration(int id);
-
-public void saveimmigration(Profile profile, Immigration immigration);
-
 public List<Experience> findexperiences(int id);
 
 public List<Education> findqualifications(int id);
 
 public void deleteexperience(int expid);
-
-public void updateimmigration(Immigration immigration);
 
 public void deleteeducation(int eduid);
 
@@ -109,6 +91,16 @@ public void updateexperience(Experience experience);
 public String saveapplicant(String email);
 
 public List<Applicant> findallapplicants();
+
+public void deletetravel(int travelid);
+
+public Education findeducation(int eduid);
+
+public Experience findexperience(int expid);
+
+public void deletecertificate(int certificationid);
+
+public Certification findcertificate(int certificationid);
 
 
 }

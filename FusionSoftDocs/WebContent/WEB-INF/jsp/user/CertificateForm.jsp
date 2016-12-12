@@ -209,6 +209,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
 action="saveorupdatecertification" enctype="multipart/form-data" method="POST" novalidate="novalidate"
 data-form="preview" modelAttribute="certification">
+<form:hidden path="certificationId" value="${certification.certificationId}"/>
   <div class="fb-form-header" id="fb-form-header1">
     <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
   </div>
@@ -241,7 +242,7 @@ data-form="preview" modelAttribute="certification">
       </div>
       <div class="fb-item fb-50-item-column" id="item6">
         <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Organisation</label>
+          <label id="item6_label_0" style="display: inline;">Organization</label>
         </div>
         <div class="fb-input-box">
           <form:input name="organisation" id="item6_text_1"  type="text" maxlength="254"
@@ -253,8 +254,8 @@ data-form="preview" modelAttribute="certification">
           <label id="item9_label_0" style="display: inline;">Address</label>
         </div>
         <div class="fb-textarea">
-          <textarea name="address" id="item9_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          maxlength="1000" placeholder="Address" data-hint="" required="required" path="address" ></textarea>
+          <form:textarea name="address" id="item9_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
+          maxlength="1000" placeholder="Address" data-hint="" required="required" path="address" ></form:textarea>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item10">
@@ -360,9 +361,10 @@ data-form="preview" modelAttribute="certification">
   </div>
 </form:form>
 <div class="btn-group btn-group btn-group-justified">
-                                                                 <a href="javascript:;" class="btn red"> Back </a>
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+                                                                
+                                                                    <a href="experiencedetails" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
 
 
@@ -387,7 +389,7 @@ data-form="preview" modelAttribute="certification">
                                     <h2>About</h2>
                                     <p> Fusionsoft is a minority owned business, incorporated in
 									2005 and headquartered in Atlanta, Georgia, Fusionsoft delivers
-									solutions for technology & engineering services, staffing
+									solutions for technology and engineering services, staffing
 									services and solutions to public and private sector clients.
 									Fusionsoft offers its clients professional consulting services
 									and project management services </p>

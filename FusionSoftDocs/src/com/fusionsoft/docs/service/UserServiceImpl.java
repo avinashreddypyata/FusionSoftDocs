@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.mail.Message;
@@ -31,9 +30,7 @@ import com.fusionsoft.docs.model.Education;
 import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
-import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
-import com.fusionsoft.docs.model.Profile;
 import com.fusionsoft.docs.model.Travel;
 
 @Service
@@ -44,32 +41,6 @@ public class UserServiceImpl implements UserService {
 	JavaMailSender mailSender;
 	 @Autowired
 	    private PasswordEncoder passwordEncoder;
-	 
-	@Override
-	public void updateprofile(Profile profile, int id) {
-		// TODO Auto-generated method stub
-		userDao.updateprofile(profile, id);
-		
-	}
-	@Override
-	public void deleteprofile(int userid) {
-		// TODO Auto-generated method stub
-		userDao.deleteprofile(userid);
-		
-	}
-	@Override
-	public Profile findprofile(int userid) {
-		// TODO Auto-generated method stub
-		Profile profile = userDao.findprofile(userid);
-		return profile;
-	}
-	@Override
-	public List<Profile> findalluserprofiles() {
-		
-		List<Profile> profiles = userDao.findalluserprofiles();
-		// TODO Auto-generated method stub
-		return profiles;
-	}
     public void  emailapplicant(Email email){
     	MimeMessagePreparator preparator = getMessagePreparator(email);
     	 
@@ -173,22 +144,6 @@ public class UserServiceImpl implements UserService {
 	      }
 	      return pw;
 	  }
-	public Map<Integer, String> saveProfile(Profile profile) {
-		// TODO Auto-generated method stub
-		Map<Integer,String> useridpassword = new HashMap<Integer, String>();
-		
-		CustomUser customuser = new CustomUser();
-		customuser.setUsername(profile.getEmail());
-		String password = generateRandomPassword();
-		customuser.setPassword(passwordEncoder.encode(password));
-		customuser.setUserrole(2);
-		customuser.setFirstlogin(1);
-		profile.setCustomuser(customuser);
-		customuser.setProfile(profile);
-        int userid = userDao.saveProfile(customuser);
-        useridpassword.put(userid, password);
-        return useridpassword;
-	}
 	@Override
 	public int saveexperience(CustomUser customuser,Experience experience) {
 		// TODO Auto-generated method stub
@@ -202,18 +157,6 @@ public class UserServiceImpl implements UserService {
 		education.setCustomuser(user);
 		int userid = userDao.saveeducation(education);
 		return userid;
-	}
-	@Override
-	public Immigration findimmigration(int id) {
-		// TODO Auto-generated method stub
-		Immigration immigration = userDao.findimmigration(id);
-		return immigration;
-	}
-	@Override
-	public void saveimmigration(Profile profile, Immigration immigration) {
-		// TODO Auto-generated method stub
-		immigration.setProfile(profile);
-		userDao.saveimmigration(immigration);
 	}
 	@Override
 	public List<Experience> findexperiences(int id) {
@@ -231,12 +174,6 @@ public class UserServiceImpl implements UserService {
 	public void deleteexperience(int expid) {
 		// TODO Auto-generated method stub
 		userDao.deleteexperience(expid);
-	}
-	@Override
-	public void updateimmigration(Immigration immigration) {
-		// TODO Auto-generated method stub
-		userDao.updateimmigration(immigration);
-		
 	}
 	@Override
 	public void deleteeducation(int eduid) {
@@ -372,6 +309,32 @@ public class UserServiceImpl implements UserService {
 		List<Applicant> applicants = userDao.findallapplicants();
 		// TODO Auto-generated method stub
 		return applicants;
+	}
+	@Override
+	public void deletetravel(int travelid) {
+		// Delete The Travel Entry From The Table
+		userDao.deletetravel(travelid);
+		
+	}
+	@Override
+	public Education findeducation(int eduid) {
+		// TODO Auto-generated method stub
+		return userDao.findeducation(eduid);
+	}
+	@Override
+	public Experience findexperience(int expid) {
+		// TODO Auto-generated method stub
+		return userDao.findexperience(expid);
+	}
+	@Override
+	public void deletecertificate(int certificationid) {
+		// TODO Auto-generated method stub
+		userDao.deletecertificate(certificationid);
+	}
+	@Override
+	public Certification findcertificate(int certificationid) {
+		// TODO Auto-generated method stub
+		return userDao.findcertificate(certificationid);
 	}
 	
 	

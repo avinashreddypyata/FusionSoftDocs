@@ -19,6 +19,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.fusionsoft.docs.model.Applicant;
@@ -29,9 +30,7 @@ import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
 import com.fusionsoft.docs.model.Experience;
-import com.fusionsoft.docs.model.Immigration;
 import com.fusionsoft.docs.model.Passport;
-import com.fusionsoft.docs.model.Profile;
 import com.fusionsoft.docs.model.Travel;
 import com.fusionsoft.docs.service.UserService;
 
@@ -41,8 +40,6 @@ public class UserDaoImpl implements UserDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	@Autowired
-	private UserService userservice;
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -103,59 +100,7 @@ public class UserDaoImpl implements UserDao {
 		
 		return profiles;
 	}
-	@Override
-	public Profile findprofile(int userid) {
-		// TODO Auto-generated method stub
-		Session session = getSessionFactory().openSession().getSession();
-		session.beginTransaction();
-		Profile profile = session.get(Profile.class, userid);
-		System.out.println("The required Name is" + profile.getLastname());
-		session.getTransaction().commit();
-		session.close();
-		return profile;
-	}
 
-	@Override
-	public int updateprofile(Profile updateuser, int userid) {
-         int id;
-         System.out.println("The user name is "+updateuser.getFirstname());
-		Session session = getSessionFactory().openSession().getSession();
-		session.beginTransaction();
-		Query query = session.createQuery(
-				"update Profile set firstname = :firstname , lastname = :lastname, email = :email, phone = :phone, zip = :zip, country = :country, "
-						+ "adminnotes = :adminnotes, address = :address" + " where id = :userid");
-		query.setParameter("firstname", updateuser.getFirstname());
-		query.setParameter("lastname", updateuser.getLastname());
-		query.setParameter("email", updateuser.getEmail());
-		query.setParameter("phone", updateuser.getPhone());
-		query.setParameter("zip", updateuser.getZip());
-		query.setParameter("country", updateuser.getCountry());
-		query.setParameter("adminnotes", updateuser.getAdminnotes());
-		query.setParameter("address", updateuser.getAddress());
-		query.setParameter("userid", userid);
-		id = query.executeUpdate();
-		session.getTransaction().commit();
-		session.close();
-
-		return id;
-	}
-
-	@SuppressWarnings("rawtypes")
-	@Override
-	public int deleteprofile(int userid) {
-		// TODO Auto-generated method stub
-		@SuppressWarnings("deprecation")
-		Session session = getSessionFactory().openSession().getSession();
-		session.beginTransaction();
-		Serializable id = new Integer(userid);
-		Object persistentInstance = session.load(CustomUser.class, id);
-		if (persistentInstance != null) {
-		    session.delete(persistentInstance);
-		}
-		
-		session.getTransaction().commit();
-		return 0;
-	}
 
 	@Override
 	public Document finddocument(int docid) {
@@ -257,27 +202,6 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public Immigration findimmigration(int id) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
-		Immigration immigration = session.get(Immigration.class, id);
-		session.close();
-		return immigration;
-	}
-
-	@Override
-	public void saveimmigration(Immigration immigration) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
-		session.beginTransaction();
-		System.out.println("The saving happeing in DAO lAYER");
-		session.save(immigration);
-		session.getTransaction().commit();
-		session.close();
-		
-	}
-
-	@Override
 	public List<Experience> findexperiences(int id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
@@ -315,28 +239,6 @@ public class UserDaoImpl implements UserDao {
 		
 		
 	}
-
-	@Override
-	public void updateimmigration(Immigration immigration) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
-		Immigration immigrationload = session.get(Immigration.class, immigration.getUserid());
-		immigrationload.setCurrentstatus(immigration.getCurrentstatus());
-		immigrationload.setExpirydate(immigration.getExpirydate());
-		immigrationload.setI94number(immigration.getI94number());
-		immigrationload.setPassportnumber(immigration.getPassportnumber());
-		immigrationload.setPlaceofissuance(immigration.getPlaceofissuance());
-		immigrationload.setLastentrydate(immigration.getLastentrydate());
-		immigrationload.setIssueddate(immigration.getIssueddate());
-		immigrationload.setStatusexpiry(immigration.getStatusexpiry());
-		session.beginTransaction();
-		session.saveOrUpdate(immigrationload);
-		session.getTransaction().commit();;
-		session.close();
-		
-		
-	}
-
 	@Override
 	public void deleteeducation(int eduid) {
 		// TODO Auto-generated method stub
@@ -706,6 +608,7 @@ public class UserDaoImpl implements UserDao {
 			Experience updatedexperience = session.get(Experience.class, experience.getExpid());
 			updatedexperience.setCountry(experience.getCountry());
 			updatedexperience.setdesignation(experience.getdesignation());
+			updatedexperience.setCity(experience.getCity());
 			updatedexperience.setEmployer(experience.getEmployer());
 			updatedexperience.setEnddate(experience.getEnddate());
 			updatedexperience.setJoineddate(experience.getJoineddate());
@@ -810,6 +713,104 @@ public class UserDaoImpl implements UserDao {
 			session.close();
 		}
 		return applicants;
+	}
+
+	@Override
+	public void deletetravel(int travelid) {
+		// Deleting The travel details
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			Serializable id = new Integer(travelid);
+			Object persistentInstance = session.load(Travel.class, id);
+			if (persistentInstance != null) {
+			    session.delete(persistentInstance);
+			    session.getTransaction().commit();
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}finally {
+			session.close();
+		}
+		
+	}
+
+	@Override
+	public Education findeducation(int eduid) {
+		// TODO Auto-generated method stub
+		Education education = null;
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			education = session.get(Education.class, eduid);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		return education;
+	}
+
+	@Override
+	public Experience findexperience(int expid) {
+		// TODO Auto-generated method stub
+		Experience experience = null;
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			experience = session.get(Experience.class, expid);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		return experience;
+	}
+
+	@Override
+	public void deletecertificate(int certificationid) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			Serializable id = new Integer(certificationid);
+			Object persistentInstance = session.load(Certification.class, id);
+			if (persistentInstance != null) {
+			    session.delete(persistentInstance);
+			    session.getTransaction().commit();
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public Certification findcertificate(int certificationid) {
+		// TODO Auto-generated method stub
+		Certification certification = null;
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			certification = session.get(Certification.class, certificationid);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		return certification;
 	}
 	
 }

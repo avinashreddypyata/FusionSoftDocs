@@ -182,9 +182,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                       <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li  aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
-                                      <a href="addnewdocument">Documents
-                                          
-                                            </a>
+                                      <a href="applicantdocument">Documents</a>
                                         </li>
                                         
                                     </ul>
@@ -216,6 +214,7 @@ data-form="preview">
   <div class="fb-form-header" id="fb-form-header1" style="min-height: 0px;">
     <a class="fb-link-logo" id="fb-link-logo1" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
   </div>
+  
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
       <div class="fb-item fb-100-item-column" id="item1">
@@ -281,10 +280,9 @@ data-form="preview">
     value="Submit" />
   </div>
 </form:form>
-<div class="btn-group btn-group btn-group-justified">
-                                                                 <a href="javascript:;" class="btn red"> Back </a>
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+<div class="btn-group btn-group btn-group-justified"> <a href="certificateDetails" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
 
 

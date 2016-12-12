@@ -184,6 +184,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </a>
                                         </li>
                                         
+                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -508,13 +509,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         </c:forEach>
                                                                                     </tbody>
                                     </table>
+                                    <form action ="confirmsubmission">
+<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Save And Continue </button>
+
+  </form>
                                 </div>
                             </div>
                                
 <div class="btn-group btn-group btn-group-justified">
-                                                                 
-                                                                    <a href="javascript:;" class="btn blue"> Home </a>
-                                                                    <a href="javascript:;" class="btn green"> Save Changes And Return </a>
+                                                                  <a href="certificateDetails" class="btn red"> Back </a>
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
                                                                 </div>
                                                                 
 

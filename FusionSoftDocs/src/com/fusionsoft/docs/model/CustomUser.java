@@ -66,9 +66,6 @@ public class CustomUser implements UserDetails {
 		this.lastlogin = lastlogin;
 	}
 	@OneToOne(mappedBy="customuser")
-	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
-	private Profile profile;
-	@OneToOne(mappedBy="customuser")
 	@JoinColumns({
 	    @JoinColumn(name="userid", referencedColumnName="userid")})
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
@@ -129,12 +126,6 @@ public class CustomUser implements UserDetails {
 	}
 	public void setDocuments(List<Document> documents) {
 		this.documents = documents;
-	}
-	public Profile getProfile() {
-		return profile;
-	}
-	public void setProfile(Profile profile) {
-		this.profile = profile;
 	}
 	/* Spring Security related fields*/
 	@Transient

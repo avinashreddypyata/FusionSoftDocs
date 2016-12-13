@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -31,6 +32,7 @@ import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.Passport;
+import com.fusionsoft.docs.model.PasswordResetToken;
 import com.fusionsoft.docs.model.Travel;
 import com.fusionsoft.docs.service.UserService;
 
@@ -812,6 +814,104 @@ public class UserDaoImpl implements UserDao {
 		}
 		return certification;
 	}
-	
-}
+
+	@Override
+	public CustomUser findCustomUserByEmail(String email) {
+		CustomUser customuser = null;
+		Session session = sessionFactory.openSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+	    CriteriaQuery<CustomUser> criteria = builder.createQuery(CustomUser.class);
+	    Root<CustomUser> from = criteria.from(CustomUser.class);
+	    criteria.select(from);
+	    criteria.where(builder.equal(from.get("username"), email));
+	    TypedQuery<CustomUser> typed = session.createQuery(criteria);
+	    try {
+	        return typed.getSingleResult();
+	    } catch (final NoResultException nre) {
+	        return null;
+	    }
+		}
+
+	@Override
+	public void createPasswordResetTokenForUser(PasswordResetToken passwordresettoken) {
+		// TODO Auto-generated method stub
+		int id = 0;
+		Session session = getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			System.out.println("The Password Reset Token is saved");
+			session.saveOrUpdate(passwordresettoken);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public PasswordResetToken findpasswordresettoken(String token) {
+		// TODO Auto-generated method stub
+		PasswordResetToken passwordresettoken = null;
+		Session session = sessionFactory.openSession();
+		try{
+        session.getTransaction().begin();
+		@SuppressWarnings("unchecked")
+		TypedQuery<PasswordResetToken> query = session.createQuery("from PasswordResetToken where token = :token ");
+		query.setParameter("token", token);
+		passwordresettoken = query.getResultList().get(0);
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return passwordresettoken; 
+	}
+
+	@Override
+	public void changeUserPassword(CustomUser customuser, String password) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		try{
+        session.getTransaction().begin();
+        System.out.println("The userid is"+customuser.getUserid());
+        customuser.setPassword(password);
+        session.saveOrUpdate(customuser);
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public void updatePasswordResetTokenForUser(int userid, PasswordResetToken passwordresettoken) {
+		// TODO Auto-generated method stub
+		PasswordResetToken updatedpasswordresettoken = new PasswordResetToken();
+		Session session = sessionFactory.openSession();
+		try{
+	        session.getTransaction().begin();
+	        System.out.println("The userid is"+passwordresettoken.getUserid());
+	        System.out.println("The Id In The Dao Layer For password reset is"+userid);
+	        updatedpasswordresettoken = session.get(PasswordResetToken.class, userid);
+	        updatedpasswordresettoken.setToken(passwordresettoken.getToken());
+	        session.save(updatedpasswordresettoken);
+			session.getTransaction().commit();
+			}catch(Exception e){
+				session.getTransaction().rollback();
+				e.printStackTrace();
+			}
+			finally{
+				session.close();
+			}
+	}
+	}
 		

@@ -14,6 +14,7 @@ import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Passport;
+import com.fusionsoft.docs.model.PasswordResetToken;
 import com.fusionsoft.docs.model.Travel;
 
 
@@ -101,6 +102,16 @@ public Experience findexperience(int expid);
 public void deletecertificate(int certificationid);
 
 public Certification findcertificate(int certificationid);
+
+public CustomUser findCustomUserByEmail(String email);
+
+public void createPasswordResetTokenForUser(CustomUser customuser, String token);
+
+public PasswordResetToken getPasswordResetToken(String token);
+
+public void changeUserPassword(CustomUser customuser, String password);
+
+public void updatePasswordResetTokenForUser(int userid, String token);
 
 
 }

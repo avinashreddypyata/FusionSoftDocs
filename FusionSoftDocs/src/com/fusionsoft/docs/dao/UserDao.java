@@ -10,6 +10,7 @@ import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.Passport;
+import com.fusionsoft.docs.model.PasswordResetToken;
 import com.fusionsoft.docs.model.Travel;
 
 public interface UserDao {
@@ -54,6 +55,11 @@ public interface UserDao {
 	public Experience findexperience(int expid);
 	public void deletecertificate(int certificationid);
 	public Certification findcertificate(int certificationid);
+	public CustomUser findCustomUserByEmail(String email);
+	public void createPasswordResetTokenForUser(PasswordResetToken passwordresettoken);
+	public PasswordResetToken findpasswordresettoken(String token);
+	public void changeUserPassword(CustomUser customuser, String password);
+	public void updatePasswordResetTokenForUser(int userid, PasswordResetToken passwordresettoken);
 	
 /*test*/
 }

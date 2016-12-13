@@ -127,14 +127,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="page-content-inner">
                                         <div class="profile">
                                             <div class="tabbable-line tabbable-full-width">
-                                               <ul class="nav nav-tabs">
-                                               <li>
-                                                        <a href = "applicantViewInfo" >Overview</a>
+                                             <ul class="nav nav-tabs">
+                                               <li  >
+                                                        <a href = "overview" >Overview</a>
                                                     </li>
-                                               <li  data-toggle="tab" class="active">
+                                               <li data-toggle="tab" class="active">
                                                         <a href = "editorcreatenewapplication" >Application</a>
-                                                    </li>
-                                                    <li>
+                                               </li>
+                                                    <li >
                                                         <a href = "editorcreatenewcontact"> Contact </a>
                                                     </li>
                                                      <li >
@@ -144,10 +144,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <a href = "traveldetails"> Travel </a>
                                                     </li>
                                                     <li >
-                                                        <a href = "applicantdocument"> Education </a>
+                                                        <a href = "educationdetails"> Education </a>
                                                     </li>
                                                     <li >
-                                                        <a href = "applicantdocument"> Certifications </a>
+                                                        <a href = "experiencedetails"> Experience </a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "certificateDetails"> Certifications </a>
                                                     </li>
                                                     <li >
                                                         <a href = "applicantdocument"> Documents </a>

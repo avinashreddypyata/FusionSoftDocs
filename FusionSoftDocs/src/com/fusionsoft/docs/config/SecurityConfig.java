@@ -13,15 +13,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.fusionsoft.docs.security.CustomAuthenticationProvider;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
-	@Autowired
-	private CustomAuthenticationProvider customAuthenticationProvider;
 	@Autowired
     UserDetailsService CustomUserDetailsService;
 	 @Bean

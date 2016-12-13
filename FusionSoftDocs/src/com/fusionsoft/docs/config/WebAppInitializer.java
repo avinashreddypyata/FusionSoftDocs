@@ -31,17 +31,15 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     }
  
     private MultipartConfigElement getMultipartConfigElement(){
-        MultipartConfigElement multipartConfigElement = new MultipartConfigElement(LOCATION, MAX_FILE_SIZE, MAX_REQUEST_SIZE, FILE_SIZE_THRESHOLD);
+        MultipartConfigElement multipartConfigElement = new MultipartConfigElement(LOCATION,  MAX_FILE_SIZE,  MAX_REQUEST_SIZE, FILE_SIZE_THRESHOLD);
         return multipartConfigElement;
     }
      
     /*Variables For the Document That is Uploaded*/
      
     private static final String LOCATION = "C:/Users/abhi/Desktop/FusionSoftDocs";
- 
-    private static final long MAX_FILE_SIZE = 1024 * 1024 * 25;//25MB
-     
+    private static final long MAX_FILE_SIZE = 1024 * 1024 * 20;//25MB
+    
     private static final long MAX_REQUEST_SIZE = 1024 * 1024 * 30;//30MB
- 
     private static final int FILE_SIZE_THRESHOLD = 0;
 }

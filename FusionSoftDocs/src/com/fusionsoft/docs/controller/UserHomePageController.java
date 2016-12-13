@@ -63,11 +63,11 @@ public class UserHomePageController {
 		}
 		else{
             Passport passport=userservice.findpassport(user.getUserid());
-			model.addObject(passport);
+			model.addObject("passport",passport);
 			Contact contact=userservice.findcontact(user.getUserid());
-			model.addObject(contact);
+			model.addObject("contact",contact);
 			Applicant applicant=userservice.findapplicant(user.getUserid());
-			model.addObject(applicant);
+			model.addObject("applicant",applicant);
 			List<Travel> traveldetails=userservice.findtraveldetails(user.getUserid());
 			model.addObject("traveldetails",traveldetails);
 			System.out.println(traveldetails.size());
@@ -237,7 +237,7 @@ public class UserHomePageController {
 			}
 	@RequestMapping(value = "/deletetravel", method = RequestMethod.POST)
 	public ModelAndView deletetravel(@ModelAttribute("travelid") int travelid) {
-		ModelAndView model = new ModelAndView("forward:traveldetails");
+		ModelAndView model = new ModelAndView("forward:traveldetails"); 
 		System.out.println("The Travel Id is "+travelid);
 		userservice.deletetravel(travelid);
 		    return model;
@@ -497,27 +497,27 @@ public class UserHomePageController {
 		
      return model;
 	}
-	@RequestMapping(value = "/addeducation",method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView addeducation(@ModelAttribute("experience")Experience experience) throws IOException{
-       ModelAndView model = new ModelAndView("user/qualificationsform");
-	 return model;
-	}
-	@RequestMapping(value = "/applicantDeleteexperience",method = RequestMethod.GET)
-	public ModelAndView applicantDeleteexperience(HttpServletRequest request){
-	int expid = Integer.parseInt(request.getParameter("expid"));
-	userservice.deleteexperience(expid);
-    ModelAndView model = new ModelAndView("redirect:applicantexperience");
-    
-    return model;
-	}
-	@RequestMapping(value = "/applicantDeleteeducation",method = RequestMethod.GET)
-	public ModelAndView applicantDeleteeducation(HttpServletRequest request){
-	int eduid = Integer.parseInt(request.getParameter("eduid"));
-	userservice.deleteeducation(eduid);
-    ModelAndView model = new ModelAndView("redirect:applicantqualification");
-    
-    return model;
-	}
+//	@RequestMapping(value = "/addeducation",method = {RequestMethod.POST, RequestMethod.GET})
+//	public ModelAndView addeducation(@ModelAttribute("experience")Experience experience) throws IOException{
+//       ModelAndView model = new ModelAndView("user/qualificationsform");
+//	 return model;
+//	}
+//	@RequestMapping(value = "/applicantDeleteexperience",method = RequestMethod.GET)
+//	public ModelAndView applicantDeleteexperience(HttpServletRequest request){
+//	int expid = Integer.parseInt(request.getParameter("expid"));
+//	userservice.deleteexperience(expid);
+//    ModelAndView model = new ModelAndView("redirect:applicantexperience");
+//    
+//    return model;
+//	}
+//	@RequestMapping(value = "/applicantDeleteeducation",method = RequestMethod.GET)
+//	public ModelAndView applicantDeleteeducation(HttpServletRequest request){
+//	int eduid = Integer.parseInt(request.getParameter("eduid"));
+//	userservice.deleteeducation(eduid);
+//    ModelAndView model = new ModelAndView("redirect:applicantqualification");
+//    
+//    return model;
+//	}
 	@RequestMapping(value = "/confirmsubmission",method = RequestMethod.GET)
 	public ModelAndView confirmsubmission(){
     ModelAndView model = new ModelAndView("user/ConfirmSubmission");

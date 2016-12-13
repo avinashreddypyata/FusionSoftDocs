@@ -279,7 +279,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </tbody>
                                     </table>
                                      <form action ="educationdetails">
-<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Save And Continue  </button>
+<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Continue  </button>
 
   </form>
                                 </div>

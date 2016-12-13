@@ -103,7 +103,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="container">
                                     <!-- BEGIN PAGE TITLE -->
                                     <div class="page-title">
-                                        <h1>Application
+                                        <h1>Travel Info
                                         </h1>
                                     </div>
                                     <!-- END PAGE TITLE -->
@@ -121,7 +121,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Application</span>
+                                            <span>Travel Info</span>
                                         </li>
                                     </ul>
                                     <!-- END PAGE BREADCRUMBS -->
@@ -131,7 +131,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="tabbable-line tabbable-full-width">
                                                <ul class="nav nav-tabs">
                                                <li>
-                                                        <a href = "applicantViewInfo" >Overview</a>
+                                                        <a href = "overview" >Overview</a>
                                                     </li>
                                                <li>
                                                         <a href = "editorcreatenewapplication" >Application</a>
@@ -142,14 +142,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                      <li >
                                                         <a href = "editorcreatenewpassport">Passport</a>
                                                     </li>
-                                                    <li data-toggle="tab" class="active">
+                                                    <li  data-toggle="tab" class="active">
                                                         <a href = "traveldetails"> Travel </a>
                                                     </li>
                                                     <li >
-                                                        <a href = "applicantdocument"> Education </a>
+                                                        <a href = "educationdetails"> Education </a>
                                                     </li>
                                                     <li >
-                                                        <a href = "applicantdocument"> Certifications </a>
+                                                        <a href = "experiencedetails"> Experience </a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "certificateDetails"> Certifications </a>
                                                     </li>
                                                     <li >
                                                         <a href = "applicantdocument"> Documents </a>
@@ -183,7 +186,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <th> Status Valid From </th>
                                                                     <th> Status Valid Till </th>
                                                                     <th>Total Months Outside Us</th>
-                                                                    <th>Actions</th>
+                                                                    <th>Action</th>
+                                                                    <th>Action</th>
                                                                 </tr>
                                                             </thead>
                                         <tbody>
@@ -203,31 +207,27 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
                                                                     <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
                                                                     <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
+                                                                     <td>
+
+                                                              <form action="edittravel" method="POST">
+                                                              <input type="hidden" value="${traveldetail.travelid}" name="travelid">
+                                                                <button type="submit" class="btn green btn-outline">Edit</button>
+                                                                </form>
+                                                                 
+                                                                
+                                                                    </td>
                                                                     <td>
-                                                                        <div class="btn-group">
-                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                                                <i class="fa fa-angle-down"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu pull-left" role="menu">
-                                                                                <li>
-                                                                                    <a href="applicantEditexperience?expid=${experience.expid}">
-                                                                                        <i class="icon-docs"></i> Edit </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="applicantDeleteexperience?expid=${experience.expid}">
-                                                                                        <i class="icon-tag"></i> Delete </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
+<form action="deletetravel" method="POST">
+                                                              <input type="hidden" value="${traveldetail.travelid}" name="travelid">
+                                                                <button type="submit" class="btn red btn-outline">Delete</button>
+                                                                </form>
+                                                                 
+                                                                
                                                                     </td>
                                                                 </tr>
 															</c:forEach>
                                                             </tbody>
                                     </table>
-                                     <form action ="educationdetails">
-<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Loading state </button>
-
-  </form>
                                 </div>
                             </div>
                                                        

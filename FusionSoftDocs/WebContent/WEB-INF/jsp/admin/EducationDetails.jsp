@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+
+
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -26,8 +28,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
         <meta charset="utf-8" />
-        <title>FusionSoft | Inc</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>FusionSoft Inc. | View experience</title>
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #3 for user profile sample" name="description" />
         <meta content="" name="author" />
@@ -40,6 +42,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -77,16 +81,14 @@ License: You must have a valid license purchased only from themeforest(the above
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
 <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/datepicker.js"></script>
+<script src="http://localhost:854/LoginPage/assets/applicationformjsfiles/datepicker.js"></script>
      
-    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/css/default.css"
+    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
-    
-    <!-- END HEAD -->
 
-   <body class="page-container-bg-solid">
+    <body class="page-container-bg-solid">
         <div class="page-wrapper">
         <jsp:include page="header.jsp"></jsp:include>
             <div class="page-wrapper-row full-height">
@@ -101,7 +103,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="container">
                                     <!-- BEGIN PAGE TITLE -->
                                     <div class="page-title">
-                                        <h1>Travel Form
+                                        <h1>Education Details
                                         </h1>
                                     </div>
                                     <!-- END PAGE TITLE -->
@@ -119,7 +121,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Travel</span>
+                                            <span>Education</span>
                                         </li>
                                     </ul>
                                     <!-- END PAGE BREADCRUMBS -->
@@ -127,7 +129,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="page-content-inner">
                                         <div class="profile">
                                             <div class="tabbable-line tabbable-full-width">
-                                               <ul class="nav nav-tabs">
+                                              <ul class="nav nav-tabs">
                                                <li>
                                                         <a href = "overview" >Overview</a>
                                                     </li>
@@ -140,10 +142,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                      <li >
                                                         <a href = "editorcreatenewpassport">Passport</a>
                                                     </li>
-                                                    <li  data-toggle="tab" class="active">
+                                                    <li >
                                                         <a href = "traveldetails"> Travel </a>
                                                     </li>
-                                                    <li >
+                                                    <li  data-toggle="tab" class="active">
                                                         <a href = "educationdetails"> Education </a>
                                                     </li>
                                                     <li >
@@ -158,129 +160,86 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     
                                                 </ul>
                                  <div class="tab-content">
-                                                    <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer" action="saveorupdatetravel" enctype="multipart/form-data" method="post" novalidate="novalidate" data-form="preview" modelAttribute="travel">
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/visavisatravelformjsfiles/common/images/image_default.png"/></a>
-  </div>
-   <form:hidden path="travelid" value="${travel.travelid}"/>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
-        <div class="fb-header fb-item-alignment-center">
-          <h2>
-            Visa And Travel Information
-          </h2>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item3">
-        <div class="fb-grouplabel">
-          <label id="item3_label_0" style="display: inline;">Port Of Entry</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="portofentry" id="item3_text_1" type="text" maxlength="254"
-          placeholder="Port Of Entry" data-hint="" autocomplete="off" required="required" path="portofentry"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">Entry Date To US</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="entrydate" class="datepicker" id="item4_date_1" type="text"
-          data-hint="You Can Find This Information Uscis Site Using Your I94 Number" path="entrydatetous"
-          />
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            You Can Find This Information Uscis Site Using Your I94 Number
-          </div>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item5">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">Exit Date From US</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="exitdatefromus" class="datepicker" id="item5_date_1" type="text"
-          data-hint="" path="exitdatefromus"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item6" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Status At The Time Of Entry</label>
-        </div>
-        <div class="fb-dropdown">
-          <form:select name="Status" id="item6_select_1" required="required" data-hint="" path="statusattimeofentry">
-            <form:option id="item6_1_option" value="H1">
-              H1
-            </form:option>
-            <form:option id="item6_2_option" value="H4">
-              H4
-            </form:option>
-            <form:option id="item6_3_option" value="F1">
-              F1
-            </form:option>
-            <form:option id="item6_4_option" value="B1">
-              B1
-            </form:option>
-            <form:option id="item6_5_option" value="B2">
-              B2
-            </form:option>
-            <form:option id="item6_6_option" value="L1">
-              L1
-            </form:option>
-            <form:option id="item6_7_option" value="Other">
-              Other
-            </form:option>
-          </form:select>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item8">
-        <div class="fb-grouplabel">
-          <label id="item8_label_0" style="display: inline;">Status Valid From</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="statusvalidfrom" class="datepicker" id="item8_date_1" type="text"
-          data-hint="Mention The Validity Information Of The Status At The Time Of Entry"
-          path="statusvalidfrom"/>
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            Mention The Validity Information Of The Status At The Time Of Entry
-          </div>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item9">
-        <div class="fb-grouplabel">
-          <label id="item9_label_0">Status Valid Till</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="date9" class="datepicker" id="item9_date_1" type="text" data-hint=""
-          path="statusvalidtill"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item11">
-        <div class="fb-grouplabel">
-          <label id="item11_label_0" style="display: inline;">Total Months and Days Outside US</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="totalmonthsoutsideus" id="item11_text_1" type="text" maxlength="254"
-          placeholder="Total Months and Days Outside US" data-hint="If You are out for one and half month mention 1  month and 15 days"
-          autocomplete="off" path="totalmonthsoutsideus"/>
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            If You are out for one and half month mention 1 month and 15 days
-          </div>
-        </div>
-      </div>
+                                 <div class="btn-group">
+                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="editorcreateneweducation"> Add More Education Details
+                                                                            <i class="fa fa-plus"></i>
+                                                                        </a>
+                                                                        
+                                                                    </div>
+                                        <div class="portlet light ">
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Education Details</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Level Of Education
+                                                                    </th>
+                                                                    <th> Specialization </th>
+                                                                    <th> University/School/College</th>
+                                                                    <th> University Address</th>
+                                                                    <th> Year Of Passing</th>
+                                                                    <th> Month Of Passing </th>
+                                                                    <th>US Sevis Number</th>
+                                                                    <th>G.P.A</th>
+                                                                    <th> Action </th>
+                                                                    <th> Action </th>
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                       <tbody>
+                                                                 <c:forEach items="${educationdetails}" var="educationdetail">
+                                                            
+                                                               <tr class="odd gradeX">
+                                                                    <td><c:out value="${educationdetail.levelofeducation}" /></td>
+                                                                    <td>
+                                                                        <c:out value="${educationdetail.course}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                        <c:out value="${educationdetail.university}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                       <c:out value="${educationdetail.address}" /> <c:out value="${educationdetail.city}" /> <c:out value="${educationdetail.state}" /> <c:out value="${educationdetail.zipcode}" /> <c:out value="${educationdetail.country}" />
+                                                                    </td>
+                                                                    <td> <c:out value="${educationdetail.yearofpassing}" /> </td>
+                                                                    <td> <c:out value="${educationdetail.monthofpassing}" /> </td>
+                                                                    <td> <c:out value="${educationdetail.ussevisnumber}" /> </td>
+                                                                     <td> <c:out value="${educationdetail.gpa}" /> </td>
+                                                                                   <td>
+
+                                                              <form action="editeducation" method="POST">
+                                                              <input type="hidden" value="${educationdetail.eduid}" name="eduid">
+                                                                <button type="submit" class="btn green btn-outline">Edit</button>
+                                                                </form>
+                                                                 
+                                                                
+                                                                    </td>
+                                                                    <td>
+<form action="deleteeducation" method="POST">
+                                                              <input type="hidden" value="${educationdetail.eduid}" name="eduid">
+                                                                <button type="submit" class="btn red btn-outline">Delete</button>
+                                                                </form>
+                                                                </td>
+                                                                </tr>
+															</c:forEach>
+                                                            </tbody>
+                                    </table>
+                                     <form action ="experiencedetails">
+<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Save And Continue </button>
+
+  </form>
+                                </div>                            </div>
+                                                       
     </div>
-  </div>
-  <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
-  style="display: none; cursor: default;">
-    <img src="http://localhost:854/LoginPage/assets/visavisatravelformjsfiles/editordata/images/recaptchawhite.png" />
-  </div>
-   <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
-  style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/visavisatravelformjsfiles/theme/default/images/btn_submit.png')"
-    value="SaveAndContinue" />
-  </div>
-</form:form>
+                                                    </div>
+                                                    
+                                                </div>
+                                                </div>
                                                     <!--tab_1_2-->
                                                 </div>
                                             </div>
@@ -293,21 +252,38 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- END CONTENT BODY -->
                         </div>
                         <!-- END CONTENT -->
-                    </div>
+
                     <!-- END CONTAINER -->
-                </div>
-            </div>
             <jsp:include page="footer.jsp"></jsp:include>
-        </div>
-        <script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/conditions.js"></script>
-        <script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/formvalidation.js"></script>
-        <!--[if lt IE 9]>
+         <!--[if lt IE 9]>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script>
 <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script> 
 <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
-        
+         <!-- BEGIN CORE PLUGINS -->
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
+            <!-- BEGIN PAGE LEVEL PLUGINS -->
+            <script src="http://localhost:854/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+            <!-- END PAGE LEVEL PLUGINS -->
+            <!-- BEGIN THEME GLOBAL SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
+            <!-- END THEME GLOBAL SCRIPTS -->
+            <!-- BEGIN PAGE LEVEL SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/pages/scripts/table-datatables-rowreorder.min.js" type="text/javascript"></script>
+            <!-- END PAGE LEVEL SCRIPTS -->
+            <!-- BEGIN THEME LAYOUT SCRIPTS -->
+            <script src="http://localhost:854/LoginPage/assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
     </body>
 
 </html>

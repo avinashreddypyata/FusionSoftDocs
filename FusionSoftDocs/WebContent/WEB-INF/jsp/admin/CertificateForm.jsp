@@ -101,7 +101,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="container">
                                     <!-- BEGIN PAGE TITLE -->
                                     <div class="page-title">
-                                        <h1>Travel Form
+                                        <h1>Certificate Form
                                         </h1>
                                     </div>
                                     <!-- END PAGE TITLE -->
@@ -119,7 +119,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Travel</span>
+                                            <span>Certificate</span>
                                         </li>
                                     </ul>
                                     <!-- END PAGE BREADCRUMBS -->
@@ -128,7 +128,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="profile">
                                             <div class="tabbable-line tabbable-full-width">
                                                <ul class="nav nav-tabs">
-                                               <li>
+                                               <li >
                                                         <a href = "overview" >Overview</a>
                                                     </li>
                                                <li>
@@ -140,7 +140,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                      <li >
                                                         <a href = "editorcreatenewpassport">Passport</a>
                                                     </li>
-                                                    <li  data-toggle="tab" class="active">
+                                                    <li >
                                                         <a href = "traveldetails"> Travel </a>
                                                     </li>
                                                     <li >
@@ -149,7 +149,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <li >
                                                         <a href = "experiencedetails"> Experience </a>
                                                     </li>
-                                                    <li >
+                                                    <li  data-toggle="tab" class="active">
                                                         <a href = "certificateDetails"> Certifications </a>
                                                     </li>
                                                     <li >
@@ -158,127 +158,158 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     
                                                 </ul>
                                  <div class="tab-content">
-                                                    <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer" action="saveorupdatetravel" enctype="multipart/form-data" method="post" novalidate="novalidate" data-form="preview" modelAttribute="travel">
+                                                    <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
+action="saveorupdatecertification" enctype="multipart/form-data" method="POST" novalidate="novalidate"
+data-form="preview" modelAttribute="certification">
+<form:hidden path="certificationId" value="${certification.certificationId}"/>
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/visavisatravelformjsfiles/common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
   </div>
-   <form:hidden path="travelid" value="${travel.travelid}"/>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
       <div class="fb-item fb-100-item-column" id="item1">
         <div class="fb-header fb-item-alignment-center">
           <h2>
-            Visa And Travel Information
+            Certifications
           </h2>
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item3">
         <div class="fb-grouplabel">
-          <label id="item3_label_0" style="display: inline;">Port Of Entry</label>
+          <label id="item3_label_0">Certification</label>
         </div>
         <div class="fb-input-box">
-          <form:input name="portofentry" id="item3_text_1" type="text" maxlength="254"
-          placeholder="Port Of Entry" data-hint="" autocomplete="off" required="required" path="portofentry"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">Entry Date To US</label>
-        </div>
-        <div class="fb-input-date">
-          <form:input name="entrydate" class="datepicker" id="item4_date_1" type="text"
-          data-hint="You Can Find This Information Uscis Site Using Your I94 Number" path="entrydatetous"
-          />
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            You Can Find This Information Uscis Site Using Your I94 Number
-          </div>
+          <form:input name="certification" id="item3_text_1" type="text" maxlength="254"
+          placeholder="Certification" autocomplete="off" data-hint=""  required="required" path="certificationName" />
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item5">
         <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">Exit Date From US</label>
+          <label id="item5_label_0" style="display: inline;">Specialisation(Subject)</label>
         </div>
-        <div class="fb-input-date">
-          <form:input name="exitdatefromus" class="datepicker" id="item5_date_1" type="text"
-          data-hint="" path="exitdatefromus"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item6" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Status At The Time Of Entry</label>
-        </div>
-        <div class="fb-dropdown">
-          <form:select name="Status" id="item6_select_1" required="required" data-hint="" path="statusattimeofentry">
-            <form:option id="item6_1_option" value="H1">
-              H1
-            </form:option>
-            <form:option id="item6_2_option" value="H4">
-              H4
-            </form:option>
-            <form:option id="item6_3_option" value="F1">
-              F1
-            </form:option>
-            <form:option id="item6_4_option" value="B1">
-              B1
-            </form:option>
-            <form:option id="item6_5_option" value="B2">
-              B2
-            </form:option>
-            <form:option id="item6_6_option" value="L1">
-              L1
-            </form:option>
-            <form:option id="item6_7_option" value="Other">
-              Other
-            </form:option>
-          </form:select>
+        <div class="fb-input-box">
+          <form:input name="specialisation" id="item5_text_1"  type="text" maxlength="254"
+          placeholder="Specialisation" autocomplete="off" data-hint="" required="required" path="specialisation" />
         </div>
       </div>
-      <div class="fb-item fb-50-item-column" id="item8">
+      <div class="fb-item fb-50-item-column" id="item6">
         <div class="fb-grouplabel">
-          <label id="item8_label_0" style="display: inline;">Status Valid From</label>
+          <label id="item6_label_0" style="display: inline;">Organization</label>
         </div>
-        <div class="fb-input-date">
-          <form:input name="statusvalidfrom" class="datepicker" id="item8_date_1" type="text"
-          data-hint="Mention The Validity Information Of The Status At The Time Of Entry"
-          path="statusvalidfrom"/>
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            Mention The Validity Information Of The Status At The Time Of Entry
-          </div>
+        <div class="fb-input-box">
+          <form:input name="organisation" id="item6_text_1"  type="text" maxlength="254"
+          placeholder="Organisation" autocomplete="off" data-hint="" required="required" path="organisation" />
         </div>
       </div>
-      <div class="fb-item fb-50-item-column" id="item9">
+      <div class="fb-item fb-100-item-column" id="item9">
         <div class="fb-grouplabel">
-          <label id="item9_label_0">Status Valid Till</label>
+          <label id="item9_label_0" style="display: inline;">Address</label>
         </div>
-        <div class="fb-input-date">
-          <form:input name="date9" class="datepicker" id="item9_date_1" type="text" data-hint=""
-          path="statusvalidtill"/>
+        <div class="fb-textarea">
+          <form:textarea name="address" id="item9_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
+          maxlength="1000" placeholder="Address" data-hint="" required="required" path="address" ></form:textarea>
+        </div>
+      </div>
+      <div class="fb-item fb-50-item-column" id="item10">
+        <div class="fb-grouplabel">
+          <label id="item10_label_0" style="display: inline;">City</label>
+        </div>
+        <div class="fb-input-box">
+          <form:input name="city" id="item10_text_1" type="text" maxlength="254" placeholder="City"
+          autocomplete="off" data-hint="" required="required" path="city" />
         </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item11">
         <div class="fb-grouplabel">
-          <label id="item11_label_0" style="display: inline;">Total Months and Days Outside US</label>
+          <label id="item11_label_0" style="display: inline;">State</label>
         </div>
         <div class="fb-input-box">
-          <form:input name="totalmonthsoutsideus" id="item11_text_1" type="text" maxlength="254"
-          placeholder="Total Months and Days Outside US" data-hint="If You are out for one and half month mention 1  month and 15 days"
-          autocomplete="off" path="totalmonthsoutsideus"/>
-          <div class="fb-hint" style="color: rgb(136, 136, 136); font-style: normal; font-weight: normal;">
-            If You are out for one and half month mention 1 month and 15 days
-          </div>
+          <form:input name="state" id="item11_text_1" type="text" maxlength="254" placeholder="State"
+          autocomplete="off" data-hint="" required="required" path="state" />
+        </div>
+      </div>
+      <div class="fb-item fb-50-item-column" id="item13">
+        <div class="fb-grouplabel">
+          <label id="item13_label_0" style="display: inline;">Zip Code</label>
+        </div>
+        <div class="fb-input-box">
+          <form:input name="ZipCode" id="item13_text_1" type="text" maxlength="254" placeholder="Zip Code"
+          autocomplete="off" data-hint="" required="required" path="zipcode" />
+        </div>
+      </div>
+      <div class="fb-item fb-50-item-column" id="item18" style="opacity: 1;">
+        <div class="fb-grouplabel">
+          <label id="item18_label_0" style="display: inline;">Country</label>
+        </div>
+        <div class="fb-input-box">
+          <form:input name="text18" id="item18_text_1" type="text" maxlength="254" placeholder=""
+          autocomplete="off" data-hint="" required="required" path="country"/>
+        </div>
+      </div>
+      <div class="fb-item fb-50-item-column" id="item14">
+        <div class="fb-grouplabel">
+          <label id="item14_label_0" style="display: inline;">Month Of Passing</label>
+        </div>
+        <div class="fb-dropdown">
+          <form:select name="monthofpassing" id="item14_select_1" data-hint="" required="required" path="monthOfPassing">
+            <form:option id="item14_0_option" selected = "selected" value="January">
+              January
+            </form:option>
+            <form:option id="item14_1_option" value="February">
+              February
+            </form:option>
+            <form:option id="item14_2_option" value="March">
+              March
+            </form:option>
+            <form:option id="item14_3_option" value="April">
+              April
+            </form:option>
+            <form:option id="item14_4_option" value="May">
+              May
+            </form:option>
+            <form:option id="item14_5_option" value="June">
+              June
+            </form:option>
+            <form:option id="item14_6_option" value="July">
+              July
+            </form:option>
+            <form:option id="item14_7_option" value="August">
+              August
+            </form:option>
+            <form:option id="item14_8_option" value="September">
+              September
+            </form:option>
+            <form:option id="item14_9_option" value="October">
+              October
+            </form:option>
+            <form:option id="item14_10_option" value="November">
+              November
+            </form:option>
+            <form:option id="item14_11_option" value="December">
+              December
+            </form:option>
+          </form:select>
+        </div>
+      </div>
+      <div class="fb-item fb-50-item-column" id="item15">
+        <div class="fb-grouplabel">
+          <label id="item15_label_0" style="display: inline;">Year Of Passing</label>
+        </div>
+        <div class="fb-input-box">
+          <form:input name="yearofpassing" id="item15_text_1" type="text" maxlength="254"
+          placeholder="Year Of Passing" autocomplete="off" data-hint=""  required="required" path="yearOfPassing"/>
         </div>
       </div>
     </div>
   </div>
   <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
   style="display: none; cursor: default;">
-    <img src="http://localhost:854/LoginPage/assets/visavisatravelformjsfiles/editordata/images/recaptchawhite.png" />
+    <img src="editordata/images/recaptchawhite.png" />
   </div>
-   <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
+  <div class="fb-item-alignment-left fb-footer" id="fb-submit-button-div"
   style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/visavisatravelformjsfiles/theme/default/images/btn_submit.png')"
-    value="SaveAndContinue" />
+    <input class="fb-button-special" id="fb-submit-button" type="submit" data-regular="url('http://localhost:854/LoginPage/assets/certificateformjsfiles/theme/default_responsive/images/btn_submit.png')"
+    value="Submit" />
   </div>
 </form:form>
                                                     <!--tab_1_2-->

@@ -101,7 +101,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="container">
                                     <!-- BEGIN PAGE TITLE -->
                                     <div class="page-title">
-                                        <h1>Application
+                                        <h1>Overview
                                         </h1>
                                     </div>
                                     <!-- END PAGE TITLE -->
@@ -119,7 +119,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Application</span>
+                                            <span>Overview</span>
                                         </li>
                                     </ul>
                                     <!-- END PAGE BREADCRUMBS -->
@@ -127,14 +127,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="page-content-inner">
                                         <div class="profile">
                                             <div class="tabbable-line tabbable-full-width">
-                                               <ul class="nav nav-tabs">
+                                                <ul class="nav nav-tabs">
+                                               <li data-toggle="tab" class="active">
+                                                        <a href = "overview" >Overview</a>
+                                                    </li>
                                                <li>
-                                                        <a href = "applicantViewInfo" >Overview</a>
-                                                    </li>
-                                               <li  data-toggle="tab" class="active">
                                                         <a href = "editorcreatenewapplication" >Application</a>
-                                                    </li>
-                                                    <li>
+                                               </li>
+                                                    <li >
                                                         <a href = "editorcreatenewcontact"> Contact </a>
                                                     </li>
                                                      <li >
@@ -143,11 +143,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <li >
                                                         <a href = "traveldetails"> Travel </a>
                                                     </li>
-                                                    <li >
-                                                        <a href = "applicantdocument"> Education </a>
+                                                    <li  >
+                                                        <a href = "educationdetails"> Education </a>
                                                     </li>
                                                     <li >
-                                                        <a href = "applicantdocument"> Certifications </a>
+                                                        <a href = "experiencedetails"> Experience </a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "certificateDetails"> Certifications </a>
                                                     </li>
                                                     <li >
                                                         <a href = "applicantdocument"> Documents </a>

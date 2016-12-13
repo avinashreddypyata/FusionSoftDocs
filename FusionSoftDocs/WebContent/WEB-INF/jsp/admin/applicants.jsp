@@ -143,7 +143,7 @@ License: You must have a val license purchased only from themeforest(the above l
                                                                 <tr class="odd gradeX">
                                                                 <td>Not Reviewed</td>
                                                                 <td>
-                                                                       <a href = "editorcreatenewapplication"><c:out value="${applicant.fullname}" /> </a> 
+                                                                       <a href = "overview"><c:out value="${applicant.fullname}" /> </a> 
                                                                     </td>
                                                                     <td><c:out value="${applicant.applicationtype}" /></td>
                                                                     

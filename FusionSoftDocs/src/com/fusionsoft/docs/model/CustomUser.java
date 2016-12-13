@@ -34,6 +34,23 @@ public class CustomUser implements UserDetails {
 	private int userid;
     @Column(name ="firstlogin")
     private int firstlogin;
+    @OneToOne(mappedBy="customuser")
+	@JoinColumns({
+	    @JoinColumn(name="userid", referencedColumnName="userid")})
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	private PasswordResetToken passwordresettoken;
+	public PasswordResetToken getPasswordresettoken() {
+		return passwordresettoken;
+	}
+	public void setPasswordresettoken(PasswordResetToken passwordresettoken) {
+		this.passwordresettoken = passwordresettoken;
+	}
+	public List<Experience> getExperience() {
+		return experience;
+	}
+	public void setExperience(List<Experience> experience) {
+		this.experience = experience;
+	}
 	public int getFirstlogin() {
 		return firstlogin;
 	}

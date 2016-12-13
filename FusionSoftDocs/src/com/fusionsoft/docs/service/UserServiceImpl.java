@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -31,6 +32,7 @@ import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Passport;
+import com.fusionsoft.docs.model.PasswordResetToken;
 import com.fusionsoft.docs.model.Travel;
 
 @Service
@@ -335,6 +337,41 @@ public class UserServiceImpl implements UserService {
 	public Certification findcertificate(int certificationid) {
 		// TODO Auto-generated method stub
 		return userDao.findcertificate(certificationid);
+	}
+	@Override
+	public CustomUser findCustomUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findCustomUserByEmail(email);
+	}
+	@Override
+	public void createPasswordResetTokenForUser(CustomUser customuser, String token) {
+		// TODO Auto-generated method stub
+		PasswordResetToken passwordresettoken = new PasswordResetToken();
+		passwordresettoken.setToken(token);
+		Calendar calobj = Calendar.getInstance();
+	    passwordresettoken.setExpiryDate(calobj.getTime());
+	    customuser.setPasswordresettoken(passwordresettoken);
+	    passwordresettoken.setCustomuser(customuser);
+	    userDao.createPasswordResetTokenForUser(passwordresettoken);
+		
+	}
+	@Override
+	public PasswordResetToken getPasswordResetToken(String token) {
+		// TODO Auto-generated method stub
+		return userDao.findpasswordresettoken(token);
+	}
+	@Override
+	public void changeUserPassword(CustomUser customuser, String password) {
+		// TODO Auto-generated method stub
+		password = passwordEncoder.encode(password);
+		userDao.changeUserPassword(customuser,password);
+	}
+	@Override
+	public void updatePasswordResetTokenForUser(int userid, String token) {
+		// TODO Auto-generated method stub
+		PasswordResetToken passwordresettoken = new PasswordResetToken();
+		passwordresettoken.setToken(token);
+		userDao.updatePasswordResetTokenForUser( userid,passwordresettoken);
 	}
 	
 	

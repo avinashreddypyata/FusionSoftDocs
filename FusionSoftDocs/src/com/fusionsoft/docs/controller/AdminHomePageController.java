@@ -42,7 +42,7 @@ import com.fusionsoft.docs.service.UserService;
 public class AdminHomePageController {
 	@Autowired
 	public UserDao userDao;
-	private static int id = 10;
+	private static int id;
 
 	@Autowired
 	private UserService userservice;
@@ -105,26 +105,34 @@ public class AdminHomePageController {
 		
 		   return model;
 	}
+	@RequestMapping(value =  "/applicant" , method = RequestMethod.GET)
+	public ModelAndView setapplicantid(HttpServletRequest request) {
+		ModelAndView model = new ModelAndView();
+		    System.out.println("The Logged User is"+request.getParameter("userid"));
+		    id=  Integer.parseInt(request.getParameter("userid"));
+            model.setViewName("redirect:overview");
+		return model;
+	}
 	@RequestMapping(value =  "/overview" , method = RequestMethod.GET)
 	public ModelAndView overview() {
 		ModelAndView model = new ModelAndView();
-            Passport passport=userservice.findpassport(10);
+            Passport passport=userservice.findpassport(id);
 			model.addObject(passport);
-			Contact contact=userservice.findcontact(10);
+			Contact contact=userservice.findcontact(id);
 			model.addObject(contact);
-			Applicant applicant=userservice.findapplicant(10);
+			Applicant applicant=userservice.findapplicant(id);
 			model.addObject(applicant);
-			List<Travel> traveldetails=userservice.findtraveldetails(10);
+			List<Travel> traveldetails=userservice.findtraveldetails(id);
 			model.addObject("traveldetails",traveldetails);
 			System.out.println(traveldetails.size());
-			List<Experience> experiencedetails=userservice.findexperiences(10);
+			List<Experience> experiencedetails=userservice.findexperiences(id);
 			model.addObject("experiencedetails",experiencedetails);
 			System.out.println(experiencedetails.size());
-			List<Education> educationdetails=userservice.findqualifications(10);
+			List<Education> educationdetails=userservice.findqualifications(id);
 			model.addObject("educationdetails",educationdetails);
-			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(10);
+			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
 			model.addObject("documents",documents);
-			List<Certification> certificationdetails=userservice.findcertificationdetails(10);
+			List<Certification> certificationdetails=userservice.findcertificationdetails(id);
 			model.addObject("certificationdetails",certificationdetails);
 	    model.setViewName("admin/Overview");
 		return model;
@@ -139,7 +147,7 @@ public class AdminHomePageController {
 	public ModelAndView editorcreatenewapplication(@ModelAttribute("applicant") Applicant applicant,HttpServletRequest request, BindingResult result) {
 		ModelAndView model = new ModelAndView("admin/ApplicationInfo");
 //		 CustomUser user = getCustomUser();
-         applicant = userservice.findapplicant(10);
+         applicant = userservice.findapplicant(id);
          if(applicant == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Applicant());
@@ -290,7 +298,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/educationdetails", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView educationdetails() {
 		ModelAndView model = new ModelAndView();
-         List<Education> educationdetails = userservice.findqualifications(10);
+         List<Education> educationdetails = userservice.findqualifications(id);
          if(educationdetails.isEmpty()){
         	 /*If Entering First Time redirects to empty form with travel form*/
         	 model.setViewName("redirect:editorcreateneweducation");
@@ -319,7 +327,7 @@ public class AdminHomePageController {
 		ModelAndView model = new ModelAndView("redirect:educationdetails");
 //		CustomUser user = getCustomUser();
 		if(education.getEduid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(10);
+		    CustomUser customuser = userservice.findCustomUser(id);
 		    userservice.saveeducation(customuser, education);
 		}
 		    else{
@@ -347,7 +355,7 @@ public class AdminHomePageController {
 	public ModelAndView experiencedetails() {
 		ModelAndView model = new ModelAndView();
 //		 CustomUser user = getCustomUser();
-         List<Experience> experiencedetails = userservice.findexperiences(10);
+         List<Experience> experiencedetails = userservice.findexperiences(id);
          if(experiencedetails.isEmpty()){
         	 /*If Entering First Time redirects to empty form with travel form*/
         	 model.setViewName("redirect:editorcreatenewexperience");
@@ -375,7 +383,7 @@ public class AdminHomePageController {
 		ModelAndView model = new ModelAndView("redirect:experiencedetails");
 //		CustomUser user = getCustomUser();
 		if(experience.getExpid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(10);
+		    CustomUser customuser = userservice.findCustomUser(id);
 		    userservice.saveexperience(customuser, experience);
 		}
 		    else{
@@ -401,7 +409,7 @@ public class AdminHomePageController {
 	public ModelAndView certificateDetails() {
 		ModelAndView model = new ModelAndView();
 //		 CustomUser user = getCustomUser();
-         List<Certification> certificationdetails = userservice.findcertificationdetails(10);
+         List<Certification> certificationdetails = userservice.findcertificationdetails(id);
          if(certificationdetails.isEmpty()){
         	 /*If Entering First Time redirects to empty form with travel form*/
         	 model.setViewName("redirect:editorcreatenewcertificate");
@@ -435,7 +443,7 @@ public class AdminHomePageController {
 		ModelAndView model = new ModelAndView("redirect:certificateDetails");
 //		CustomUser user = getCustomUser();
 		if(certification.getCertificationId()== 0){
-		    CustomUser customuser = userservice.findCustomUser(10);
+		    CustomUser customuser = userservice.findCustomUser(id);
 		    userservice.savecertification(customuser,certification);
 		}
 		    else{
@@ -471,7 +479,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/uploaddocument",method = RequestMethod.POST)
 	public ModelAndView uploaddocument(@ModelAttribute("fileBucket") FileBucket fileBucket, HttpServletRequest request){
 //	CustomUser customuser = getCustomUser();
-  CustomUser customuser = userservice.findCustomUser(10);
+  CustomUser customuser = userservice.findCustomUser(id);
 	System.out.println("The userid is"+customuser.getUserid());
 	System.out.println("The doctype is"+fileBucket.getDoctype());
 	int docid = userservice.saveDocument(fileBucket,customuser);
@@ -503,7 +511,7 @@ public class AdminHomePageController {
 	public ModelAndView applicantdocument(@ModelAttribute("filebucket") FileBucket filebucket) throws IOException{
      ModelAndView model = new ModelAndView();
      HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
-     documents = userservice.findparticulardocuments(10);
+     documents = userservice.findparticulardocuments(id);
      System.out.println("The Size Of Document is"+documents.size());
         if(documents.isEmpty()){
         	model.setViewName("user/DocumentForm");

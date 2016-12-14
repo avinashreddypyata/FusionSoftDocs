@@ -33,12 +33,13 @@ public class LoginController {
 		System.out.println("model user ::::: " + model.toString());
 
 		if (user.getUserrole() == 1) {
-			// model.setViewName("redirect:/admin/home");
 			return new ModelAndView("redirect:/admin/home");
-			// return model;
-		} else {
+		} else if(user.getUserrole() == 2) {
 			model.setViewName("redirect:/user/home");
-			// return new ModelAndView("redirect:/user/home");
+			return model;
+		}
+		else{
+			model.setViewName("redirect:/attorney/home");
 			return model;
 		}
 

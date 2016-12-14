@@ -218,15 +218,31 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
                                <!-- -column ending -->
                                <div class="col-md-6">
                                <!-- BEGIN Portlet PORTLET-->
-                                <div class="portlet solid green" id="my_portlet">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-gift"></i>Status </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                        <p>Under Review </p>
+                               <div class="portlet light portlet-fit ">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class=" icon-layers font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase">Status</span>
+                                       
                                     </div>
                                 </div>
+                                <div class="portlet-body">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="mt-element-ribbon bg-grey-steel">
+                                                <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-primary uppercase">
+                                                    <div class="ribbon-sub ribbon-bookmark"></div>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <p class="ribbon-content">Assigned To Attorney</p>
+                                            </div>
+                                            <button type="button" class="btn green btn-outline">Assign To Attorney</button>
+                                            <button type="button" class="btn red btn-outline">Reject</button>
+                                             <button type="button" class="btn blue btn-outline">Assign To Education Evaluation</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                 <!-- END Portlet PORTLET-->
                                </div>
                                </div>

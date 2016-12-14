@@ -34,7 +34,23 @@ public class CustomUser implements UserDetails {
 	private int userid;
     @Column(name ="firstlogin")
     private int firstlogin;
-    @OneToOne(mappedBy="customuser")
+    @Column(name = "applicationstatus")
+    private String applicationstatus;
+    @Column(name ="submission", columnDefinition = "tinyint default false")
+    private boolean submission;
+    public String getApplicationstatus() {
+		return applicationstatus;
+	}
+	public void setApplicationstatus(String applicationstatus) {
+		this.applicationstatus = applicationstatus;
+	}
+	public boolean isSubmission() {
+		return submission;
+	}
+	public void setSubmission(boolean submission) {
+		this.submission = submission;
+	}
+	@OneToOne(mappedBy="customuser")
 	@JoinColumns({
 	    @JoinColumn(name="userid", referencedColumnName="userid")})
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)

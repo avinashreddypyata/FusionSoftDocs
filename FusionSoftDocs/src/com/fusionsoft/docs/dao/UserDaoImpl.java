@@ -86,6 +86,12 @@ public class UserDaoImpl implements UserDao {
 			roles.add(r1);
 
 			user.setAuthorities(roles);
+		}else if (user.getUserrole() == 3) {
+			CustomRole r1 = new CustomRole();
+			r1.setName("ROLE_ATTORNEY");
+			roles.add(r1);
+
+			user.setAuthorities(roles);
 		}
 
 		return user;

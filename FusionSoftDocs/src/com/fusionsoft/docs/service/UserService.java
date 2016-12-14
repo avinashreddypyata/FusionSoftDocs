@@ -113,5 +113,7 @@ public void changeUserPassword(CustomUser customuser, String password);
 
 public void updatePasswordResetTokenForUser(int userid, String token);
 
+public void updatecustomuserapplicationstatus(int userid, String applicationstatus);
+
 
 }

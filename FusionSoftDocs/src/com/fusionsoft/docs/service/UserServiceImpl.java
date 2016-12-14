@@ -373,6 +373,11 @@ public class UserServiceImpl implements UserService {
 		passwordresettoken.setToken(token);
 		userDao.updatePasswordResetTokenForUser( userid,passwordresettoken);
 	}
+	@Override
+	public void updatecustomuserapplicationstatus(int userid, String applicationstatus) {
+		// TODO Auto-generated method stub
+		userDao.updatecustomuserapplicationstatus(userid, applicationstatus);
+	}
 	
 	
 }

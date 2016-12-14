@@ -134,7 +134,23 @@ public class AdminHomePageController {
 			model.addObject("documents",documents);
 			List<Certification> certificationdetails=userservice.findcertificationdetails(id);
 			model.addObject("certificationdetails",certificationdetails);
+			CustomUser customuser = userservice.findCustomUser(id);
+			model.addObject("applicationstatus", customuser.getApplicationstatus());
 	    model.setViewName("admin/Overview");
+		return model;
+	}
+	@RequestMapping(value =  "/assigntoattorney" , method = RequestMethod.POST)
+	public ModelAndView assigntoattorny(@ModelAttribute("userid") int userid) {
+		ModelAndView model = new ModelAndView();
+		    userservice.updatecustomuserapplicationstatus(userid, "Assigned To Attorney");
+            model.setViewName("redirect:overview");
+		return model;
+	}
+	@RequestMapping(value =  "/assigntoeducationevaluation" , method = RequestMethod.POST)
+	public ModelAndView assigntoeducationevaluation(@ModelAttribute("userid") int userid) {
+		ModelAndView model = new ModelAndView();
+		    userservice.updatecustomuserapplicationstatus(userid, "Assigned To EducationEvaluation");
+            model.setViewName("redirect:overview");
 		return model;
 	}
 	@InitBinder

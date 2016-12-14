@@ -234,11 +234,19 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
                                                     <div class="ribbon-sub ribbon-bookmark"></div>
                                                     <i class="fa fa-star"></i>
                                                 </div>
-                                                <p class="ribbon-content">Assigned To Attorney</p>
+                                                <p class="ribbon-content"><strong>${applicationstatus}</strong></p>
+                                                
                                             </div>
-                                            <button type="button" class="btn green btn-outline">Assign To Attorney</button>
-                                            <button type="button" class="btn red btn-outline">Reject</button>
-                                             <button type="button" class="btn blue btn-outline">Assign To Education Evaluation</button>
+                                                       <form action="assigntoeducationevaluation" id="education" method="post"><input type="hidden" value="${applicant.userid}" name="userid"></form>
+                                                             <form action="assigntoattorney" id = "attorney" method="post">
+                                                             <input type="hidden" value="${applicant.userid}" name="userid">
+                                                             </form>
+                                                                
+                                                                <button type="submit" class="btn blue btn-outline" form="attorney">Assign To Attorney</button>
+                                                                <button type="submit" class="btn green btn-outline" form="education" >Assign To Education Evaluation</button>
+                                                                <button type="submit" class="btn red btn-outline" form="reject">Reject</button>
+                                                             
+                                                           
                                         </div>
                                     </div>
                                 </div>

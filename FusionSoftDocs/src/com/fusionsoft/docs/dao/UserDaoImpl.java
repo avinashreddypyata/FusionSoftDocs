@@ -823,7 +823,6 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public CustomUser findCustomUserByEmail(String email) {
-		CustomUser customuser = null;
 		Session session = sessionFactory.openSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 	    CriteriaQuery<CustomUser> criteria = builder.createQuery(CustomUser.class);
@@ -841,7 +840,6 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void createPasswordResetTokenForUser(PasswordResetToken passwordresettoken) {
 		// TODO Auto-generated method stub
-		int id = 0;
 		Session session = getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
@@ -910,6 +908,26 @@ public class UserDaoImpl implements UserDao {
 	        updatedpasswordresettoken = session.get(PasswordResetToken.class, userid);
 	        updatedpasswordresettoken.setToken(passwordresettoken.getToken());
 	        session.save(updatedpasswordresettoken);
+			session.getTransaction().commit();
+			}catch(Exception e){
+				session.getTransaction().rollback();
+				e.printStackTrace();
+			}
+			finally{
+				session.close();
+			}
+	}
+
+	@Override
+	public void updatecustomuserapplicationstatus(int userid, String applicationstatus) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		try{
+	        session.getTransaction().begin();
+	        System.out.println("The Id In The Dao Layer For password reset is"+userid);
+	        CustomUser updatedcustomuser = session.get(CustomUser.class, userid);
+	        updatedcustomuser.setApplicationstatus(applicationstatus);
+	        session.save(updatedcustomuser);
 			session.getTransaction().commit();
 			}catch(Exception e){
 				session.getTransaction().rollback();

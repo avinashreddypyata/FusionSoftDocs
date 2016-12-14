@@ -2,6 +2,7 @@ package com.fusionsoft.docs.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fusionsoft.docs.dao.UserDao;
 import com.fusionsoft.docs.model.Applicant;
@@ -67,8 +67,20 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/applicants", method = RequestMethod.GET)
 	public ModelAndView applicants(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("admin/applicants");
-      	List<Applicant> applicants = userservice.findallapplicants();
-      	model.addObject("applicants", applicants);
+      	List<CustomUser> customusers = userservice.findallcustomusers();
+      	List<CustomUser> notsubmittedusers = new ArrayList<CustomUser>();
+      	List<CustomUser> submittedusers = new ArrayList<CustomUser>();
+      	customusers.forEach(customuser->{
+      		if(customuser.isSubmission() == false){
+      			notsubmittedusers.add(customuser);
+      		}else{
+      			submittedusers.add(customuser);
+      		}
+      	});
+      	 System.out.println("The List Size of notsubmittedusers is "+notsubmittedusers.size());
+      	 System.out.println("The List Size of submittedusers is "+submittedusers.size());
+      	 model.addObject("notsubmittedusers", notsubmittedusers);
+      	model.addObject("submittedusers", submittedusers);
         return model;
 	}
 	public UserDao getUserDao() {

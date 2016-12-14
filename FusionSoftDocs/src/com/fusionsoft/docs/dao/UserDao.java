@@ -61,6 +61,7 @@ public interface UserDao {
 	public void changeUserPassword(CustomUser customuser, String password);
 	public void updatePasswordResetTokenForUser(int userid, PasswordResetToken passwordresettoken);
 	public void updatecustomuserapplicationstatus(int userid, String applicationstatus);
+	public List<CustomUser> findallcustomusers();
 	
 /*test*/
 }

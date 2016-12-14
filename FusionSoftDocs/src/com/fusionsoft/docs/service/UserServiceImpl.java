@@ -378,6 +378,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userDao.updatecustomuserapplicationstatus(userid, applicationstatus);
 	}
+	@Override
+	public List<CustomUser> findallcustomusers() {
+		// TODO Auto-generated method stub
+		
+		return userDao.findallcustomusers();
+	}
 	
 	
 }

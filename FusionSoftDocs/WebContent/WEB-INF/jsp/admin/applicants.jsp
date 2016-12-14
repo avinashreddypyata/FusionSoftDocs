@@ -91,88 +91,80 @@ License: You must have a val license purchased only from themeforest(the above l
                                     <div class="page-content-inner">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                                                <div class="portlet light ">
-                                                    <div class="portlet-body">
-                                                        <div class="table-toolbar">
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="btn-group">
-                                                                        <a href="addnewapplicant" id="sample_editable_1_new" class="btn sbold green"> Add New
+                                            <div class="btn-group">
+                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="editorcreatenewtravel"> Add More Applicants
                                                                             <i class="fa fa-plus"></i>
                                                                         </a>
+                                                                        
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="btn-group pull-right">
-                                                                        <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
-                                                                            <i class="fa fa-angle-down"></i>
-                                                                        </button>
-                                                                        <ul class="dropdown-menu pull-right">
-                                                                            <li>
-                                                                                <a href="javascript:;">
-                                                                                    <i class="fa fa-print"></i> Print </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="javascript:;">
-                                                                                    <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="javascript:;">
-                                                                                    <i class="fa fa-file-excel-o"></i> Export to Excel </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-                                                            <thead>
+                                                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                 <div class="portlet light ">
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Submitted Applicants</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+ <thead>
                                                                 <tr>
+                                                                    <th>
+                                                                        Full Name
+                                                                    </th>
                                                                     <th> Status </th>
-                                                                    <th> Full Name </th>
-                                                                    <th> Application Type </th>
-                                                                    <th> Actions </th>
+                                                                    <th> Admin Notes</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
- 	
-															<c:forEach items="${applicants}" var="applicant">
+                                        <tbody>
+                                                               <c:forEach items="${submittedusers}" var="submitteduser">
                                                             
                                                                 <tr class="odd gradeX">
-                                                                <td>Not Reviewed</td>
-                                                                <td>
-                                                                       <a href = "applicant?userid=${applicant.userid}"><c:out value="${applicant.fullname}" /> </a> 
-                                                                    </td>
-                                                                    <td><c:out value="${applicant.applicationtype}" /></td>
-                                                                    
+                                                                    <td><a href="applicant?userid=${submitteduser.applicant.userid}"><c:out value="${submitteduser.applicant.fullname}" /></a></td>
                                                                     <td>
-                                                                        <div class="btn-group">
-                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                                                <i class="fa fa-angle-down"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu pull-left" role="menu">
-                                                                                <li>
-                                                                                    <a href="applicantEditProfile?userid=${applicant.userid}">
-                                                                                        <i class="icon-docs"></i> Edit </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="applicantDeleteProfile?userid=${profile.userid}">
-                                                                                        <i class="icon-tag"></i> Delete </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
+                                                                        <c:out value="${submitteduser.applicationstatus}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                       
                                                                     </td>
                                                                 </tr>
 															</c:forEach>
-
-
-                                                            
                                                             </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
+                                    </table>
+                                </div>
+                            </div>
+                              <div class="portlet light ">
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Yet To Be Submitted Applicants</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+ <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                       Email
+                                                                    </th>
+
+                                                                    <th> Admin Notes</th>
+                                                                </tr>
+                                                            </thead>
+                                        <tbody>
+                                                               <c:forEach items="${notsubmittedusers}" var="notsubmitteduser">
+                                                            
+                                                                <tr class="odd gradeX">
+                                                                    <td><c:out value="${notsubmitteduser.username}" /></td>
+                                                                    <td>
+                                                                        <c:out value="${submitteduser.applicationstatus}" /> 
+                                                                    </td>
+                                                                </tr>
+															</c:forEach>
+                                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
                                                 <!-- END EXAMPLE TABLE PORTLET-->
                                             </div>
                                         </div>
@@ -205,8 +197,11 @@ License: You must have a val license purchased only from themeforest(the above l
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <script src="http://localhost:854/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>

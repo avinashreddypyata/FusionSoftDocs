@@ -178,16 +178,6 @@ public class UserDaoImpl implements UserDao {
 		return userid;
 	}
 
-	@Override
-	public int saveProfile(CustomUser customuser) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
-		session.beginTransaction();
-		int userid = (int) session.save(customuser);
-		session.getTransaction().commit();
-		session.close();
-		return userid;
-	}
 
 	@Override
 	public int saveexperience(Experience experience) {
@@ -937,5 +927,29 @@ public class UserDaoImpl implements UserDao {
 				session.close();
 			}
 	}
+
+	@Override
+	public int saveProfile(CustomUser customuser) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
+	@Override
+	public List<CustomUser> findallcustomusers() {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		List<CustomUser> customusers = new ArrayList<CustomUser>();
+		try{
+		Query<CustomUser> query = session.createQuery("FROM CustomUser WHERE userrole =:userrole",CustomUser.class);
+		query.setParameter("userrole", 2);
+		customusers = query.getResultList();
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	finally{
+		session.close();
+	}
+		return customusers;	
+	}
+}
 		

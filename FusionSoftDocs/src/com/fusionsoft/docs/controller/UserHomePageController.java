@@ -46,20 +46,21 @@ public class UserHomePageController {
 	@Autowired
 	public UserDao userDao;
 	private static int id;
-	private static int firstlogin;
 	
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public ModelAndView userPage() {
+		
 		ModelAndView model = new ModelAndView();
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		CustomUser user = null;
 		if (principal instanceof CustomUser) {
 			user = ((CustomUser) principal);
 		}
-		firstlogin = user.getFirstlogin();
-		if(firstlogin == 1){
+		CustomUser customuser = userservice.findCustomUser(user.getUserid());
+		if(customuser.getFirstlogin() == 1){
+			System.out.println("The firstlogin is");
 			model.setViewName("redirect:editorcreatenewapplication");
-			userservice.updatefirstlogin(id);
+			userservice.updatefirstlogin(user.getUserid());
 		}
 		else{
             Passport passport=userservice.findpassport(user.getUserid());
@@ -80,7 +81,7 @@ public class UserHomePageController {
 			model.addObject("documents",documents);
 			List<Certification> certificationdetails=userservice.findcertificationdetails(user.getUserid());
 			model.addObject("certificationdetails",certificationdetails);
-	    model.setViewName("user/UserHome");
+	        model.setViewName("user/UserHome");
 		}
 		return model;
 	}

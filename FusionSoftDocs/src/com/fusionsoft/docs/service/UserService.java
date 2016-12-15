@@ -105,7 +105,7 @@ public Certification findcertificate(int certificationid);
 
 public CustomUser findCustomUserByEmail(String email);
 
-public void createPasswordResetTokenForUser(CustomUser customuser, String token);
+public void createPasswordResetTokenForUser(CustomUser customuser, PasswordResetToken passwordresettoken);
 
 public PasswordResetToken getPasswordResetToken(String token);
 

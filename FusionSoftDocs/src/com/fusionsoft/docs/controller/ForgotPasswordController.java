@@ -38,7 +38,7 @@ public class ForgotPasswordController {
 	public ModelAndView resetPassword(@ModelAttribute("email") String email, HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		CustomUser customuser = userservice.findCustomUserByEmail(email);
-		System.out.println("The customuser is"+customuser);
+		System.out.println("The customuser id is"+customuser);
 		if (customuser == null) {
 	       model.setViewName("forgotPassword");
 	       String notfound = "Enter The Correct User Name";
@@ -46,8 +46,12 @@ public class ForgotPasswordController {
 	       return model;
 	    }else{
 		String token = UUID.randomUUID().toString();
-		if(customuser.getPasswordresettoken().getToken() == null){
-		userservice.createPasswordResetTokenForUser(customuser, token);
+		PasswordResetToken passwordresettoken = new PasswordResetToken();
+		
+		  if(customuser.getPasswordresettoken() == null){
+			System.out.println("Creating Token");
+			passwordresettoken.setToken(token);
+		userservice.createPasswordResetTokenForUser(customuser, passwordresettoken);
 		}
 		else{
 			System.out.println("Updating");

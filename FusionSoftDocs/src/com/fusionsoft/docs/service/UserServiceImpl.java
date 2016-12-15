@@ -344,13 +344,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.findCustomUserByEmail(email);
 	}
 	@Override
-	public void createPasswordResetTokenForUser(CustomUser customuser, String token) {
+	public void createPasswordResetTokenForUser(CustomUser customuser, PasswordResetToken passwordresettoken) {
 		// TODO Auto-generated method stub
-		PasswordResetToken passwordresettoken = new PasswordResetToken();
-		passwordresettoken.setToken(token);
 		Calendar calobj = Calendar.getInstance();
 	    passwordresettoken.setExpiryDate(calobj.getTime());
-	    customuser.setPasswordresettoken(passwordresettoken);
+	    System.out.println("The CustomUser Id is"+customuser.getUserid());
 	    passwordresettoken.setCustomuser(customuser);
 	    userDao.createPasswordResetTokenForUser(passwordresettoken);
 		
@@ -373,6 +371,7 @@ public class UserServiceImpl implements UserService {
 		passwordresettoken.setToken(token);
 		userDao.updatePasswordResetTokenForUser( userid,passwordresettoken);
 	}
+	
 	@Override
 	public void updatecustomuserapplicationstatus(int userid, String applicationstatus) {
 		// TODO Auto-generated method stub

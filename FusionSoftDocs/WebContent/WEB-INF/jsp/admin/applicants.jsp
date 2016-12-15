@@ -92,7 +92,7 @@ License: You must have a val license purchased only from themeforest(the above l
                                         <div class="row">
                                             <div class="col-md-12">
                                             <div class="btn-group">
-                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="editorcreatenewtravel"> Add More Applicants
+                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="addnewapplicant"> Add More Applicants
                                                                             <i class="fa fa-plus"></i>
                                                                         </a>
                                                                         

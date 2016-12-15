@@ -37,7 +37,7 @@ import com.fusionsoft.docs.model.Travel;
 import com.fusionsoft.docs.service.UserService;
 
 @Repository
-@Transactional
+//@Transactional
 public class UserDaoImpl implements UserDao {
 
 	@Autowired
@@ -113,32 +113,56 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Document finddocument(int docid) {
 		// TODO Auto-generated method stub
-		Session session = getSessionFactory().openSession().getSession();
+		Session session = getSessionFactory().openSession();
+		Document document = null;
+		try{
 		session.beginTransaction();
-		Document document = session.get(Document.class, docid);
+		document = session.get(Document.class, docid);
 		session.getTransaction().commit();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally{
 		session.close();
+		}
 		return document;
 	}
 	public List<Document> findparticulardocuments(int userid,String doctype){
     	List<Document> particulardocuments = new ArrayList<Document>();
     	Session session = sessionFactory.openSession();
     	System.out.println("The Userid and Doctype are "+userid+"The Doctype are"+doctype);
-    	Query<Document> query = session.createQuery("FROM Document Where userid = ? and doctype = ?");
+    	try{
+    		session.beginTransaction();
+    	Query<Document> query = session.createQuery("FROM Document Where userid = ? and doctype = ?",Document.class);
         query.setParameter(0, userid);
         query.setParameter(1, doctype);
     	particulardocuments = query.getResultList();
+    	}catch (Exception e) {
+			// TODO: handle exception
+    		e.printStackTrace();
+		}
+    	finally{
     	session.close();
+    	}
     	System.out.println("The list in DAO is "+particulardocuments.size());
     	return particulardocuments;
     	}
     public int savedocument(Document document){
-        int userid;
-    	Session session = sessionFactory.openSession().getSession();
+        int userid = 0;
+    	Session session = sessionFactory.openSession();
+    	try{
     	session.beginTransaction();
         userid = (int) session.save(document);
     	session.getTransaction().commit();
-    	session.close();
+    	}catch (Exception e) {
+    		e.printStackTrace();
+    		session.getTransaction().rollback();
+			// TODO: handle exception
+		}finally {
+			session.close();
+		}
+    	
     	return userid;
     }
 
@@ -152,7 +176,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void deletedoc(int docid) {
-		Session session = sessionFactory.openSession().getSession();
+		Session session = sessionFactory.openSession();
+		try{
 		session.beginTransaction();
 		Serializable id = new Integer(docid);
 		Object persistentInstance = session.load(Document.class, id);
@@ -160,13 +185,18 @@ public class UserDaoImpl implements UserDao {
 		    session.delete(persistentInstance);
 		}
 		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+		}
+		finally{
 		session.close();
+		}
 	}
 
 	@Override
 	public int finduseridbydocid(int docid) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
+		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session.createSQLQuery("SELECT userid FROM documents WHERE docid =?");
 		query.setParameter(0, docid);
@@ -258,6 +288,7 @@ public class UserDaoImpl implements UserDao {
 		Session session = sessionFactory.openSession().getSession();
 		Serializable userid = new Integer(id);
 		session.beginTransaction();
+		System.out.println("The Serializable id is"+id);
 	    CustomUser user = session.get(CustomUser.class, userid);
 	    user.setFirstlogin(0);
 	    session.save(user);
@@ -825,26 +856,10 @@ public class UserDaoImpl implements UserDao {
 	    } catch (final NoResultException nre) {
 	        return null;
 	    }
+	    finally{
+	    	session.close();
+	    }
 		}
-
-	@Override
-	public void createPasswordResetTokenForUser(PasswordResetToken passwordresettoken) {
-		// TODO Auto-generated method stub
-		Session session = getSessionFactory().openSession();
-		try{
-			session.beginTransaction();
-			System.out.println("The Password Reset Token is saved");
-			session.saveOrUpdate(passwordresettoken);
-			session.getTransaction().commit();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		finally{
-			session.close();
-		}
-	}
-
 	@Override
 	public PasswordResetToken findpasswordresettoken(String token) {
 		// TODO Auto-generated method stub
@@ -855,8 +870,13 @@ public class UserDaoImpl implements UserDao {
 		@SuppressWarnings("unchecked")
 		TypedQuery<PasswordResetToken> query = session.createQuery("from PasswordResetToken where token = :token ");
 		query.setParameter("token", token);
-		passwordresettoken = query.getResultList().get(0);
-		session.getTransaction().commit();
+        if(query.getResultList().size() == 0){
+        	passwordresettoken =null;
+        }
+        else{
+        	passwordresettoken =  query.getSingleResult();
+        }
+        
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -864,7 +884,7 @@ public class UserDaoImpl implements UserDao {
 		finally{
 			session.close();
 		}
-		return passwordresettoken; 
+		return passwordresettoken;
 	}
 
 	@Override
@@ -950,6 +970,30 @@ public class UserDaoImpl implements UserDao {
 		session.close();
 	}
 		return customusers;	
+	}
+
+	@Override
+	public void createPasswordResetTokenForUser(PasswordResetToken passwordresettoken) {
+		// TODO Auto-generated method stub
+
+         Session session = null;
+         Transaction tx = null;
+		 session = getSessionFactory().openSession();
+		try{
+			
+			tx = session.beginTransaction();
+			session.flush();
+			session.save(passwordresettoken);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			tx.rollback();
+		}
+		
+		finally{
+			session.close();
+		}
+		
 	}
 }
 		

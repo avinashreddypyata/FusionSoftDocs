@@ -485,7 +485,7 @@ public class UserHomePageController {
 	public ModelAndView applicantdocument(@ModelAttribute("filebucket") FileBucket filebucket) throws IOException{
      ModelAndView model = new ModelAndView();
      HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
-     documents = userservice.findparticulardocuments(10);
+     documents = userservice.findparticulardocuments(getCustomUser().getUserid());
      System.out.println("The Size Of Document is"+documents.size());
         if(documents.isEmpty()){
         	model.setViewName("user/DocumentForm");
@@ -524,6 +524,23 @@ public class UserHomePageController {
     
     return model;
 	}
+	@RequestMapping(value = "/submitapplication",method = RequestMethod.GET)
+	public ModelAndView submitapplication() throws IOException{
+		ModelAndView model = new ModelAndView();
+		id = getCustomUser().getUserid();
+		  Passport passport=userservice.findpassport(id);
+			Contact contact=userservice.findcontact(id);
+			Applicant applicant=userservice.findapplicant(id);
+			List<Education> educationdetails=userservice.findqualifications(id);
+			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
+     if(passport == null || contact == null || applicant == null || educationdetails.isEmpty() || documents.isEmpty()){
+    	model.setViewName("user/NotCompleted");
+    	return model;
+     }else{
+    	 model.setViewName("user/Completed");
+    	 return model;
+     }
+	}
 	
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
@@ -533,6 +550,7 @@ public class UserHomePageController {
 	    }
 	    return "redirect:/login";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
 	}
+	
 	
 }
 

@@ -233,8 +233,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="ribbon-sub ribbon-bookmark"></div>
                                                     <i class="fa fa-star"></i>
                                                 </div>
+                                                <form action="submitapplication">
                                                 <p class="ribbon-content">When Submitted The Employer Can View Your Application. You Can Make Changes till The employer verifies Your Application. Once Verified You can no longer make changes</p>
                                             <input type="submit" class="btn purple btn-block" value="Submit Application">
+                                            </form>
                                             </div>
                                         </div>
                                     </div>

@@ -238,8 +238,8 @@ data-form="preview">
             <form:option id="item2_3_option" value="Associate Degree">
               Associate Degree
             </form:option>
-            <form:option id="item2_4_option" value="Bachelor&#39;s Degree">
-              Bachelor&#39;s Degree
+            <form:option id="item2_4_option" value="Bachelor's Degree">
+              Bachelor's Degree
             </form:option>
             <form:option id="item2_5_option"  value="Masters Degree">
               Masters Degree

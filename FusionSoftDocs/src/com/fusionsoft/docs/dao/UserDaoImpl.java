@@ -210,14 +210,21 @@ public class UserDaoImpl implements UserDao {
 
 
 	@Override
-	public int saveexperience(Experience experience) {
+	public void saveexperience(Experience experience) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
-		session.beginTransaction();
-		int userid = (int) session.save(experience);
-		session.getTransaction().commit();
-		session.close();
-		return userid;
+		// TODO Auto-generated method stub
+				Session session = getSessionFactory().openSession();
+				try{
+					session.beginTransaction();
+					session.save(experience);
+					session.getTransaction().commit();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				
+				finally{
+					session.close();
+				}
 	}
 
 	@Override
@@ -982,8 +989,30 @@ public class UserDaoImpl implements UserDao {
 		try{
 			
 			tx = session.beginTransaction();
-			session.flush();
 			session.save(passwordresettoken);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			tx.rollback();
+		}
+		
+		finally{
+			session.close();
+		}
+		
+	}
+
+	@Override
+	public void updatecustomusersubmission(int userid) {
+		// TODO Auto-generated method stub
+		Session session = null;
+        Transaction tx = null;
+		 session = getSessionFactory().openSession();
+		try{
+			CustomUser updatedcustomuser = session.get(CustomUser.class, userid);
+			updatedcustomuser.setSubmission(true);
+			tx = session.beginTransaction();
+			session.save(updatedcustomuser);
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();

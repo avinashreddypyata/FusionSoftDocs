@@ -528,16 +528,18 @@ public class UserHomePageController {
 	@RequestMapping(value = "/submitapplication",method = RequestMethod.GET)
 	public ModelAndView submitapplication() throws IOException{
 		ModelAndView model = new ModelAndView();
-		id = getCustomUser().getUserid();
-		  Passport passport=userservice.findpassport(id);
-			Contact contact=userservice.findcontact(id);
-			Applicant applicant=userservice.findapplicant(id);
-			List<Education> educationdetails=userservice.findqualifications(id);
-			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
+		int userid = getCustomUser().getUserid();
+		  Passport passport=userservice.findpassport(userid);
+			Contact contact=userservice.findcontact(userid);
+			Applicant applicant=userservice.findapplicant(userid);
+			List<Education> educationdetails=userservice.findqualifications(userid);
+			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(userid);
      if(passport == null || contact == null || applicant == null || educationdetails.isEmpty() || documents.isEmpty()){
     	model.setViewName("user/NotCompleted");
     	return model;
      }else{
+    	  
+    	 userservice.updatecustomusersubmission(userid);
     	 model.setViewName("user/Completed");
     	 return model;
      }

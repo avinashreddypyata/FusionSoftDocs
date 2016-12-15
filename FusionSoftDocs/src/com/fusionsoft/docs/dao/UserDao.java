@@ -23,7 +23,7 @@ public interface UserDao {
 	public void deletedoc(int docid);
 	public int finduseridbydocid(int docid);
 	public int saveProfile(CustomUser customuser);
-	public int saveexperience(Experience experience);
+	public void saveexperience(Experience experience);
 	public int saveeducation(Education education);
 	public List<Experience> findexperiences(int id);
 	public List<Education> findqualifications(int id);
@@ -62,6 +62,7 @@ public interface UserDao {
 	public void updatePasswordResetTokenForUser(int userid, PasswordResetToken passwordresettoken);
 	public void updatecustomuserapplicationstatus(int userid, String applicationstatus);
 	public List<CustomUser> findallcustomusers();
+	public void updatecustomusersubmission(int userid);
 	
 /*test*/
 }

@@ -40,7 +40,7 @@ public int finduseridbydocid(int docid);
 
 public String generateRandomPassword();
 
-public int saveexperience(CustomUser customuser,Experience experience);
+public void saveexperience(CustomUser customuser,Experience experience);
 
 public int saveeducation(CustomUser user, Education education);
 public List<Experience> findexperiences(int id);
@@ -116,6 +116,8 @@ public void updatePasswordResetTokenForUser(int userid, String token);
 public void updatecustomuserapplicationstatus(int userid, String applicationstatus);
 
 public List<CustomUser> findallcustomusers();
+
+public void updatecustomusersubmission(int userid);
 
 
 }

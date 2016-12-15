@@ -147,11 +147,10 @@ public class UserServiceImpl implements UserService {
 	      return pw;
 	  }
 	@Override
-	public int saveexperience(CustomUser customuser,Experience experience) {
+	public void saveexperience(CustomUser customuser,Experience experience) {
 		// TODO Auto-generated method stub
 		experience.setCustomuser(customuser);
-		int userid = userDao.saveexperience(experience);
-		return userid;
+		 userDao.saveexperience(experience);
 	}
 	@Override
 	public int saveeducation(CustomUser user, Education education) {
@@ -382,6 +381,11 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		
 		return userDao.findallcustomusers();
+	}
+	@Override
+	public void updatecustomusersubmission(int userid) {
+		// TODO Auto-generated method stub
+		userDao.updatecustomusersubmission(userid);
 	}
 	
 	

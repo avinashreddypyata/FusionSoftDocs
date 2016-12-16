@@ -72,7 +72,6 @@ public class ForgotPasswordController {
 	public String changePassword(@RequestParam("id") int id, @RequestParam("token") String token) {
 		ModelAndView model = new ModelAndView();
 		PasswordResetToken passwordresetToken = userservice.getPasswordResetToken(token);
-		System.out.println("The password reset token is"+passwordresetToken.getUserid());
 		CustomUser customuser = userservice.findCustomUser(passwordresetToken.getUserid());
 		if (passwordresetToken == null || customuser.getUserid() != id) {
 			System.out.println("The customuser part");

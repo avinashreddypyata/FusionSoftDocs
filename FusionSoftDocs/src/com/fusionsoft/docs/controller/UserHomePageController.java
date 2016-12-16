@@ -81,6 +81,7 @@ public class UserHomePageController {
 			model.addObject("documents",documents);
 			List<Certification> certificationdetails=userservice.findcertificationdetails(user.getUserid());
 			model.addObject("certificationdetails",certificationdetails);
+			model.addObject("status",customuser.getApplicationstatus());
 	        model.setViewName("user/UserHome");
 		}
 		return model;
@@ -487,8 +488,9 @@ public class UserHomePageController {
      ModelAndView model = new ModelAndView();
      HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
      documents = userservice.findparticulardocuments(getCustomUser().getUserid());
-     System.out.println("The Size Of Document is"+documents.size());
-        if(documents.isEmpty()){
+     System.out.println("The Size Of Document is"+documents.entrySet().contains(null));
+     System.out.println("The Size Of Document is"+documents.keySet().contains(null));
+     if(documents.entrySet().contains(null)){
         	model.setViewName("user/DocumentForm");
         	model.addObject("filebucket", new FileBucket());
         }else{

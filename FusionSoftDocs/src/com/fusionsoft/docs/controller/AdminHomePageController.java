@@ -372,7 +372,7 @@ public class AdminHomePageController {
 			}
 	@RequestMapping(value = "/editeducation", method = RequestMethod.POST)
 	public ModelAndView editeducation(@ModelAttribute("eduid") int eduid) {
-		ModelAndView model = new ModelAndView("user/EducationForm");
+		ModelAndView model = new ModelAndView("admin/EducationForm");
 		System.out.println("The TravelId for edit travel is"+eduid);
 		Education education = userservice.findeducation(eduid);
 		model.addObject("education",education);
@@ -398,7 +398,7 @@ public class AdminHomePageController {
 	}
 	@RequestMapping(value = "/editorcreatenewexperience", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewexperience(@ModelAttribute("experience") Experience experience,HttpServletRequest request) {
-		ModelAndView model = new ModelAndView("user/ExperienceForm");
+		ModelAndView model = new ModelAndView("admin/ExperienceForm");
 		
         /*If applicant wants to edit already present information then existing appli cant object is taken from the database and sent back to view*/
 //        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
@@ -488,7 +488,7 @@ public class AdminHomePageController {
 			}
 	@RequestMapping(value = "/editcertificate", method = RequestMethod.POST)
 	public ModelAndView editcertificate(@ModelAttribute("certificationid") int certificationid) {
-		ModelAndView model = new ModelAndView("user/CertificateForm");
+		ModelAndView model = new ModelAndView("admin/CertificateForm");
 		Certification certification = userservice.findcertificate(certificationid);
 		model.addObject("certification",certification);
 		    return model;
@@ -542,7 +542,7 @@ public class AdminHomePageController {
      documents = userservice.findparticulardocuments(id);
      System.out.println("The Size Of Document is"+documents.size());
         if(documents.isEmpty()){
-        	model.setViewName("user/DocumentForm");
+        	model.setViewName("admin/DocumentForm");
         	model.addObject("filebucket", new FileBucket());
         }else{
         	model.addObject("documents",documents);

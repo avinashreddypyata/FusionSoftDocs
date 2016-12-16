@@ -237,13 +237,14 @@ enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="p
                                                 <p class="ribbon-content"><strong>${applicationstatus}</strong></p>
                                                 
                                             </div>
-                                                       <form action="assigntoeducationevaluation" id="education" method="post"><input type="hidden" value="${applicant.userid}" name="userid"></form>
-                                                             <form action="assigntoattorney" id = "attorney" method="post">
-                                                             <input type="hidden" value="${applicant.userid}" name="userid">
-                                                             </form>
+                                                       <form action="assigntoeducationevaluation" name="education" method="post"><input type="hidden" value="${applicant.userid}" name="userid"> </form>
+                                                            <input type="submit" class="btn green btn-outline" form="education" value="Assign To Education Evaluation">
+<%--<form action="assigntoattorney" id = "attorney" method="post"> --%>
+<%--                                                              <input type="hidden" value="${applicant.userid}" name="userid"> --%>
+<%--                                                              </form> --%>
                                                                 
                                                                 <button type="submit" class="btn blue btn-outline" form="attorney">Assign To Attorney</button>
-                                                                <button type="submit" class="btn green btn-outline" form="education" >Assign To Education Evaluation</button>
+<!--                                                                 <button type="submit" class="btn green btn-outline" form="education" >Assign To Education Evaluation</button> -->
                                                                 <button type="submit" class="btn red btn-outline" form="reject">Reject</button>
                                                              
                                                            

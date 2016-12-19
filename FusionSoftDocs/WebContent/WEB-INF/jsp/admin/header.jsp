@@ -39,7 +39,7 @@
 <!--                                                     </a> -->
 <!--                                                 </li> -->
                                                 <li>
-                                                    <a href="http://localhost:8080/FusionSoftDocs/">
+                                                    <a href="logout">
                                                         <i class="icon-key"></i> Log Out </a>
                                                 </li>
                                             </ul>

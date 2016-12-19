@@ -37,7 +37,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
      
     /*Variables For the Document That is Uploaded*/
      
-    private static final String LOCATION = "C:/Users/abhi/Desktop/FusionSoftDocs";
+    private static final String LOCATION = "/home/fsiadmin/Documents";
     private static final long MAX_FILE_SIZE = 1024 * 1024 * 20;//25MB
     
     private static final long MAX_REQUEST_SIZE = 1024 * 1024 * 30;//30MB

@@ -11,7 +11,7 @@
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
                                     <a href="home">
-                                        <img src="http://localhost:854/LoginPage/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
+                                        <img src="/FSDocs/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
                                     </a>
                                 </div>
                                 <div class="top-menu">
@@ -22,7 +22,7 @@
                                         <!-- BEGIN USER LOGIN DROPDOWN -->
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                <img alt="" class="img-circle" src="http://localhost:854/LoginPage/assets/layouts/layout3/img/user.jpg">
+                                                <img alt="" class="img-circle" src="/FSDocs/assets/layouts/layout3/img/user.jpg">
                                                 <span class="username username-hide-mobile">${userFullName}</span>
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">

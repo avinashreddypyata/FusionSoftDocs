@@ -33,56 +33,34 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+         <link href="/FSDocs/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="/FSDocs/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="http://localhost:854/LoginPage/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
-        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/datepicker.js"></script>
+        <link href="/FSDocs/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="/FSDocs/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="/FSDocs/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
      
-    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/css/default.css"
+    <link rel="stylesheet" type="text/css" href="/FSDocs/assets/experienceformjsfiles/theme/default/css/default.css"
     id="theme" />
-        <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <!-- END THEME LAYOUT STYLES --> </head>
     
     <!-- END HEAD -->
 
@@ -163,7 +141,7 @@ action="saveorupdateexperience" enctype="multipart/form-data" method="POST" nova
 data-form="preview" modelAttribute="experience">
 <form:hidden path="expid" value="${experience.expid}"/>
   <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="http://localhost:854/LoginPage/assets/experienceformjsfiles/common/images/image_default.png"/></a>
+    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="/FSDocs/assets/experienceformjsfiles/common/images/image_default.png"/></a>
   </div>
   <div class="section" id="section1">
     <div class="column ui-sortable" id="column1">
@@ -218,19 +196,27 @@ data-form="preview" modelAttribute="experience">
         <div class="fb-grouplabel">
           <label id="item6_label_0" style="display: inline;">Start Date</label>
         </div>
-        <div class="fb-input-date">
-          <form:input name="startdate" class="datepicker" id="item6_date_1" type="text"
-          data-hint="" path="joineddate"/>
-        </div>
+        <div class="input-group input-medium date date-picker" data-date="12-02-2012" data-date-format="mm/dd/yyyy" data-date-viewmode="years">
+                                                            <form:input type="text" class="form-control" readonly="true" path="joineddate"/>
+                                                            <span class="input-group-btn">
+                                                                <button class="btn default" type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item7">
         <div class="fb-grouplabel">
           <label id="item7_label_0" style="display: inline;">End Date</label>
         </div>
-        <div class="fb-input-date">
-          <form:input name="enddate" class="datepicker" id="item7_date_1" type="text"
-          data-hint="" path="enddate"/>
-        </div>
+      <div class="input-group input-medium date date-picker" data-date="12-02-2012" data-date-format="mm/dd/yyyy" data-date-viewmode="years">
+                                                            <form:input type="text" class="form-control" readonly="true" path="enddate"/>
+                                                            <span class="input-group-btn">
+                                                                <button class="btn default" type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
       </div>
       <div class="fb-item fb-50-item-column" id="item8">
         <div class="fb-grouplabel">
@@ -259,12 +245,12 @@ data-form="preview" modelAttribute="experience">
   </div>
   <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
   style="display: none; cursor: default;">
-    <img src="http://localhost:854/LoginPage/assets/experienceformjsfiles/editordata/images/recaptchawhite.png" />
+    <img src="/FSDocs/assets/experienceformjsfiles/editordata/images/recaptchawhite.png" />
   </div>
   <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
   style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="background-image: url('http://localhost:854/LoginPage/assets/experienceformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('http://localhost:854/LoginPage/assets/experienceformjsfiles/theme/default/images/btn_submit.png')"
+    <input class="fb-button-special" id="fb-submit-button" style="background-image: url('/FSDocs/assets/experienceformjsfiles/theme/default/images/btn_submit.png');"
+    type="submit" data-regular="url('/FSDocs/assets/experienceformjsfiles/theme/default/images/btn_submit.png')"
     value="Submit" />
   </div>
 </form:form>
@@ -286,14 +272,40 @@ data-form="preview" modelAttribute="experience">
             </div>
             <jsp:include page="footer.jsp"></jsp:include>
         </div>
-        <script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/conditions.js"></script>
-        <script src="http://localhost:854/LoginPage/assets/visatravelformjsfiles/formvalidation.js"></script>
+        <script src="/FSDocs/assets/visatravelformjsfiles/conditions.js"></script>
+        <script src="/FSDocs/assets/visatravelformjsfiles/formvalidation.js"></script>
         <!--[if lt IE 9]>
-<script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script>
-<script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script> 
-<script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script> 
+<script src="/FSDocs/assets/global/plugins/respond.min.js"></script>
+<script src="/FSDocs/assets/global/plugins/excanvas.min.js"></script> 
+<script src="/FSDocs/assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
+          <!-- BEGIN CORE PLUGINS -->
+        <script src="/FSDocs/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="/FSDocs/assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="/FSDocs/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="/FSDocs/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="/FSDocs/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="/FSDocs/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         
     </body>
 

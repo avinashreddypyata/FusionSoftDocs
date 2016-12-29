@@ -27,63 +27,39 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN HEAD -->
 
     <head>
-        <meta charset="utf-8" />
-        <title>FusionSoft Inc. | View experience</title>
-         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta charset="utf-8" />
+        <title>FusionSoft | Inc</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #3 for user profile sample" name="description" />
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+       <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="/FSDocs/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="/FSDocs/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="/FSDocs/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="/FSDocs/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="/FSDocs/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-        <script src="/FSDocs/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="/FSDocs/assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="/FSDocs/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="/FSDocs/assets/applicationformjsfiles/datepicker.js"></script>
+       
      
-    <link rel="stylesheet" type="text/css" href="/FSDocs/assets/applicationformjsfiles/theme/default/css/default.css"
+    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
@@ -133,14 +109,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                                <li>
                                                         <a href = "overview" >Overview</a>
                                                     </li>
-                                               <li>
-                                                        <a href = "editorcreatenewapplication" >Application</a>
+                                               <li >
+                                                        <a href = "viewapplicant" >Application</a>
                                                </li>
                                                     <li >
-                                                        <a href = "editorcreatenewcontact"> Contact </a>
+                                                        <a href = "viewcontact"> Contact </a>
                                                     </li>
                                                      <li >
-                                                        <a href = "editorcreatenewpassport">Passport</a>
+                                                        <a href = "viewpassport">Passport</a>
                                                     </li>
                                                     <li  data-toggle="tab" class="active">
                                                         <a href = "traveldetails"> Travel </a>
@@ -160,20 +136,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     
                                                 </ul>
                                  <div class="tab-content">
-                                  <div class="btn-group">
+                                 
+                                        
+                                             <div class="btn-group">
                                                                         <a id="sample_editable_1_new" class="btn sbold green" href="editorcreatenewtravel"> Add More Travel History
                                                                             <i class="fa fa-plus"></i>
                                                                         </a>
                                                                         
                                                                     </div>
-                                                  <div class="portlet light ">
+                                        <div class="portlet light ">
                                 <div class="portlet-title">
                                     <div class="caption font-dark">
                                         <span class="caption-subject bold uppercase">Travel Details</span>
                                     </div>
                                     <div class="tools"> </div>
                                 </div>
-                                <div class="portlet-body">
+                                   <div class="portlet-body">
                                     <table class="table table-striped table-bordered table-hover" id="sample_1">
  <thead>
                                                                 <tr>
@@ -186,6 +164,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <th> Status Valid From </th>
                                                                     <th> Status Valid Till </th>
                                                                     <th>Total Months Outside Us</th>
+                                                                    <th>Document Uploaded</th>
                                                                     <th>Action</th>
                                                                     <th>Action</th>
                                                                 </tr>
@@ -207,6 +186,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
                                                                     <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
                                                                     <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
+                                                                    
+                                                                    <td> <c:out value="${traveldetail.documenttitle}" /> </td>
                                                                      <td>
 
                                                               <form action="edittravel" method="POST">
@@ -228,6 +209,10 @@ License: You must have a valid license purchased only from themeforest(the above
 															</c:forEach>
                                                             </tbody>
                                     </table>
+                                     <form action ="educationdetails">
+<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Continue To Next Section</button>
+
+  </form>
                                 </div>
                             </div>
                                                        
@@ -251,35 +236,36 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     <!-- END CONTAINER -->
             <jsp:include page="footer.jsp"></jsp:include>
-         <!--[if lt IE 9]>
-<script src="/FSDocs/assets/global/plugins/respond.min.js"></script>
-<script src="/FSDocs/assets/global/plugins/excanvas.min.js"></script> 
-<script src="/FSDocs/assets/global/plugins/ie8.fix.min.js"></script> 
-<![endif]-->
-         <!-- BEGIN CORE PLUGINS -->
-            <script src="/FSDocs/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+     
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script> 
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script>  
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script>  
+
+     <!-- BEGIN CORE PLUGINS -->
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
             <!-- END CORE PLUGINS -->
             <!-- BEGIN PAGE LEVEL PLUGINS -->
-            <script src="/FSDocs/assets/global/scripts/datatable.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
             <!-- END PAGE LEVEL PLUGINS -->
             <!-- BEGIN THEME GLOBAL SCRIPTS -->
-            <script src="/FSDocs/assets/global/scripts/app.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
             <!-- END THEME GLOBAL SCRIPTS -->
             <!-- BEGIN PAGE LEVEL SCRIPTS -->
-            <script src="/FSDocs/assets/pages/scripts/table-datatables-rowreorder.min.js" type="text/javascript"></script>
+            <script src="http://localhost:854/LoginPage/assets/pages/scripts/table-datatables-rowreorder.min.js" type="text/javascript"></script>
             <!-- END PAGE LEVEL SCRIPTS -->
             <!-- BEGIN THEME LAYOUT SCRIPTS -->
-            <script src="/FSDocs/assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-            <script src="/FSDocs/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
     </body>
 
 </html>

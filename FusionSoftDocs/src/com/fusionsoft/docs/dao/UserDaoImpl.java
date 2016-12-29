@@ -10,20 +10,16 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Projections;
 import org.hibernate.query.Query;
-import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Attorney;
 import com.fusionsoft.docs.model.Certification;
 import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomRole;
@@ -34,7 +30,6 @@ import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.PasswordResetToken;
 import com.fusionsoft.docs.model.Travel;
-import com.fusionsoft.docs.service.UserService;
 
 @Repository
 //@Transactional
@@ -56,20 +51,19 @@ public class UserDaoImpl implements UserDao {
 		return sessionFactory.getCurrentSession();
 	}
 
-	public CustomUser findUserByUsername(final String username) {
-
-		System.out.println(" In DAO ");
+	public CustomUser findUserByUsername(final String username){
+      Session session = sessionFactory.openSession();
 
 		List<CustomUser> users = new ArrayList<CustomUser>();
-
-		users = getSessionFactory().openSession().createQuery("from CustomUser where username=?")
-				.setParameter(0, username).list();
+		CustomUser user = null;
+        try{
+		users = session.createQuery("from CustomUser where username=?",CustomUser.class).setParameter(0, username).getResultList();
 
 		if (users.size() != 1) {
 			return null;
 		}
 
-		CustomUser user = users.get(0);
+		 user = users.get(0);
 
 		List<CustomRole> roles = new ArrayList<CustomRole>();
 
@@ -93,20 +87,15 @@ public class UserDaoImpl implements UserDao {
 
 			user.setAuthorities(roles);
 		}
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+        finally{
+			session.close();
+		}
 
 		return user;
 
-	}
-	public List<Profile> findalluserprofiles() {
-		List<Profile> profiles = new ArrayList<Profile>();
-		Criteria cr = getSessionFactory().openSession().createCriteria(Profile.class)
-				.setProjection(Projections.projectionList().add(Projections.property("firstname"), "firstname")
-						.add(Projections.property("lastname"), "lastname").add(Projections.property("email"), "email")
-						.add(Projections.property("phone"), "phone").add(Projections.property("userid"), "userid"))
-				.setResultTransformer(Transformers.aliasToBean(Profile.class));
-		profiles = cr.list();
-		
-		return profiles;
 	}
 
 
@@ -130,7 +119,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	public List<Document> findparticulardocuments(int userid,String doctype){
     	List<Document> particulardocuments = new ArrayList<Document>();
-    	Session session = sessionFactory.openSession();
+    	Session session = getSessionFactory().openSession();
     	System.out.println("The Userid and Doctype are "+userid+"The Doctype are"+doctype);
     	try{
     		session.beginTransaction();
@@ -150,7 +139,7 @@ public class UserDaoImpl implements UserDao {
     	}
     public int savedocument(Document document){
         int userid = 0;
-    	Session session = sessionFactory.openSession();
+    	Session session = getSessionFactory().openSession();
     	try{
     	session.beginTransaction();
         userid = (int) session.save(document);
@@ -168,15 +157,24 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public CustomUser findCustomUser(int userid) {
-		Session session = sessionFactory.openSession().getSession();
-		CustomUser customuser = session.get(CustomUser.class, userid);
-		session.close();
+		Session session = getSessionFactory().openSession();
+		CustomUser customuser= null;
+		try{
+		customuser = session.get(CustomUser.class, userid);
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
+		finally{
+			session.close();
+		}
+
 		return customuser;
 	}
 
 	@Override
 	public void deletedoc(int docid) {
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		try{
 		session.beginTransaction();
 		Serializable id = new Integer(docid);
@@ -193,21 +191,6 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
-	@Override
-	public int finduseridbydocid(int docid) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Query query = session.createSQLQuery("SELECT userid FROM documents WHERE docid =?");
-		query.setParameter(0, docid);
-		int userid = (int) query.list().get(0);
-		session.getTransaction().commit();
-		session.close();
-		
-		System.out.println("The userid in the dao layer is "+userid);
-		return userid;
-	}
-
 
 	@Override
 	public void saveexperience(Experience experience) {
@@ -220,6 +203,7 @@ public class UserDaoImpl implements UserDao {
 					session.getTransaction().commit();
 				}catch(Exception e){
 					e.printStackTrace();
+					session.getTransaction().rollback();
 				}
 				
 				finally{
@@ -230,76 +214,127 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int saveeducation(Education education) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
-		int userid = (int) session.save(education);
-		session.close();
+		Session session = getSessionFactory().openSession();
+		int userid = 0;
+		try{
+		session.beginTransaction();
+		userid = (int) session.save(education);
+		session.getTransaction().commit();
+		return userid;
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}finally {
+			session.close();
+		}
+
 		return userid;
 	}
 
 	@Override
 	public List<Experience> findexperiences(int id) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession();
-    	Query query = session.createQuery("FROM Experience Where userid = ?");
+		Session session = getSessionFactory().openSession();
+		List<Experience> experiences = new ArrayList<Experience>();
+		try{
+    	Query<Experience> query = session.createQuery("FROM Experience Where userid = ?",Experience.class);
     	query.setParameter(0, id);
-    	List<Experience> experiences = query.list();
-    	session.close();
+    	experiences = query.getResultList();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+	    	session.close();
+		}
+
 		return experiences;
 	}
 
 	@Override
 	public List<Education> findqualifications(int id) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession();
-    	Query query = session.createQuery("FROM Education Where userid = ?");
+		Session session = getSessionFactory().openSession();
+		List<Education> educationqualifications = new ArrayList<Education>();
+		try{
+    	Query<Education> query = session.createQuery("FROM Education Where userid = ?",Education.class);
     	query.setParameter(0, id);
-    	List<Education> educationqualifications = query.list();
-    	System.out.println("In Dao The List Size is"+educationqualifications.size());
-    	session.close();
+    	educationqualifications = query.getResultList();
+    	return educationqualifications;
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+		  	session.close();
+		}
+  
 		return educationqualifications;
 	}
 
 	@Override
 	public void deleteexperience(int expid) {
-		Session session = sessionFactory.openSession().getSession();
+		Session session = getSessionFactory().openSession();
 		System.out.println("In DaO lAYER I AM pRESENT");
 		Serializable id = new Integer(expid);
+		try{
 		session.beginTransaction();
 		Object persistentInstance = session.load(Experience.class, id);
 		if (persistentInstance != null) {
 		    session.delete(persistentInstance);
 		}
 		session.getTransaction().commit();
-		session.close();
-		
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}finally {
+			session.close();
+			
+		}
+
 		
 	}
 	@Override
 	public void deleteeducation(int eduid) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
+		Session session = getSessionFactory().openSession();
 
-		Serializable id = new Integer(eduid);
-		session.beginTransaction();
-		Object persistentInstance = session.load(Education.class, id);
-		if (persistentInstance != null) {
-		    session.delete(persistentInstance);
+		try {
+			Serializable id = new Integer(eduid);
+			session.beginTransaction();
+			Object persistentInstance = session.load(Education.class, id);
+			if (persistentInstance != null) {
+			    session.delete(persistentInstance);
+			}
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			session.getTransaction().rollback();
+			e.printStackTrace();
+			
 		}
-		session.getTransaction().commit();
+		finally{
 		session.close();
+		}
 	}
 
 	@Override
 	public void updatefirstlogin(int id) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession().getSession();
+		Session session = getSessionFactory().openSession();
 		Serializable userid = new Integer(id);
-		session.beginTransaction();
-		System.out.println("The Serializable id is"+id);
-	    CustomUser user = session.get(CustomUser.class, userid);
-	    user.setFirstlogin(0);
-	    session.save(user);
-	    session.getTransaction().commit();
+		try {
+			session.beginTransaction();
+			System.out.println("The Serializable id is"+id);
+			CustomUser user = session.get(CustomUser.class, userid);
+			user.setFirstlogin(0);
+			session.save(user);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
 	    session.close();
 		
 	}
@@ -307,32 +342,45 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Applicant findapplicant(int id) {
 		// Getting The Applicant Details From The DataBase
-		Applicant applicant;
-		Session session = sessionFactory.openSession();
-        session.getTransaction().begin();
-		@SuppressWarnings("rawtypes")
-		TypedQuery query = session.createQuery("from Applicant where userid = :userid ");
-		query.setParameter("userid", id);
-		if(query.getResultList().size() == 0)
-		{
-			applicant = new Applicant();
+		Applicant applicant = null;
+		Session session = getSessionFactory().openSession();
+        try {
+			Query<Applicant> query = session.createQuery("from Applicant where userid = :userid ",Applicant.class);
+			query.setParameter("userid", id);
+			if(query.getResultList().size() == 0)
+			{
+				applicant = null;
+			}
+			else{
+			   applicant = (Applicant) query.getResultList().get(0);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
 		}
-		else{
-		   applicant = (Applicant) query.getResultList().get(0);
-		}
-		session.getTransaction().commit();
-		session.close();
-		return applicant;
+        finally{
+    		session.close();
+        }
+      return applicant;
 	}
 
 	@Override
 	/*Saving A new Application as User enters The Application Information For The First Time*/
 	public void saveapplication(Applicant applicant) {
 		Session session = getSessionFactory().openSession();
-		session.beginTransaction();
-		session.save(applicant);
-		session.getTransaction().commit();
+		try {
+			session.beginTransaction();
+			session.flush();
+			session.save(applicant);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}finally{
 		session.close();
+		}
 	}
 
 	@Override
@@ -341,43 +389,50 @@ public class UserDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		Session session = getSessionFactory().openSession();
 		Applicant updatedapplicant = session.get(Applicant.class, applicant.getUserid());
-		session.beginTransaction();
-		updatedapplicant.setAdminnotes(applicant.getAdminnotes());
-		updatedapplicant.setAliennumber(applicant.getAliennumber());
-		updatedapplicant.setApplicationtype(applicant.getApplicationtype());
-		updatedapplicant.setCitizenship(applicant.getCitizenship());
-		updatedapplicant.setCountryofbirth(applicant.getCountryofbirth());
-		updatedapplicant.setCurrentemployerpetitionnumber(applicant.getCurrentemployerpetitionnumber());
-		updatedapplicant.setCurrentvisaexpirydate(applicant.getCurrentvisaexpirydate());
-		updatedapplicant.setDateofbirth(applicant.getDateofbirth());
-		updatedapplicant.setEadvalidupto(applicant.getEadvalidupto());
-		updatedapplicant.setFirstname(applicant.getFirstname());
-		updatedapplicant.setFullname(applicant.getFullname());
-		updatedapplicant.setLastentrydatetous(applicant.getLastentrydatetous());
-		updatedapplicant.setLastname(applicant.getLastname());
-		updatedapplicant.setLatesti94number(applicant.getLatesti94number());
-		updatedapplicant.setMaidenname(applicant.getMaidenname());
-		updatedapplicant.setMiddlename(applicant.getMiddlename());
-		updatedapplicant.setPrefix(applicant.getPrefix());
-		updatedapplicant.setProvinceofbirth(applicant.getProvinceofbirth());
-		updatedapplicant.setSocialsecuritynumber(applicant.getSocialsecuritynumber());
-		updatedapplicant.setStatus(applicant.getStatus());
-		updatedapplicant.setUsernotes(applicant.getUsernotes());
-		updatedapplicant.setUsvisit(applicant.getUsvisit());
-		session.saveOrUpdate(updatedapplicant);
-		session.getTransaction().commit();
+		try {
+			session.beginTransaction();
+			updatedapplicant.setAdminnotes(applicant.getAdminnotes());
+			updatedapplicant.setAliennumber(applicant.getAliennumber());
+			updatedapplicant.setApplicationtype(applicant.getApplicationtype());
+			updatedapplicant.setCitizenship(applicant.getCitizenship());
+			updatedapplicant.setCountryofbirth(applicant.getCountryofbirth());
+			updatedapplicant.setCurrentemployerpetitionnumber(applicant.getCurrentemployerpetitionnumber());
+			updatedapplicant.setCurrentvisaexpirydate(applicant.getCurrentvisaexpirydate());
+			updatedapplicant.setDateofbirth(applicant.getDateofbirth());
+			updatedapplicant.setEadvalidupto(applicant.getEadvalidupto());
+			updatedapplicant.setFirstname(applicant.getFirstname());
+			updatedapplicant.setFullname(applicant.getFullname());
+			updatedapplicant.setLastentrydatetous(applicant.getLastentrydatetous());
+			updatedapplicant.setLastname(applicant.getLastname());
+			updatedapplicant.setLatesti94number(applicant.getLatesti94number());
+			updatedapplicant.setMaidenname(applicant.getMaidenname());
+			updatedapplicant.setMiddlename(applicant.getMiddlename());
+			updatedapplicant.setPrefix(applicant.getPrefix());
+			updatedapplicant.setProvinceofbirth(applicant.getProvinceofbirth());
+			updatedapplicant.setSocialsecuritynumber(applicant.getSocialsecuritynumber());
+			updatedapplicant.setStatus(applicant.getStatus());
+			updatedapplicant.setUsernotes(applicant.getUsernotes());
+			updatedapplicant.setUsvisit(applicant.getUsvisit());
+			updatedapplicant.setDocumentdescription(applicant.getDocumentdescription());
+			updatedapplicant.setDocumenttitle(applicant.getDocumenttitle());
+			session.saveOrUpdate(updatedapplicant);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		    session.getTransaction().rollback();
+			e.printStackTrace();
+		}finally{
 		session.close();
+		}
 	}
 
 	@Override
 	public Contact findcontact(int userid) {
 		// finding contact details
 		Session session = getSessionFactory().openSession();
-		Contact contact =  new Contact();
+		Contact contact =  null;
 		try{
-			session.beginTransaction();
 			contact = session.get(Contact.class, userid);
-			session.getTransaction().commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -394,9 +449,11 @@ public class UserDaoImpl implements UserDao {
 				Session session = getSessionFactory().openSession();
 				try{
 					session.beginTransaction();
+					session.flush();
 					session.save(contact);
 					session.getTransaction().commit();
 				}catch(Exception e){
+					session.getTransaction().rollback();
 					e.printStackTrace();
 				}
 				
@@ -430,9 +487,12 @@ public class UserDaoImpl implements UserDao {
 					updatecontact.setZipcode(contact.getZipcode());
 					updatecontact.setZipcode2(contact.getZipcode2());
 					updatecontact.setZipcode3(contact.getZipcode3());
+					updatecontact.setDocumentdescription(contact.getDocumentdescription());
+					updatecontact.setDocumenttitle(contact.getDocumenttitle());
 					session.save(updatecontact);
 					session.getTransaction().commit();
 				}catch(Exception e){
+					session.getTransaction().rollback();
 					e.printStackTrace();
 				}
 				
@@ -445,11 +505,9 @@ public class UserDaoImpl implements UserDao {
 	public Passport findpassport(int userid) {
 		// finding passport in the database
 		Session session = getSessionFactory().openSession();
-		Passport passport = new Passport();
+		Passport passport = null;
 		try{
-			session.beginTransaction();
 			passport = session.get(Passport.class, userid);
-			session.getTransaction().commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -469,6 +527,7 @@ public class UserDaoImpl implements UserDao {
 			session.save(passport);
 			session.getTransaction().commit();
 		}catch(Exception e){
+			session.getTransaction().rollback();
 			e.printStackTrace();
 		}
 		
@@ -488,6 +547,7 @@ public class UserDaoImpl implements UserDao {
 			updatedpassport.setPassportexpirydate(passport.getPassportexpirydate());
 			updatedpassport.setPassportissuancedate(passport.getPassportissuancedate());
 			updatedpassport.setPassportissuedlocation(passport.getPassportissuedlocation());
+			updatedpassport.setDocumentdescription(passport.getDocumentdescription());
 			session.save(updatedpassport);
 			tx.commit();
 	}catch(Exception e){
@@ -503,11 +563,10 @@ public class UserDaoImpl implements UserDao {
 	public List<Travel> findtraveldetails(int userid) {
 		// pulling up the list of travel details to be shown in the view
 		List<Travel> traveldetails = new ArrayList<Travel>();
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		try{
         session.getTransaction().begin();
-		@SuppressWarnings("unchecked")
-		TypedQuery<Travel> query = session.createQuery("from Travel where userid = :userid ");
+		TypedQuery<Travel> query = session.createQuery("from Travel where userid = :userid ",Travel.class);
 		query.setParameter("userid", userid);
 		traveldetails = query.getResultList();
 		session.getTransaction().commit();
@@ -525,11 +584,9 @@ public class UserDaoImpl implements UserDao {
 	public Travel findtravel(int travelid) {
 		// TODO Auto-generated method stub
 		Session session = getSessionFactory().openSession();
-		Travel travel = new Travel();
+		Travel travel = null;
 		try{
-			session.beginTransaction();
 			travel = session.get(Travel.class, travelid);
-			session.getTransaction().commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -549,6 +606,7 @@ public class UserDaoImpl implements UserDao {
 			session.save(travel);
 			session.getTransaction().commit();
 		}catch(Exception e){
+			session.getTransaction().rollback();
 			e.printStackTrace();
 		}
 		
@@ -571,6 +629,9 @@ public class UserDaoImpl implements UserDao {
 			updatedtravel.setStatusvalidfrom(travel.getStatusvalidfrom());
 			updatedtravel.setStatusvalidtill(travel.getStatusvalidtill());
 			updatedtravel.setTotalmonthsoutsideus(travel.getTotalmonthsoutsideus());
+			updatedtravel.setCurrententry(travel.getCurrententry());
+			updatedtravel.setDocumentdescription(travel.getDocumentdescription());
+			updatedtravel.setDocumenttitle(travel.getDocumenttitle());
 			session.getTransaction().commit();
 	}catch(Exception e){
 		session.getTransaction().rollback();
@@ -623,6 +684,8 @@ public class UserDaoImpl implements UserDao {
 			updateeducation.setUssevisnumber(education.getUssevisnumber());
 			updateeducation.setYearofpassing(education.getYearofpassing());
 			updateeducation.setZipcode(education.getZipcode());
+			updateeducation.setDocumentdescription(education.getDocumentdescription());
+			updateeducation.setDocumenttitle(education.getDocumenttitle());
 			session.save(updateeducation);
 			session.getTransaction().commit();
 		}catch(Exception e){
@@ -650,6 +713,8 @@ public class UserDaoImpl implements UserDao {
 			updatedexperience.setJoineddate(experience.getJoineddate());
 			updatedexperience.setState(experience.getState());
 			updatedexperience.setTotalmonthsworked(experience.getTotalmonthsworked());
+			updatedexperience.setDocumenttitle(experience.getDocumenttitle());
+			updatedexperience.setDocumentdescription(experience.getDocumentdescription());
 			session.save(updatedexperience);
 			session.getTransaction().commit();
 		}catch(Exception e){
@@ -670,6 +735,7 @@ public class UserDaoImpl implements UserDao {
 			session.save(certification);
 			session.getTransaction().commit();
 		}catch(Exception e){
+			session.getTransaction().rollback();
 			e.printStackTrace();
 		}
 		
@@ -699,6 +765,8 @@ public class UserDaoImpl implements UserDao {
 					updatedcertification.setState(certification.getState());
 					updatedcertification.setYearOfPassing(certification.getYearOfPassing());
 					updatedcertification.setZipcode(certification.getZipcode());
+					updatedcertification.setDocumentdescription(certification.getDocumentdescription());
+					updatedcertification.setDocumenttitle(certification.getDocumenttitle());
 					session.getTransaction().commit();
 			}catch(Exception e){
 				session.getTransaction().rollback();
@@ -720,6 +788,7 @@ public class UserDaoImpl implements UserDao {
 			id = (int) session.save(customuser);
 			session.getTransaction().commit();
 		}catch(Exception e){
+			session.getTransaction().rollback();
 			e.printStackTrace();
 		}
 		
@@ -778,9 +847,7 @@ public class UserDaoImpl implements UserDao {
 		Education education = null;
 		Session session = getSessionFactory().openSession();
 		try{
-			session.beginTransaction();
 			education = session.get(Education.class, eduid);
-			session.getTransaction().commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -836,9 +903,7 @@ public class UserDaoImpl implements UserDao {
 		Certification certification = null;
 		Session session = getSessionFactory().openSession();
 		try{
-			session.beginTransaction();
 			certification = session.get(Certification.class, certificationid);
-			session.getTransaction().commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -851,7 +916,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public CustomUser findCustomUserByEmail(String email) {
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 	    CriteriaQuery<CustomUser> criteria = builder.createQuery(CustomUser.class);
 	    Root<CustomUser> from = criteria.from(CustomUser.class);
@@ -871,21 +936,18 @@ public class UserDaoImpl implements UserDao {
 	public PasswordResetToken findpasswordresettoken(String token) {
 		// TODO Auto-generated method stub
 		PasswordResetToken passwordresettoken = null;
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		try{
-        session.getTransaction().begin();
-		@SuppressWarnings("unchecked")
-		TypedQuery<PasswordResetToken> query = session.createQuery("from PasswordResetToken where token = :token ");
+		TypedQuery<PasswordResetToken> query = session.createQuery("from PasswordResetToken where token = :token ",PasswordResetToken.class);
 		query.setParameter("token", token);
         if(query.getResultList().size() == 0){
-        	passwordresettoken =null;
+        	passwordresettoken = null;
         }
         else{
         	passwordresettoken =  query.getSingleResult();
         }
         
 		}catch(Exception e){
-			session.getTransaction().rollback();
 			e.printStackTrace();
 		}
 		finally{
@@ -942,9 +1004,9 @@ public class UserDaoImpl implements UserDao {
 		try{
 	        session.getTransaction().begin();
 	        System.out.println("The Id In The Dao Layer For password reset is"+userid);
-	        CustomUser updatedcustomuser = session.get(CustomUser.class, userid);
-	        updatedcustomuser.setApplicationstatus(applicationstatus);
-	        session.save(updatedcustomuser);
+	        Applicant applicant = session.get(Applicant.class, userid);
+	        applicant.setApplicationstatus(applicationstatus);
+	        session.save(applicant);
 			session.getTransaction().commit();
 			}catch(Exception e){
 				session.getTransaction().rollback();
@@ -1010,7 +1072,7 @@ public class UserDaoImpl implements UserDao {
 		 session = getSessionFactory().openSession();
 		try{
 			CustomUser updatedcustomuser = session.get(CustomUser.class, userid);
-			updatedcustomuser.setSubmission(true);
+			updatedcustomuser.setSubmission("done");
 			tx = session.beginTransaction();
 			session.save(updatedcustomuser);
 			tx.commit();
@@ -1023,6 +1085,243 @@ public class UserDaoImpl implements UserDao {
 			session.close();
 		}
 		
+	}
+
+	@Override
+	public ArrayList<Document> finddocumentbytravelid(int travelid) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+	    CriteriaQuery<Document> criteria = builder.createQuery(Document.class);
+	    Root<Document> from = criteria.from(Document.class);
+	    criteria.select(from);
+	    criteria.where(builder.equal(from.get("travelid"), travelid));
+	    TypedQuery<Document> typed = session.createQuery(criteria);
+	    try {
+	        return (ArrayList<Document>) typed.getResultList();
+	    } catch (final NoResultException nre) {
+	        return null;
+	    }
+	    finally{
+	    	session.close();
+	    }
+	}
+
+	@Override
+	public List<Document> finddocumentbyeduid(int eduid) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+	    CriteriaQuery<Document> criteria = builder.createQuery(Document.class);
+	    Root<Document> from = criteria.from(Document.class);
+	    criteria.select(from);
+	    criteria.where(builder.equal(from.get("eduid"), eduid));
+	    TypedQuery<Document> typed = session.createQuery(criteria);
+	    try {
+	        return (ArrayList<Document>) typed.getResultList();
+	    } catch (final NoResultException nre) {
+	        return null;
+	    }
+	    finally{
+	    	session.close();
+	    }
+	}
+
+	@Override
+	public void updateapplicationadminverification(Applicant applicant, String adminverification) {
+		// TODO Auto-generated method stub
+		Session session = null;
+        Transaction tx = null;
+		 session = getSessionFactory().openSession();
+		try{
+			Applicant updatedapplicant = session.get(Applicant.class, applicant.getUserid());
+			updatedapplicant.setAdminverification(adminverification);
+			tx = session.beginTransaction();
+			session.save(updatedapplicant);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			tx.rollback();
+		}
+		
+		finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public void updateapplicationattorneyverification(Applicant applicant, Attorney attorney) {
+		// TODO Auto-generated method stub
+		Session session = null;
+        Transaction tx = null;
+		 session = getSessionFactory().openSession();
+		try{
+			Applicant updatedapplicant = session.get(Applicant.class, applicant.getUserid());
+			updatedapplicant.setAttorneyverification("Assigned To Attorney : "+attorney.getName());
+			updatedapplicant.setAttorney(attorney);
+			tx = session.beginTransaction();
+			session.save(updatedapplicant);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			tx.rollback();
+		}
+		
+		finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public void updateapplicationeducationevaluation(Applicant applicant, String educationevaluationverification) {
+		// TODO Auto-generated method stub
+		Session session = null;
+        Transaction tx = null;
+		 session = getSessionFactory().openSession();
+		try{
+			Applicant updatedapplicant = session.get(Applicant.class, applicant.getUserid());
+			updatedapplicant.setEducationevaluation(educationevaluationverification);
+			tx = session.beginTransaction();
+			session.save(updatedapplicant);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			tx.rollback();
+		}
+		
+		finally{
+			session.close();
+		}
+		
+	}
+
+	@Override
+	public List<Document> findalldocuments(int userid) {
+		// TODO Auto-generated method stub
+		
+		List<Document> documents = new ArrayList<Document>();
+		Session session = getSessionFactory().openSession();
+		try{
+        session.getTransaction().begin();
+		TypedQuery<Document> query = session.createQuery("from Document where userid = :userid ",Document.class);
+		query.setParameter("userid", userid);
+		documents = query.getResultList();
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return documents;
+	}
+
+	@Override
+	public Attorney findattorneybyattorneyid(int attorneyid) {
+		// TODO Auto-generated method stub
+		Attorney attorney = null;
+		Session session = getSessionFactory().openSession();
+		try{
+			attorney = session.get(Attorney.class, attorneyid);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		return attorney;
+	}
+
+	@Override
+	public void saveattorney(Attorney attorney) {
+		// TODO Auto-generated method stub
+		   Session session = null;
+	         Transaction tx = null;
+			 session = getSessionFactory().openSession();
+			try{
+				
+				tx = session.beginTransaction();
+				session.save(attorney);
+				tx.commit();
+			}catch(Exception e){
+				e.printStackTrace();
+				tx.rollback();
+			}
+			
+			finally{
+				session.close();
+			}
+	}
+
+	@Override
+	public void updateattorney(Attorney attorney) {
+		// TODO Auto-generated method stub
+		Session session = null;
+        Transaction tx = null;
+		 session = getSessionFactory().openSession();
+		try{
+			Attorney updatedattorney = session.get(Attorney.class, attorney.getAttorneyid());
+			updatedattorney.setCompany(attorney.getCompany());
+			updatedattorney.setEmail(updatedattorney.getEmail());
+			updatedattorney.setName(attorney.getName());
+			updatedattorney.setPhonenumber(attorney.getPhonenumber());
+			tx = session.beginTransaction();
+			session.save(updatedattorney);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			tx.rollback();
+		}
+		
+		finally{
+			session.close();
+		}
+		
+	}
+
+	@Override
+	public List<Attorney> findallattorneys() {
+		// TODO Auto-generated method stub
+		List<Attorney> attorneys = new ArrayList<Attorney>();
+		Session session = getSessionFactory().openSession();
+		try{
+        session.getTransaction().begin();
+		TypedQuery<Attorney> query = session.createQuery("from Attorney",Attorney.class);
+		attorneys = query.getResultList();
+		session.getTransaction().commit();
+		if(attorneys.isEmpty()){
+			return null;
+		}
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return attorneys;
+	}
+
+	@Override
+	public void deleteattorney(int attorneyid) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		try{
+		session.beginTransaction();
+		Serializable id = new Integer(attorneyid);
+		Object persistentInstance = session.load(Attorney.class, id);
+		if (persistentInstance != null) {
+		    session.delete(persistentInstance);
+		}
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+		}
+		finally{
+		session.close();
+		}
 	}
 }
 		

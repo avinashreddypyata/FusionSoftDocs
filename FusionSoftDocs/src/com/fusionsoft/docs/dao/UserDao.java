@@ -1,8 +1,10 @@
 package com.fusionsoft.docs.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Attorney;
 import com.fusionsoft.docs.model.Certification;
 import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
@@ -21,7 +23,6 @@ public interface UserDao {
 	public int savedocument(Document document);
 	public CustomUser findCustomUser(int userid);
 	public void deletedoc(int docid);
-	public int finduseridbydocid(int docid);
 	public int saveProfile(CustomUser customuser);
 	public void saveexperience(Experience experience);
 	public int saveeducation(Education education);
@@ -63,6 +64,17 @@ public interface UserDao {
 	public void updatecustomuserapplicationstatus(int userid, String applicationstatus);
 	public List<CustomUser> findallcustomusers();
 	public void updatecustomusersubmission(int userid);
+	public ArrayList<Document> finddocumentbytravelid(int travelid);
+	public List<Document> finddocumentbyeduid(int eduid);
+	public void updateapplicationadminverification(Applicant applicant, String adminverification);
+	public void updateapplicationattorneyverification(Applicant applicant, Attorney attorney);
+	public void updateapplicationeducationevaluation(Applicant applicant, String educationevaluationverification);
+	public List<Document> findalldocuments(int userid);
+	public Attorney findattorneybyattorneyid(int attorneyid);
+	public void saveattorney(Attorney attorney);
+	public void updateattorney(Attorney attorney);
+	public List<Attorney> findallattorneys();
+	public void deleteattorney(int attorneyid);
 	
 /*test*/
 }

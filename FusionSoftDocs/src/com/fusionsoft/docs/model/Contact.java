@@ -8,9 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name ="contact")
@@ -20,6 +22,30 @@ public class Contact {
 	@GeneratedValue(generator="gen")
 	@GenericGenerator(name="gen", strategy="foreign", parameters={@Parameter(name="property", value="customuser")})
 	private int userid;
+	@Transient
+	MultipartFile file;
+	@Column(name = "documentdescription")
+	private String documentdescription;
+	@Column(name = "documenttitle")
+	private String documenttitle;
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+	public String getDocumentdescription() {
+		return documentdescription;
+	}
+	public void setDocumentdescription(String documentdescription) {
+		this.documentdescription = documentdescription;
+	}
+	public String getDocumenttitle() {
+		return documenttitle;
+	}
+	public void setDocumenttitle(String documenttitle) {
+		this.documenttitle = documenttitle;
+	}
 	@Column(name ="phonenumber")
 	private String phonenumber;
 	@Column(name = "homephonenumber")

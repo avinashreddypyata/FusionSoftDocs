@@ -1,6 +1,7 @@
 package com.fusionsoft.docs.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,15 +11,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cascade;
+import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name = "education")
 public class Education {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int eduid;
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "education")
+	private List<Document> documents;
+	public List<Document> getDocuments() {
+		return documents;
+	}
+	public void setDocuments(List<Document> documents) {
+		this.documents = documents;
+	}
 	@Column(name = "course")
     private String course;
 	@Column(name = "university")
@@ -43,6 +58,31 @@ public class Education {
 	private String monthofpassing;
 	@Column(name = "ussevisnumber")
 	private String ussevisnumber;
+	@Transient
+	MultipartFile file;
+
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+	@Column(name = "documentdescription")
+	private String documentdescription;
+	@Column(name = "documenttitle")
+	private String documenttitle;
+	public String getDocumentdescription() {
+		return documentdescription;
+	}
+	public void setDocumentdescription(String documentdescription) {
+		this.documentdescription = documentdescription;
+	}
+	public String getDocumenttitle() {
+		return documenttitle;
+	}
+	public void setDocumenttitle(String documenttitle) {
+		this.documenttitle = documenttitle;
+	}
 	public String getAddress() {
 		return address;
 	}

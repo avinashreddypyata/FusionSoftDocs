@@ -18,7 +18,7 @@ import com.fusionsoft.docs.service.UserService;
 public class AttorneyHomePageController {
 	@Autowired
 	public UserDao userDao;
-	private static int id = 10;
+	private static int id;
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {

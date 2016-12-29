@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -31,55 +31,40 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #3 for user profile sample" name="description" />
         <meta content="" name="author" />
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+         <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="/FSDocs/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="/FSDocs/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="/FSDocs/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="/FSDocs/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="/FSDocs/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
-        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-        <script src="/FSDocs/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyCoQaQ7_auZERrZRV3j0QzK1i553InKWAse" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="/FSDocs/assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="/FSDocs/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="/FSDocs/assets/contactformjsfiles/datepicker.js"></script>
-     
-    <link rel="stylesheet" type="text/css" href="/FSDocs/assets/contactformjsfiles/theme/default/css/default.css"
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/passportformjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
@@ -98,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
                                     <a href="index.html">
-                                        <img src="/FSDocs/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
+                                        <img src="http://localhost:854/LoginPage/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
                                     </a>
                                 </div>
                                 <!-- END LOGO -->
@@ -114,8 +99,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!-- BEGIN USER LOGIN DROPDOWN -->
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                <img alt="" class="img-circle" src="/FSDocs/assets/layouts/layout3/img/avatar9.jpg">
-                                                <span class="username username-hide-mobile">Nick</span>
+                                                <img alt="" class="img-circle" src="http://localhost:854/LoginPage/assets/layouts/layout3/img/user.jpg">
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">
                                              
@@ -139,24 +123,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                      <ul class="nav navbar-nav">
+                                    <ul class="nav navbar-nav">
                                         <li>
                                             <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="editorcreatenewapplication">Application
+                                            <a href="viewapplicant">Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li  aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
-                                        <a href="editorcreatenewcontact">Contact
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                        <a href="viewcontact">Contact
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li >
-                                         <a href="editorcreatenewpassport">Passport
+                                         <a href="viewpassport">Passport
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
@@ -165,12 +149,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li >
                                        <a href="educationdetails">Education
                                                
                                             </a>
                                         </li>
-                                        <li>
+                                        <li >
                                       <a href="experiencedetails">Experience
                                                 
                                             </a>
@@ -207,217 +191,351 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                                <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
-action="saveorupdatecontact" enctype="multipart/form-data" method="POST" novalidate="novalidate"
-data-form="preview" modelAttribute="contact">
-<form:hidden path="userid" value="${contact.userid}"/>
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="/FSDocs/assets/contactformjsfiles/common/images/image_default.png"/></a>
-  </div>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
-        <div class="fb-header fb-item-alignment-center">
-          <h2 style="display: inline;">
-            Contact Information
-          </h2>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item21" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item21_label_0">Phone Number</label>
-        </div>
-        <div class="fb-phone">
-          <form:input name="phonenumber" id="item21_tel_1" required="required" type="tel" placeholder="Phone Number"
-          data-hint="" path="phonenumber"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item22">
-        <div class="fb-grouplabel">
-          <label id="item22_label_0" style="display: inline;">Home Phone(Optional)</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="homephone" id="item22_text_1" type="text" maxlength="254"
-          placeholder="Home Phone" data-hint="" autocomplete="off" path="homephonenumber"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item23">
-        <div class="fb-grouplabel">
-          <label id="item23_label_0">Email</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="email23" id="item23_email_1" required="required" type="email" maxlength="254"
-          placeholder="you@domain.com" data-hint="" autocomplete="off" path ="email"/>
-        </div>
-      </div>
-      <div class="fb-item" id="item24">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">Address1</label>
-        </div>
-        <div class="fb-textarea">
-          <form:textarea name="address1" id="item4_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          required="required" maxlength="1000" placeholder="" data-hint="" path="address1"></form:textarea>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item5">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">City</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="city" id="item5_text_1" required="required" type="text" maxlength="254"
-          placeholder="City" data-hint="" autocomplete="off" path ="city"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">State</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="state" id="item6_text_1" required="required" type="text" maxlength="254"
-          placeholder="State" data-hint="" autocomplete="off" path ="state"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item7" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item7_label_0" style="display: inline;">Zip Code</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="zipcode" id="item7_text_1"  type="text" maxlength="254"
-          placeholder="Zip Code" data-hint="" autocomplete="off" path ="zipcode"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item8" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item8_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="country" id="item7_text_1" required="required" type="text" maxlength="254"
-          placeholder="Country" data-hint="" autocomplete="off" path ="country" />
-        </div>
-      </div>
-      <div class="fb-item" id="item9">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item10" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item10_label_0" style="display: inline;">Address2(Optional)</label>
-        </div>
-        <div class="fb-textarea">
-          <textarea name="address2" id="item10_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          maxlength="1000" placeholder="" data-hint=""></textarea>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item11" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item11_label_0" style="display: inline;">City</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="city2" id="item11_text_1" type="text" maxlength="254" placeholder="City"
-          data-hint="" autocomplete="off" path ="city2"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item12" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item12_label_0" style="display: inline;">State</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="state2" id="item12_text_1" type="text" maxlength="254" placeholder="State"
-          data-hint="" autocomplete="off" path ="state2"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item13" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item13_label_0" style="display: inline;">Zip Code</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="zipcode2" id="item13_text_1" type="text" maxlength="254"
-          placeholder="Zip Code" data-hint="" autocomplete="off" path ="zipcode2"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item14" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item14_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="country" id="item7_text_1"  type="text" maxlength="254"
-          placeholder="Country" data-hint="" autocomplete="off" path ="country2"/>
-        </div>
-      </div>
-      <div class="fb-item" id="item15">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item16" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item16_label_0" style="display: inline;">Address3(Optional)</label>
-        </div>
-        <div class="fb-textarea">
-          <textarea name="address3" id="item16_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          maxlength="1000" placeholder="" data-hint=""></textarea>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item17" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item17_label_0" style="display: inline;">City</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="city3" id="item17_text_1" type="text" maxlength="254" placeholder="City"
-          data-hint="" autocomplete="off" path ="city3"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item18" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item18_label_0" style="display: inline;">State</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="state3" id="item18_text_1" type="text" maxlength="254" placeholder="State"
-          data-hint="" autocomplete="off" path ="state3"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item19" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item19_label_0" style="display: inline;">Zip Code</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="zipcode3" id="item19_text_1" type="text" maxlength="254"
-          placeholder="Zip Code" data-hint="" autocomplete="off" path ="zipcode3"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item20" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item20_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="country" id="item7_text_1"  type="text" maxlength="254"
-          placeholder="Country" data-hint="" autocomplete="off" path ="country3"/>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
-  style="display: none; cursor: default;">
-    <img src="/FSDocs/assets/contactformjsfiles/editordata/images/recaptchawhite.png" />
-  </div>
-  <div class="fb-footer fb-item-alignment-center" id="fb-submit-button-div"
-  style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" style="border-width: 0px; font-family: Helvetica, Arial; font-size: 11px;background-image: url('/FSDocs/assets/applicationformjsfiles/theme/default/images/btn_submit.png');"
-    type="submit" data-regular="url('/FSDocs/assets/contactformjsfiles/theme/default/images/btn_submit.png')"
-    value="SaveAndContinue" />
-  </div>
-</form:form>
-<div class="btn-group btn-group btn-group-justified">
-                                                                 <a href="editorcreatenewapplication" class="btn red"> Back </a>
-                                                                    <a href="home" class="btn blue"> Home </a>
-                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
+                              <div class="portlet light bordered">
+                                                                <div class="portlet-title">
+                                                                    <div class="caption">
+                                                                        <i class="icon-equalizer font-blue-hoki"></i>
+                                                                        <span class="caption-subject font-blue-hoki bold uppercase">Contact</span>
+                                                                        
+                                                                    </div>
+                                                                    <div class="tools">
+                                                                        <a href="" class="collapse"> </a>
+                                                                     
+                                                                    </div>
                                                                 </div>
+                                                                
+                                                                <div class="portlet-body form">
+                                                                    <!-- BEGIN FORM-->
+                                                                    <form:form action="saveorupdatecontact" method="POST" class="horizontal-form" id="form_sample_1" modelAttribute="contact" enctype="multipart/form-data">
+                                                                       <form:hidden path="userid" value="${contact.userid}"/>
+                                                                        <div class="form-body">
+                                                                        
+                                                                            <h3 class="form-section">Contact Info</h3>
+                                                                           <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Phone Number</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" data-required = "data-required" id="phonenumber" class="form-control" placeholder="Phone Number" path="phonenumber"/>
+                                                                                        <span class="help-block">Include The Area Code </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <!--/span-->
+                                                                               <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Home Phone Number</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" id="homephonenumber" class="form-control" placeholder="Home Phone Number"  path="homephonenumber"  data-required = "data-required"/>
+                                                                                        
+                                                                                    </div>
+																				</div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
+                                                                            
+                                                                            <div class="row">
+                                                                            
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Email</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" data-required = "data-required" id="email" class="form-control" placeholder="Email" path="email"/>
+                                                                                       
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <!--/span-->
+                                                                               
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
+                                                                            <h3 class="form-section">Address (Home Country)</h3>
+                                                                           <div class="row">
+                                                                                
+                                                                                    <div class="col-md-12 ">
+                                                                                    <div class="form-group">
+                                                                                        <label>Street</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" class="form-control" path="address1" data-required = "data-required"/> </div>
+                                                                                </div>
+                                                                               
+                                                                                
+                                                                                <!--/span-->
+                                                                               
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                             <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">City</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" id="city" class="form-control" placeholder="City"  path="city" data-required = "data-required"/>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                               <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">State</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" id="state" class="form-control" placeholder="State"  path="state" data-required = "data-required"/>
+                                                                                        
+                                                                                    </div>
+																				</div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                             <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Postal Code</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" id="postalcode" class="form-control" placeholder="Postal Code"  path="zipcode" data-required = "data-required"/>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                               <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Country</label>
+                                                                                         <span class="required"> * </span>
+                                                                                        <form:input type="text" id="country" class="form-control" placeholder="State"  path="country" data-required = "data-required"/>
+                                                                                        
+                                                                                    </div>
+																				</div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                             <h3 class="form-section">US Address (If Applicable)</h3>
+                                                                           <div class="row">
+                                                                                
+                                                                                    <div class="col-md-12 ">
+                                                                                    <div class="form-group">
+                                                                                        <label>Street</label>
+                                                                                        <form:input type="text" class="form-control" path="address2"/> </div>
+                                                                                </div>
+                                                                               
+                                                                                
+                                                                                <!--/span-->
+                                                                               
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                             <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">City</label>
+                                                                                        <form:input type="text" id="city" class="form-control" placeholder="City"  path="city2"/>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                               <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">State</label>
+                                                                                        <form:input type="text" id="state" class="form-control" placeholder="State"  path="state2"/>
+                                                                                        
+                                                                                    </div>
+																				</div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                             <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Postal Code</label>
+                                                                                        <form:input type="text" id="postalcode" class="form-control" placeholder="Postal Code"  path="zipcode2"/>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                               <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Country</label>
+                                                                                        <form:input type="text" id="country" class="form-control" placeholder="State"  path="country2"/>
+                                                                                        
+                                                                                    </div>
+																				</div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                             <h3 class="form-section">Address(Optional)</h3>
+                                                                           <div class="row">
+                                                                                
+                                                                                    <div class="col-md-12 ">
+                                                                                    <div class="form-group">
+                                                                                        <label>Street</label>
+                                                                                        <form:input type="text" class="form-control" path="address3"/> </div>
+                                                                                </div>
+                                                                               
+                                                                                
+                                                                                <!--/span-->
+                                                                               
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                             <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">City</label>
+                                                                                        <form:input type="text" id="city" class="form-control" placeholder="City"  path="city3"/>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                               <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">State</label>
+                                                                                        <form:input type="text" id="state" class="form-control" placeholder="State"  path="state3"/>
+                                                                                        
+                                                                                    </div>
+																				</div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                             <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Postal Code</label>
+                                                                                        <form:input type="text" id="postalcode" class="form-control" placeholder="Postal Code"  path="zipcode3"/>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                               <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Country</label>
+                                                                                        <form:input type="text" id="country" class="form-control" placeholder="State"  path="country3"/>
+                                                                                        
+                                                                                    </div>
+																				</div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            
+                                                                           <div class="portlet light portlet-fit ">
+                                                    <div class="portlet-title">
+                                                        <div class="caption">
+                                                            <i class=" icon-layers font-green"></i>
+                                                            <span class="caption-subject font-green bold uppercase">Documents To Be Attached</span>
+                                                            <div class="caption-desc font-grey-cascade">Please  Attach All The Documents</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="portlet-body">
+                                                        <div class="mt-element-list">
+                                                            <div class="mt-list-head list-simple ext-1 font-white bg-green-sharp">
+                                                                <div class="list-head-title-container">
+                                                                   
+                                                                    <h3 class="list-title">Documents List</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-list-container list-simple ext-1">
+                                                                <ul>
+                                                                    <li class="mt-list-item done">
+                                                                        <div class="list-icon-container">
+                                                                            <i>1</i>
+                                                                        </div>
+                                                                        
+                                                                        <div class="list-item-content">
+                                                                            <h3 class="uppercase">
+                                                                              Address Proof (Any US Government Issued Card)
+                                                                            </h3>
+                                                                        </div>
+                                                                    </li>
+                                                                  
+                                                                
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                             <h3 class="form-section">Documents</h3>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6 ">
+                                                                                  <div class="form-group"> 
+                                               <label for="exampleInputFile1">File input</label> 
+<form:input type="file" id="exampleInputFile1" path="file"/>
+                                                <p class="help-block"> Please Attach All The Pages In A Single Pdf File </p> 
+                                      </div>
+                                                                                </div>
+                                                                                  <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Description Of The Document</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" path="documentdescription" id="documentdescription"  class="form-control" placeholder="Describe The Document" data-required = "data-required"/>
+                                                                         
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                             <div class="form-actions right">
+                                                                            <button type="button" class="btn default">Cancel</button>
+                                                                            <button type="submit" class="btn blue">
+                                                                                <i class="fa fa-check"></i> Save</button>
+                                                                        </div>
+                                                                               </div>
+                                                                       
+                                                                    </form:form>
+                                                                              <h3 class="form-section">Uploaded Document</h3>
+                                                                            <div class="row">
+                                                                              <div class="portlet-body">
+                                                        <div class="table-scrollable">
+                                                            <table class="table table-striped table-bordered table-advance table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Document Uploaded </th>
+                                                                            <th>Description</th>
+                                                                        
+                                                                        <th>
+                                                                             Action </th>
+                                                                        <th> Action </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                                        <c:forEach items="${documents.contactdocuments}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                          
+                                                                                            <td>
+                                                                                       <form action="downloadDoc" method="POST" id="downloaddoc">
+                                                                       
+                                                                            <input type="hidden" value="${document.docid}" name="docid" form="downloaddoc" ></input>
+                                                                            
+                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
+                                                                                       </form>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                        <form action="deleteDoc" method="POST" id="deletedoc">
+                                                                
+                                                                            <input type="hidden" value="${document.docid}" name="docid" form="deletedoc"></input>
+                                                                                        <button type="submit" class="btn red btn-outline" form="deletedoc">Delete</button>
+                                                                                        </form>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                                            </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            <!--/row-->
+                                                                           
+                                                                      
+                                                                            
+                                                                            
+                                                                            
+                                                                     
+                                                                    <!-- END FORM-->
+                                                            
+                                                                </div>
+                                                            </div>     
+
+                                                                </div>
+                                                                </div>
+
+
+                                </div>
 
 
                                 </div>
@@ -426,10 +544,7 @@ data-form="preview" modelAttribute="contact">
                             <!-- END CONTENT BODY -->
                         </div>
                         <!-- END CONTENT -->
-                    </div>
                     <!-- END CONTAINER -->
-                </div>
-            </div>
             <div class="page-wrapper-row">
                 <div class="page-wrapper-bottom">
                     <!-- BEGIN FOOTER -->
@@ -466,14 +581,54 @@ data-form="preview" modelAttribute="contact">
                 </div>
             </div>
         </div>
-        <script src="/FSDocs/assets/contactformjsfiles/formvalidation.js"></script>
-        <!--[if lt IE 9]>
-<script src="/FSDocs/assets/global/plugins/respond.min.js"></script>
-<script src="/FSDocs/assets/global/plugins/excanvas.min.js"></script> 
-<script src="/FSDocs/assets/global/plugins/ie8.fix.min.js"></script> 
-<![endif]-->
+
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script> 
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script>  
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script>  
+
         <!-- BEGIN CORE PLUGINS -->
-        
+          <!-- BEGIN CORE PLUGINS -->
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
+         <script src="http://localhost:854/LoginPage/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-samples.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-validation.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+      <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
     </body>
 
 </html>

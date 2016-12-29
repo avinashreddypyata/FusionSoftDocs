@@ -33,53 +33,29 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="/FSDocs/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="/FSDocs/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="/FSDocs/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="/FSDocs/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="/FSDocs/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-        <script src="/FSDocs/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="/FSDocs/assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="/FSDocs/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="/FSDocs/assets/applicationformjsfiles/datepicker.js"></script>
+      
      
-    <link rel="stylesheet" type="text/css" href="/FSDocs/assets/applicationformjsfiles/theme/default/css/default.css"
+    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/applicationformjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
@@ -132,13 +108,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <a href = "overview" >Overview</a>
                                                     </li>
                                                <li>
-                                                        <a href = "editorcreatenewapplication" >Application</a>
+                                                        <a href = "viewapplicant" >Application</a>
                                                </li>
                                                     <li >
-                                                        <a href = "editorcreatenewcontact"> Contact </a>
+                                                        <a href = "viewcontact"> Contact </a>
                                                     </li>
                                                      <li >
-                                                        <a href = "editorcreatenewpassport">Passport</a>
+                                                        <a href = "viewpassport">Passport</a>
                                                     </li>
                                                     <li >
                                                         <a href = "traveldetails"> Travel </a>
@@ -160,708 +136,110 @@ License: You must have a valid license purchased only from themeforest(the above
                                  <div class="tab-content">
                                                    <div class="page-content">
                             <!-- -beginning row -->
-                              <div class="row">
-                               <div class="col-md-6">
-                               <div class="portlet box blue">
-                               <div class="portlet-title">
-                               <div class="caption">
-                               <i class="fa fa-gift"></i>Passport Details </div>
-           
-                               </div>
-                               <!-- - portlet body beginning -->
-                               <div class="portlet-body portlet-empty">
-                               <form class="fb-100-item-column selected-object" id="docContainer" action=""
-enctype="multipart/form-data" method="POST" novalidate="novalidate" data-form="preview">
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text"/></a>
-  </div>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1" style="opacity: 1;">
-        <div class="fb-header fb-item-alignment-center">
-         
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item2">
-        <div class="fb-grouplabel">
-          <label id="item2_label_0" style="display: inline;">Latest Passport Number</label>
-        </div>
-        ${passport.latestpassportnumber}
-      </div>
-      <div class="fb-item fb-50-item-column" id="item3">
-        <div class="fb-grouplabel">
-          <label id="item3_label_0" style="display: inline;">Passport Issuance Date</label>
-        </div>
-         ${passport.passportissuancedate}
-      </div>
-      <div class="fb-item fb-50-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">Passport Expiry Date</label>
-        </div>
-       ${passport.passportexpirydate}
-      </div>
-      <div class="fb-item fb-50-item-column" id="item5">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">Passport Issued Location</label>
-        </div>
-          ${passport.passportissuedlocation}
-      </div>
-    </div>
-  </div>
- 
-</form>
-                               </div>
-                               <!-- -portlet body end -->
-                               </div>
-                               <!-- -portlet ending -->
-                               </div>
-                               <!-- -column ending -->
-                               <div class="col-md-6">
-                               <!-- BEGIN Portlet PORTLET-->
-                               <div class="portlet light portlet-fit ">
+              <div class="portlet light portlet-fit bordered">
                                 <div class="portlet-title">
                                     <div class="caption">
-                                        <i class=" icon-layers font-green"></i>
-                                        <span class="caption-subject font-green bold uppercase">Status</span>
-                                       
+                                        <i class="icon-microphone font-green"></i>
+                                        <span class="caption-subject bold font-green uppercase">Application Time Line</span>
                                     </div>
+                              
                                 </div>
                                 <div class="portlet-body">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="mt-element-ribbon bg-grey-steel">
-                                                <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-primary uppercase">
-                                                    <div class="ribbon-sub ribbon-bookmark"></div>
-                                                    <i class="fa fa-star"></i>
+                                    <div class="timeline">
+                                        <!-- TIMELINE ITEM -->
+                                        <div class="timeline-item">
+                                            <div class="timeline-badge">
+                                                <img class="timeline-badge-userpic" src="http://localhost:854/LoginPage/assets/layouts/layout3/img/user.jpg"> </div>
+                                            <div class="timeline-body">
+                                                <div class="timeline-body-arrow"></div>
+                                                <div class="timeline-body-head">
+                                                    <div class="timeline-body-head-caption">
+                                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">${applicant.fullname}</a>
+                                                        <span class="timeline-body-time font-grey-cascade">${applicant.adminverification }</span>
+                                                    </div>
+                                                   
                                                 </div>
-                                                <p class="ribbon-content"><strong>${applicationstatus}</strong></p>
-                                                
+                                                <div class="timeline-body-content">
+                                                    <span class="font-grey-cascade"> 
+                                               
+                                                    <p><button  class="btn red btn-outline" form="deletedoc">Reject Application</button>
+                                                    <form action="verifyapplication" method="post">
+                                                    <input type = "hidden" value = "${applicant.userid}" name= "userid" >
+                                                    <button type="submit" class="btn green btn-outline">Verify Application</button></p>
+                                                    </form>
+                                                    </p>
+                                                     </span>
+                                                </div>
                                             </div>
-                                                       <form action="assigntoeducationevaluation" name="education" method="post"><input type="hidden" value="${applicant.userid}" name="userid"> </form>
-                                                            <input type="submit" class="btn green btn-outline" form="education" value="Assign To Education Evaluation">
-<%--<form action="assigntoattorney" id = "attorney" method="post"> --%>
-<%--                                                              <input type="hidden" value="${applicant.userid}" name="userid"> --%>
-<%--                                                              </form> --%>
-                                                                
-                                                                <button type="submit" class="btn blue btn-outline" form="attorney">Assign To Attorney</button>
-<!--                                                                 <button type="submit" class="btn green btn-outline" form="education" >Assign To Education Evaluation</button> -->
-                                                                <button type="submit" class="btn red btn-outline" form="reject">Reject</button>
-                                                             
-                                                           
                                         </div>
+                                        <!-- END TIMELINE ITEM -->
+                                        <!-- TIMELINE ITEM -->
+                                        <div class="timeline-item">
+                                            <div class="timeline-badge">
+                                                <img class="timeline-badge-userpic" src="http://localhost:854/LoginPage/assets/pages/media/users/attorney.jpg"> </div>
+                                            <div class="timeline-body">
+                                                <div class="timeline-body-arrow"> </div>
+                                                <div class="timeline-body-head">
+                                                    <div class="timeline-body-head-caption">
+                                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">Attorney</a>
+                                                        <span class="timeline-body-time font-grey-cascade">${applicant.attorneyverification }</span>
+                                                    </div>
+                                                    <div class="timeline-body-head-actions"> </div>
+                                                </div>
+                                                <div class="timeline-body-content">
+                                                    <span class="font-grey-cascade">
+                                                    <c:forEach items="${attorneys}" var="attorney">
+                                                    
+                                                     <p><a href="assigntoattorney?attorneyid=${attorney.attorneyid}&applicantid=${applicant.userid}" class="btn green btn-outline">Assign To Attorney ${attorney.name}</a></p>
+                                                      
+                                                       </c:forEach>
+                                                        
+                                                       
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END TIMELINE ITEM -->
+                                        <!-- TIMELINE ITEM WITH GOOGLE MAP -->
+                                        <div class="timeline-item">
+                                            <div class="timeline-badge">
+                                                <img class="timeline-badge-userpic" src="http://localhost:854/LoginPage/assets/pages/media/users/education.png"> </div>
+                                            <div class="timeline-body">
+                                                <div class="timeline-body-arrow"> </div>
+                                                <div class="timeline-body-head">
+                                                    <div class="timeline-body-head-caption">
+                                                        <a href="javascript:;" class="timeline-body-title font-blue-madison">Education Evaluation</a>
+                                                    </div>
+                                                   
+                                                </div>
+                                                <div class="timeline-body-content">
+                                                   <p>${applicant.educationevaluation} </p>
+                                                   <form action="assigntoeducationevaluation" method="post">
+                                                     <input type = "hidden" value = "${applicant.userid}" name= "userid" >
+                                                    <p><button type="submit" class="btn green btn-outline">Assign To Education Evaluation</button></p>
+                                                </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END TIMELINE ITEM WITH GOOGLE MAP -->
+                                        <!-- TIMELINE ITEM -->
+                                     
+                                        <!-- END TIMELINE ITEM -->
+                                        <!-- TIMELINE ITEM -->
+                                  
+                                        <!-- END TIMELINE ITEM -->
+                                        <!-- TIMELINE ITEM -->
+                                       
+                                        <!-- END TIMELINE ITEM -->
+                                        <!-- TIMELINE ITEM -->
+                                     
+                                        <!-- END TIMELINE ITEM -->
                                     </div>
                                 </div>
                             </div>
-                                <!-- END Portlet PORTLET-->
-                               </div>
-                               </div>
                                  <!-- -ending row -->
                                 
                                 <!--  beginning row -->
-                                
-                                <div class="row">
-                                <div class="col-md-6">
-                                <div class="portlet box blue">
-                                <div class="portlet-title">
-                                <div class="caption">  <i class="fa fa-gift"></i>Contact Information
-                                </div>
-                                </div>
-                                <!-- -ending portlet title -->
-                                <!-- beginning portlet body -->
-                                <div class="portlet-body portlet-empty">
-                                                           <form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
-action="" enctype="multipart/form-data" method="POST" novalidate="novalidate"
-data-form="preview">
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text"/></a>
-  </div>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
-        <div class="fb-header fb-item-alignment-center">
-         
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item21" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item21_label_0">Phone Number</label>
-        </div>
-        ${contact.phonenumber}
-        
-      </div>
-      <div class="fb-item fb-33-item-column" id="item22">
-        <div class="fb-grouplabel">
-          <label id="item22_label_0" style="display: inline;">Home Phone(Optional)</label>
-        </div>
-        ${contact.homephonenumber}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Email</label>
-        </div>
-        ${contact.email}
-      </div>
-      <div class="fb-item" id="item24">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">Address1</label>
-        </div>
-         ${contact.address1}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item5">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">City</label>
-        </div>
-           ${contact.city}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">State</label>
-        </div>
-       ${contact.state}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item7" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item7_label_0" style="display: inline;">Zip Code</label>
-        </div>
-          ${contact.zipcode}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item25" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item25_label_0" style="display: inline;">Country</label>
-        </div>
-          ${contact.country}
-      </div>
-      <div class="fb-item" id="item9">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item10" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item10_label_0" style="display: inline;">Address2(Optional)</label>
-        </div>
-          ${contact.address2}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item11" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item11_label_0" style="display: inline;">City</label>
-        </div>
-         ${contact.city2}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item12" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item12_label_0" style="display: inline;">State</label>
-        </div>
-          ${contact.state2}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item13" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item13_label_0" style="display: inline;">Zip Code</label>
-        </div>
-          ${contact.zipcode2}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item26" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item26_label_0" style="display: inline;">Country</label>
-        </div>
-        ${contact.country2}
-      </div>
-      <div class="fb-item" id="item15">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item16" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item16_label_0" style="display: inline;">Address3(Optional)</label>
-        </div>
-          ${contact.address3}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item17" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item17_label_0" style="display: inline;">City</label>
-        </div>
-           ${contact.city3}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item18" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item18_label_0" style="display: inline;">State</label>
-        </div>
-         ${contact.state3}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item19_label_0" style="display: inline;">Zip Code</label>
-        </div>
-         ${contact.zipcode3}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item28" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item28_label_0" style="display: inline;">Country</label>
-        </div>
-        ${contact.country3}
-      </div>
-    </div>
-  </div>
-</form>
-                                </div>
-                                <!-- ending portlet body -->
-                                </div>
-                                </div>
-                      <div class="col-md-6">
-                                <div class="portlet box blue">
-                                <div class="portlet-title">
-                                <div class="caption">  <i class="fa fa-gift"></i>Application Details
-                                </div>
-                                </div>
-                                <!-- -ending portlet title -->
-                                <!-- beginning portlet body -->
-                                <div class="portlet-body portlet-empty">
-                                                           <form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
-action="" enctype="multipart/form-data" method="POST" novalidate="novalidate"
-data-form="preview">
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text"/></a>
-  </div>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
-        <div class="fb-header fb-item-alignment-center">
-         
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item21" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item21_label_0">Application Type</label>
-        </div>
-       ${applicant.applicationtype}
-        
-      </div>
-      <div class="fb-item fb-33-item-column" id="item22">
-        <div class="fb-grouplabel">
-          <label id="item22_label_0" style="display: inline;">Prefix</label>
-        </div>
-         ${applicant.prefix}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">First Name</label>
-        </div>
-          ${applicant.firstname}
-      </div>
-      <div class="fb-item" id="item24">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item4">
-        <div class="fb-grouplabel">
-          <label id="item4_label_0" style="display: inline;">Middle Name</label>
-        </div>
-        ${applicant.middlename}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item5">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">Last Name</label>
-        </div>
-           ${applicant.lastname}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Maiden Name</label>
-        </div>
-       ${applicant.maidenname}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item7" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item7_label_0" style="display: inline;">Full Name</label>
-        </div>
-          ${applicant.fullname}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item25" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item25_label_0" style="display: inline;">Date Of Birth</label>
-        </div>
-           ${applicant.dateofbirth}
-      </div>
-      <div class="fb-item" id="item9">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item10" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item10_label_0" style="display: inline;">Province Of Birth</label>
-        </div>
-           ${applicant.provinceofbirth}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item11" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item11_label_0" style="display: inline;">City</label>
-        </div>
-         ${contact.city2}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item12" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item12_label_0" style="display: inline;">Citizenship</label>
-        </div>
-          ${applicant.citizenship}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item13" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item13_label_0" style="display: inline;">Have You Visited US Before Or Are You Currently Living In United States</label>
-        </div>
-           ${applicant.usvisit}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item26" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item26_label_0" style="display: inline;">Social Security Number</label>
-        </div>
-       ${applicant.socialsecuritynumber}
-      </div>
-      <div class="fb-item" id="item15">
-        <div class="fb-sectionbreak">
-          <hr style="max-width: 960px;">
-        </div>
-      </div>
-      <div class="fb-item fb-33-item-column" id="item16" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item16_label_0" style="display: inline;">Latest I94 Number</label>
-        </div>
-          ${applicant.latesti94number}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item17" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item17_label_0" style="display: inline;">Last Entry To United States</label>
-        </div>
-            ${applicant.lastentrydatetous}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item18" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item18_label_0" style="display: inline;">A#</label>
-        </div>
-         ${applicant.aliennumber}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item19_label_0" style="display: inline;">EAD Valid Upto</label>
-        </div>
-        ${applicant.aliennumber}
-      </div>
-      <div class="fb-item fb-33-item-column" id="item28" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item28_label_0" style="display: inline;">Current Employer Petition Number</label>
-        </div>
-       ${applicant.currentemployerpetitionnumber}
-      </div>
-
-<div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item19_label_0" style="display: inline;">Current Visa Expiry Date</label>
-        </div>
-         ${applicant.currentvisaexpirydate}
-      </div>
-
-<div class="fb-item fb-33-item-column" id="item19" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item19_label_0" style="display: inline;">Current Visa Status</label>
-        </div>
-         ${applicant.currentvisastatus}
-      </div>
-
-    </div>
-  </div>
-  
- 
-</form>
-                                </div>
-                                <!-- ending portlet body -->
-                                </div>
-                                </div>
-                                </div>
-                                <div class="portlet light ">
-                                <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Travel Details</span>
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
- <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                        Port Of Entry
-                                                                    </th>
-                                                                    <th> Entry Date To US </th>
-                                                                    <th> Exit Date From Us</th>
-                                                                    <th> Status At The Time Of Entry</th>
-                                                                    <th> Status Valid From </th>
-                                                                    <th> Status Valid Till </th>
-                                                                    <th>Total Months Outside Us</th>
-                                                                </tr>
-                                                            </thead>
-                                        <tbody>
-                                                               <c:forEach items="${traveldetails}" var="traveldetail">
-                                                            
-                                                                <tr class="odd gradeX">
-                                                                    <td><c:out value="${traveldetail.portofentry}" /></td>
-                                                                    <td>
-                                                                        <c:out value="${traveldetail.entrydatetous}" /> 
-                                                                    </td>
-                                                                    <td>
-                                                                        <c:out value="${traveldetail.exitdatefromus}" /> 
-                                                                    </td>
-                                                                    <td>
-                                                                       <c:out value="${traveldetail.statusattimeofentry}" /> 
-                                                                    </td>
-                                                                    <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
-                                                                    <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
-                                                                    <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
-
-                                                                </tr>
-															</c:forEach>
-                                                            </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                               <div class="portlet light">
-                                <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Experience Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                          
-                                                                                            <th>Actions</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.experiencedocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                            
-                                                                                            <td>
-                                                                                                
-                                                                            <form action="downloadDoc" method="POST">
-                                                                            <input type="hidden" value="${document.docid}" name="docid" ></input>
-                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
-                                                                                        </form>
-                                                                         
-                                                                        
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                               
-                                               <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Education Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th>
-                                                                                                Description </th>
-                                                                                            
-                                                                                            <th>Actions</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.educationdocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td> ${document.keywords} </td>
-                                                                                            
-                                                                                            <td>
-                                                                                                <form action="downloadDoc" method="POST">
-                                                                            <input type="hidden" value="${document.docid}" name="docid" ></input>
-                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
-                                                                                        </form>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                               
-                                               <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Passport Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                            
-                                                                                            <th>Actions</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.passportdocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                          
-                                                                                            <td>
-                                                                                                <form action="downloadDoc" method="POST">
-                                                                            <input type="hidden" value="${document.docid}" name="docid" ></input>
-                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
-                                                                                        </form>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                                
-                                
-                                               <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Travel Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                          
-                                                                                            <th>Actions</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.traveldocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                           
-                                                                                            <td>
-                                                                                                <form action="downloadDoc" method="POST">
-                                                                            <input type="hidden" value="${document.docid}" name="docid" ></input>
-                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
-                                                                                        </form>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                               
-                                                <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Certificate Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                          
-                                                                                            <th>Actions</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.certificatedocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                           
-                                                                                            <td>
-                                                                                               <form action="downloadDoc" method="POST">
-                                                                            <input type="hidden" value="${document.docid}" name="docid" ></input>
-                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
-                                                                                        </form>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                               
-                                                <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Other Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                          
-                                                                                            <th>Actions</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.otherdocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                           
-                                                                                            <td>
-                                                                               <form action="downloadDoc" method="POST">
-                                                                            <input type="hidden" value="${document.docid}" name="docid" ></input>
-                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
-                                                                                        </form>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                            </div>
                                
                 
 
@@ -885,15 +263,55 @@ data-form="preview">
             </div>
             <jsp:include page="footer.jsp"></jsp:include>
         </div>
-        <script src="/FSDocs/assets/applicationformjsfiles/conditions.js"></script>
-        <script src="/FSDocs/assets/applicationformjsfiles/formvalidation.js"></script>
-        <!--[if lt IE 9]>
-<script src="/FSDocs/assets/global/plugins/respond.min.js"></script>
-<script src="/FSDocs/assets/global/plugins/excanvas.min.js"></script> 
-<script src="/FSDocs/assets/global/plugins/ie8.fix.min.js"></script> 
-<![endif]-->
+  
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script> 
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script>  
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script>  
+
         <!-- BEGIN CORE PLUGINS -->
-        
+          <!-- BEGIN CORE PLUGINS -->
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
+         <script src="http://localhost:854/LoginPage/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-samples.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-validation.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+      <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
+
     </body>
 
 </html>

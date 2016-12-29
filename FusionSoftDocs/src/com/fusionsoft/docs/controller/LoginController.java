@@ -51,8 +51,6 @@ public class LoginController {
 			@RequestParam(value = "denied", required = false) String denied,
 			@RequestParam(value = "message", required = false) String message) {
 
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
 		ModelAndView model = new ModelAndView();
 
 		/*

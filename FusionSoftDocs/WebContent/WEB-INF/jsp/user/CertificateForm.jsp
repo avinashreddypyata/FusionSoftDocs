@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -31,56 +31,39 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #3 for user profile sample" name="description" />
         <meta content="" name="author" />
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+         <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="/FSDocs/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="/FSDocs/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="/FSDocs/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="/FSDocs/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="/FSDocs/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="/FSDocs/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
-        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-        <script src="/FSDocs/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="/FSDocs/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="http://maps.google.com/maps/api/js?libraries=places&key=AIzaSyCoQaQ7_auZERrZRV3j0QzK1i553InKWAs" type="text/javascript"></script>
-        <script src="/FSDocs/assets/global/plugins/gmaps/gmaps.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="/FSDocs/assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="/FSDocs/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="/FSDocs/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="/FSDocs/assets/certificateformjsfiles/datepicker.js"></script>
-     
-    <link rel="stylesheet" type="text/css" href="/FSDocs/assets/certificateformjsfiles/theme/default_responsive/css/default.css"
-    id="theme" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     
@@ -98,7 +81,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
                                     <a href="index.html">
-                                        <img src="/FSDocs/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
+                                        <img src="http://localhost:854/LoginPage/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
                                     </a>
                                 </div>
                                 <!-- END LOGO -->
@@ -114,8 +97,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!-- BEGIN USER LOGIN DROPDOWN -->
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                
-                                                <span class="username username-hide-mobile">Nick</span>
+                                                <img alt="" class="img-circle" src="http://localhost:854/LoginPage/assets/layouts/layout3/img/user.jpg">
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">
                                              
@@ -139,24 +121,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
-                                       <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
+                                    <ul class="nav navbar-nav">
+                                       <li>
                                             <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li >
-                                            <a href = "editorcreatenewapplication">Application
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
                                         <li>
-                                        <a href="editorcreatenewcontact">Contact
+                                            <a href="viewapplicant">Application
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li >
-                                         <a href="editorcreatenewpassport">Passport
+                                        <a href="viewcontact">Contact
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
+                                        <li >
+                                         <a href="viewpassport">Passport
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
@@ -170,12 +152,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                
                                             </a>
                                         </li>
-                                        <li>
+                                        <li  >
                                       <a href="experiencedetails">Experience
                                                 
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
+                                        <li  aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
                                       <a href="certificateDetails">Certification</a>
                                         </li>
                                         <li>
@@ -183,6 +165,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                           
                                             </a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -206,166 +189,334 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                                <form:form class="fb-toplabel fb-100-item-column selected-object" id="docContainer"
-action="saveorupdatecertification" enctype="multipart/form-data" method="POST" novalidate="novalidate"
-data-form="preview" modelAttribute="certification">
-<form:hidden path="certificationId" value="${certification.certificationId}"/>
-  <div class="fb-form-header" id="fb-form-header1">
-    <a class="fb-link-logo" id="fb-link-logo1" style="max-width: 104px;" target="_blank"><img title="Alternative text" class="fb-logo" id="fb-logo1" style="width: 100%; display: none;" alt="Alternative text" src="common/images/image_default.png"/></a>
-  </div>
-  <div class="section" id="section1">
-    <div class="column ui-sortable" id="column1">
-      <div class="fb-item fb-100-item-column" id="item1">
-        <div class="fb-header fb-item-alignment-center">
-          <h2>
-            Certifications
-          </h2>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item3">
-        <div class="fb-grouplabel">
-          <label id="item3_label_0">Certification</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="certification" id="item3_text_1" type="text" maxlength="254"
-          placeholder="Certification" autocomplete="off" data-hint=""  required="required" path="certificationName" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item5">
-        <div class="fb-grouplabel">
-          <label id="item5_label_0" style="display: inline;">Specialisation(Subject)</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="specialisation" id="item5_text_1"  type="text" maxlength="254"
-          placeholder="Specialisation" autocomplete="off" data-hint="" required="required" path="specialisation" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item6">
-        <div class="fb-grouplabel">
-          <label id="item6_label_0" style="display: inline;">Organization</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="organisation" id="item6_text_1"  type="text" maxlength="254"
-          placeholder="Organisation" autocomplete="off" data-hint="" required="required" path="organisation" />
-        </div>
-      </div>
-      <div class="fb-item fb-100-item-column" id="item9">
-        <div class="fb-grouplabel">
-          <label id="item9_label_0" style="display: inline;">Address</label>
-        </div>
-        <div class="fb-textarea">
-          <form:textarea name="address" id="item9_textarea_1" style="height: 40px; max-width: 300px; resize: none;"
-          maxlength="1000" placeholder="Address" data-hint="" required="required" path="address" ></form:textarea>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item10">
-        <div class="fb-grouplabel">
-          <label id="item10_label_0" style="display: inline;">City</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="city" id="item10_text_1" type="text" maxlength="254" placeholder="City"
-          autocomplete="off" data-hint="" required="required" path="city" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item11">
-        <div class="fb-grouplabel">
-          <label id="item11_label_0" style="display: inline;">State</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="state" id="item11_text_1" type="text" maxlength="254" placeholder="State"
-          autocomplete="off" data-hint="" required="required" path="state" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item13">
-        <div class="fb-grouplabel">
-          <label id="item13_label_0" style="display: inline;">Zip Code</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="ZipCode" id="item13_text_1" type="text" maxlength="254" placeholder="Zip Code"
-          autocomplete="off" data-hint="" required="required" path="zipcode" />
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item18" style="opacity: 1;">
-        <div class="fb-grouplabel">
-          <label id="item18_label_0" style="display: inline;">Country</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="text18" id="item18_text_1" type="text" maxlength="254" placeholder=""
-          autocomplete="off" data-hint="" required="required" path="country"/>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item14">
-        <div class="fb-grouplabel">
-          <label id="item14_label_0" style="display: inline;">Month Of Passing</label>
-        </div>
-        <div class="fb-dropdown">
-          <form:select name="monthofpassing" id="item14_select_1" data-hint="" required="required" path="monthOfPassing">
-            <form:option id="item14_0_option" selected = "selected" value="January">
+                                 <div class="portlet light bordered">
+                                                                <div class="portlet-title">
+                                                                    <div class="caption">
+                                                                        <i class="icon-equalizer font-blue-hoki"></i>
+                                                                        <span class="caption-subject font-blue-hoki bold uppercase">Certification</span>
+                                                                        
+                                                                    </div>
+                                                                    <div class="tools">
+                                                                        <a href="" class="collapse"> </a>
+                                                                     
+                                                                    </div>
+                                                                </div>
+                                                             
+                                                                
+                                                                <div class="portlet-body form">
+                                                                    <!-- BEGIN FORM-->
+                                                                     <form:form action="saveorupdatecertification" method="POST" class="horizontal-form" id="form_sample_1" modelAttribute="certification" enctype="multipart/form-data">
+                                                            <div class="form-body">
+                                                            
+                                                                
+                                                                  <form:hidden path="certificationId" value="${certification.certificationId}"/>
+                                                                    <h3 class="form-section">Certification Info</h3>
+                                                                       <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Certification</label>
+                                                                                        <span class="required"> * </span>
+                                                                                      
+                                                            <form:input type="text"  id="certificationName" path="certificationName" class="form-control" placeholder="Certification" data-required = "data-required"/>
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Specialization(Subject)</label>
+                                                                                        <span class="required"> * </span>
+                                                                                      
+                                                            <form:input type="text"  id="specialisation" path="specialisation" class="form-control" placeholder="Specialization" data-required = "data-required"/>
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                          <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Organization</label>
+                                                                                        <span class="required"> * </span>
+                                                                                      
+                                                            <form:input type="text"  id="organisation" path="organisation" class="form-control" placeholder="Organization" data-required = "data-required"/>
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Month Of Passing</label>
+                                                                                        <span class="required"> * </span>
+                                                                                      
+                                                           
+                                                           
+                                                                                  <form:select class="form-control"  path="monthOfPassing" data-required = "data-required">
+                                                                                         
+            <form:option id="item12_2_option" value="January">
               January
             </form:option>
-            <form:option id="item14_1_option" value="February">
+            <form:option id="item12_3_option" value="February">
               February
             </form:option>
-            <form:option id="item14_2_option" value="March">
+            <form:option id="item12_4_option" value="March">
               March
             </form:option>
-            <form:option id="item14_3_option" value="April">
+            <form:option id="item12_5_option" value="April">
               April
             </form:option>
-            <form:option id="item14_4_option" value="May">
+            <form:option id="item12_6_option" value="May">
               May
             </form:option>
-            <form:option id="item14_5_option" value="June">
+            <form:option id="item12_7_option" value="June">
               June
             </form:option>
-            <form:option id="item14_6_option" value="July">
+            <form:option id="item12_8_option" value="July">
               July
             </form:option>
-            <form:option id="item14_7_option" value="August">
+            <form:option id="item12_9_option" value="August">
               August
             </form:option>
-            <form:option id="item14_8_option" value="September">
+            <form:option id="item12_10_option" value="September">
               September
             </form:option>
-            <form:option id="item14_9_option" value="October">
+            <form:option id="item12_11_option" value="October">
               October
             </form:option>
-            <form:option id="item14_10_option" value="November">
+            <form:option id="item12_12_option" value="November">
               November
             </form:option>
-            <form:option id="item14_11_option" value="December">
+            <form:option id="item12_13_option" value="December">
               December
             </form:option>
-          </form:select>
-        </div>
-      </div>
-      <div class="fb-item fb-50-item-column" id="item15">
-        <div class="fb-grouplabel">
-          <label id="item15_label_0" style="display: inline;">Year Of Passing</label>
-        </div>
-        <div class="fb-input-box">
-          <form:input name="yearofpassing" id="item15_text_1" type="text" maxlength="254"
-          placeholder="Year Of Passing" autocomplete="off" data-hint=""  required="required" path="yearOfPassing"/>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="fb-captcha fb-item-alignment-center" id="fb-captcha_control"
-  style="display: none; cursor: default;">
-    <img src="editordata/images/recaptchawhite.png" />
-  </div>
-  <div class="fb-item-alignment-left fb-footer" id="fb-submit-button-div"
-  style="min-height: 1px;">
-    <input class="fb-button-special" id="fb-submit-button" type="submit" data-regular="url('/FSDocs/assets/certificateformjsfiles/theme/default_responsive/images/btn_submit.png')"
-    value="Submit" />
-  </div>
-</form:form>
-<div class="btn-group btn-group btn-group-justified">
-                                                                
-                                                                    <a href="experiencedetails" class="btn red"> Back </a>
-                                                                    <a href="home" class="btn blue"> Home </a>
-                                                                    <a href="logout" class="btn green"> Save Progress And Return Later </a>
+                                                                                        </form:select> 
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                                   <h3 class="form-section">Organization Address</h3>
+                                                                                <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Street</label>
+                                                                                       
+                                                                                      
+                                                            <form:input type="text"  id="address" path="address" class="form-control" placeholder="Exact Organization Address"/>
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">City</label>
+                                                                                       
+                                                                                      
+                                                            <form:input type="text"  id="city" path="city" class="form-control" placeholder="City" />
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                             <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">State</label>
+                                                                                        
+                                                                                      
+                                                            <form:input type="text"  id="state" path="state" class="form-control" placeholder="State" />
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                  <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Country</label>
+                                                                                        
+                                                                                      
+                                                            <form:input type="text"  id="country" path="country" class="form-control" placeholder="Country" />
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                </div>
+                                                                               <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">ZipCode</label>
+                                                                                        
+                                                                                      
+                                                            <form:input type="text"  id="zipcode" path="zipcode" class="form-control" placeholder="Zip Code" />
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                  <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Year Of Passing</label>
+                                                                                        
+                                                                                      
+                                                            <form:input type="text"  id="yearOfPassing" path="yearOfPassing" class="form-control" placeholder="Year Of Passing" />
+                                                           
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                </div>
+                                  
+                                                                  
+                                                                    
+                                                                       
+                                                                              <div class="portlet light portlet-fit ">
+                                                    <div class="portlet-title">
+                                                        <div class="caption">
+                                                            <i class=" icon-layers font-green"></i>
+                                                            <span class="caption-subject font-green bold uppercase">Documents To Be Attached</span>
+                                                            <div class="caption-desc font-grey-cascade">Please  Attach All The Documents In A Single Pdf File</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="portlet-body">
+                                                        <div class="mt-element-list">
+                                                            <div class="mt-list-head list-simple ext-1 font-white bg-green-sharp">
+                                                                <div class="list-head-title-container">
+                                                                   
+                                                                    <h3 class="list-title">Documents List</h3>
                                                                 </div>
+                                                            </div>
+                                                            <div class="mt-list-container list-simple ext-1">
+                                                                <ul>
+                                                                    <li class="mt-list-item done">
+                                                                        <div class="list-icon-container">
+                                                                            <i>1</i>
+                                                                        </div>
+                                                                        
+                                                                        <div class="list-item-content">
+                                                                            <h3 class="uppercase">
+                                                                             Attach The Concerned Work Experience Letter Related To This Experience
+                                                                            </h3>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="mt-list-item done">
+                                                                        <div class="list-icon-container">
+                                                                            <i>2</i>
+                                                                        </div>
+                                                                        
+                                                                        <div class="list-item-content">
+                                                                            <h3 class="uppercase">
+                                                                             Attach The All  Concerned I20's (If You Have Done Master's In United States)
+                                                                            </h3>
+                                                                        </div>
+                                                                    </li>
+                                                                  
+                                                                
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                        
+                                                                            <h3 class="form-section">Document</h3>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6 ">
+                                                                                  <div class="form-group"> 
+                                               <label for="exampleInputFile1">File input</label> 
+<form:input type="file" id="exampleInputFile1" path="file"/>
+                                                <p class="help-block"> Please Attach All The Pages In A Single Pdf File </p> 
+                                      </div>
+                                                                                </div>
+                                                                                  <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Description Of The Document</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text" path="documentdescription" id="documentdescription"  class="form-control" placeholder="Describe The Document" data-required = "data-required"/>
+                                                                         
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                            
+                                                         <div class="form-actions right">
+                                                                            <button type="button" class="btn default">Cancel</button>
+                                                                            <button type="submit" class="btn blue">
+                                                                                <i class="fa fa-check"></i> Save</button>
+                                                                        </div>
+                                                            </div>
+                                                        </form:form>
+                                                        <!-- END FORM-->
+                                               
+                                                                    <!-- END FORM-->
+                                                                     <h3 class="form-section">Uploaded Document</h3>
+                                                                            <div class="row">
+                                                                              <div class="portlet-body">
+                                                        <div class="table-scrollable">
+                                                            <table class="table table-striped table-bordered table-advance table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Document Uploaded </th>
+                                                                            <th>Description</th>
+                                                                        
+                                                                        <th>
+                                                                             Action </th>
+                                                                        <th> Action </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                                        <c:forEach items="${documents}" var="document">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                          
+                                                                                            <td>
+                                                                                       <form action="downloadDoc" method="POST" id="downloaddoc">
+                                                                       
+                                                                            <input type="hidden" value="${document.docid}" name="docid" form="downloaddoc" ></input>
+                                                                            
+                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
+                                                                                       </form>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                        <form action="deleteDoc" method="POST" id="deletedoc">
+                                                                
+                                                                            <input type="hidden" value="${document.docid}" name="docid" form="deletedoc"></input>
+                                                                                        <button type="submit" class="btn red btn-outline" form="deletedoc">Delete</button>
+                                                                                        </form>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                                            </div>
+                                                                     
+                                                        <!-- END FORM-->
+                                                                </div>
+                                                            </div>      
+
+                                                                </div>
+                                                                </div>
+
+
+                                </div>
 
 
                                 </div>
@@ -374,15 +525,12 @@ data-form="preview" modelAttribute="certification">
                             <!-- END CONTENT BODY -->
                         </div>
                         <!-- END CONTENT -->
-                    </div>
                     <!-- END CONTAINER -->
-                </div>
-            </div>
             <div class="page-wrapper-row">
                 <div class="page-wrapper-bottom">
                     <!-- BEGIN FOOTER -->
                     <!-- BEGIN PRE-FOOTER -->
-                    <div class="page-prefooter">
+                     <div class="page-prefooter">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
@@ -414,14 +562,55 @@ data-form="preview" modelAttribute="certification">
                 </div>
             </div>
         </div>
-        <script src="/FSDocs/assets/certificateformjsfiles/formvalidation.js"></script>
-        <!--[if lt IE 9]>
-<script src="/FSDocs/assets/global/plugins/respond.min.js"></script>
-<script src="/FSDocs/assets/global/plugins/excanvas.min.js"></script> 
-<script src="/FSDocs/assets/global/plugins/ie8.fix.min.js"></script> 
-<![endif]-->
+
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script> 
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script>  
+ <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script>  
+
         <!-- BEGIN CORE PLUGINS -->
-        
+          <!-- BEGIN CORE PLUGINS -->
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
+         <script src="http://localhost:854/LoginPage/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+          <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
+       
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-samples.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-validation.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-validation.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+      <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
     </body>
 
 </html>

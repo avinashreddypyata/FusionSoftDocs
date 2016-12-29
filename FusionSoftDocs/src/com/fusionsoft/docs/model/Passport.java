@@ -12,9 +12,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity()
 @Table(name = "passport")
@@ -24,6 +26,15 @@ public class Passport {
 	@GeneratedValue(generator="gen")
 	@GenericGenerator(name="gen", strategy="foreign", parameters={@Parameter(name="property", value="customuser")})
 	private int userid;
+	@Transient
+	MultipartFile file;
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public int getUserid() {
 		return userid;
 	}
@@ -35,6 +46,22 @@ public class Passport {
 	}
 	public void setCustomuser(CustomUser customuser) {
 		this.customuser = customuser;
+	}
+	@Column(name = "documentdescription")
+	private String documentdescription;
+	@Column(name = "documenttitle")
+	private String documenttitle;
+	public String getDocumenttitle() {
+		return documenttitle;
+	}
+	public void setDocumenttitle(String documenttitle) {
+		this.documenttitle = documenttitle;
+	}
+	public String getDocumentdescription() {
+		return documentdescription;
+	}
+	public void setDocumentdescription(String documentdescription) {
+		this.documentdescription = documentdescription;
 	}
 	@Column(name = "latestpassportnumber")
 	private String latestpassportnumber;

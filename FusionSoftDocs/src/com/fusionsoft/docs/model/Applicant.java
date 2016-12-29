@@ -6,10 +6,11 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -18,6 +19,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name = "application")
 public class Applicant implements Serializable{
@@ -29,6 +31,38 @@ public class Applicant implements Serializable{
 	private int userid;
 	@Column(name = "applicationtype")
 	private String applicationtype;
+	 @Column(name = "applicationstatus",  columnDefinition = "varchar(255) default 'Pending'")
+	    private String applicationstatus;
+	 @Column(name = "adminverification",  columnDefinition = "varchar(255) default 'Pending'")
+	    private String adminverification;
+	    public String getAdminverification() {
+		return adminverification;
+	}
+	public void setAdminverification(String adminverification) {
+		this.adminverification = adminverification;
+	}
+		@Column(name = "attorneyverification",  columnDefinition = "varchar(255) default 'Not Assigned'")
+	    private String attorneyverification;
+	    @Column(name = "educationevaluation",  columnDefinition = "varchar(255) default 'Not Assigned'")
+	    private String educationevaluation;
+	public String getApplicationstatus() {
+			return applicationstatus;
+		}
+		public void setApplicationstatus(String applicationstatus) {
+			this.applicationstatus = applicationstatus;
+		}
+		public String getAttorneyverification() {
+			return attorneyverification;
+		}
+		public void setAttorneyverification(String attorneyverification) {
+			this.attorneyverification = attorneyverification;
+		}
+		public String getEducationevaluation() {
+			return educationevaluation;
+		}
+		public void setEducationevaluation(String educationevaluation) {
+			this.educationevaluation = educationevaluation;
+		}
 	@Column(name="prefix")
 	private String prefix;
 	public String getPrefix() {
@@ -39,6 +73,14 @@ public class Applicant implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	@Transient
+	MultipartFile file;
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	@Column(name = "firstname")
 	private String firstname;
@@ -86,6 +128,31 @@ public class Applicant implements Serializable{
 	private String adminnotes;
 	@Column(name = "status")
 	private String status;
+	@Column(name = "documentdescription")
+	private String documentdescription;
+	@Column(name = "documenttitle")
+	private String documenttitle;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "attorney_pk")
+	private Attorney attorney;
+	public Attorney getAttorney() {
+		return attorney;
+	}
+	public void setAttorney(Attorney attorney) {
+		this.attorney = attorney;
+	}
+	public String getDocumentdescription() {
+		return documentdescription;
+	}
+	public void setDocumentdescription(String documentdescription) {
+		this.documentdescription = documentdescription;
+	}
+	public String getDocumenttitle() {
+		return documenttitle;
+	}
+	public void setDocumenttitle(String documenttitle) {
+		this.documenttitle = documenttitle;
+	}
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userid")
 	private CustomUser customuser;	

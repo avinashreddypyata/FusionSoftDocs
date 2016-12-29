@@ -34,20 +34,13 @@ public class CustomUser implements UserDetails {
 	private int userid;
     @Column(name ="firstlogin")
     private int firstlogin;
-    @Column(name = "applicationstatus")
-    private String applicationstatus;
-    @Column(name ="submission", columnDefinition = "tinyint default false")
-    private boolean submission;
-    public String getApplicationstatus() {
-		return applicationstatus;
-	}
-	public void setApplicationstatus(String applicationstatus) {
-		this.applicationstatus = applicationstatus;
-	}
-	public boolean isSubmission() {
+    @Column(name ="submission", columnDefinition = "varchar(255) default 'pending'")
+    private String submission;
+
+	public String getSubmission() {
 		return submission;
 	}
-	public void setSubmission(boolean submission) {
+	public void setSubmission(String submission) {
 		this.submission = submission;
 	}
 	@OneToOne(mappedBy="customuser")
@@ -92,6 +85,14 @@ public class CustomUser implements UserDetails {
 	private String createdby;
 	@Column(name = "LASTLOGIN")
 	private Date lastlogin;
+	@Column(name = "AdminNotes")
+	private String adminnotes;
+	public String getAdminnotes() {
+		return adminnotes;
+	}
+	public void setAdminnotes(String adminnotes) {
+		this.adminnotes = adminnotes;
+	}
 	public Date getLastlogin() {
 		return lastlogin;
 	}
@@ -120,6 +121,17 @@ public class CustomUser implements UserDetails {
 	public void setContact(Contact contact) {
 		this.contact = contact;
 	}
+	@OneToOne(mappedBy="customuser")
+	@JoinColumns({
+	    @JoinColumn(name="userid", referencedColumnName="userid")})
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	private Attorney attorney;
+	public Attorney getAttorney() {
+		return attorney;
+	}
+	public void setAttorney(Attorney attorney) {
+		this.attorney = attorney;
+	}
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Document> documents;
@@ -144,16 +156,6 @@ public class CustomUser implements UserDetails {
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Experience> experience;
-	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
-	private List<Inbox> messages;
-	
-	public List<Inbox> getMessages() {
-		return messages;
-	}
-	public void setMessages(List<Inbox> messages) {
-		this.messages = messages;
-	}
 	public List<Document> getDocuments() {
 		return documents;
 	}
@@ -171,8 +173,6 @@ public class CustomUser implements UserDetails {
     private boolean credentialsNonExpired = true;
 	@Transient
     private boolean enabled = true;
-	
-	
 	public int getUserid() {
 		return userid;
 	}

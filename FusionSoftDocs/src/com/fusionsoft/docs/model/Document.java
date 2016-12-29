@@ -1,6 +1,7 @@
 package com.fusionsoft.docs.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
 @Entity
 @Table(name = "documents")
 public class Document {
@@ -25,13 +28,54 @@ public class Document {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USERID", nullable = false)
 	private CustomUser customuser;
+	public Experience getExperience() {
+		return experience;
+	}
+	public void setExperience(Experience experience) {
+		this.experience = experience;
+	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "travelid")
+	private Travel travel;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "eduid")
+	private Education education;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "expid")
+	private Experience experience;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "certificationId")
+	private Certification certification;
+	public Certification getCertification() {
+		return certification;
+	}
+	public void setCertification(Certification certification) {
+		this.certification = certification;
+	}
+	public Education getEducation() {
+		return education;
+	}
+	public void setEducation(Education education) {
+		this.education = education;
+	}
+	public Travel getTravel() {
+		return travel;
+	}
+	public void setTravel(Travel travel) {
+		this.travel = travel;
+	}
+	@Column(name = "doclocation")
+	private String doclocation;
+	public String getDoclocation() {
+		return doclocation;
+	}
+	public void setDoclocation(String doclocation) {
+		this.doclocation = doclocation;
+	}
 	@Column(name = "doctitle")
 	private String doctitle;
 	@Column(name = "keywords")
 	private String keywords;
-	@Lob
-	@Column(name = "attachment")
-	private byte[] attachment;
 	@Column(name = "doctype")
 	private String doctype;
 	@Column(name = "createdby")
@@ -94,12 +138,6 @@ public class Document {
 	}
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
-	}
-	public byte[] getAttachment() {
-		return attachment;
-	}
-	public void setAttachment(byte[] attachment) {
-		this.attachment = attachment;
 	}
 	public String getDoctype() {
 		return doctype;

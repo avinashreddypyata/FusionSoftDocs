@@ -3,7 +3,6 @@ package com.fusionsoft.docs.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.PasswordResetToken;
+import com.fusionsoft.docs.service.PasswordNotFoundException;
+import com.fusionsoft.docs.service.PasswordResetTokenNotFound;
+import com.fusionsoft.docs.service.TokenNotFoundException;
 import com.fusionsoft.docs.service.UserService;
 
 @Controller
@@ -51,11 +53,21 @@ public class ForgotPasswordController {
 		  if(customuser.getPasswordresettoken() == null){
 			System.out.println("Creating Token");
 			passwordresettoken.setToken(token);
-		userservice.createPasswordResetTokenForUser(customuser, passwordresettoken);
+		try {
+			userservice.createPasswordResetTokenForUser(customuser, passwordresettoken);
+		} catch (PasswordResetTokenNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}
 		else{
 			System.out.println("Updating");
-			userservice.updatePasswordResetTokenForUser(customuser.getUserid(),token);
+			try {
+				userservice.updatePasswordResetTokenForUser(customuser.getUserid(),token);
+			} catch (TokenNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	    String emailmessage = 
 	    	      "http://" + request.getServerName() + 
@@ -102,7 +114,12 @@ public class ForgotPasswordController {
 	@RequestMapping(value = { "/savePassword" }, method = RequestMethod.POST)
 	public String savePassword(@RequestParam("password") String password) {
 		 CustomUser customuser = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		    userservice.changeUserPassword(customuser, password);
+		    try {
+				userservice.changeUserPassword(customuser, password);
+			} catch (PasswordNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		    return "redirect:/login";
 	}
 

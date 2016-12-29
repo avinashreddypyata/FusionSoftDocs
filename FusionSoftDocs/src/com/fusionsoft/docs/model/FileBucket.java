@@ -4,7 +4,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileBucket {
 	    String doctype;
-	    public String getDoctype() {
+
+		public String getDoctype() {
 			return doctype;
 		}
 

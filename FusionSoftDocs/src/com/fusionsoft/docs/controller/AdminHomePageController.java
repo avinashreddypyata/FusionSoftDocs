@@ -1,12 +1,16 @@
 package com.fusionsoft.docs.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +20,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -27,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fusionsoft.docs.dao.UserDao;
 import com.fusionsoft.docs.model.Applicant;
+import com.fusionsoft.docs.model.Attorney;
 import com.fusionsoft.docs.model.Certification;
 import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
@@ -37,7 +41,18 @@ import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Travel;
+import com.fusionsoft.docs.service.CertificateDetailsNotFound;
+import com.fusionsoft.docs.service.CertificateNotFoundService;
+import com.fusionsoft.docs.service.EducationNotFoundExceptionService;
+import com.fusionsoft.docs.service.ExperienceNotFoundService;
+import com.fusionsoft.docs.service.FindTravelByIdNotFoundService;
+import com.fusionsoft.docs.service.FindTravelDetailsNotFoundService;
+import com.fusionsoft.docs.service.PassportNotFoundInService;
 import com.fusionsoft.docs.service.UserService;
+import com.fusionsoft.docs.service.applicantnotfoundservice;
+import com.fusionsoft.docs.service.contactnotfoundservice;
+import com.fusionsoft.docs.service.documentnotfoundservice;
+import com.fusionsoft.docs.service.experiencesnotfoundbyid;
 
 @Controller
 @RequestMapping(value = { "/admin" })
@@ -51,7 +66,7 @@ public class AdminHomePageController {
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
-
+        List<Attorney> attorneys = new ArrayList<Attorney>(); 
 		ModelAndView model = new ModelAndView("admin/home");
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -60,6 +75,8 @@ public class AdminHomePageController {
 			logedinUser = ((CustomUser) principal);
 		}
 		
+		attorneys = userservice.findallattorneys();
+		model.addObject("attorneys",attorneys);
 		System.out.println("the logged user is" + logedinUser.getUsername());
 		model.addObject("userFullName", logedinUser.getUsername());
 		System.out.println("the end");
@@ -73,10 +90,11 @@ public class AdminHomePageController {
       	List<CustomUser> notsubmittedusers = new ArrayList<CustomUser>();
       	List<CustomUser> submittedusers = new ArrayList<CustomUser>();
       	customusers.forEach(customuser->{
-      		if(customuser.isSubmission() == false){
-      			notsubmittedusers.add(customuser);
-      		}else{
+      		if(customuser.getSubmission().equals("done")){
+      			System.out.println("The CustomUSER"+customuser.getUsername()+"The submission is"+customuser.getSubmission());
       			submittedusers.add(customuser);
+      		}else{
+      			notsubmittedusers.add(customuser);
       		}
       	});
       	 System.out.println("The List Size of notsubmittedusers is "+notsubmittedusers.size());
@@ -97,19 +115,20 @@ public class AdminHomePageController {
 	public void setUserservice(UserService userservice) {
 		this.userservice = userservice;
 	}
+	
 	@RequestMapping(value = "/addnewapplicant", method = RequestMethod.GET)
 	public ModelAndView addnewapplicant(@ModelAttribute("username") String username,  HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("admin/NewApplicant");
 		 return model;
 	}
 	@RequestMapping(value = "/savenewapplicant", method = RequestMethod.POST)
-	public ModelAndView savenewapplicant(@ModelAttribute("username") String username,  HttpServletRequest request) {
+	public ModelAndView savenewapplicant(@ModelAttribute("customuser") CustomUser customuser,  HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		String emailmessage;
-		String password = userservice.saveapplicant(username);
-		 emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n"+"Username:"+username+"\nPassword:"+password;
+		String password = userservice.saveapplicant(customuser);
+		 emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n"+"Username:"+customuser.getUsername()+"\nPassword:"+password;
 			model.setViewName("redirect:applicants");
-		Email email = new Email(username,emailmessage);
+		Email email = new Email(customuser.getUsername(),emailmessage);
 		try{
 			userservice.emailapplicant(email);
 		}catch (Exception e) {
@@ -129,41 +148,69 @@ public class AdminHomePageController {
 	}
 	@RequestMapping(value =  "/overview" , method = RequestMethod.GET)
 	public ModelAndView overview() {
+		 List<Attorney> attorneys = new ArrayList<Attorney>(); 
 		ModelAndView model = new ModelAndView();
-            Passport passport=userservice.findpassport(id);
-			model.addObject(passport);
-			Contact contact=userservice.findcontact(id);
-			model.addObject(contact);
-			Applicant applicant=userservice.findapplicant(id);
-			model.addObject(applicant);
-			List<Travel> traveldetails=userservice.findtraveldetails(id);
-			model.addObject("traveldetails",traveldetails);
-			System.out.println(traveldetails.size());
-			List<Experience> experiencedetails=userservice.findexperiences(id);
-			model.addObject("experiencedetails",experiencedetails);
-			System.out.println(experiencedetails.size());
-			List<Education> educationdetails=userservice.findqualifications(id);
-			model.addObject("educationdetails",educationdetails);
-			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
-			model.addObject("documents",documents);
-			List<Certification> certificationdetails=userservice.findcertificationdetails(id);
-			model.addObject("certificationdetails",certificationdetails);
-			CustomUser customuser = userservice.findCustomUser(id);
-			model.addObject("applicationstatus", customuser.getApplicationstatus());
+		Applicant applicant = null;
+		try {
+			applicant = userservice.findapplicant(id);
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		attorneys = userservice.findallattorneys();
+		model.addObject("attorneys",attorneys);
+		model.addObject("applicant",applicant);
 	    model.setViewName("admin/Overview");
 		return model;
 	}
-	@RequestMapping(value =  "/assigntoattorney" , method = RequestMethod.POST)
-	public ModelAndView assigntoattorny(@ModelAttribute("userid") int userid) {
+	
+	@RequestMapping(value =  "/verifyapplication" , method = RequestMethod.POST)
+	public ModelAndView verifyapplication(@ModelAttribute("userid") int userid) {
 		ModelAndView model = new ModelAndView();
-		    userservice.updatecustomuserapplicationstatus(userid, "Assigned To Attorney");
+		Applicant applicant = null;
+		try {
+			applicant = userservice.findapplicant(id);
+			userservice.updateapplicationadminverification(applicant, "Verified  By  Admin");
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+            model.setViewName("redirect:overview");
+		return model;
+	}
+	@RequestMapping(value =  "/assigntoattorney" , method = RequestMethod.GET)
+	public ModelAndView assigntoattorny(HttpServletRequest request) {
+		ModelAndView model = new ModelAndView();
+		Applicant applicant = null;
+		Attorney attorney = null;
+		int attorneyid;
+		int applicantid;
+		attorneyid=  Integer.parseInt(request.getParameter("attorneyid"));
+		applicantid=  Integer.parseInt(request.getParameter("applicantid"));
+		System.out.println("the Attorney id "+attorneyid);
+		try {
+			attorney = userservice.findattorneybyattorneyid(attorneyid);
+			applicant = userservice.findapplicant(applicantid);
+			
+			userservice.updateapplicationattorneyverification(applicant, attorney);
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
             model.setViewName("redirect:overview");
 		return model;
 	}
 	@RequestMapping(value =  "/assigntoeducationevaluation" , method = RequestMethod.POST)
 	public ModelAndView assigntoeducationevaluation(@ModelAttribute("userid") int userid) {
 		ModelAndView model = new ModelAndView();
-		    userservice.updatecustomuserapplicationstatus(userid, "Assigned To EducationEvaluation");
+		Applicant applicant = null;
+		try {
+			applicant = userservice.findapplicant(id);
+			userservice.updateapplicationeducationevaluation(applicant, "Assigned  To  Education Evaluation");
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
             model.setViewName("redirect:overview");
 		return model;
 	}
@@ -173,18 +220,48 @@ public class AdminHomePageController {
      dateFormat.setLenient(false);
      webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
      }
+	@RequestMapping(value = "/viewapplicant", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView viewapplication() {
+		ModelAndView model = new ModelAndView();
+		 Applicant applicant = new Applicant();
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
+         try {
+        	 applicant = userservice.findapplicant(id);
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(applicant == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.setViewName("redirect:editorcreatenewapplication");
+         }
+         else{
+        	
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("applicant", applicant);
+		model.addObject("documents", documents);
+		model.setViewName("admin/ViewApplication");
+         }
+        return model;
+	}
 	@RequestMapping(value = "/editorcreatenewapplication", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewapplication(@ModelAttribute("applicant") Applicant applicant,HttpServletRequest request, BindingResult result) {
 		ModelAndView model = new ModelAndView("admin/ApplicationInfo");
-//		 CustomUser user = getCustomUser();
-         applicant = userservice.findapplicant(id);
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
+         try {
+			applicant = userservice.findapplicant(id);
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(applicant == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Applicant());
          }
          else{
         	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
-		model.addObject("applicant", applicant);
+        		model.addObject("applicant", applicant);
+        		model.addObject("documents", documents);
          }
         return model;
         
@@ -192,30 +269,62 @@ public class AdminHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant*/
 	@RequestMapping(value = "/saveorupdateapplication", method = RequestMethod.POST)
 	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant, BindingResult result) {
-		ModelAndView model = new ModelAndView("redirect:editorcreatenewcontact");
+		ModelAndView model = new ModelAndView("redirect:viewcontact");
 //		CustomUser user = getCustomUser();
+		CustomUser customuser = userservice.findCustomUser(id);
 		if(applicant.getUserid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(id);
+		    
 		    userservice.saveapplication(customuser,applicant);
 		}
 		    else{
-		    	userservice.updateapplication(applicant);
+		    	userservice.updateapplication(customuser,applicant);
 		    }
 		    return model;
 			}
+	@RequestMapping(value = "/viewcontact", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView viewcontact() {
+		ModelAndView model = new ModelAndView();
+		 Contact contact = new Contact();
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
+         try {
+			contact = userservice.findcontact(id);
+		} catch (contactnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(contact == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.setViewName("redirect:editorcreatenewcontact");
+         }
+         else{
+        	
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("contact", contact);
+		model.addObject("documents", documents);
+		model.setViewName("admin/ViewContact");
+         }
+        return model;
+        
+	}
 	/*create a new application or edit existing contact details based on the changes made by the user*/
 	@RequestMapping(value = "/editorcreatenewcontact", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewcontact(@ModelAttribute("contact") Contact contact, BindingResult result) {
 		ModelAndView model = new ModelAndView("admin/ContactInfo");
-//		 CustomUser user = getCustomUser();
-         contact = userservice.findcontact(id);
+		HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
+         try {
+			contact = userservice.findcontact(id);
+		} catch (contactnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(contact == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Contact());
          }
          else{
         	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
-		model.addObject("contact", contact);
+        	 model.addObject("contact", contact);
+     		model.addObject("documents", documents);
          }
         return model;
         
@@ -223,24 +332,54 @@ public class AdminHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
 	@RequestMapping(value = "/saveorupdatecontact", method = RequestMethod.POST)
 	public ModelAndView saveorupdatecontact(@ModelAttribute("contact") Contact contact) {
-		ModelAndView model = new ModelAndView("redirect:editorcreatenewpassport");
-//		CustomUser user = getCustomUser();
+		ModelAndView model = new ModelAndView("redirect:viewpassport");
+		 CustomUser customuser = userservice.findCustomUser(id);
 		if(contact.getUserid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(id);
+		   
 		    userservice.savecontact(customuser,contact);
 		}
 		    else{
-		    	userservice.updatecontact(contact);
+		    	userservice.updatecontact(customuser,contact);
 		    }
 		    return model;
 			}
+	@RequestMapping(value = "/viewpassport", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView viewpassport() {
+		ModelAndView model = new ModelAndView();
+		 Passport passport = new Passport();
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
+         try {
+			passport = userservice.findpassport(id);
+		} catch (PassportNotFoundInService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(passport == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.setViewName("redirect:editorcreatenewpassport");
+         }
+         else{
+        	
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("passport", passport);
+		model.addObject("documents", documents);
+		model.setViewName("admin/ViewPassport");
+         }
+        return model;
+        
+	}
 	/*create a new application or edit existing contact details based on the changes made by the user*/
 	@RequestMapping(value = "/editorcreatenewpassport", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewpassport(@ModelAttribute("passport") Passport passport) {
 		ModelAndView model = new ModelAndView("admin/PassportInfo");
-//		 CustomUser user = getCustomUser();
+		HashMap<String,List<Document>> documents=userservice.findparticulardocuments(id);
 		 System.out.println("The passport id is"+passport.getUserid());
-         passport = userservice.findpassport(id);
+         try {
+			passport = userservice.findpassport(id);
+		} catch (PassportNotFoundInService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(passport == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Passport());
@@ -248,6 +387,7 @@ public class AdminHomePageController {
          else{
         	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
 		model.addObject("passport", passport);
+		model.addObject("documents", documents);
          }
         return model;
         
@@ -256,13 +396,13 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/saveorupdatepassport", method = RequestMethod.POST)
 	public ModelAndView saveorupdatepassport(@ModelAttribute("passport") Passport passport) {
 		ModelAndView model = new ModelAndView("redirect:traveldetails");
-//		CustomUser user = getCustomUser();
+		CustomUser customuser = userservice.findCustomUser(id);
 		if(passport.getUserid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(id);
+		    
 		    userservice.savepassport(customuser,passport);
 		}
 		    else{
-		    	userservice.updatepassport(passport);
+		    	userservice.updatepassport(customuser,passport);
 		    }
 		    return model;
 			}
@@ -270,11 +410,18 @@ public class AdminHomePageController {
 	public ModelAndView traveldetails() {
 		ModelAndView model = new ModelAndView();
 //		 CustomUser user = getCustomUser();
-         List<Travel> traveldetails = userservice.findtraveldetails(id);
+         List<Travel> traveldetails;
+		try {
+			traveldetails = userservice.findtraveldetails(id);
+			model.addObject("traveldetails", traveldetails);
+		} catch (FindTravelDetailsNotFoundService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
        
         	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
 		model.setViewName("admin/TravelInfo");
-		model.addObject("traveldetails", traveldetails);
+		
         return model;
         
 	}
@@ -289,7 +436,12 @@ public class AdminHomePageController {
          else{
         /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
 //        	 int travelid = Integer.parseInt(request.getParameter("travelid"));
-        	 travel = userservice.findtravel(2);
+        	 try {
+				travel = userservice.findtravel(2);
+			} catch (FindTravelByIdNotFoundService e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         	 model.addObject("travel", new Travel());
          }
         return model;
@@ -299,13 +451,13 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/saveorupdatetravel", method = RequestMethod.POST)
 	public ModelAndView saveorupdatetravel(@ModelAttribute("travel") Travel travel) {
 		ModelAndView model = new ModelAndView("redirect:traveldetails");
-//		CustomUser user = getCustomUser();
+		CustomUser customuser = userservice.findCustomUser(id);
 		if(travel.getTravelid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(id);
+		    
 		    userservice.savetravel(customuser,travel);
 		}
 		    else{
-		    	userservice.updatetravel(travel);
+		    	userservice.updatetravel(customuser,travel);
 		    }
 		    return model;
 			}
@@ -320,8 +472,15 @@ public class AdminHomePageController {
 	public ModelAndView edittravel(@ModelAttribute("travelid") int travelid) {
 		ModelAndView model = new ModelAndView("admin/TravelForm");
 		System.out.println("The TravelId for edit travel is"+travelid);
-		Travel travel = userservice.findtravel(travelid);
-		model.addObject("travel",travel);
+		Travel travel;
+		try {
+			travel = userservice.findtravel(travelid);
+			model.addObject("travel",travel);
+		} catch (FindTravelByIdNotFoundService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		System.out.println("The Travel Id is "+travelid);
 		    return model;
 			}
@@ -356,12 +515,13 @@ public class AdminHomePageController {
 	public ModelAndView saveorupdateeducation(@ModelAttribute("education") Education education) {
 		ModelAndView model = new ModelAndView("redirect:educationdetails");
 //		CustomUser user = getCustomUser();
+		CustomUser customuser = userservice.findCustomUser(id);
 		if(education.getEduid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(id);
+		    
 		    userservice.saveeducation(customuser, education);
 		}
 		    else{
-		    	userservice.updateeducation(education);
+		    	userservice.updateeducation(customuser,education);
 		    }
 		    return model;
 			}
@@ -376,8 +536,15 @@ public class AdminHomePageController {
 	public ModelAndView editeducation(@ModelAttribute("eduid") int eduid) {
 		ModelAndView model = new ModelAndView("admin/EducationForm");
 		System.out.println("The TravelId for edit travel is"+eduid);
-		Education education = userservice.findeducation(eduid);
-		model.addObject("education",education);
+		Education education;
+		try {
+			education = userservice.findeducation(eduid);
+			model.addObject("education",education);
+		} catch (EducationNotFoundExceptionService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		System.out.println("The Travel Id is "+eduid);
 		    return model;
 			}
@@ -385,16 +552,23 @@ public class AdminHomePageController {
 	public ModelAndView experiencedetails() {
 		ModelAndView model = new ModelAndView();
 //		 CustomUser user = getCustomUser();
-         List<Experience> experiencedetails = userservice.findexperiences(id);
-         if(experiencedetails.isEmpty()){
-        	 /*If Entering First Time redirects to empty form with travel form*/
-        	 model.setViewName("redirect:editorcreatenewexperience");
-         }
-         else{
-        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
-		model.setViewName("admin/ExperienceHistory");
-		model.addObject("experiencedetails", experiencedetails);
-         }
+         List<Experience> experiencedetails;
+		try {
+			experiencedetails = userservice.findexperiences(id);
+			 if(experiencedetails.isEmpty()){
+	        	 /*If Entering First Time redirects to empty form with travel form*/
+	        	 model.setViewName("redirect:editorcreatenewexperience");
+	         }
+	         else{
+	        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
+			model.setViewName("admin/ExperienceHistory");
+			model.addObject("experiencedetails", experiencedetails);
+	         }
+		} catch (experiencesnotfoundbyid e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         return model;
         
 	}
@@ -412,12 +586,13 @@ public class AdminHomePageController {
 	public ModelAndView saveorupdateexperience(@ModelAttribute("experience") Experience experience) {
 		ModelAndView model = new ModelAndView("redirect:experiencedetails");
 //		CustomUser user = getCustomUser();
+		 CustomUser customuser = userservice.findCustomUser(id);
 		if(experience.getExpid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(id);
+		   
 		    userservice.saveexperience(customuser, experience);
 		}
 		    else{
-		    	userservice.updateexperience(experience);
+		    	userservice.updateexperience(customuser,experience);
 		    }
 		    return model;
 			}
@@ -431,15 +606,28 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/editexperience", method = RequestMethod.POST)
 	public ModelAndView editexperience(@ModelAttribute("expid") int expid) {
 		ModelAndView model = new ModelAndView("admin/ExperienceForm");
-		Experience experience = userservice.findexperience(expid);
-		model.addObject("experience",experience);
+		Experience experience;
+		try {
+			experience = userservice.findexperience(expid);
+			model.addObject("experience",experience);
+		} catch (ExperienceNotFoundService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		    return model;
 			}
 	@RequestMapping(value = "/certificateDetails", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView certificateDetails() {
 		ModelAndView model = new ModelAndView();
 //		 CustomUser user = getCustomUser();
-         List<Certification> certificationdetails = userservice.findcertificationdetails(id);
+         List<Certification> certificationdetails = null;
+		try {
+			certificationdetails = userservice.findcertificationdetails(id);
+		} catch (CertificateDetailsNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(certificationdetails.isEmpty()){
         	 /*If Entering First Time redirects to empty form with travel form*/
         	 model.setViewName("redirect:editorcreatenewcertificate");
@@ -471,13 +659,13 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/saveorupdatecertification", method = RequestMethod.POST)
 	public ModelAndView saveorupdatetravel(@ModelAttribute("certification") Certification certification) {
 		ModelAndView model = new ModelAndView("redirect:certificateDetails");
-//		CustomUser user = getCustomUser();
+		CustomUser customuser = userservice.findCustomUser(id);
 		if(certification.getCertificationId()== 0){
-		    CustomUser customuser = userservice.findCustomUser(id);
+		    
 		    userservice.savecertification(customuser,certification);
 		}
 		    else{
-		    	userservice.updatecertification(certification);
+		    	userservice.updatecertification(customuser,certification);
 		    }
 		    return model;
 			}
@@ -491,7 +679,13 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/editcertificate", method = RequestMethod.POST)
 	public ModelAndView editcertificate(@ModelAttribute("certificationid") int certificationid) {
 		ModelAndView model = new ModelAndView("admin/CertificateForm");
-		Certification certification = userservice.findcertificate(certificationid);
+		Certification certification = null;
+		try {
+			certification = userservice.findcertificate(certificationid);
+		} catch (CertificateNotFoundService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addObject("certification",certification);
 		    return model;
 			}
@@ -520,14 +714,32 @@ public class AdminHomePageController {
 	}
 	@RequestMapping(value = "/downloadDoc",method = RequestMethod.POST)
 	public void downloaddocument(@ModelAttribute("docid") int docid, HttpServletResponse response) throws IOException{
-	System.out.println("The Docid is"+docid);
-	Document document =  userservice.finddocument(docid);
-	response.setContentType(document.getDoctype());
-	response.setContentLength(document.getAttachment().length);
-	response.setHeader("Content-Disposition","attachment; filename=\"" + document.getDoctitle() +"\"");
-	FileCopyUtils.copy(document.getAttachment(), response.getOutputStream());
-	response.flushBuffer();
-	}
+		System.out.println("The Docid is"+docid);
+		
+		Document document = null;
+		try {
+			document = userservice.finddocument(docid);
+		} catch (documentnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		File file = new File(document.getDoclocation());
+		InputStream fileInputStream = new FileInputStream(file);
+		
+		response.setContentType(document.getDoctype());
+		response.setContentLength((int) file.length());
+		response.setHeader("Content-Disposition","attachment; filename=\"" + document.getDoctitle() +"\"");
+		ServletOutputStream os       = response.getOutputStream();
+		byte[] bufferData = new byte[1024];
+		int read=0;
+		while((read = fileInputStream.read(bufferData))!= -1){
+			os.write(bufferData, 0, read);
+		}
+		os.flush();
+		os.close();
+		fileInputStream.close();
+		System.out.println("File downloaded at client successfully");
+		}
 	@RequestMapping(value = "/deleteDoc",method = RequestMethod.POST)
 	public ModelAndView deleteDoc(@ModelAttribute("docid") int docid) throws IOException{
      System.out.println("The Docid in delete doc controller "+docid);
@@ -552,6 +764,47 @@ public class AdminHomePageController {
         }
 		
      return model;
+	}
+	@RequestMapping(value = "/addnewattorney", method = RequestMethod.GET)
+	public ModelAndView addnewattorney() {
+		ModelAndView model = new ModelAndView("admin/NewAttorneyForm");
+		model.addObject("attorney", new Attorney());
+		 return model;
+	}
+	@RequestMapping(value = "/viewattorney", method = RequestMethod.GET)
+	public ModelAndView viewmember(HttpServletRequest request) {
+		int attorneyid;
+		attorneyid=  Integer.parseInt(request.getParameter("attorneyid"));
+		Attorney attorney = userservice.findattorneybyattorneyid(attorneyid);
+		ModelAndView model = new ModelAndView("admin/ViewAttorney");
+		model.addObject("attorney", attorney);
+		 return model;
+	}
+	@RequestMapping(value = "/editattorney", method = RequestMethod.GET)
+	public ModelAndView editattorney(@ModelAttribute("attorney") Attorney attorney , HttpServletRequest request) {
+		int attorneyid;
+		attorneyid=  Integer.parseInt(request.getParameter("attorneyid"));
+		attorney = userservice.findattorneybyattorneyid(attorneyid);
+		ModelAndView model = new ModelAndView("admin/NewAttorneyForm");
+		model.addObject("attorney", attorney);
+		 return model;
+	}
+	
+	@RequestMapping(value = "/saveorupdatenewattorney", method = RequestMethod.POST)
+	public ModelAndView addnewmember(@ModelAttribute("attorney") Attorney attorney) {
+		ModelAndView model = new ModelAndView("redirect:home");
+		if(attorney.getAttorneyid() == 0){
+	     userservice.saveattorney(attorney);
+		}else{
+			userservice.updateattorney(attorney);
+		}
+		 return model;
+	}
+	@RequestMapping(value = "/deleteattorney", method = RequestMethod.POST)
+	public ModelAndView deleteattorney(@ModelAttribute("attorneyid") int attorneyid) {
+		ModelAndView model = new ModelAndView("redirect:home");
+		userservice.deleteattorney(attorneyid);
+		return model;
 	}
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {

@@ -1,11 +1,16 @@
  package com.fusionsoft.docs.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -36,7 +41,19 @@ import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.Travel;
+import com.fusionsoft.docs.service.CertificateDetailsNotFound;
+import com.fusionsoft.docs.service.CertificateNotFoundService;
+import com.fusionsoft.docs.service.EducationNotFoundExceptionService;
+import com.fusionsoft.docs.service.ExperienceNotFoundService;
+import com.fusionsoft.docs.service.FindTravelByIdNotFoundService;
+import com.fusionsoft.docs.service.FindTravelDetailsNotFoundService;
+import com.fusionsoft.docs.service.PassportNotFoundInService;
 import com.fusionsoft.docs.service.UserService;
+import com.fusionsoft.docs.service.applicantnotfoundservice;
+import com.fusionsoft.docs.service.contactnotfoundservice;
+import com.fusionsoft.docs.service.documentnotfoundservice;
+import com.fusionsoft.docs.service.experiencesnotfoundbyid;
+import com.fusionsoft.docs.service.userbydocidnotfoundservice;
 
 @Controller
 @RequestMapping(value = { "/user" })
@@ -45,7 +62,6 @@ public class UserHomePageController {
 	private UserService userservice;
 	@Autowired
 	public UserDao userDao;
-	private static int id;
 	
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public ModelAndView userPage() {
@@ -57,31 +73,171 @@ public class UserHomePageController {
 			user = ((CustomUser) principal);
 		}
 		CustomUser customuser = userservice.findCustomUser(user.getUserid());
+		Applicant applicant = null;
+		try {
+			applicant = userservice.findapplicant(user.getUserid());
+		} catch (applicantnotfoundservice e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if(customuser.getFirstlogin() == 1){
 			System.out.println("The firstlogin is");
 			model.setViewName("redirect:editorcreatenewapplication");
 			userservice.updatefirstlogin(user.getUserid());
+		}else if(applicant == null){
+			 Passport passport = null;
+				try {
+					passport = userservice.findpassport(user.getUserid());
+				} catch (PassportNotFoundInService e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("passport",passport);
+				Contact contact = null;
+				try {
+					contact = userservice.findcontact(user.getUserid());
+				} catch (contactnotfoundservice e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("contact",contact);
+				
+				model.addObject("applicant",applicant);
+				List<Travel> traveldetails = null;
+				try {
+					traveldetails = userservice.findtraveldetails(user.getUserid());
+				} catch (FindTravelDetailsNotFoundService e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("traveldetails",traveldetails);
+				System.out.println(traveldetails.size());
+				List<Experience> experiencedetails = null;
+				try {
+					experiencedetails = userservice.findexperiences(user.getUserid());
+				} catch (experiencesnotfoundbyid e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("experiencedetails",experiencedetails);
+				System.out.println(experiencedetails.size());
+				List<Education> educationdetails=userservice.findqualifications(user.getUserid());
+				model.addObject("educationdetails",educationdetails);
+				List<Document> documents = new ArrayList<Document>();
+			    documents = userservice.findalldocuments(getCustomUser().getUserid());
+				model.addObject("documents",documents);
+				List<Certification> certificationdetails = null;
+				try {
+					certificationdetails = userservice.findcertificationdetails(user.getUserid());
+				} catch (CertificateDetailsNotFound e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("certificationdetails",certificationdetails);
+			model.setViewName("user/UserHome");
+		}else if(applicant.getAdminverification() != null && applicant.getAdminverification().equals("Verified  By  Admin")){
+			 Passport passport = null;
+				try {
+					passport = userservice.findpassport(user.getUserid());
+				} catch (PassportNotFoundInService e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("passport",passport);
+				Contact contact = null;
+				try {
+					contact = userservice.findcontact(user.getUserid());
+				} catch (contactnotfoundservice e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("contact",contact);
+				
+				model.addObject("applicant",applicant);
+				List<Travel> traveldetails = null;
+				try {
+					traveldetails = userservice.findtraveldetails(user.getUserid());
+				} catch (FindTravelDetailsNotFoundService e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("traveldetails",traveldetails);
+				System.out.println(traveldetails.size());
+				List<Experience> experiencedetails = null;
+				try {
+					experiencedetails = userservice.findexperiences(user.getUserid());
+				} catch (experiencesnotfoundbyid e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("experiencedetails",experiencedetails);
+				System.out.println(experiencedetails.size());
+				List<Education> educationdetails=userservice.findqualifications(user.getUserid());
+				model.addObject("educationdetails",educationdetails);
+				List<Document> documents = new ArrayList<Document>();
+			    documents = userservice.findalldocuments(getCustomUser().getUserid());
+				model.addObject("documents",documents);
+				List<Certification> certificationdetails = null;
+				try {
+					certificationdetails = userservice.findcertificationdetails(user.getUserid());
+				} catch (CertificateDetailsNotFound e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model.addObject("certificationdetails",certificationdetails);
+			model.setViewName("user/VerifiedHome");
 		}
 		else{
-            Passport passport=userservice.findpassport(user.getUserid());
+            Passport passport = null;
+			try {
+				passport = userservice.findpassport(user.getUserid());
+			} catch (PassportNotFoundInService e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			model.addObject("passport",passport);
-			Contact contact=userservice.findcontact(user.getUserid());
+			Contact contact = null;
+			try {
+				contact = userservice.findcontact(user.getUserid());
+			} catch (contactnotfoundservice e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			model.addObject("contact",contact);
-			Applicant applicant=userservice.findapplicant(user.getUserid());
+			
 			model.addObject("applicant",applicant);
-			List<Travel> traveldetails=userservice.findtraveldetails(user.getUserid());
+			List<Travel> traveldetails = null;
+			try {
+				traveldetails = userservice.findtraveldetails(user.getUserid());
+			} catch (FindTravelDetailsNotFoundService e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			model.addObject("traveldetails",traveldetails);
 			System.out.println(traveldetails.size());
-			List<Experience> experiencedetails=userservice.findexperiences(user.getUserid());
+			List<Experience> experiencedetails = null;
+			try {
+				experiencedetails = userservice.findexperiences(user.getUserid());
+			} catch (experiencesnotfoundbyid e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			model.addObject("experiencedetails",experiencedetails);
 			System.out.println(experiencedetails.size());
 			List<Education> educationdetails=userservice.findqualifications(user.getUserid());
 			model.addObject("educationdetails",educationdetails);
-			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+			List<Document> documents = new ArrayList<Document>();
+		    documents = userservice.findalldocuments(getCustomUser().getUserid());
 			model.addObject("documents",documents);
-			List<Certification> certificationdetails=userservice.findcertificationdetails(user.getUserid());
+			List<Certification> certificationdetails = null;
+			try {
+				certificationdetails = userservice.findcertificationdetails(user.getUserid());
+			} catch (CertificateDetailsNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			model.addObject("certificationdetails",certificationdetails);
-			model.addObject("status",customuser.getApplicationstatus());
+//			model.addObject("status",customuser.getApplicationstatus());
 	        model.setViewName("user/UserHome");
 		}
 		return model;
@@ -94,12 +250,44 @@ public class UserHomePageController {
 		}
 		return user;
 	}
+	@RequestMapping(value = "/viewapplicant", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView viewapplication() {
+		ModelAndView model = new ModelAndView();
+		 CustomUser user = getCustomUser();
+		 Applicant applicant = new Applicant();
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+         try {
+        	 applicant = userservice.findapplicant(user.getUserid());
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(applicant == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.setViewName("redirect:editorcreatenewapplication");
+         }
+         else{
+        	
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("applicant", applicant);
+		model.addObject("documents", documents);
+		model.setViewName("user/ViewApplication");
+         }
+        return model;
+        
+	}
 	/*create a new application or edit existing application based on the changes made by the user*/
 	@RequestMapping(value = "/editorcreatenewapplication", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewapplication(@ModelAttribute("applicant") Applicant applicant,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("user/ApplicationForm");
 		 CustomUser user = getCustomUser();
-         applicant = userservice.findapplicant(user.getUserid());
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+         try {
+			applicant = userservice.findapplicant(user.getUserid());
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(applicant == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Applicant());
@@ -107,6 +295,8 @@ public class UserHomePageController {
          else{
         	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
 		model.addObject("applicant", applicant);
+		model.addObject("documents", documents);
+		
          }
         return model;
         
@@ -120,30 +310,65 @@ public class UserHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant*/
 	@RequestMapping(value = "/saveorupdateapplication", method = RequestMethod.POST)
 	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant, BindingResult result) {
-		ModelAndView model = new ModelAndView("redirect:editorcreatenewcontact");
-		CustomUser user = getCustomUser();
+		ModelAndView model = new ModelAndView("redirect:viewcontact");
+		
+		CustomUser customuser = getCustomUser();
+		
 		if(applicant.getUserid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
+		    
 		    userservice.saveapplication(customuser,applicant);
 		}
 		    else{
-		    	userservice.updateapplication(applicant);
+		    	userservice.updateapplication(customuser,applicant);
 		    }
 		    return model;
 			}
+	@RequestMapping(value = "/viewcontact", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView viewcontact() {
+		ModelAndView model = new ModelAndView();
+		 CustomUser user = getCustomUser();
+		 Contact contact = new Contact();
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+         try {
+			contact = userservice.findcontact(user.getUserid());
+		} catch (contactnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(contact == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.setViewName("redirect:editorcreatenewcontact");
+         }
+         else{
+        	
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("contact", contact);
+		model.addObject("documents", documents);
+		model.setViewName("user/ViewContact");
+         }
+        return model;
+        
+	}
 	/*create a new application or edit existing contact details based on the changes made by the user*/
 	@RequestMapping(value = "/editorcreatenewcontact", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewcontact(@ModelAttribute("contact") Contact contact) {
 		ModelAndView model = new ModelAndView("user/ContactForm");
 		 CustomUser user = getCustomUser();
-         contact = userservice.findcontact(user.getUserid());
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+         try {
+			contact = userservice.findcontact(user.getUserid());
+		} catch (contactnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(contact == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Contact());
          }
          else{
         	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
-		model.addObject("contact", contact);
+        	 model.addObject("documents", documents);
+        	 model.addObject("contact", contact);
          }
         return model;
         
@@ -151,24 +376,57 @@ public class UserHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
 	@RequestMapping(value = "/saveorupdatecontact", method = RequestMethod.POST)
 	public ModelAndView saveorupdatecontact(@ModelAttribute("contact") Contact contact) {
-		ModelAndView model = new ModelAndView("redirect:editorcreatenewpassport");
-		CustomUser user = getCustomUser();
+		ModelAndView model = new ModelAndView("redirect:viewpassport");
+		CustomUser customuser = getCustomUser();
 		if(contact.getUserid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
+		    
 		    userservice.savecontact(customuser,contact);
 		}
 		    else{
-		    	userservice.updatecontact(contact);
+		    	userservice.updatecontact(customuser,contact);
 		    }
 		    return model;
 			}
+	/*create a new application or edit existing contact details based on the changes made by the user*/
+	@RequestMapping(value = "/viewpassport", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView viewpassport() {
+		ModelAndView model = new ModelAndView();
+		 CustomUser user = getCustomUser();
+		 Passport passport = new Passport();
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+         try {
+			passport = userservice.findpassport(user.getUserid());
+		} catch (PassportNotFoundInService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(passport == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.setViewName("redirect:editorcreatenewpassport");
+         }
+         else{
+        	
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("passport", passport);
+		model.addObject("documents", documents);
+		model.setViewName("user/ViewPassport");
+         }
+        return model;
+        
+	}
 	/*create a new application or edit existing contact details based on the changes made by the user*/
 	@RequestMapping(value = "/editorcreatenewpassport", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewpassport(@ModelAttribute("passport") Passport passport) {
 		ModelAndView model = new ModelAndView("user/PassportForm");
 		 CustomUser user = getCustomUser();
+		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
 		 System.out.println("The passport id is"+passport.getUserid());
-         passport = userservice.findpassport(user.getUserid());
+         try {
+			passport = userservice.findpassport(user.getUserid());
+		} catch (PassportNotFoundInService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(passport == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Passport());
@@ -176,6 +434,7 @@ public class UserHomePageController {
          else{
         	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
 		model.addObject("passport", passport);
+		model.addObject("documents", documents);
          }
         return model;
         
@@ -184,13 +443,14 @@ public class UserHomePageController {
 	@RequestMapping(value = "/saveorupdatepassport", method = RequestMethod.POST)
 	public ModelAndView saveorupdatepassport(@ModelAttribute("passport") Passport passport) {
 		ModelAndView model = new ModelAndView("redirect:traveldetails");
-		CustomUser user = getCustomUser();
+		CustomUser customuser = getCustomUser();
 		if(passport.getUserid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
+		    
 		    userservice.savepassport(customuser,passport);
 		}
 		    else{
-		    	userservice.updatepassport(passport);
+		    	userservice.updatepassport(customuser,passport);
+		    	
 		    }
 		    return model;
 			}
@@ -199,7 +459,13 @@ public class UserHomePageController {
 	public ModelAndView traveldetails() {
 		ModelAndView model = new ModelAndView();
 		 CustomUser user = getCustomUser();
-         List<Travel> traveldetails = userservice.findtraveldetails(user.getUserid());
+         List<Travel> traveldetails = null;
+		try {
+			traveldetails = userservice.findtraveldetails(user.getUserid());
+		} catch (FindTravelDetailsNotFoundService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(traveldetails.isEmpty()){
         	 /*If Entering First Time redirects to empty form with travel form*/
         	 model.setViewName("redirect:editorcreatenewtravel");
@@ -215,7 +481,6 @@ public class UserHomePageController {
 	@RequestMapping(value = "/editorcreatenewtravel", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewtravel(@ModelAttribute("travel") Travel travel,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("user/TravelForm");
-		 CustomUser user = getCustomUser();
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Travel());
 
@@ -227,13 +492,13 @@ public class UserHomePageController {
 	public ModelAndView saveorupdatetravel(@ModelAttribute("travel") Travel travel) {
 		ModelAndView model = new ModelAndView("redirect:traveldetails");
 		System.out.println("The Travel Id in saveorupdate controller is"+travel.getTravelid());
-		CustomUser user = getCustomUser();
+		CustomUser customuser = getCustomUser();
 		if(travel.getTravelid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
 		    userservice.savetravel(customuser,travel);
 		}
 		    else{
-		    	userservice.updatetravel(travel);
+		    	System.out.println("The CustomUser is "+customuser.getUserid());
+		    	userservice.updatetravel(customuser,travel);
 		    }
 		    return model;
 			}
@@ -248,8 +513,18 @@ public class UserHomePageController {
 	public ModelAndView edittravel(@ModelAttribute("travelid") int travelid) {
 		ModelAndView model = new ModelAndView("user/TravelForm");
 		System.out.println("The TravelId for edit travel is"+travelid);
-		Travel travel = userservice.findtravel(travelid);
+		List<Document> documents = null;
+		Travel travel = null;
+		try {
+			travel = userservice.findtravel(travelid);
+			documents = travel.getDocuments();
+		} catch (FindTravelByIdNotFoundService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addObject("travel",travel);
+		
+		model.addObject("documents",documents);
 		System.out.println("The Travel Id is "+travelid);
 		    return model;
 			}
@@ -274,7 +549,6 @@ public class UserHomePageController {
 	@RequestMapping(value = "/editorcreateneweducation", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreateneweducation(@ModelAttribute("education") Education education,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("user/EducationForm");
-		 CustomUser user = getCustomUser();
 		 if(request == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Education());
@@ -290,13 +564,12 @@ public class UserHomePageController {
 	@RequestMapping(value = "/saveorupdateeducation", method = RequestMethod.POST)
 	public ModelAndView saveorupdateeducation(@ModelAttribute("education") Education education) {
 		ModelAndView model = new ModelAndView("redirect:educationdetails");
-		CustomUser user = getCustomUser();
+		CustomUser customuser = getCustomUser();
 		if(education.getEduid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
 		    userservice.saveeducation(customuser, education);
 		}
 		    else{
-		    	userservice.updateeducation(education);
+		    	userservice.updateeducation(customuser,education);
 		    }
 		    return model;
 			}
@@ -311,7 +584,16 @@ public class UserHomePageController {
 	public ModelAndView editeducation(@ModelAttribute("eduid") int eduid) {
 		ModelAndView model = new ModelAndView("user/EducationForm");
 		System.out.println("The TravelId for edit travel is"+eduid);
-		Education education = userservice.findeducation(eduid);
+		List<Document> documents = null;
+		Education education = null;
+		try {
+			education = userservice.findeducation(eduid);
+			documents = education.getDocuments();
+		} catch (EducationNotFoundExceptionService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addObject("documents",documents);
 		model.addObject("education",education);
 		System.out.println("The Travel Id is "+eduid);
 		    return model;
@@ -320,7 +602,13 @@ public class UserHomePageController {
 	public ModelAndView experiencedetails() {
 		ModelAndView model = new ModelAndView();
 		 CustomUser user = getCustomUser();
-         List<Experience> experiencedetails = userservice.findexperiences(user.getUserid());
+         List<Experience> experiencedetails = null;
+		try {
+			experiencedetails = userservice.findexperiences(user.getUserid());
+		} catch (experiencesnotfoundbyid e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
          if(experiencedetails.isEmpty()){
         	 /*If Entering First Time redirects to empty form with travel form*/
         	 model.setViewName("redirect:editorcreatenewexperience");
@@ -336,7 +624,6 @@ public class UserHomePageController {
 	@RequestMapping(value = "/editorcreatenewexperience", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewexperience(@ModelAttribute("experience") Experience experience,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("user/ExperienceForm");
-		 CustomUser user = getCustomUser();
 		 if(request == null){
         	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
         	 model.addObject(new Experience());
@@ -352,13 +639,12 @@ public class UserHomePageController {
 	@RequestMapping(value = "/saveorupdateexperience", method = RequestMethod.POST)
 	public ModelAndView saveorupdateexperience(@ModelAttribute("experience") Experience experience) {
 		ModelAndView model = new ModelAndView("redirect:experiencedetails");
-		CustomUser user = getCustomUser();
+		CustomUser customuser = getCustomUser();
 		if(experience.getExpid() == 0){
-		    CustomUser customuser = userservice.findCustomUser(user.getUserid());
 		    userservice.saveexperience(customuser, experience);
 		}
 		    else{
-		    	userservice.updateexperience(experience);
+		    	userservice.updateexperience(customuser,experience);
 		    }
 		    return model;
 			}
@@ -372,8 +658,19 @@ public class UserHomePageController {
 	@RequestMapping(value = "/editexperience", method = RequestMethod.POST)
 	public ModelAndView editexperience(@ModelAttribute("expid") int expid) {
 		ModelAndView model = new ModelAndView("user/ExperienceForm");
-		Experience experience = userservice.findexperience(expid);
+		List<Document> documents = null;
+		Experience experience = null;
+		try {
+			experience = userservice.findexperience(expid);
+			documents = experience.getDocuments();
+		} catch (ExperienceNotFoundService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("The Docs Size is"+documents.size());
+		model.addObject("documents",documents);
 		model.addObject("experience",experience);
+		
 		    return model;
 			}
 	//check whether user has atleast one entry in certification details
@@ -381,7 +678,13 @@ public class UserHomePageController {
 		public ModelAndView certificateDetails() {
 			ModelAndView model = new ModelAndView();
 			 CustomUser user = getCustomUser();
-	         List<Certification> certificationdetails = userservice.findcertificationdetails(user.getUserid());
+	         List<Certification> certificationdetails = null;
+			try {
+				certificationdetails = userservice.findcertificationdetails(user.getUserid());
+			} catch (CertificateDetailsNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	         if(certificationdetails.isEmpty()){
 	        	 /*If Entering First Time redirects to empty form with travel form*/
 	        	 model.setViewName("redirect:editorcreatenewcertificate");
@@ -400,7 +703,6 @@ public class UserHomePageController {
 		@RequestMapping(value = "/editorcreatenewcertificate", method = {RequestMethod.POST,RequestMethod.GET})
 		public ModelAndView editorcreatenewtravel(@ModelAttribute("certification") Certification certification,HttpServletRequest request) {
 			ModelAndView model = new ModelAndView("user/CertificateForm");
-			 CustomUser user = getCustomUser();
 			 if(request == null){
 	        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
 	        	 model.addObject(new Certification());
@@ -418,13 +720,13 @@ public class UserHomePageController {
 		@RequestMapping(value = "/saveorupdatecertification", method = RequestMethod.POST)
 		public ModelAndView saveorupdatetravel(@ModelAttribute("certification") Certification certification) {
 			ModelAndView model = new ModelAndView("redirect:certificateDetails");
-			CustomUser user = getCustomUser();
+			CustomUser customuser = getCustomUser();
 			if(certification.getCertificationId()== 0){
-			    CustomUser customuser = userservice.findCustomUser(user.getUserid());
+			  
 			    userservice.savecertification(customuser,certification);
 			}
 			    else{
-			    	userservice.updatecertification(certification);
+			    	userservice.updatecertification(customuser,certification);
 			    }
 			    return model;
 				}
@@ -438,8 +740,17 @@ public class UserHomePageController {
 		@RequestMapping(value = "/editcertificate", method = RequestMethod.POST)
 		public ModelAndView editcertificate(@ModelAttribute("certificationid") int certificationid) {
 			ModelAndView model = new ModelAndView("user/CertificateForm");
-			Certification certification = userservice.findcertificate(certificationid);
+			List<Document> documents = null;
+			Certification certification = null;
+			try {
+				certification = userservice.findcertificate(certificationid);
+				documents = certification.getDocuments();
+			} catch (CertificateNotFoundService e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			model.addObject("certification",certification);
+			model.addObject("documents",documents);
 			    return model;
 				}
 	@RequestMapping(value = "/editorcreatenewdocument",method = RequestMethod.GET)
@@ -466,31 +777,72 @@ public class UserHomePageController {
 	@RequestMapping(value = "/downloadDoc",method = RequestMethod.POST)
 	public void downloaddocument(@ModelAttribute("docid") int docid, HttpServletResponse response) throws IOException{
 	System.out.println("The Docid is"+docid);
-	Document document =  userservice.finddocument(docid);
-	response.setContentType(document.getDoctype());
-	response.setContentLength(document.getAttachment().length);
-	response.setHeader("Content-Disposition","attachment; filename=\"" + document.getDoctitle() +"\"");
-	FileCopyUtils.copy(document.getAttachment(), response.getOutputStream());
-	response.flushBuffer();
+	
+	Document document = null;
+	try {
+		document = userservice.finddocument(docid);
+	} catch (documentnotfoundservice e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
-	@RequestMapping(value = "/deleteDoc",method = RequestMethod.GET)
-	public ModelAndView deleteDoc(@ModelAttribute("docid") int docid,HttpServletResponse response, HttpServletRequest request,RedirectAttributes redirectAttributes) throws IOException{
-     int userid = userservice.finduseridbydocid(docid);
+	File file = new File(document.getDoclocation());
+	InputStream fileInputStream = new FileInputStream(file);
+	
+	response.setContentType(document.getDoctype());
+	response.setContentLength((int) file.length());
+	response.setHeader("Content-Disposition","attachment; filename=\"" + document.getDoctitle() +"\"");
+	ServletOutputStream os       = response.getOutputStream();
+	byte[] bufferData = new byte[1024];
+	int read=0;
+	while((read = fileInputStream.read(bufferData))!= -1){
+		os.write(bufferData, 0, read);
+	}
+	os.flush();
+	os.close();
+	fileInputStream.close();
+	System.out.println("File downloaded at client successfully");
+	}
+	@RequestMapping(value = "/deleteDoc",method = RequestMethod.POST)
+	public ModelAndView deleteDoc(@ModelAttribute("docid") int docid) throws IOException{
+		ModelAndView model = new ModelAndView();
+	try {
+		Document document = userservice.finddocument(docid);
+		System.out.println("The Doctype To Redirect is"+document.getDoctype());
+		System.out.println(document.getDoctype().equals("Passport"));
+		if(document.getDoctype().equals("Passport")){
+			model.setViewName("redirect:editorcreatenewpassport");
+		}else if (document.getDoctype().equals("Contact")){
+			model.setViewName("redirect:editorcreatenewcontact");
+		}else if (document.getDoctype().equals("Travel")){
+			model.setViewName("redirect:traveldetails");
+		}else if (document.getDoctype().equals("Experience")){
+			model.setViewName("redirect:experiencedetails");
+		}else if (document.getDoctype().equals("Education")){
+			model.setViewName("redirect:educationdetails");
+		}else if (document.getDoctype().equals("Certification")){
+			model.setViewName("redirect:certificateDetails");
+		}else if (document.getDoctype().equals("Other")){
+			model.setViewName("redirect:editorcreatenewapplication");
+		}
+		else{
+			model.setViewName("redirect:applicantdocument");
+		}
+	} catch (documentnotfoundservice e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
      userservice.deletedoc(docid);
      System.out.println("The document id is "+docid);
-	 redirectAttributes.addFlashAttribute("userid",userid);
-	 ModelAndView model = new ModelAndView("redirect:applicantdocument");
 	 return model;
 	
 	}
 	@RequestMapping(value = "/applicantdocument",method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView applicantdocument(@ModelAttribute("filebucket") FileBucket filebucket) throws IOException{
      ModelAndView model = new ModelAndView();
-     HashMap<String,List<Document>> documents = new HashMap<String,List<Document>>();
-     documents = userservice.findparticulardocuments(getCustomUser().getUserid());
-     System.out.println("The Size Of Document is"+documents.entrySet().contains(null));
-     System.out.println("The Size Of Document is"+documents.keySet().contains(null));
-     if(documents.entrySet().contains(null)){
+     List<Document> documents = new ArrayList<Document>();
+     documents = userservice.findalldocuments(getCustomUser().getUserid());
+     
+     if(documents.isEmpty()){
         	model.setViewName("user/DocumentForm");
         	model.addObject("filebucket", new FileBucket());
         }else{
@@ -500,27 +852,6 @@ public class UserHomePageController {
 		
      return model;
 	}
-//	@RequestMapping(value = "/addeducation",method = {RequestMethod.POST, RequestMethod.GET})
-//	public ModelAndView addeducation(@ModelAttribute("experience")Experience experience) throws IOException{
-//       ModelAndView model = new ModelAndView("user/qualificationsform");
-//	 return model;
-//	}
-//	@RequestMapping(value = "/applicantDeleteexperience",method = RequestMethod.GET)
-//	public ModelAndView applicantDeleteexperience(HttpServletRequest request){
-//	int expid = Integer.parseInt(request.getParameter("expid"));
-//	userservice.deleteexperience(expid);
-//    ModelAndView model = new ModelAndView("redirect:applicantexperience");
-//    
-//    return model;
-//	}
-//	@RequestMapping(value = "/applicantDeleteeducation",method = RequestMethod.GET)
-//	public ModelAndView applicantDeleteeducation(HttpServletRequest request){
-//	int eduid = Integer.parseInt(request.getParameter("eduid"));
-//	userservice.deleteeducation(eduid);
-//    ModelAndView model = new ModelAndView("redirect:applicantqualification");
-//    
-//    return model;
-//	}
 	@RequestMapping(value = "/confirmsubmission",method = RequestMethod.GET)
 	public ModelAndView confirmsubmission(){
     ModelAndView model = new ModelAndView("user/ConfirmSubmission");
@@ -531,17 +862,39 @@ public class UserHomePageController {
 	public ModelAndView submitapplication() throws IOException{
 		ModelAndView model = new ModelAndView();
 		int userid = getCustomUser().getUserid();
-		  Passport passport=userservice.findpassport(userid);
-			Contact contact=userservice.findcontact(userid);
-			Applicant applicant=userservice.findapplicant(userid);
+		  Passport passport = null;
+		try {
+			passport = userservice.findpassport(userid);
+		} catch (PassportNotFoundInService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			Contact contact = null;
+			try {
+				contact = userservice.findcontact(userid);
+			} catch (contactnotfoundservice e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Applicant applicant = null;
+			try {
+				applicant = userservice.findapplicant(userid);
+			} catch (applicantnotfoundservice e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			List<Education> educationdetails=userservice.findqualifications(userid);
 			HashMap<String,List<Document>> documents=userservice.findparticulardocuments(userid);
      if(passport == null || contact == null || applicant == null || educationdetails.isEmpty() || documents.isEmpty()){
-    	model.setViewName("user/NotCompleted");
+    	 model.addObject("messagetype","danger");
+    	 model.addObject("message", "You Have Not Filled Certain Sections Yet");
+ 	model.setViewName("user/Completed");
     	return model;
      }else{
     	  
     	 userservice.updatecustomusersubmission(userid);
+    	 model.addObject("messagetype","success");
+    	 model.addObject("message", "Your Application Is Submitted Sucessfully");
     	 model.setViewName("user/Completed");
     	 return model;
      }

@@ -41,26 +41,32 @@ public class Applicant implements Serializable{
 	public void setAdminverification(String adminverification) {
 		this.adminverification = adminverification;
 	}
-		@Column(name = "attorneyverification",  columnDefinition = "varchar(255) default 'Not Assigned'")
-	    private String attorneyverification;
-	    @Column(name = "educationevaluation",  columnDefinition = "varchar(255) default 'Not Assigned'")
-	    private String educationevaluation;
+		@Column(name = "attorneyverificationstatus",  columnDefinition = "varchar(255) default 'Not Assigned'")
+	    private String attorneyverificationstatus;
+	    @Column(name = "educationevaluationstatus",  columnDefinition = "varchar(255) default 'Not Assigned'")
+	    private String educationevaluationstatus;
 	public String getApplicationstatus() {
 			return applicationstatus;
 		}
 		public void setApplicationstatus(String applicationstatus) {
 			this.applicationstatus = applicationstatus;
 		}
-		public String getAttorneyverification() {
-			return attorneyverification;
+	public String getAttorneyverificationstatus() {
+			return attorneyverificationstatus;
 		}
-		public void setAttorneyverification(String attorneyverification) {
-			this.attorneyverification = attorneyverification;
+		public void setAttorneyverificationstatus(String attorneyverificationstatus) {
+			this.attorneyverificationstatus = attorneyverificationstatus;
 		}
-		public String getEducationevaluation() {
+		public String getEducationevaluationstatus() {
+			return educationevaluationstatus;
+		}
+		public void setEducationevaluationstatus(String educationevaluationstatus) {
+			this.educationevaluationstatus = educationevaluationstatus;
+		}
+		public EducationEvaluation getEducationevaluation() {
 			return educationevaluation;
 		}
-		public void setEducationevaluation(String educationevaluation) {
+		public void setEducationevaluation(EducationEvaluation educationevaluation) {
 			this.educationevaluation = educationevaluation;
 		}
 	@Column(name="prefix")
@@ -135,6 +141,9 @@ public class Applicant implements Serializable{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "attorney_pk")
 	private Attorney attorney;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "educationevaluation_pk")
+	private EducationEvaluation educationevaluation;
 	public Attorney getAttorney() {
 		return attorney;
 	}

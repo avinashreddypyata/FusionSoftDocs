@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fusionsoft.docs.model.EducationEvaluation;
 import com.fusionsoft.docs.model.Applicant;
 import com.fusionsoft.docs.model.Attorney;
 import com.fusionsoft.docs.model.Certification;
@@ -131,13 +132,29 @@ public List<Document> findalldocuments(int userid);
 
 public Attorney findattorneybyattorneyid(int attorneyid);
 
-public void saveattorney(Attorney attorney);
+public String saveattorney(Attorney attorney);
 
 public void updateattorney(Attorney attorney);
 
 public List<Attorney> findallattorneys();
 
 public void deleteattorney(int attorneyid);
+
+public EducationEvaluation findeducationevaluationbyeducationevaluationid(int educationevaluationid);
+
+public void saveeducationevaluation(EducationEvaluation educationevaluation);
+
+public void updateeducationevaluation(EducationEvaluation educationevaluation);
+
+public void deleteeducationevaluation(int educationevaluationid);
+
+public List<EducationEvaluation> findalleducationevaluation();
+
+public void deletecustomuser(int userid);
+
+public List<Applicant> findallapplicantsbyattorneyid(int attorneyid);
+
+public List<Document> finddocuments(int applicantid, String doctype);
 
 
 }

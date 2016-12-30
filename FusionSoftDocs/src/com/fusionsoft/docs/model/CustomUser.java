@@ -126,6 +126,17 @@ public class CustomUser implements UserDetails {
 	    @JoinColumn(name="userid", referencedColumnName="userid")})
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	private Attorney attorney;
+	@OneToOne(mappedBy="customuser")
+	@JoinColumns({
+	    @JoinColumn(name="userid", referencedColumnName="userid")})
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	private EducationEvaluation educationevaluation;
+	public EducationEvaluation getEducationevaluation() {
+		return educationevaluation;
+	}
+	public void setEducationevaluation(EducationEvaluation educationevaluation) {
+		this.educationevaluation = educationevaluation;
+	}
 	public Attorney getAttorney() {
 		return attorney;
 	}
@@ -135,6 +146,15 @@ public class CustomUser implements UserDetails {
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Document> documents;
+	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
+	private List<Certification> certifications;
+	public List<Certification> getCertifications() {
+		return certifications;
+	}
+	public void setCertifications(List<Certification> certifications) {
+		this.certifications = certifications;
+	}
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customuser")
 	private List<Travel> travel;

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 
 @Entity
-@Table(name = "Attorney")
+@Table(name = "attorney")
 public class Attorney {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

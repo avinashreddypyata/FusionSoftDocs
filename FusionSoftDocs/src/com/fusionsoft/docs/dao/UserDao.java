@@ -10,6 +10,7 @@ import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
+import com.fusionsoft.docs.model.EducationEvaluation;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.PasswordResetToken;
@@ -75,6 +76,13 @@ public interface UserDao {
 	public void updateattorney(Attorney attorney);
 	public List<Attorney> findallattorneys();
 	public void deleteattorney(int attorneyid);
+	public EducationEvaluation findeducationevaluationbyeducationevaluationid(int educationevaluationid);
+	public void saveeducationevaluation(EducationEvaluation educationevaluation);
+	public void updateeducationevaluation(EducationEvaluation educationevaluation);
+	public void deleteeducationevaluation(int educationevaluationid);
+	public List<EducationEvaluation> findalleducationevaluation();
+	public void deletecustomuser(int userid);
+	public List<Applicant> findallapplicantsbyattorneyid(int attorneyid);
 	
 /*test*/
 }

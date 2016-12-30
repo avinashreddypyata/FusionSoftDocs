@@ -30,6 +30,7 @@ import com.fusionsoft.docs.model.Contact;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
+import com.fusionsoft.docs.model.EducationEvaluation;
 import com.fusionsoft.docs.model.Email;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.FileBucket;
@@ -251,7 +252,7 @@ public class UserServiceImpl implements UserService {
 			userDao.saveeducation(education);
 			filebucket.setFile(education.getFile());
 			filebucket.setDescription(education.getDocumentdescription());
-			filebucket.setDoctype("Travel");
+			filebucket.setDoctype("Education");
 			saveDocument(filebucket, education, customuser);
 			
 		}
@@ -304,8 +305,8 @@ public class UserServiceImpl implements UserService {
 		FileBucket filebucket = new FileBucket();
 		if(applicant.getFile().isEmpty()){
 			applicant.setAdminverification("Pending");
-			applicant.setAttorneyverification("Pending");
-			applicant.setEducationevaluation("Pending");
+			applicant.setAttorneyverificationstatus("Pending");
+			applicant.setEducationevaluationstatus("Pending");
 			applicant.setCustomuser(customuser);
 			userDao.saveapplication(applicant);
 		}
@@ -315,8 +316,8 @@ public class UserServiceImpl implements UserService {
 			filebucket.setDoctype("Other");
 			saveDocument(filebucket, customuser);
 			applicant.setAdminverification("Pending");
-			applicant.setAttorneyverification("Pending");
-			applicant.setEducationevaluation("Pending");
+			applicant.setAttorneyverificationstatus("Pending");
+			applicant.setEducationevaluationstatus("Pending");
 			applicant.setCustomuser(customuser);
 			userDao.saveapplication(applicant);
 		}
@@ -359,7 +360,7 @@ public class UserServiceImpl implements UserService {
 		else{
 			filebucket.setFile(contact.getFile());
 			filebucket.setDescription(contact.getDocumentdescription());
-			filebucket.setDoctype("Passport");
+			filebucket.setDoctype("Contact");
 			saveDocument(filebucket, customuser);
 			contact.setCustomuser(customuser);
 			userDao.savecontact(contact);
@@ -403,7 +404,7 @@ public class UserServiceImpl implements UserService {
 		else{
 			filebucket.setFile(passport.getFile());
 			filebucket.setDescription(passport.getDocumentdescription());
-			filebucket.setDoctype("AdressProof");
+			filebucket.setDoctype("Passport");
 			saveDocument(filebucket, customuser);
 			passport.setCustomuser(customuser);
 			userDao.savepassport(passport);
@@ -632,6 +633,7 @@ public class UserServiceImpl implements UserService {
 		updatedcustomuser.setSubmission("pending");
 		updatedcustomuser.setUserrole(2);
 		updatedcustomuser.setFirstlogin(1);
+		updatedcustomuser.setAdminnotes(customuser.getAdminnotes());
         userDao.savecustomuser(updatedcustomuser);
 		return password;
 	}
@@ -831,9 +833,19 @@ public class UserServiceImpl implements UserService {
 		return userDao.findattorneybyattorneyid(attorneyid);
 	}
 	@Override
-	public void saveattorney(Attorney attorney) {
+	public String saveattorney(Attorney attorney) {
 		// TODO Auto-generated method stub
-         userDao.saveattorney(attorney);		
+		 CustomUser customuser = new CustomUser();
+		 String password = generateRandomPassword();
+			customuser.setPassword(passwordEncoder.encode(password));
+			customuser.setSubmission("pending");
+			customuser.setUserrole(3);
+			customuser.setFirstlogin(1);
+			customuser.setUsername(attorney.getEmail());
+		    customuser.setAttorney(attorney);
+		    attorney.setCustomuser(customuser);
+            userDao.saveattorney(attorney);	
+            return password;
 	}
 	@Override
 	public void updateattorney(Attorney attorney) {
@@ -849,6 +861,46 @@ public class UserServiceImpl implements UserService {
 	public void deleteattorney(int attorneyid) {
 		// TODO Auto-generated method stub
 		userDao.deleteattorney(attorneyid);
+	}
+	@Override
+	public EducationEvaluation findeducationevaluationbyeducationevaluationid(int educationevaluationid) {
+		// TODO Auto-generated method stub
+		return userDao.findeducationevaluationbyeducationevaluationid(educationevaluationid);
+	}
+	@Override
+	public void saveeducationevaluation(EducationEvaluation educationevaluation) {
+		// TODO Auto-generated method stub
+		userDao.saveeducationevaluation(educationevaluation);
+	}
+	@Override
+	public void updateeducationevaluation(EducationEvaluation educationevaluation) {
+		// TODO Auto-generated method stub
+		userDao.updateeducationevaluation(educationevaluation);
+	}
+	@Override
+	public void deleteeducationevaluation(int educationevaluationid) {
+		// TODO Auto-generated method stub
+		userDao.deleteeducationevaluation(educationevaluationid);
+	}
+	@Override
+	public List<EducationEvaluation> findalleducationevaluation() {
+		// TODO Auto-generated method stub
+		return userDao.findalleducationevaluation();
+	}
+	@Override
+	public void deletecustomuser(int userid) {
+		// TODO Auto-generated method stub
+		userDao.deletecustomuser(userid);
+	}
+	@Override
+	public List<Applicant> findallapplicantsbyattorneyid(int attorneyid) {
+		// TODO Auto-generated method stub
+		return userDao.findallapplicantsbyattorneyid(attorneyid);
+	}
+	@Override
+	public List<Document> finddocuments(int applicantid, String doctype) {
+		// TODO Auto-generated method stub
+		return userDao.findparticulardocuments(applicantid, doctype);
 	}
 	
 	

@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -31,7 +31,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #3 for user profile sample" name="description" />
         <meta content="" name="author" />
-         <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
@@ -45,13 +45,6 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="/LoginPage/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
         <link href="/LoginPage/assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
         <link href="/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="/LoginPage/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <link href="/LoginPage/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/LoginPage/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
-        <link href="/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
-        <link href="/LoginPage/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
-        <!-- END PAGE LEVEL PLUGINS -->
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -64,135 +57,92 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="/LoginPage/assets/passportformjsfiles/theme/default/css/default.css"
+        <!-- END THEME LAYOUT SCRIPTS -->
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="/LoginPage/assets/applicationformjsfiles/datepicker.js"></script>
+     
+    <link rel="stylesheet" type="text/css" href="/LoginPage/assets/applicationformjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     
     <!-- END HEAD -->
 
-    <body class="page-container-bg-solid">
+   <body class="page-container-bg-solid">
         <div class="page-wrapper">
-            <div class="page-wrapper-row">
-                <div class="page-wrapper-top">
-                    <!-- BEGIN HEADER -->
-                    <div class="page-header">
-                        <!-- BEGIN HEADER TOP -->
-                        <div class="page-header-top">
-                            <div class="container">
-                                <!-- BEGIN LOGO -->
-                                <div class="page-logo">
-                                    <a href="index.html">
-                                        <img src="/LoginPage/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
-                                    </a>
-                                </div>
-                                <!-- END LOGO -->
-                                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                                <a href="javascript:;" class="menu-toggler"></a>
-                                <!-- END RESPONSIVE MENU TOGGLER -->
-                                <!-- BEGIN TOP NAVIGATION MENU -->
-                                <div class="top-menu">
-                                    <ul class="nav navbar-nav pull-right">
-                                        <!-- BEGIN NOTIFICATION DROPDOWN -->
-                                        <!-- DOC: Apply "dropdown-hoverable" class after "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
-                                        <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
-                                        <!-- BEGIN USER LOGIN DROPDOWN -->
-                                        <li class="dropdown dropdown-user dropdown-dark">
-                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                <img alt="" class="img-circle" src="/LoginPage/assets/layouts/layout3/img/user.jpg">
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu-default">
-                                             
-                                                <li>
-                                                    <a href="logout">
-                                                        <i class="icon-key"></i> Log Out </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <!-- END USER LOGIN DROPDOWN -->
-                                    </ul>
-                                </div>
-                                <!-- END TOP NAVIGATION MENU -->
-                            </div>
-                        </div>
-                        <!-- END HEADER TOP -->
-                        <!-- BEGIN HEADER MENU -->
-                        <div class="page-header-menu">
-                            <div class="container">
-                                <!-- BEGIN MEGA MENU -->
-                                <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
-                                <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
-                                <div class="hor-menu  ">
-                                    <ul class="nav navbar-nav">
-                                        <li>
-                                            <a href="home"> Home
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li> 
-                                            <a href="viewapplicant">Application
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active">
-                                        <a href="viewcontact">Contact
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li  >
-                                         <a href="viewpassport">Passport
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        
-                                        <li>
-                                         <a href="traveldetails">Travel 
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                       <a href="educationdetails">Education
-                                               
-                                            </a>
-                                        </li>
-                                        <li >
-                                      <a href="experiencedetails">Experience
-                                                
-                                            </a>
-                                        </li>
-                                        <li >
-                                      <a href="certificateDetails">Certification</a>
-                                        </li>
-                                        <li>
-                                      <a href="applicantdocument">Documents
-                                          
-                                            </a>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
-                                <!-- END MEGA MENU -->
-                            </div>
-                        </div>
-                        <!-- END HEADER MENU -->
-                    </div>
-                    <!-- END HEADER -->
-                </div>
-            </div>
+        <jsp:include page="header.jsp"></jsp:include>
             <div class="page-wrapper-row full-height">
                 <div class="page-wrapper-middle">
                     <!-- BEGIN CONTAINER -->
                     <div class="page-container">
                         <!-- BEGIN CONTENT -->
+                       
                         <div class="page-content-wrapper">
                             <!-- BEGIN CONTENT BODY -->
+                              <div class="page-head">
+                                <div class="container">
+                                    <!-- BEGIN PAGE TITLE -->
+                                    <div class="page-title">
+                                        <h1>Application
+                                        </h1>
+                                    </div>
+                                    <!-- END PAGE TITLE -->
+                                </div>
+                            </div>
                             <!-- BEGIN PAGE HEAD-->
-                         
                             <!-- END PAGE HEAD-->
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                                 <div class="portlet light bordered">
+                                    <!-- BEGIN PAGE BREADCRUMBS -->
+                                    <ul class="page-breadcrumb breadcrumb">
+                                        <li>
+                                            <a href="home">Home</a>
+                                            <i class="fa fa-circle"></i>
+                                        </li>
+                                        <li>
+                                            <span>Application</span>
+                                        </li>
+                                    </ul>
+                                    <!-- END PAGE BREADCRUMBS -->
+                                    <!-- BEGIN PAGE CONTENT INNER -->
+                                    <div class="page-content-inner">
+                                        <div class="profile">
+                                            <div class="tabbable-line tabbable-full-width">
+                                             <ul class="nav nav-tabs">
+                                             <li  >
+                                                        <a href = "overview" >Overview</a>
+                                                    </li>
+                                               <li data-toggle="tab" class="active">
+                                                        <a href = "viewapplicant" >Application</a>
+                                               </li>
+                                                    <li >
+                                                        <a href = "viewcontact"> Contact </a>
+                                                    </li>
+                                                     <li >
+                                                        <a href = "viewpassport">Passport</a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "traveldetails"> Travel </a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "educationdetails"> Education </a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "experiencedetails"> Experience </a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "certificateDetails"> Certifications </a>
+                                                    </li>
+                                                    <li >
+                                                        <a href = "applicantdocument"> Documents </a>
+                                                    </li>
+                                                    
+                                                </ul>
+                                 <div class="tab-content">
+                                                   <div class="portlet light bordered">
                                                                 <div class="portlet-title">
                                                                     <div class="caption">
                                                                         <i class="icon-equalizer font-blue-hoki"></i>
@@ -205,216 +155,210 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     </div>
                                                                 </div>
                                                                 <div class="portlet-body form">
-                                                               
+                                                                <form action="downloadDoc" method="POST" id="downloaddoc">
+                                                                </form>
                                                                
                                                                   <!-- BEGIN FORM-->
-                                                                  <form:form class="form-horizontal" role="form" action="editorcreatenewcontact">
-                                                                   <div class="form-actions top right">
-                                                                                    <button type="submit" class="btn green">Edit Contact Info</button>
-                                                                                    <button type="button" class="btn default">Cancel</button>
-                                                                                </div>
+                                                                  <form:form class="form-horizontal" role="form" action="editorcreatenewapplication">
+                                                                 
                                                                         <div class="form-body">
-                                                                            <h2 class="margin-bottom-20">Contact Info</h2>
+                                                                            <h2 class="margin-bottom-20">Applicant Info</h2>
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Phone Number</label>
+                                                                                        <label class="control-label col-md-3">Application Type</label>
                                                                                         <div class="col-md-9">
-                                                                                            <p class="form-control-static">${contact.phonenumber}</p>
+                                                                                            <p class="form-control-static">${applicant.applicationtype}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Home Phone Number</label>
+                                                                                        <label class="control-label col-md-3">Prefix</label>
                                                                                         <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.homephonenumber} </p>
+                                                                                            <p class="form-control-static"> ${applicant.prefix} </p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                             </div>
+                                                                            <!--/row-->
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">First Name</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.firstname}</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Last Name</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.lastname} </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
+                                                                               <!--/row-->
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Maiden Name</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.maidenname}</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Full Name</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.fullname} </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
+                                                                               <!--/row-->
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Date Of Birth</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.dateofbirth}</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Country Of Birth</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.countryofbirth} </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
+                                                                                 <!--/row-->
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Province Of Birth (City, State)</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.provinceofbirth}</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Citizenship</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.citizenship} </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
+                                                                             <!--/row-->
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Have You Visited US Before Or Are You Currently Living In United States</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.usvisit}</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                               <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Social Security Number (If Applicable)</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.socialsecuritynumber}</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
+                                                                              <!--/row-->
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Latest Number I94 Number</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.latesti94number} </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Alien Number</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.aliennumber} </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
+                                                                            <!--/row-->
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">EAD Valid Upto</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.eadvalidupto} </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label col-md-3">Alien Number</label>
+                                                                                        <div class="col-md-9">
+                                                                                            <p class="form-control-static"> ${applicant.currentemployerpetitionnumber} </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->
                                                                             <!--/row-->
                                                                             
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Email</label>
+                                                                                        <label class="control-label col-md-3">Current Visa Expiry Date (If Applicable)</label>
                                                                                         <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.email}</p>
+                                                                                            <p class="form-control-static"> ${applicant.currentvisaexpirydate}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                <h2 class="margin-bottom-20">Address (Home Country Address) </h2>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Street</label>
+                                                                                        <label class="control-label col-md-3">Current Visa Status</label>
                                                                                         <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.address1} </p>
+                                                                                            <p class="form-control-static"> ${applicant.latesti94number} </p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                             </div>
-                                                                            <!--/row-->
-                                                                               <!--/row-->
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">City </label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.city}</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">State</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.state} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->
-                                                                             <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">ZipCode </label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.zipcode}</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Country</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.country} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                               <!--/row-->
-                                                                                <div class="row">
-                                                                                <h2 class="margin-bottom-20">Address (US Address) </h2>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Street</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.address2} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->
-                                                                               <!--/row-->
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">City </label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.city2}</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">State</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.state2} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->
-                                                                             <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">ZipCode </label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.zipcode2}</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Country</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.country2} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                                <div class="row">
-                                                                                <h2 class="margin-bottom-20">Address</h2>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Street</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.address3} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->
-                                                                               <!--/row-->
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">City </label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.city3}</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">State</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.state3} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->
-                                                                             <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">ZipCode </label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.zipcode3}</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Country</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${contact.country3} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            
                                                                             <!--/row-->
                                                                              </div>
                                                                         
@@ -436,7 +380,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                                        <c:forEach items="${documents.contactdocuments}" var="document">
+                                                                                        <c:forEach items="${documents}" var="document">
                                                                                         <tr>
                                                                                             <td>
                                                                         <c:out value="${document.doctitle}" /> 
@@ -466,59 +410,25 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     <!-- END FORM-->
                                                                 </div>
                                                             </div>
-                                                                  
-
-                                                                </div>
-                                                                </div>
-
-
-                                </div>
-
-
+                                                    <!--tab_1_2-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END PAGE CONTENT INNER -->
                                 </div>
                             </div>
                             <!-- END PAGE CONTENT BODY -->
                             <!-- END CONTENT BODY -->
                         </div>
                         <!-- END CONTENT -->
+                    </div>
                     <!-- END CONTAINER -->
-            <div class="page-wrapper-row">
-                <div class="page-wrapper-bottom">
-                    <!-- BEGIN FOOTER -->
-                    <!-- BEGIN PRE-FOOTER -->
-                     <div class="page-prefooter">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
-                                    <h2>About</h2>
-                                    <p> Fusionsoft is a minority owned business, incorporated in
-									2005 and headquartered in Atlanta, Georgia, Fusionsoft delivers
-									solutions for technology and engineering services, staffing
-									services and solutions to public and private sector clients.
-									Fusionsoft offers its clients professional consulting services
-									and project management services </p>
-                                </div>
-                                <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
-                                    <h2>Contacts</h2>
-                                    <address class="margin-bottom-40"> Phone: 770.881.8118
-                                        <br> Email:
-                                        <a href="mailto:admin@fusionsoftinc.com">admin@fusionsoftinc.com</a>
-                                    </address>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END PRE-FOOTER -->
-                    <!-- BEGIN INNER FOOTER -->
-                    <div class="scroll-to-top">
-                        <i class="icon-arrow-up"></i>
-                    </div>
-                    <!-- END INNER FOOTER -->
-                    <!-- END FOOTER -->
                 </div>
             </div>
+            <jsp:include page="footer.jsp"></jsp:include>
         </div>
-
+     
  <script src="/LoginPage/assets/global/plugins/respond.min.js"></script> 
  <script src="/LoginPage/assets/global/plugins/excanvas.min.js"></script>  
  <script src="/LoginPage/assets/global/plugins/ie8.fix.min.js"></script>  
@@ -547,7 +457,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
-        <script src=".//LoginPage/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -556,6 +468,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="/LoginPage/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/pages/scripts/form-samples.min.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/pages/scripts/form-validation.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
       <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>

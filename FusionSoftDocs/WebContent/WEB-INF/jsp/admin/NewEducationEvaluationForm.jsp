@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -31,6 +31,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #3 for user profile sample" name="description" />
         <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
          <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -73,7 +74,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <body class="page-container-bg-solid">
         <div class="page-wrapper">
-            <div class="page-wrapper-row">
+          <div class="page-wrapper-row">
                 <div class="page-wrapper-top">
                     <!-- BEGIN HEADER -->
                     <div class="page-header">
@@ -82,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="container">
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
-                                    <a href="index.html">
+                                    <a href="http://www.fusionsofttechnologies.com/">
                                         <img src="/LoginPage/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
                                     </a>
                                 </div>
@@ -99,10 +100,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!-- BEGIN USER LOGIN DROPDOWN -->
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                <img alt="" class="img-circle" src="/LoginPage/assets/layouts/layout3/img/user.jpg">
+                                                <img alt="" class="img-circle" src="/LoginPage/assets/layouts/layout3/img/admin.png">
+                                                
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">
-                                             
+                                               
                                                 <li>
                                                     <a href="logout">
                                                         <i class="icon-key"></i> Log Out </a>
@@ -124,50 +126,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                     <ul class="nav navbar-nav">
-                                                                                <li>
+                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown active ">
                                             <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li > 
-                                            <a href="viewapplicant">Application
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown ">
+                                            <a href="applicants"> Applicants
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li >
-                                        <a href="viewcontact">Contact
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active"> 
-                                         <a href="viewpassport">Passport
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                         <a href="traveldetails">Travel 
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                       <a href="educationdetails">Education
-                                               
-                                            </a>
-                                        </li>
-                                        <li >
-                                      <a href="experiencedetails">Experience
-                                                
-                                            </a>
-                                        </li>
-                                        <li >
-                                      <a href="certificateDetails">Certification</a>
-                                        </li>
-                                        <li>
-                                      <a href="applicantdocument">Documents
-                                          
-                                            </a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -175,7 +143,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <!-- END HEADER MENU -->
                     </div>
-                    <!-- END HEADER -->
+                    <!-- END HEADER --> 
                 </div>
             </div>
             <div class="page-wrapper-row full-height">
@@ -191,11 +159,11 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- BEGIN PAGE CONTENT BODY -->
                             <div class="page-content">
                                 <div class="container">
-                                 <div class="portlet light bordered">
+                              <div class="portlet light bordered">
                                                                 <div class="portlet-title">
                                                                     <div class="caption">
                                                                         <i class="icon-equalizer font-blue-hoki"></i>
-                                                                        <span class="caption-subject font-blue-hoki bold uppercase">Passport</span>
+                                                                        <span class="caption-subject font-blue-hoki bold uppercase">New Education Evaluation</span>
                                                                         
                                                                     </div>
                                                                     <div class="tools">
@@ -203,115 +171,83 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                      
                                                                     </div>
                                                                 </div>
-                                                                <div class="portlet-body form">
+                                                             
                                                                 
-                                                               
+                                                                <div class="portlet-body form">
                                                                     <!-- BEGIN FORM-->
-                                                                    <form:form class="form-horizontal" role="form" action="editorcreatenewpassport">
-                                                                    <div class="form-actions top right">
-                                                                                    <button type="submit" class="btn green">Edit Passport Info</button>
-                                                                                    <button type="button" class="btn default">Cancel</button>
-                                                                                </div>
-                                                                        <div class="form-body">
-                                                                            <h2 class="margin-bottom-20">Passport Info</h2>
-                                                                            <div class="row">
+                                                                     <form:form action="saveorupdateneweducationevaluation" method="POST" class="horizontal-form" id="form_sample_1" enctype="multipart/form-data" modelAttribute="educationevaluation">
+                                                            <div class="form-body">
+                                                              <form:hidden path="educationevaluationid" value="${educationevaluation.educationevaluationid}"/>
+                                                                
+                                                                    
+                                                                    
+                                                                    <h3 class="form-section">Add New Education Evaluation</h3>
+                                                                     <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Passport Number</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static">${passport.latestpassportnumber}</p>
-                                                                                        </div>
+                                                                                        <label class="control-label">Name</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text"  data-required = "data-required" id="name" path="name" class="form-control" placeholder="educationevaluation Name"/>
+                                                                         
                                                                                     </div>
+                                                                                    
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Passport Issuance Place</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${passport.passportissuedlocation} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Passport Issuance Date</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${passport.passportissuancedate}</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label col-md-3">Passport Expiry Date</label>
-                                                                                        <div class="col-md-9">
-                                                                                            <p class="form-control-static"> ${passport.passportexpirydate} </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                             </div>
-                                                                       
-                                                                    </form:form>
-                                                                            <!--/row-->
-                                                                             <h3 class="form-section">Uploaded Passport Document</h3>
-                                                                            <div class="row">
-                                                                              <div class="portlet-body">
-                                                        <div class="table-scrollable">
-                                                            <table class="table table-striped table-bordered table-advance table-hover">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            Document Uploaded </th>
-                                                                            <th>Description</th>
-                                                                        
-                                                                        <th>
-                                                                             Action </th>
-                                                                      
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                                        <c:forEach items="${documents.passportdocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                          
-                                                                                            <td>
-                                                                                       <form action="downloadDoc" method="POST" id="downloaddoc">
-                                                                       
-                                                                            <input type="hidden" value="${document.docid}" name="docid" form="downloaddoc" ></input>
-                                                                            
-                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
-                                                                                       </form>
-                                                                                        </td>
+                                                                                        <label class="control-label">Email</label>
+                                                                                       <span class="required"> * </span>
+                                                                                        <form:input type="text"  path="email" id="email" class="form-control" placeholder="Email" />
                                                                                         
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                <!--/span-->
                                                                             </div>
-                                                                            <!--/row-->
-                                                                      
-                                                                       
-                                                                    <!-- END FORM-->
-                                                                </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Phone Number</label>
+                                                                                        <span class="required"> * </span>
+                                                                                        <form:input type="text"  data-required = "data-required" id="phonenumber" path="phonenumber" class="form-control" placeholder="Phone Number"/>
+                                                                         
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">Company</label>
+                                                                                       
+                                                                                        <form:input type="text"  path="company" id="company" class="form-control" placeholder="Company" />
+                                                                                        
+                                                                                        
+                                        </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                         
+                                                          
+                                                                         
+                                                                           
+                                                                            
+                                                         <div class="form-actions right">
+                                                                            <button type="button" class="btn default">Cancel</button>
+                                                                            <button type="submit" class="btn blue">
+                                                                                <i class="fa fa-check"></i> Save</button>
+                                                                        </div>
                                                             </div>
-                                                                  
-
+                                                        </form:form>
+                                                        <!-- END FORM-->
+                                                               
+                                                                     
+                                                        <!-- END FORM-->
                                                                 </div>
+                                                            </div> 
+<div class="btn-group btn-group btn-group-justified">
+                                                                    <a href="home" class="btn blue"> Home </a>
+                                                                   
                                                                 </div>
-
-
-                                </div>
 
 
                                 </div>
@@ -320,12 +256,15 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- END CONTENT BODY -->
                         </div>
                         <!-- END CONTENT -->
+                    </div>
                     <!-- END CONTAINER -->
-            <div class="page-wrapper-row">
+                </div>
+            </div>
+         <div class="page-wrapper-row">
                 <div class="page-wrapper-bottom">
                     <!-- BEGIN FOOTER -->
                     <!-- BEGIN PRE-FOOTER -->
-                     <div class="page-prefooter">
+                    <div class="page-prefooter">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
@@ -357,8 +296,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
             </div>
         </div>
-
- <script src="/LoginPage/assets/global/plugins/respond.min.js"></script> 
+      
+<script src="/LoginPage/assets/global/plugins/respond.min.js"></script> 
  <script src="/LoginPage/assets/global/plugins/excanvas.min.js"></script>  
  <script src="/LoginPage/assets/global/plugins/ie8.fix.min.js"></script>  
 
@@ -386,7 +325,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
-        <script src=".//LoginPage/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -395,6 +336,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="/LoginPage/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/pages/scripts/form-samples.min.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/pages/scripts/form-validation.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
       <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
@@ -402,6 +344,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <script src="/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
+
     </body>
 
 </html>

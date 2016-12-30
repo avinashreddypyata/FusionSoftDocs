@@ -26,6 +26,7 @@ import com.fusionsoft.docs.model.CustomRole;
 import com.fusionsoft.docs.model.CustomUser;
 import com.fusionsoft.docs.model.Document;
 import com.fusionsoft.docs.model.Education;
+import com.fusionsoft.docs.model.EducationEvaluation;
 import com.fusionsoft.docs.model.Experience;
 import com.fusionsoft.docs.model.Passport;
 import com.fusionsoft.docs.model.PasswordResetToken;
@@ -1157,7 +1158,7 @@ public class UserDaoImpl implements UserDao {
 		 session = getSessionFactory().openSession();
 		try{
 			Applicant updatedapplicant = session.get(Applicant.class, applicant.getUserid());
-			updatedapplicant.setAttorneyverification("Assigned To Attorney : "+attorney.getName());
+			updatedapplicant.setAttorneyverificationstatus("Assigned To Attorney : "+attorney.getName());
 			updatedapplicant.setAttorney(attorney);
 			tx = session.beginTransaction();
 			session.save(updatedapplicant);
@@ -1180,7 +1181,7 @@ public class UserDaoImpl implements UserDao {
 		 session = getSessionFactory().openSession();
 		try{
 			Applicant updatedapplicant = session.get(Applicant.class, applicant.getUserid());
-			updatedapplicant.setEducationevaluation(educationevaluationverification);
+			updatedapplicant.setEducationevaluationstatus(educationevaluationverification);
 			tx = session.beginTransaction();
 			session.save(updatedapplicant);
 			tx.commit();
@@ -1322,6 +1323,156 @@ public class UserDaoImpl implements UserDao {
 		finally{
 		session.close();
 		}
+	}
+
+	@Override
+	public EducationEvaluation findeducationevaluationbyeducationevaluationid(int educationevaluationid) {
+		// TODO Auto-generated method stub
+		EducationEvaluation educationevaluation = null;
+		Session session = getSessionFactory().openSession();
+		try{
+			educationevaluation = session.get(EducationEvaluation.class, educationevaluationid);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		finally{
+			session.close();
+		}
+		return educationevaluation;
+	}
+
+	@Override
+	public void saveeducationevaluation(EducationEvaluation educationevaluation) {
+		// TODO Auto-generated method stub
+		  Session session = null;
+	         Transaction tx = null;
+			 session = getSessionFactory().openSession();
+			try{
+				
+				tx = session.beginTransaction();
+				session.save(educationevaluation);
+				tx.commit();
+			}catch(Exception e){
+				e.printStackTrace();
+				tx.rollback();
+			}
+			
+			finally{
+				session.close();
+			}
+	}
+
+	@Override
+	public void updateeducationevaluation(EducationEvaluation educationevaluation) {
+		// TODO Auto-generated method stub
+		Session session = null;
+        Transaction tx = null;
+		 session = getSessionFactory().openSession();
+		try{
+			EducationEvaluation updatededucationevaluation = session.get(EducationEvaluation.class, educationevaluation.getEducationevaluationid());
+			updatededucationevaluation.setCompany(educationevaluation.getCompany());
+			updatededucationevaluation.setEmail(educationevaluation.getEmail());
+			updatededucationevaluation.setName(educationevaluation.getName());
+			updatededucationevaluation.setPhonenumber(educationevaluation.getPhonenumber());
+			tx = session.beginTransaction();
+			session.save(updatededucationevaluation);
+			tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			tx.rollback();
+		}
+		
+		finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public void deleteeducationevaluation(int educationevaluationid) {
+		// TODO Auto-generated method stub
+		Session session = getSessionFactory().openSession();
+		try{
+		session.beginTransaction();
+		Serializable id = new Integer(educationevaluationid);
+		Object persistentInstance = session.load(EducationEvaluation.class, id);
+		if (persistentInstance != null) {
+		    session.delete(persistentInstance);
+		}
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+		}
+		finally{
+		session.close();
+		}
+	}
+
+	@Override
+	public List<EducationEvaluation> findalleducationevaluation() {
+		// TODO Auto-generated method stub
+		List<EducationEvaluation> educationevaluationteam = new ArrayList<EducationEvaluation>();
+		Session session = getSessionFactory().openSession();
+		try{
+        session.getTransaction().begin();
+		TypedQuery<EducationEvaluation> query = session.createQuery("from EducationEvaluation",EducationEvaluation.class);
+		educationevaluationteam = query.getResultList();
+		session.getTransaction().commit();
+		if(educationevaluationteam.isEmpty()){
+			return null;
+		}
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return educationevaluationteam;
+	}
+
+	@Override
+	public void deletecustomuser(int userid) {
+		// TODO Auto-generated method stub
+			Session session = getSessionFactory().openSession();
+			try{
+			session.beginTransaction();
+			Serializable id = new Integer(userid);
+			Object persistentInstance = session.load(CustomUser.class, id);
+			if (persistentInstance != null) {
+			    session.delete(persistentInstance);
+			}
+			session.getTransaction().commit();
+			}catch(Exception e){
+				session.getTransaction().rollback();
+			}
+			finally{
+			session.close();
+			}
+	}
+
+	@Override
+	public List<Applicant> findallapplicantsbyattorneyid(int attorneyid) {
+		// TODO Auto-generated method stub
+		List<Applicant> submittedapplicants = new ArrayList<Applicant>();
+		Session session = getSessionFactory().openSession();
+		try{
+        session.getTransaction().begin();
+		TypedQuery<Applicant> query = session.createQuery("from Applicant where attorney_pk = :attorney_pk ",Applicant.class);
+		query.setParameter("attorney_pk", attorneyid);
+		submittedapplicants = query.getResultList();
+		if(submittedapplicants.isEmpty()){
+			return null;
+		}
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return submittedapplicants;
 	}
 }
 		

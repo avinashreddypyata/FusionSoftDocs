@@ -35,32 +35,32 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="" name="author" />
            <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="http://localhost:854/LoginPage/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
        
      
-    <link rel="stylesheet" type="text/css" href="http://localhost:854/LoginPage/assets/visatravelformjsfiles/theme/default/css/default.css"
+    <link rel="stylesheet" type="text/css" href="/LoginPage/assets/visatravelformjsfiles/theme/default/css/default.css"
     id="theme" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
@@ -137,15 +137,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     
                                                 </ul>
                                  <div class="tab-content">
-                                  <div class="btn-group">
-                                                                        <a id="sample_editable_1_new" class="btn sbold green" href="editorcreatenewdocument"> Add More Documents
-                                                                            <i class="fa fa-plus"></i>
-                                                                        </a>
-                                                                        
-                                                                    </div>
+            
+                                        
+                                        <div class="portlet light ">
+                                     
                                 <div class="portlet-title">
                                     <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Experience Documents</span>
+                                        <span class="caption-subject bold uppercase">Uploaded Documents</span>
                                     </div>
                                     <div class="tools"> </div>
                                 </div>
@@ -155,298 +153,59 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         <tr>
                                                                                             <th>
                                                                                                 Document</th>
+                                                                                                <th>
+                                                                                                Type Of The Document</th>
                                                                                             <th >
                                                                                                 Description </th>
                                                                                           
-                                                                                            <th>Action</th>
-                                                                                            <th>Action</th>
+                                                                                              <th>
+                                                                             Action </th>
+                                                                        <th> Action </th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
-                                                                                        <c:forEach items="${documents.experiencedocuments}" var="document">
+                                                                                        <c:forEach items="${documents}" var="document">
                                                                                         <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                            
-                                                                  <td>
-
-                                                              <form action="downloadDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn green btn-outline">Download</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                    <td>
-<form action="deleteDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn red btn-outline">Delete</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                               
-                                               <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Education Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th>
-                                                                                                Description </th>
-                                                                                            
-                                                                                            <th>Action</th>
-                                                                                            <th>Action</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.educationdocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td> ${document.keywords} </td>
-                                                                                            
-                                                                <td>
-
-                                                              <form action="downloadDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn green btn-outline">Download</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                    <td>
-<form action="deleteDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn red btn-outline">Delete</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                               
-                                               <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Passport Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                            
-                                                                                            <th>Action</th>
-                                                                                            <th>Action</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.passportdocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                          
-                                                                                           <td>
-
-                                                              <form action="downloadDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn green btn-outline">Download</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                    <td>
-<form action="deleteDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn red btn-outline">Delete</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                                
-                                
-                                               <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Travel Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                          
-                                                                                            <th>Action</th>
-                                                                                            <th>Action</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.traveldocuments}" var="document">
-                                                                                        <tr>
-                                                                                            <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                      <td>
-
-                                                              <form action="downloadDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn green btn-outline">Download</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                    <td>
-<form action="deleteDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn red btn-outline">Delete</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                                        </tr>
                                                                                         
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                               
-                                                <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Certificate Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                          
-                                                                                            <th>Action</th>
-                                                                                            <th>Action</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.certificatedocuments}" var="document">
-                                                                                        <tr>
                                                                                             <td>
                                                                         <c:out value="${document.doctitle}" /> 
                                                                     </td>
+                                                                      <td>
+                                                                        <c:out value="${document.doctype}" /> 
+                                                                    </td>
                                                                                             <td > ${document.keywords} </td>
-                                                                                           
-                                                                                       <td>
-
-                                                              <form action="downloadDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn green btn-outline">Download</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                    <td>
-<form action="deleteDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn red btn-outline">Delete</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
-                                                                                        </tr>
-                                                                                        </c:forEach>
-                                                                                    </tbody>
-                                    </table>
-                                </div>
-                               
-                                                <div class="portlet-title">
-                                    <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Other Documents</span>
-                                    </div>
-                                    <div class="tools"> </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-<thead>
-                                                                                        <tr>
-                                                                                            <th>
-                                                                                                Document</th>
-                                                                                            <th >
-                                                                                                Description </th>
-                                                                                          
-                                                                                            <th>Action</th>
-                                                                                            <th>Action</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <c:forEach items="${documents.otherdocuments}" var="document">
-                                                                                        <tr>
+                                                                                            
                                                                                             <td>
-                                                                        <c:out value="${document.doctitle}" /> 
-                                                                    </td>
-                                                                                            <td > ${document.keywords} </td>
-                                                                                           
-                                                                <td>
-
-                                                              <form action="downloadDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn green btn-outline">Download</button>
-                                                                </form>
-                                                                 
+                                                                                       <form action="downloadDoc" method="POST">
+                                                                       
+                                                                            <input type="hidden" value="${document.docid}" name="docid"></input>
+                                                                            
+                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
+                                                                                       </form>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                        <form action="deleteDoc" method="POST">
                                                                 
-                                                                    </td>
-                                                                    <td>
-<form action="deleteDoc" method="POST">
-                                                              <input type="hidden" value="${document.docid}" name="docid">
-                                                                <button type="submit" class="btn red btn-outline">Delete</button>
-                                                                </form>
-                                                                 
-                                                                
-                                                                    </td>
+                                                                            <input type="hidden" value="${document.docid}" name="docid" ></input>
+                                                                                        <button type="submit" class="btn red btn-outline">Delete</button>
+                                                                                        </form>
+                                                                                            </td>
                                                                                         </tr>
                                                                                         </c:forEach>
                                                                                     </tbody>
                                     </table>
-                                    <form action ="confirmsubmission">
-<button type="submit" data-loading-text="Loading..." class="demo-loading-btn btn btn-primary"> Save And Continue </button>
-
-  </form>
+                                </div>
+                                 <div class="btn-group btn-group btn-group-justified">
+                                                                  <a href="editorcreatenewdocument" class="btn green"><i class="fa fa-plus"></i> Add More Documents </a>
+                                                                    <a href="logout" class="btn purple"> Save Progress And Return Later </a>
+                                                                    
+                                                                </div>
+                          
                             </div>
+                    
+   
+             
+                               
                                                        
     </div>
                                                     </div>
@@ -469,58 +228,58 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- END CONTAINER -->
             <jsp:include page="footer.jsp"></jsp:include>
  
- <script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script> 
- <script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script>  
- <script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script>  
+ <script src="/LoginPage/assets/global/plugins/respond.min.js"></script> 
+ <script src="/LoginPage/assets/global/plugins/excanvas.min.js"></script>  
+ <script src="/LoginPage/assets/global/plugins/ie8.fix.min.js"></script>  
 
         <!-- BEGIN CORE PLUGINS -->
           <!-- BEGIN CORE PLUGINS -->
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/moment.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
-         <script src="http://localhost:854/LoginPage/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
+         <script src="/LoginPage/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="http://localhost:854/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/pages/scripts/table-datatables-rowreorder.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/pages/scripts/table-datatables-rowreorder.min.js" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-samples.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-validation.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/pages/scripts/form-samples.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/pages/scripts/form-validation.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
       <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
 
     </body>

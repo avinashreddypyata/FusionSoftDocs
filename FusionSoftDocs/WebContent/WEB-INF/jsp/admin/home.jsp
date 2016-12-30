@@ -33,23 +33,23 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="http://localhost:854/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="/LoginPage/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="http://localhost:854/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="/LoginPage/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="/LoginPage/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
@@ -66,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
                                     <a href="http://www.fusionsofttechnologies.com/">
-                                        <img src="http://localhost:854/LoginPage/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
+                                        <img src="/LoginPage/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
                                     </a>
                                 </div>
                                 <!-- END LOGO -->
@@ -82,7 +82,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!-- BEGIN USER LOGIN DROPDOWN -->
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                <img alt="" class="img-circle" src="http://localhost:854/LoginPage/assets/layouts/layout3/img/admin.png">
+                                                <img alt="" class="img-circle" src="/LoginPage/assets/layouts/layout3/img/admin.png">
                                                 
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">
@@ -230,6 +230,62 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
                                 </div>
+                                       <div class="portlet light portlet-fit bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-bubble font-dark"></i>
+                                            <span class="caption-subject font-dark bold uppercase">Education Evaluation Team</span>
+                                        </div>
+                                        <div class="actions">
+                                            <div class="btn-group">
+                                                <a class="btn dark btn-outline btn-circle btn-sm" href="addneweducationevaluation"> Add New Education Evaluation Member
+                                                  
+                                                </a>
+                                            
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Education Evaluation</th>
+                                                        <th>Company</th>
+                                                        <th>Email</th>
+                                                        <th>Phone Number</th>
+                                                        <th> Action </th>
+                                                       
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach items="${educationevaluationteam}" var="educationevaluation">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                       <a href = "vieweducationevaluation?educationevaluationid=${educationevaluation.educationevaluationid}"><c:out value="${educationevaluation.name}" /></a>  
+                                                                    </td>
+                                                                                            <td ><c:out value="${educationevaluation.company}" /></td>
+                                                                                            
+                                                              <td ><c:out value="${educationevaluation.email}" /></td>
+                                                              <td ><c:out value="${educationevaluation.phonenumber}" /></td>
+                                                       
+                                                                                           <td>
+                                                                                       <form action="deleteeducationevaluation" method="POST">
+                                                                       
+                                                                            <input type="hidden" value="${educationevaluation.educationevaluationid}" name="educationevaluationid"></input>
+                                                                            
+                                                                                        <button type="submit" class="btn red btn-outline">Delete Attorney</button>
+                                                                                       </form>
+                                                                                        </td>
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                  
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- END BORDERED TABLE PORTLET-->
                           
                                           
@@ -254,34 +310,34 @@ License: You must have a valid license purchased only from themeforest(the above
           <jsp:include page="footer.jsp"></jsp:include>
         </div>
         <!--[if lt IE 9]>
-<script src="http://localhost:854/LoginPage/assets/global/plugins/respond.min.js"></script>
-<script src="http://localhost:854/LoginPage/assets/global/plugins/excanvas.min.js"></script> 
-<script src="http://localhost:854/LoginPage/assets/global/plugins/ie8.fix.min.js"></script> 
+<script src="/LoginPage/assets/global/plugins/respond.min.js"></script>
+<script src="/LoginPage/assets/global/plugins/excanvas.min.js"></script> 
+<script src="/LoginPage/assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="http://localhost:854/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/scripts/datatable.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/global/scripts/app.min.js" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
           <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="http://localhost:854/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="/LoginPage/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
     </body>
 

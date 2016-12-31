@@ -1165,7 +1165,7 @@ public class UserDaoImpl implements UserDao {
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();
-			tx.rollback();
+			session.getTransaction().rollback();
 		}
 		
 		finally{
@@ -1188,7 +1188,7 @@ public class UserDaoImpl implements UserDao {
 			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();
-			tx.rollback();
+			session.getTransaction().rollback();
 		}
 		
 		finally{

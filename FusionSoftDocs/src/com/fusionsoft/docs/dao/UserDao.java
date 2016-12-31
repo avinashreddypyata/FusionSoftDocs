@@ -69,7 +69,7 @@ public interface UserDao {
 	public List<Document> finddocumentbyeduid(int eduid);
 	public void updateapplicationadminverification(Applicant applicant, String adminverification);
 	public void updateapplicationattorneyverification(Applicant applicant, Attorney attorney);
-	public void updateapplicationeducationevaluation(Applicant applicant, String educationevaluationverification);
+	public void updateapplicationeducationevaluation(Applicant applicant, EducationEvaluation educationevaluation);
 	public List<Document> findalldocuments(int userid);
 	public Attorney findattorneybyattorneyid(int attorneyid);
 	public void saveattorney(Attorney attorney);
@@ -83,6 +83,8 @@ public interface UserDao {
 	public List<EducationEvaluation> findalleducationevaluation();
 	public void deletecustomuser(int userid);
 	public List<Applicant> findallapplicantsbyattorneyid(int attorneyid);
+	public List<EducationEvaluation> educationevaluationteam();
+	public List<Applicant> findallapplicantsbyeducationevaluationid(int educationevaluationid);
 	
 /*test*/
 }

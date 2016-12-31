@@ -8,7 +8,7 @@
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
                                     <a href="http://www.fusionsofttechnologies.com/">
-                                        <img src="/LoginPage/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
+                                        <img src="/FSDocs/assets/layouts/layout3/img/fs-logo.png" alt="logo" class="logo-default">
                                     </a>
                                 </div>
                                 <!-- END LOGO -->
@@ -24,7 +24,7 @@
                                         <!-- BEGIN USER LOGIN DROPDOWN -->
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                <img alt="" class="img-circle" src="/LoginPage/assets/layouts/layout3/img/admin.png">
+                                                <img alt="" class="img-circle" src="/FSDocs/assets/layouts/layout3/img/admin.png">
                                                 
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">
@@ -50,16 +50,12 @@
                                 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                                 <div class="hor-menu  ">
                                     <ul class="nav navbar-nav">
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
+                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
                                             <a href="home"> Home
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
-                                        <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown active ">
-                                            <a href="applicants"> Applicants
-                                                <span class="arrow"></span>
-                                            </a>
-                                        </li>
+                                       
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->

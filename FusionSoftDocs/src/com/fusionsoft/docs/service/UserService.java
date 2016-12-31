@@ -126,7 +126,7 @@ public void updateapplicationadminverification(Applicant applicant, String admin
 
 public void updateapplicationattorneyverification(Applicant applicant, Attorney attorney);
 
-public void updateapplicationeducationevaluation(Applicant applicant, String educationevaluationverification);
+public void updateapplicationeducationevaluation(Applicant applicant, EducationEvaluation educationevaluation);
 
 public List<Document> findalldocuments(int userid);
 
@@ -142,7 +142,7 @@ public void deleteattorney(int attorneyid);
 
 public EducationEvaluation findeducationevaluationbyeducationevaluationid(int educationevaluationid);
 
-public void saveeducationevaluation(EducationEvaluation educationevaluation);
+public String saveeducationevaluation(EducationEvaluation educationevaluation);
 
 public void updateeducationevaluation(EducationEvaluation educationevaluation);
 
@@ -155,6 +155,10 @@ public void deletecustomuser(int userid);
 public List<Applicant> findallapplicantsbyattorneyid(int attorneyid);
 
 public List<Document> finddocuments(int applicantid, String doctype);
+
+public List<EducationEvaluation> educationevaluationteam();
+
+public List<Applicant> findallapplicantsbyeducationevaluationid(int educationevaluationid);
 
 
 }

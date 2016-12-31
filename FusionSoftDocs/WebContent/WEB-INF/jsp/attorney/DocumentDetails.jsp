@@ -141,230 +141,71 @@ License: You must have a valid license purchased only from themeforest(the above
 										<div class="tabbable-line tabbable-full-width">
 											<ul class="nav nav-tabs">
 
-												<li data-toggle="tab" class="active"><a
+												<li ><a
 													href="viewapplicant">Application</a></li>
 												<li><a href="viewcontact"> Contact </a></li>
 												<li><a href="viewpassport">Passport</a></li>
 												<li><a href="traveldetails"> Travel </a></li>
-												<li><a href="educationdetails"> Education </a></li>
+												<li ><a href="educationdetails"> Education </a></li>
 												<li><a href="experiencedetails"> Experience </a></li>
 												<li><a href="certificateDetails"> Certifications </a>
 												</li>
-												<li><a href="applicantdocument"> Documents </a></li>
+												<li data-toggle="tab" class="active"><a href="applicantdocument"> Documents </a></li>
 
 											</ul>
 											<div class="tab-content">
-												<div class="portlet light bordered">
-													<div class="portlet-title">
-														<div class="caption">
-															<i class="icon-equalizer font-blue-hoki"></i> <span
-																class="caption-subject font-blue-hoki bold uppercase">Application</span>
-
-														</div>
-														<div class="tools">
-															<a href="" class="collapse"> </a>
-
-														</div>
-													</div>
-													<div class="portlet-body form">
-														<form action="downloadDoc" method="POST" id="downloaddoc">
-														</form>
-
-														<!-- BEGIN FORM-->
-														<form action="saveorupdateapplication" method="POST"
-															class="horizontal-form" id="form_sample_1"
-															enctype="multipart/form-data">
-
-															<div class="form-body">
-
-																<h3 class="form-section">Application Info</h3>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Application Type
-																				:</label> ${applicant.applicationtype}
-
-
-																		</div>
-
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Prefix :</label>
-
-																			${applicant.prefix}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<!--/row-->
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">First Name :</label>
-
-																			${applicant.firstname}
-																		</div>
-
-																	</div>
-
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Middle Name :</label>
-																			${applicant.middlename}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<!--/row-->
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Last Name: </label>
-																			 ${applicant.lastname}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Maiden Name :</label>
-                                                                     ${applicant.maidenname}  
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Full Name :</label> 
-																			 ${applicant.fullname}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Date Of Birth: </label> 
-																			${applicant.dateofbirth}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Country Of Birth: </label>
-																			 ${applicant.countryofbirth}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Province Of
-																				Birth(City or Town, State) :</label>  ${applicant.provinceofbirth}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">CitizenShip :</label> 
-																			${applicant.citizenship}
-																		</div>
-																	</div>
-																	<!--/span-->
-
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-
-																		<div class="form-group">
-																			<label>Have You Visited US Before Or Are You
-																				Currently Living In United States :</label>
-																			
-																			${applicant.usvisit}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Social Security
-																				Number :</label> ${applicant.socialsecuritynumber}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Latest I94
-																				Number :</label> 
-																			${applicant.latesti94number}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Alien Number :</label>
-																			${applicant.aliennumber}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">EAD Valid Upto :</label> ${applicant.eadvalidupto}
-
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Current Employer
-																				Petition Number :</label>
-																			${applicant.currentemployerpetitionnumber}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Current Visa
-																				Expiry Date :</label>
-																				 ${applicant.currentvisaexpirydate}
-
-
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Current Visa
-																				Status :</label> 
-																				 ${applicant.currentvisastatus}
-																		</div>
-																	</div>
-																	<!--/span-->
-
-																</div>
-
-
-															</div>
-
-														</form>
-										
-														<!--/row-->
-
-
-														<!-- END FORM-->
-														<!-- END FORM-->
-													</div>
-												</div>
+									          <div class="portlet light ">
+                                     
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Uploaded Documents</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                                <th>
+                                                                                                Type Of The Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                                 <th >
+                                                                                                Action </th>
+                                                                                        
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents}" var="document">
+                                                                                        <tr>
+                                                                                        
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
+                                                                    </td>
+                                                                      <td>
+                                                                        <c:out value="${document.doctype}" /> 
+                                                                    </td>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                            
+                                                                                            <td>
+                                                                                       <form action="downloadDoc" method="POST">
+                                                                       
+                                                                            <input type="hidden" value="${document.docid}" name="docid"></input>
+                                                                            
+                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
+                                                                                       </form>
+                                                                                        </td>
+                                                                                      
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                           
+                          
+                            </div>
 												<!--tab_1_2-->
 											</div>
 										</div>

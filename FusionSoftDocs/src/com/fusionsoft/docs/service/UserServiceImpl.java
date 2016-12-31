@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	 @Autowired
 	    private PasswordEncoder passwordEncoder;
 	 private static  String destination = "/usr/local/tomcat9/Documents";
-//	 private static  String destination = "C:/Users/abhi/Documents/GitHub/Documents";
+// private static  String destination = "C:/Users/abhi/Documents/GitHub/Documents";
 	 
     public void  emailapplicant(Email email){
     	MimeMessagePreparator preparator = getMessagePreparator(email);
@@ -817,9 +817,9 @@ public class UserServiceImpl implements UserService {
 		userDao.updateapplicationattorneyverification(applicant, attorney);
 	}
 	@Override
-	public void updateapplicationeducationevaluation(Applicant applicant, String educationevaluationverification) {
+	public void updateapplicationeducationevaluation(Applicant applicant,EducationEvaluation educationevaluation) {
 		// TODO Auto-generated method stub
-		userDao.updateapplicationeducationevaluation(applicant, educationevaluationverification);
+		userDao.updateapplicationeducationevaluation(applicant, educationevaluation);
 	}
 	@Override
 	public List<Document> findalldocuments(int userid) {
@@ -868,9 +868,19 @@ public class UserServiceImpl implements UserService {
 		return userDao.findeducationevaluationbyeducationevaluationid(educationevaluationid);
 	}
 	@Override
-	public void saveeducationevaluation(EducationEvaluation educationevaluation) {
+	public String saveeducationevaluation(EducationEvaluation educationevaluation) {
 		// TODO Auto-generated method stub
-		userDao.saveeducationevaluation(educationevaluation);
+		 CustomUser customuser = new CustomUser();
+		 String password = generateRandomPassword();
+			customuser.setPassword(passwordEncoder.encode(password));
+			customuser.setSubmission("pending");
+			customuser.setUserrole(4);
+			customuser.setFirstlogin(1);
+			customuser.setUsername(educationevaluation.getEmail());
+		    customuser.setEducationevaluation(educationevaluation);
+		    educationevaluation.setCustomuser(customuser);
+            userDao.saveeducationevaluation(educationevaluation);	
+            return password;
 	}
 	@Override
 	public void updateeducationevaluation(EducationEvaluation educationevaluation) {
@@ -901,6 +911,16 @@ public class UserServiceImpl implements UserService {
 	public List<Document> finddocuments(int applicantid, String doctype) {
 		// TODO Auto-generated method stub
 		return userDao.findparticulardocuments(applicantid, doctype);
+	}
+	@Override
+	public List<EducationEvaluation> educationevaluationteam() {
+		// TODO Auto-generated method stub
+		return userDao.educationevaluationteam();
+	}
+	@Override
+	public List<Applicant> findallapplicantsbyeducationevaluationid(int educationevaluationid) {
+		// TODO Auto-generated method stub
+		return userDao.findallapplicantsbyeducationevaluationid(educationevaluationid);
 	}
 	
 	

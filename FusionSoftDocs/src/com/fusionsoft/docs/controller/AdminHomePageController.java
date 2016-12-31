@@ -163,6 +163,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/overview", method = RequestMethod.GET)
 	public ModelAndView overview() {
 		List<Attorney> attorneys = new ArrayList<Attorney>();
+		List<EducationEvaluation> educationevaluationteam = new ArrayList<EducationEvaluation>();
 		ModelAndView model = new ModelAndView();
 		Applicant applicant = null;
 		try {
@@ -172,6 +173,8 @@ public class AdminHomePageController {
 			e.printStackTrace();
 		}
 		attorneys = userservice.findallattorneys();
+		educationevaluationteam = userservice.findalleducationevaluation();
+		model.addObject("educationevaluationteam", educationevaluationteam);
 		model.addObject("attorneys", attorneys);
 		model.addObject("applicant", applicant);
 		model.setViewName("admin/Overview");
@@ -224,13 +227,19 @@ public class AdminHomePageController {
 		return model;
 	}
 
-	@RequestMapping(value = "/assigntoeducationevaluation", method = RequestMethod.POST)
-	public ModelAndView assigntoeducationevaluation(@ModelAttribute("userid") int userid) {
+	@RequestMapping(value = "/assigntoeducationevaluation", method = RequestMethod.GET)
+	public ModelAndView assigntoeducationevaluation(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		Applicant applicant = null;
+		EducationEvaluation educationevaluation = null;
+		int educationevaluationid;
+		int applicantid;
+		educationevaluationid = Integer.parseInt(request.getParameter("educationevaluationid"));
+		applicantid = Integer.parseInt(request.getParameter("applicantid"));
 		try {
-			applicant = userservice.findapplicant(id);
-			userservice.updateapplicationeducationevaluation(applicant, "Assigned  To  Education Evaluation");
+			educationevaluation = userservice.findeducationevaluationbyeducationevaluationid(educationevaluationid);
+			applicant = userservice.findapplicant(applicantid);
+			userservice.updateapplicationeducationevaluation(applicant, educationevaluation);
 		} catch (applicantnotfoundservice e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -946,7 +955,15 @@ public class AdminHomePageController {
 			@ModelAttribute("educationevaluation") EducationEvaluation educationevaluation) {
 		ModelAndView model = new ModelAndView("redirect:home");
 		if (educationevaluation.getEducationevaluationid() == 0) {
-			userservice.saveeducationevaluation(educationevaluation);
+			String password = userservice.saveeducationevaluation(educationevaluation);
+			String emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n" + "Username:"
+					+ educationevaluation.getEmail() + "\nPassword:" + password;
+			Email email = new Email(educationevaluation.getEmail(), emailmessage);
+			try {
+				userservice.emailapplicant(email);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else {
 			userservice.updateeducationevaluation(educationevaluation);
 		}

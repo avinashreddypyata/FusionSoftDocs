@@ -141,230 +141,79 @@ License: You must have a valid license purchased only from themeforest(the above
 										<div class="tabbable-line tabbable-full-width">
 											<ul class="nav nav-tabs">
 
-												<li data-toggle="tab" class="active"><a
+												<li ><a
 													href="viewapplicant">Application</a></li>
 												<li><a href="viewcontact"> Contact </a></li>
 												<li><a href="viewpassport">Passport</a></li>
 												<li><a href="traveldetails"> Travel </a></li>
-												<li><a href="educationdetails"> Education </a></li>
+												<li ><a href="educationdetails"> Education </a></li>
 												<li><a href="experiencedetails"> Experience </a></li>
-												<li><a href="certificateDetails"> Certifications </a>
+												<li data-toggle="tab" class="active"><a href="certificateDetails"> Certifications </a>
 												</li>
 												<li><a href="applicantdocument"> Documents </a></li>
 
 											</ul>
 											<div class="tab-content">
-												<div class="portlet light bordered">
-													<div class="portlet-title">
-														<div class="caption">
-															<i class="icon-equalizer font-blue-hoki"></i> <span
-																class="caption-subject font-blue-hoki bold uppercase">Application</span>
-
-														</div>
-														<div class="tools">
-															<a href="" class="collapse"> </a>
-
-														</div>
-													</div>
-													<div class="portlet-body form">
-														<form action="downloadDoc" method="POST" id="downloaddoc">
-														</form>
-
-														<!-- BEGIN FORM-->
-														<form action="saveorupdateapplication" method="POST"
-															class="horizontal-form" id="form_sample_1"
-															enctype="multipart/form-data">
-
-															<div class="form-body">
-
-																<h3 class="form-section">Application Info</h3>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Application Type
-																				:</label> ${applicant.applicationtype}
-
-
-																		</div>
-
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Prefix :</label>
-
-																			${applicant.prefix}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<!--/row-->
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">First Name :</label>
-
-																			${applicant.firstname}
-																		</div>
-
-																	</div>
-
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Middle Name :</label>
-																			${applicant.middlename}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<!--/row-->
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Last Name: </label>
-																			 ${applicant.lastname}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Maiden Name :</label>
-                                                                     ${applicant.maidenname}  
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Full Name :</label> 
-																			 ${applicant.fullname}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Date Of Birth: </label> 
-																			${applicant.dateofbirth}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Country Of Birth: </label>
-																			 ${applicant.countryofbirth}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Province Of
-																				Birth(City or Town, State) :</label>  ${applicant.provinceofbirth}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">CitizenShip :</label> 
-																			${applicant.citizenship}
-																		</div>
-																	</div>
-																	<!--/span-->
-
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-
-																		<div class="form-group">
-																			<label>Have You Visited US Before Or Are You
-																				Currently Living In United States :</label>
-																			
-																			${applicant.usvisit}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Social Security
-																				Number :</label> ${applicant.socialsecuritynumber}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Latest I94
-																				Number :</label> 
-																			${applicant.latesti94number}
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Alien Number :</label>
-																			${applicant.aliennumber}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">EAD Valid Upto :</label> ${applicant.eadvalidupto}
-
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Current Employer
-																				Petition Number :</label>
-																			${applicant.currentemployerpetitionnumber}
-																		</div>
-																	</div>
-																	<!--/span-->
-																</div>
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Current Visa
-																				Expiry Date :</label>
-																				 ${applicant.currentvisaexpirydate}
-
-
-																		</div>
-																	</div>
-																	<!--/span-->
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label class="control-label">Current Visa
-																				Status :</label> 
-																				 ${applicant.currentvisastatus}
-																		</div>
-																	</div>
-																	<!--/span-->
-
-																</div>
-
-
-															</div>
-
-														</form>
-										
-														<!--/row-->
-
-
-														<!-- END FORM-->
-														<!-- END FORM-->
-													</div>
-												</div>
+								                     <div class="row">
+                                            <div class="col-md-12">
+                                             <div class="portlet light ">
+                                      
+                                <div class="portlet-title">
+                                    <div class="caption font-dark">
+                                        <span class="caption-subject bold uppercase">Certificate Details</span>
+                                    </div>
+                                    <div class="tools"> </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+<thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Certification
+                                                                    </th>
+                                                                    <th>Specialisation</th>
+                                                                    <th>Organisation</th>
+                                                                    <th>Address</th>
+                                                                    <th>City</th>
+                                                                    <th> State</th>
+                                                                    <th>Zipcode</th>
+                                                                    <th>Country</th>
+                                                                    <th>Month Of Passing</th>
+                                                                    <th>Year Of Passing</th>
+                                                                    
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <c:forEach items="${certificationdetails}" var="certificationdetail">
+                                                            
+                                                                <tr class="odd gradeX">
+                                                                    <td><c:out value="${certificationdetail.certificationName}" /></td>
+                                                                    <td>
+                                                                        <c:out value="${certificationdetail.specialisation}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                        <c:out value="${certificationdetail.organisation}" /> 
+                                                                    </td>
+                                                                    <td>
+                                                                       <c:out value="${certificationdetail.address}" /> 
+                                                                    </td>
+                                                                    <td> <c:out value="${certificationdetail.city}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.state}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.zipcode}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.country}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.monthOfPassing}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.yearOfPassing}" /> </td>
+                                                                    
+                                                                </tr>
+															</c:forEach>
+                                                            </tbody>
+                                    </table>
+                                 
+                                </div>
+                            </div>
+                                                </div>
+                                                </div>
 												<!--tab_1_2-->
 											</div>
 										</div>

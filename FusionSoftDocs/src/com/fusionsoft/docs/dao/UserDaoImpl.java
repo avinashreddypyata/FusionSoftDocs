@@ -81,7 +81,7 @@ public class UserDaoImpl implements UserDao {
 			roles.add(r1);
 
 			user.setAuthorities(roles);
-		}else if (user.getUserrole() == 3) {
+		}else if (user.getUserrole() == 3 || user.getUserrole() == 4) {
 			CustomRole r1 = new CustomRole();
 			r1.setName("ROLE_ATTORNEY");
 			roles.add(r1);
@@ -1174,14 +1174,15 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void updateapplicationeducationevaluation(Applicant applicant, String educationevaluationverification) {
+	public void updateapplicationeducationevaluation(Applicant applicant, EducationEvaluation educationevaluation) {
 		// TODO Auto-generated method stub
 		Session session = null;
         Transaction tx = null;
 		 session = getSessionFactory().openSession();
 		try{
 			Applicant updatedapplicant = session.get(Applicant.class, applicant.getUserid());
-			updatedapplicant.setEducationevaluationstatus(educationevaluationverification);
+			updatedapplicant.setEducationevaluationstatus("Assigned To Education Evaluation: "+educationevaluation.getName());
+			updatedapplicant.setEducationevaluation(educationevaluation);
 			tx = session.beginTransaction();
 			session.save(updatedapplicant);
 			tx.commit();
@@ -1460,6 +1461,36 @@ public class UserDaoImpl implements UserDao {
         session.getTransaction().begin();
 		TypedQuery<Applicant> query = session.createQuery("from Applicant where attorney_pk = :attorney_pk ",Applicant.class);
 		query.setParameter("attorney_pk", attorneyid);
+		submittedapplicants = query.getResultList();
+		if(submittedapplicants.isEmpty()){
+			return null;
+		}
+		session.getTransaction().commit();
+		}catch(Exception e){
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return submittedapplicants;
+	}
+
+	@Override
+	public List<EducationEvaluation> educationevaluationteam() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Applicant> findallapplicantsbyeducationevaluationid(int educationevaluationid) {
+		// TODO Auto-generated method stub
+		List<Applicant> submittedapplicants = new ArrayList<Applicant>();
+		Session session = getSessionFactory().openSession();
+		try{
+        session.getTransaction().begin();
+		TypedQuery<Applicant> query = session.createQuery("from Applicant where educationevaluation_pk = :educationevaluation_pk ",Applicant.class);
+		query.setParameter("educationevaluation_pk", educationevaluationid);
 		submittedapplicants = query.getResultList();
 		if(submittedapplicants.isEmpty()){
 			return null;

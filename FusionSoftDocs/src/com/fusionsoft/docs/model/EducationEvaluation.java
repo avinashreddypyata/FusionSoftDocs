@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name = "educationevaluation")
 public class EducationEvaluation {
@@ -73,7 +75,7 @@ public class EducationEvaluation {
 	@Column(name = "company")
 	private String company;
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "attorney")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "educationevaluation")
 	private List<Applicant> applicants;
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userid")

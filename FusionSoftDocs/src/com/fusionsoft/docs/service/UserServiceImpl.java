@@ -1,8 +1,6 @@
 package com.fusionsoft.docs.service;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -46,8 +44,8 @@ public class UserServiceImpl implements UserService {
 	JavaMailSender mailSender;
 	 @Autowired
 	    private PasswordEncoder passwordEncoder;
-	 private static  String destination = "/usr/local/tomcat9/Documents";
-// private static  String destination = "C:/Users/abhi/Documents/GitHub/Documents";
+//	 private static  String destination = "/usr/local/tomcat9/Documents";
+        private static  String destination = "C:/Users/abhi/Documents/GitHub/Documents";
 	 
     public void  emailapplicant(Email email){
     	MimeMessagePreparator preparator = getMessagePreparator(email);

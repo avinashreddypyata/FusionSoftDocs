@@ -31,7 +31,7 @@ public class Attorney {
 	@Column(name = "company")
 	private String company;
 	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "attorney")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "attorney")
 	private List<Applicant> applicants;
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userid")

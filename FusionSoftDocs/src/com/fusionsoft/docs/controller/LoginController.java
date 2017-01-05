@@ -37,6 +37,9 @@ public class LoginController {
 		} else if(user.getUserrole() == 2) {
 			model.setViewName("redirect:/user/home");
 			return model;
+		}else if(user.getUserrole() == 5) {
+			model.setViewName("redirect:/verifiedapplicant/home");
+			return model;
 		}
 		else{
 			model.setViewName("redirect:/attorney/home");

@@ -87,6 +87,12 @@ public class UserDaoImpl implements UserDao {
 			roles.add(r1);
 
 			user.setAuthorities(roles);
+		}else if (user.getUserrole() == 5) {
+			CustomRole r1 = new CustomRole();
+			r1.setName("ROLE_VERIFIEDAPPLICANT");
+			roles.add(r1);
+
+			user.setAuthorities(roles);
 		}
         }catch(Exception e){
         	e.printStackTrace();
@@ -1074,6 +1080,7 @@ public class UserDaoImpl implements UserDao {
 		try{
 			CustomUser updatedcustomuser = session.get(CustomUser.class, userid);
 			updatedcustomuser.setSubmission("done");
+			updatedcustomuser.setUserrole(5);
 			tx = session.beginTransaction();
 			session.save(updatedcustomuser);
 			tx.commit();

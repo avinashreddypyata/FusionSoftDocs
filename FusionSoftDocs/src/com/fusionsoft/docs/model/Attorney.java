@@ -17,6 +17,7 @@ import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "attorney")
+/*Atoorney test*/
 public class Attorney {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

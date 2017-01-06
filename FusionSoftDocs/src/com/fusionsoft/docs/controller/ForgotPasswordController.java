@@ -70,8 +70,7 @@ public class ForgotPasswordController {
 			}
 		}
 	    String emailmessage = 
-	    	      "http://" + request.getServerName() + 
-	    	      ":" + request.getServerPort() + 
+	    	      "http://localhost:8080"+
 	    	      request.getContextPath()+"/changePassword?id=" + customuser.getUserid() + "&token=" + token;
 		System.out.println("The email is"+email);
 		Email emailobject = new Email(email,emailmessage);

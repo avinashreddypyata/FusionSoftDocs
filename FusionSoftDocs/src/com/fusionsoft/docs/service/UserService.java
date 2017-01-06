@@ -160,5 +160,7 @@ public List<EducationEvaluation> educationevaluationteam();
 
 public List<Applicant> findallapplicantsbyeducationevaluationid(int educationevaluationid);
 
+public void updateuserrole(CustomUser customuser);
+
 
 }

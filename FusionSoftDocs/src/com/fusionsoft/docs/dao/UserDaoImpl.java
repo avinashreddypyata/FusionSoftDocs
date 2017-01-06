@@ -1036,8 +1036,9 @@ public class UserDaoImpl implements UserDao {
 		Session session = getSessionFactory().openSession();
 		List<CustomUser> customusers = new ArrayList<CustomUser>();
 		try{
-		Query<CustomUser> query = session.createQuery("FROM CustomUser WHERE userrole =:userrole",CustomUser.class);
+		Query<CustomUser> query = session.createQuery("FROM CustomUser WHERE userrole =:userrole or userrole =:userroleverified",CustomUser.class);
 		query.setParameter("userrole", 2);
+		query.setParameter("userroleverified", 5);
 		customusers = query.getResultList();
 	}catch(Exception e){
 		e.printStackTrace();
@@ -1080,7 +1081,6 @@ public class UserDaoImpl implements UserDao {
 		try{
 			CustomUser updatedcustomuser = session.get(CustomUser.class, userid);
 			updatedcustomuser.setSubmission("done");
-			updatedcustomuser.setUserrole(5);
 			tx = session.beginTransaction();
 			session.save(updatedcustomuser);
 			tx.commit();
@@ -1511,6 +1511,25 @@ public class UserDaoImpl implements UserDao {
 			session.close();
 		}
 		return submittedapplicants;
+	}
+
+	@Override
+	public void updateuserrole(CustomUser customuser) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		try{
+	        session.getTransaction().begin();
+	        CustomUser updatedcustomuser = session.get(CustomUser.class, customuser.getUserid());
+	        updatedcustomuser.setUserrole(5);;
+	        session.save(updatedcustomuser);
+			session.getTransaction().commit();
+			}catch(Exception e){
+				session.getTransaction().rollback();
+				e.printStackTrace();
+			}
+			finally{
+				session.close();
+			}
 	}
 }
 		

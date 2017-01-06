@@ -61,7 +61,7 @@ public class AdminHomePageController {
 	@Autowired
 	public UserDao userDao;
 	private static int id;
-
+    private static String link = "http://localhost:8080/FusionSoftDocs/";
 	@Autowired
 	private UserService userservice;
 
@@ -139,7 +139,7 @@ public class AdminHomePageController {
 		String emailmessage;
 		String password = userservice.saveapplicant(customuser);
 		emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n" + "Username:"
-				+ customuser.getUsername() + "\nPassword:" + password;
+				+ customuser.getUsername() + "\nPassword:" + password +"\nLink For The Portal:"+link;
 		model.setViewName("redirect:applicants");
 		Email email = new Email(customuser.getUsername(), emailmessage);
 		try {
@@ -193,8 +193,11 @@ public class AdminHomePageController {
 	public ModelAndView verifyapplication(@ModelAttribute("userid") int userid) {
 		ModelAndView model = new ModelAndView();
 		Applicant applicant = null;
+		CustomUser customuser = null;
 		try {
 			applicant = userservice.findapplicant(id);
+			customuser = userservice.findCustomUser(id);
+			userservice.updateuserrole(customuser);
 			userservice.updateapplicationadminverification(applicant, "Verified  By  Admin");
 		} catch (applicantnotfoundservice e) {
 			// TODO Auto-generated catch block
@@ -556,9 +559,12 @@ public class AdminHomePageController {
 		ModelAndView model = new ModelAndView("admin/TravelForm");
 		System.out.println("The TravelId for edit travel is" + travelid);
 		Travel travel;
+		List<Document> documents = new ArrayList<Document>();
 		try {
 			travel = userservice.findtravel(travelid);
+			documents = travel.getDocuments();
 			model.addObject("travel", travel);
+			model.addObject("documents",documents);
 		} catch (FindTravelByIdNotFoundService e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -627,9 +633,12 @@ public class AdminHomePageController {
 		ModelAndView model = new ModelAndView("admin/EducationForm");
 		System.out.println("The TravelId for edit travel is" + eduid);
 		Education education;
+		List<Document> documents = new ArrayList<Document>();
 		try {
 			education = userservice.findeducation(eduid);
+			documents = education.getDocuments();
 			model.addObject("education", education);
+			model.addObject("documents",documents);
 		} catch (EducationNotFoundExceptionService e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -704,9 +713,13 @@ public class AdminHomePageController {
 	public ModelAndView editexperience(@ModelAttribute("expid") int expid) {
 		ModelAndView model = new ModelAndView("admin/ExperienceForm");
 		Experience experience;
+		List<Document> documents = new ArrayList<Document>();
 		try {
 			experience = userservice.findexperience(expid);
+			documents = experience.getDocuments();
+			model.addObject("documents",documents);
 			model.addObject("experience", experience);
+			
 		} catch (ExperienceNotFoundService e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -782,13 +795,16 @@ public class AdminHomePageController {
 	public ModelAndView editcertificate(@ModelAttribute("certificationid") int certificationid) {
 		ModelAndView model = new ModelAndView("admin/CertificateForm");
 		Certification certification = null;
+		List<Document> documents = new ArrayList<Document>();
 		try {
 			certification = userservice.findcertificate(certificationid);
+			documents = certification.getDocuments();
 		} catch (CertificateNotFoundService e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addObject("certification", certification);
+		model.addObject("documents",documents);
 		return model;
 	}
 
@@ -900,7 +916,7 @@ public class AdminHomePageController {
 		if (attorney.getAttorneyid() == 0) {
 			String password = userservice.saveattorney(attorney);
 			String emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n" + "Username:"
-					+ attorney.getEmail() + "\nPassword:" + password;
+					+ attorney.getEmail() + "\nPassword:" + password +"The Link To The Portal:"+link;
 			Email email = new Email(attorney.getEmail(), emailmessage);
 			try {
 				userservice.emailapplicant(email);
@@ -957,7 +973,7 @@ public class AdminHomePageController {
 		if (educationevaluation.getEducationevaluationid() == 0) {
 			String password = userservice.saveeducationevaluation(educationevaluation);
 			String emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n" + "Username:"
-					+ educationevaluation.getEmail() + "\nPassword:" + password;
+					+ educationevaluation.getEmail() + "\nPassword:" + password +"The Link To The Portal:"+link;;
 			Email email = new Email(educationevaluation.getEmail(), emailmessage);
 			try {
 				userservice.emailapplicant(email);

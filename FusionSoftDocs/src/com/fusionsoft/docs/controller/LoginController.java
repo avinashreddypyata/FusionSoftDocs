@@ -37,7 +37,8 @@ public class LoginController {
 		} else if(user.getUserrole() == 2) {
 			model.setViewName("redirect:/user/home");
 			return model;
-		}else if(user.getUserrole() == 5) {
+	}else if(user.getUserrole() == 5) {
+			System.out.println("The Control Came to Controller Of The Login"+user.getUserrole());
 			model.setViewName("redirect:/verifiedapplicant/home");
 			return model;
 		}
@@ -75,7 +76,7 @@ public class LoginController {
 		}
 
 		if (logout != null) {
-			model.addObject("message", "Logged out from JournalDEV successfully.");
+			model.addObject("message", "Logged out successfully.");
 		}
 		System.out.println("model :::::::::::::::::::::::::" + model.toString());
 		model.setViewName("login");

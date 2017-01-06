@@ -920,6 +920,11 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.findallapplicantsbyeducationevaluationid(educationevaluationid);
 	}
+	@Override
+	public void updateuserrole(CustomUser customuser) {
+		// TODO Auto-generated method stub
+		userDao.updateuserrole(customuser);
+	}
 	
 	
 }

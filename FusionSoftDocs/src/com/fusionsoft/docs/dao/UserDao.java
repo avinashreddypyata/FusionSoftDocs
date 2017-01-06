@@ -85,6 +85,7 @@ public interface UserDao {
 	public List<Applicant> findallapplicantsbyattorneyid(int attorneyid);
 	public List<EducationEvaluation> educationevaluationteam();
 	public List<Applicant> findallapplicantsbyeducationevaluationid(int educationevaluationid);
+	public void updateuserrole(CustomUser customuser);
 	
 /*test*/
 }

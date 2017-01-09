@@ -30,6 +30,14 @@ public class EducationEvaluation {
 	public void setEducationevaluationid(int educationevaluationid) {
 		this.educationevaluationid = educationevaluationid;
 	}
+	@Column(name = "deleted",columnDefinition = "int default 0") 
+	private int deleted;
+	public int getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(int deleted) {
+		this.deleted = deleted;
+	}
 	public String getName() {
 		return name;
 	}

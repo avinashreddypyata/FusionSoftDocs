@@ -233,7 +233,7 @@
                                                                                   <div class="form-group"> 
                                                <label for="exampleInputFile1">Add Document</label> 
 <form:input type="file" id="exampleInputFile1" path="file"/>
-                                                <p class="help-block"> Attach The I94 and Travel History Concerned To This Entry</p> 
+                                                <p class="help-block"> Please Attach All The Pages In A Single PDF File</p> 
                                       </div>
                                                                                 </div>
                                                                                   <div class="col-md-6">
@@ -309,6 +309,6 @@
 
     </body>
  <!-- BEGIN PAGE LEVEL SCRIPTS -->   
-<script src="http://localhost:80/LoginPage/assets/travelformjsfile/travelformjs.js" type="text/javascript"></script>
+<script src="/FSDocs/assets/travelformjsfile/travelformjs.js" type="text/javascript"></script>
  <!-- END PAGE LEVEL SCRIPTS -->
 </html>

@@ -164,5 +164,7 @@ public void updateuserrole(CustomUser customuser);
 
 public List<Document> finddocumentsbydoctype(int userid, String doctype);
 
+public void updateuserstatus(CustomUser customuser);
+
 
 }

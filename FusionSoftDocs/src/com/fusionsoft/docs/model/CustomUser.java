@@ -20,7 +20,7 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.userdetails.UserDetails;
 @Entity
-@Table(name = "USERS")
+@Table(name = "users")
 public class CustomUser implements UserDetails {
     
 	/**
@@ -72,7 +72,7 @@ public class CustomUser implements UserDetails {
 	@Column(name = "PASSWORD")
 	private String password;
 
-	@Column(name = "USERSTATUS")
+	@Column(name = "USERSTATUS", columnDefinition = "int default 1")
 	private int userstatus;
 
 	@Column(name = "USERROLE")

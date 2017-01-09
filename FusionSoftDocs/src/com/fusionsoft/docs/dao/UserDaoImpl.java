@@ -58,7 +58,10 @@ public class UserDaoImpl implements UserDao {
 		List<CustomUser> users = new ArrayList<CustomUser>();
 		CustomUser user = null;
         try{
-		users = session.createQuery("from CustomUser where username=?",CustomUser.class).setParameter(0, username).getResultList();
+		TypedQuery<CustomUser> query = session.createQuery("from CustomUser where username=? AND userstatus = ?",CustomUser.class);
+				query.setParameter(0, username);
+				query.setParameter(1, 1);
+		users = query.getResultList();
 
 		if (users.size() != 1) {
 			return null;
@@ -90,6 +93,12 @@ public class UserDaoImpl implements UserDao {
 		}else if (user.getUserrole() == 5) {
 			CustomRole r1 = new CustomRole();
 			r1.setName("ROLE_VERIFIEDAPPLICANT");
+			roles.add(r1);
+
+			user.setAuthorities(roles);
+		}else if (user.getUserrole() == 6) {
+			CustomRole r1 = new CustomRole();
+			r1.setName("ROLE_EDUCATIONEVALUATOR");
 			roles.add(r1);
 
 			user.setAuthorities(roles);
@@ -789,6 +798,7 @@ public class UserDaoImpl implements UserDao {
 		Session session = getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
+			customuser.setUserstatus(1);
 			id = (int) session.save(customuser);
 			session.getTransaction().commit();
 		}catch(Exception e){
@@ -1033,9 +1043,10 @@ public class UserDaoImpl implements UserDao {
 		Session session = getSessionFactory().openSession();
 		List<CustomUser> customusers = new ArrayList<CustomUser>();
 		try{
-		Query<CustomUser> query = session.createQuery("FROM CustomUser WHERE userrole =:userrole or userrole =:userroleverified",CustomUser.class);
+		Query<CustomUser> query = session.createQuery("FROM CustomUser WHERE (userrole =:userrole or userrole =:userroleverified) and userstatus=:userstatus",CustomUser.class);
 		query.setParameter("userrole", 2);
 		query.setParameter("userroleverified", 5);
+		query.setParameter("userstatus", 1);
 		customusers = query.getResultList();
 	}catch(Exception e){
 		e.printStackTrace();
@@ -1294,7 +1305,8 @@ public class UserDaoImpl implements UserDao {
 		Session session = getSessionFactory().openSession();
 		try{
         session.getTransaction().begin();
-		TypedQuery<Attorney> query = session.createQuery("from Attorney",Attorney.class);
+		TypedQuery<Attorney> query = session.createQuery("from Attorney where deleted = :deleted ",Attorney.class);
+		query.setParameter("deleted", 0);
 		attorneys = query.getResultList();
 		session.getTransaction().commit();
 		if(attorneys.isEmpty()){
@@ -1315,13 +1327,15 @@ public class UserDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		Session session = getSessionFactory().openSession();
 		try{
-		session.beginTransaction();
-		Serializable id = new Integer(attorneyid);
-		Object persistentInstance = session.load(Attorney.class, id);
-		if (persistentInstance != null) {
-		    session.delete(persistentInstance);
-		}
-		session.getTransaction().commit();
+			session.beginTransaction();
+			Serializable id = new Integer(attorneyid);
+			Attorney updatedattorney = session.get(Attorney.class, id);
+			updatedattorney.setDeleted(1);
+			CustomUser updatedcustomuser = session.get(CustomUser.class,updatedattorney.getCustomuser().getUserid());
+			updatedcustomuser.setUserstatus(0);
+			session.save(updatedcustomuser);
+			session.save(updatedattorney);
+			session.getTransaction().commit();
 		}catch(Exception e){
 			session.getTransaction().rollback();
 		}
@@ -1400,10 +1414,12 @@ public class UserDaoImpl implements UserDao {
 		try{
 		session.beginTransaction();
 		Serializable id = new Integer(educationevaluationid);
-		Object persistentInstance = session.load(EducationEvaluation.class, id);
-		if (persistentInstance != null) {
-		    session.delete(persistentInstance);
-		}
+		EducationEvaluation updatededucationevaluation = session.get(EducationEvaluation.class, id);
+		updatededucationevaluation.setDeleted(1);
+		CustomUser updatedcustomuser = session.get(CustomUser.class,updatededucationevaluation.getCustomuser().getUserid());
+		updatedcustomuser.setUserstatus(0);
+		session.save(updatedcustomuser);
+		session.save(updatededucationevaluation);
 		session.getTransaction().commit();
 		}catch(Exception e){
 			session.getTransaction().rollback();
@@ -1420,7 +1436,8 @@ public class UserDaoImpl implements UserDao {
 		Session session = getSessionFactory().openSession();
 		try{
         session.getTransaction().begin();
-		TypedQuery<EducationEvaluation> query = session.createQuery("from EducationEvaluation",EducationEvaluation.class);
+		TypedQuery<EducationEvaluation> query = session.createQuery("from EducationEvaluation where deleted = :deleted ",EducationEvaluation.class);
+		query.setParameter("deleted", 0);       
 		educationevaluationteam = query.getResultList();
 		session.getTransaction().commit();
 		if(educationevaluationteam.isEmpty()){
@@ -1443,10 +1460,9 @@ public class UserDaoImpl implements UserDao {
 			try{
 			session.beginTransaction();
 			Serializable id = new Integer(userid);
-			Object persistentInstance = session.load(CustomUser.class, id);
-			if (persistentInstance != null) {
-			    session.delete(persistentInstance);
-			}
+			CustomUser updatedcustomuser = session.get(CustomUser.class, id);
+			updatedcustomuser.setUserstatus(0);
+			session.save(updatedcustomuser);
 			session.getTransaction().commit();
 			}catch(Exception e){
 				session.getTransaction().rollback();
@@ -1518,6 +1534,25 @@ public class UserDaoImpl implements UserDao {
 	        session.getTransaction().begin();
 	        CustomUser updatedcustomuser = session.get(CustomUser.class, customuser.getUserid());
 	        updatedcustomuser.setUserrole(5);;
+	        session.save(updatedcustomuser);
+			session.getTransaction().commit();
+			}catch(Exception e){
+				session.getTransaction().rollback();
+				e.printStackTrace();
+			}
+			finally{
+				session.close();
+			}
+	}
+
+	@Override
+	public void updateuserstatus(CustomUser customuser) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		try{
+	        session.getTransaction().begin();
+	        CustomUser updatedcustomuser = session.get(CustomUser.class, customuser.getUserid());
+	        updatedcustomuser.setUserstatus(0);
 	        session.save(updatedcustomuser);
 			session.getTransaction().commit();
 			}catch(Exception e){

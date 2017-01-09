@@ -144,65 +144,66 @@ License: You must have a valid license purchased only from themeforest(the above
 												<li ><a
 													href="viewapplicant">Application</a></li>
 												<li><a href="viewcontact"> Contact </a></li>
-												<li><a href="viewpassport">Passport</a></li>
-												<li data-toggle="tab" class="active"><a href="traveldetails"> Travel </a></li>
-												<li><a href="educationdetails"> Education </a></li>
-												<li><a href="experiencedetails"> Experience </a></li>
+												
+												<li ><a href="educationdetails"> Education </a></li>
+												
 												<li><a href="certificateDetails"> Certifications </a>
 												</li>
-												<li><a href="applicantdocument"> Documents </a></li>
+												<li data-toggle="tab" class="active"><a href="applicantdocument"> Documents </a></li>
 
 											</ul>
 											<div class="tab-content">
-												                    <div class="portlet light ">
+									          <div class="portlet light ">
+                                     
                                 <div class="portlet-title">
                                     <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Travel Details</span>
+                                        <span class="caption-subject bold uppercase">Uploaded Documents</span>
                                     </div>
                                     <div class="tools"> </div>
                                 </div>
-                                   <div class="portlet-body">
+                                <div class="portlet-body">
                                     <table class="table table-striped table-bordered table-hover" id="sample_1">
- <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                        Port Of Entry
-                                                                    </th>
-                                                                    <th> Entry Date To US </th>
-                                                                    <th> Exit Date From Us</th>
-                                                                    <th> Status At The Time Of Entry</th>
-                                                                    <th> Status Valid From </th>
-                                                                    <th> Status Valid Till </th>
-                                                                    <th>Total Months Outside Us</th>
-                                                                    
-                                                                   
-                                                                </tr>
-                                                            </thead>
-                                        <tbody>
-                                                               <c:forEach items="${traveldetails}" var="traveldetail">
-                                                            
-                                                                <tr class="odd gradeX">
-                                                                    <td><c:out value="${traveldetail.portofentry}" /></td>
-                                                                    <td>
-                                                                        <c:out value="${traveldetail.entrydatetous}" /> 
+<thead>
+                                                                                        <tr>
+                                                                                            <th>
+                                                                                                Document</th>
+                                                                                                <th>
+                                                                                                Type Of The Document</th>
+                                                                                            <th >
+                                                                                                Description </th>
+                                                                                                 <th >
+                                                                                                Action </th>
+                                                                                        
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <c:forEach items="${documents}" var="document">
+                                                                                        <tr>
+                                                                                        
+                                                                                            <td>
+                                                                        <c:out value="${document.doctitle}" /> 
                                                                     </td>
-                                                                    <td>
-                                                                        <c:out value="${traveldetail.exitdatefromus}" /> 
+                                                                      <td>
+                                                                        <c:out value="${document.doctype}" /> 
                                                                     </td>
-                                                                    <td>
-                                                                       <c:out value="${traveldetail.statusattimeofentry}" /> 
-                                                                    </td>
-                                                                    <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
-                                                                    <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
-                                                                    <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
-                                                                   
-                                                                  
-                                                                </tr>
-															</c:forEach>
-                                                            </tbody>
+                                                                                            <td > ${document.keywords} </td>
+                                                                                            
+                                                                                            <td>
+                                                                                       <form action="downloadDoc" method="POST">
+                                                                       
+                                                                            <input type="hidden" value="${document.docid}" name="docid"></input>
+                                                                            
+                                                                                        <button type="submit" class="btn green btn-outline">Download</button>
+                                                                                       </form>
+                                                                                        </td>
+                                                                                      
+                                                                                        </tr>
+                                                                                        </c:forEach>
+                                                                                    </tbody>
                                     </table>
-                                    
                                 </div>
+                           
+                          
                             </div>
 												<!--tab_1_2-->
 											</div>

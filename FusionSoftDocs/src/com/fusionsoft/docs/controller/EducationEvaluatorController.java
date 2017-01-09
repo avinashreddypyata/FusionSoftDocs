@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fusionsoft.docs.dao.UserDao;
@@ -43,8 +41,8 @@ import com.fusionsoft.docs.service.contactnotfoundservice;
 import com.fusionsoft.docs.service.documentnotfoundservice;
 import com.fusionsoft.docs.service.experiencesnotfoundbyid;
 @Controller
-@RequestMapping(value = { "/attorney" })
-public class AttorneyHomePageController {
+@RequestMapping(value = { "/educationevaluator" })
+public class EducationEvaluatorController {
 	@Autowired
 	public UserDao userDao;
 	private static int applicantid;
@@ -61,7 +59,8 @@ public class AttorneyHomePageController {
 		if (principal instanceof CustomUser) {
 			logedinUser = ((CustomUser) principal);
 		}
-			submittedusers = userservice.findallapplicantsbyattorneyid(logedinUser.getAttorney().getAttorneyid());
+		
+			submittedusers = userservice.findallapplicantsbyeducationevaluationid(logedinUser.getEducationevaluation().getEducationevaluationid());
 		model.addObject("applicants", submittedusers);
 		return model;
 	}
@@ -92,7 +91,7 @@ public class AttorneyHomePageController {
 			 */
 			model.addObject("applicant", applicant);
 			model.addObject("documents", documents);
-			model.setViewName("attorney/ViewApplication");
+			model.setViewName("educationevaluator/ViewApplication");
 		return model;
 	}
 	@RequestMapping(value = "/viewcontact", method = { RequestMethod.POST, RequestMethod.GET })
@@ -109,50 +108,11 @@ public class AttorneyHomePageController {
 	
 			model.addObject("contact", contact);
 			model.addObject("documents", documents);
-			model.setViewName("attorney/ViewContact");
+			model.setViewName("educationevaluator/ViewContact");
 		return model;
 
 	}
-	@RequestMapping(value = "/viewpassport", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView viewpassport() {
-		ModelAndView model = new ModelAndView();
-		Passport passport = new Passport();
-		List<Document> documents = userservice.finddocuments(applicantid, "Passport");
-		try {
-			passport = userservice.findpassport(applicantid);
-		} catch (PassportNotFoundInService e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-			model.addObject("passport", passport);
-			model.addObject("documents", documents);
-			model.setViewName("attorney/ViewPassport");
-		return model;
-
-	}
-	@RequestMapping(value = "/traveldetails", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView traveldetails() {
-		ModelAndView model = new ModelAndView();
-		// CustomUser user = getCustomUser();
-		List<Travel> traveldetails;
-		try {
-			traveldetails = userservice.findtraveldetails(applicantid);
-			model.addObject("traveldetails", traveldetails);
-		} catch (FindTravelDetailsNotFoundService e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		/*
-		 * If applicant had already entered atleast one entry sent back to view
-		 * with Travel History Table in it and list is sent as a model object
-		 */
-		model.setViewName("attorney/TravelInfo");
-
-		return model;
-
-	}
+	
 	@RequestMapping(value = "/educationdetails", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView educationdetails() {
 		ModelAndView model = new ModelAndView();
@@ -163,35 +123,13 @@ public class AttorneyHomePageController {
 			 * view with Travel History Table in it and list is sent as a model
 			 * object
 			 */
-			model.setViewName("attorney/EducationDetails");
+			model.setViewName("educationevaluator/EducationDetails");
 			System.out.println("The size is" + educationdetails.size());
 			model.addObject("educationdetails", educationdetails);
 		return model;
 
 	}
-	@RequestMapping(value = "/experiencedetails", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView experiencedetails() {
-		ModelAndView model = new ModelAndView();
-		// CustomUser user = getCustomUser();
-		List<Experience> experiencedetails;
-		try {
-			experiencedetails = userservice.findexperiences(applicantid);
-		
-				/*
-				 * If applicant had already entered atleast one entry sent back
-				 * to view with Travel History Table in it and list is sent as a
-				 * model object
-				 */
-				model.setViewName("attorney/ExperienceDetails");
-				model.addObject("experiencedetails", experiencedetails);
-		} catch (experiencesnotfoundbyid e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return model;
-
-	}
+	
 	@RequestMapping(value = "/certificateDetails", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView certificateDetails() {
 		ModelAndView model = new ModelAndView();
@@ -209,7 +147,7 @@ public class AttorneyHomePageController {
 			 * view with Travel History Table in it and list is sent as a model
 			 * object
 			 */
-			model.setViewName("attorney/CertificationDetails");
+			model.setViewName("educationevaluator/CertificationDetails");
 			model.addObject("certificationdetails", certificationdetails);
 		return model;
 
@@ -221,7 +159,7 @@ public class AttorneyHomePageController {
 		documents = userservice.findalldocuments(applicantid);
 		System.out.println("The Size Of Document is" + documents.size());
 		model.addObject("documents", documents);
-		model.setViewName("attorney/DocumentDetails");
+		model.setViewName("educationevaluator/DocumentDetails");
 
 		return model;
 	}

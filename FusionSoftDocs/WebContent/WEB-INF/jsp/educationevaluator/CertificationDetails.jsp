@@ -144,66 +144,75 @@ License: You must have a valid license purchased only from themeforest(the above
 												<li ><a
 													href="viewapplicant">Application</a></li>
 												<li><a href="viewcontact"> Contact </a></li>
-												<li><a href="viewpassport">Passport</a></li>
-												<li data-toggle="tab" class="active"><a href="traveldetails"> Travel </a></li>
-												<li><a href="educationdetails"> Education </a></li>
-												<li><a href="experiencedetails"> Experience </a></li>
-												<li><a href="certificateDetails"> Certifications </a>
+												
+												<li ><a href="educationdetails"> Education </a></li>
+												
+												<li data-toggle="tab" class="active"><a href="certificateDetails"> Certifications </a>
 												</li>
 												<li><a href="applicantdocument"> Documents </a></li>
 
 											</ul>
 											<div class="tab-content">
-												                    <div class="portlet light ">
+								                     <div class="row">
+                                            <div class="col-md-12">
+                                             <div class="portlet light ">
+                                      
                                 <div class="portlet-title">
                                     <div class="caption font-dark">
-                                        <span class="caption-subject bold uppercase">Travel Details</span>
+                                        <span class="caption-subject bold uppercase">Certificate Details</span>
                                     </div>
                                     <div class="tools"> </div>
                                 </div>
-                                   <div class="portlet-body">
+                                <div class="portlet-body">
                                     <table class="table table-striped table-bordered table-hover" id="sample_1">
- <thead>
+<thead>
                                                                 <tr>
                                                                     <th>
-                                                                        Port Of Entry
+                                                                        Certification
                                                                     </th>
-                                                                    <th> Entry Date To US </th>
-                                                                    <th> Exit Date From Us</th>
-                                                                    <th> Status At The Time Of Entry</th>
-                                                                    <th> Status Valid From </th>
-                                                                    <th> Status Valid Till </th>
-                                                                    <th>Total Months Outside Us</th>
+                                                                    <th>Specialisation</th>
+                                                                    <th>Organisation</th>
+                                                                    <th>Address</th>
+                                                                    <th>City</th>
+                                                                    <th> State</th>
+                                                                    <th>Zipcode</th>
+                                                                    <th>Country</th>
+                                                                    <th>Month Of Passing</th>
+                                                                    <th>Year Of Passing</th>
                                                                     
                                                                    
                                                                 </tr>
                                                             </thead>
-                                        <tbody>
-                                                               <c:forEach items="${traveldetails}" var="traveldetail">
+                                                            <tbody>
+                                                               <c:forEach items="${certificationdetails}" var="certificationdetail">
                                                             
                                                                 <tr class="odd gradeX">
-                                                                    <td><c:out value="${traveldetail.portofentry}" /></td>
+                                                                    <td><c:out value="${certificationdetail.certificationName}" /></td>
                                                                     <td>
-                                                                        <c:out value="${traveldetail.entrydatetous}" /> 
+                                                                        <c:out value="${certificationdetail.specialisation}" /> 
                                                                     </td>
                                                                     <td>
-                                                                        <c:out value="${traveldetail.exitdatefromus}" /> 
+                                                                        <c:out value="${certificationdetail.organisation}" /> 
                                                                     </td>
                                                                     <td>
-                                                                       <c:out value="${traveldetail.statusattimeofentry}" /> 
+                                                                       <c:out value="${certificationdetail.address}" /> 
                                                                     </td>
-                                                                    <td> <c:out value="${traveldetail.statusvalidfrom}" /> </td>
-                                                                    <td> <c:out value="${traveldetail.statusvalidtill}" /> </td>
-                                                                    <td> <c:out value="${traveldetail.totalmonthsoutsideus}" /> </td>
-                                                                   
-                                                                  
+                                                                    <td> <c:out value="${certificationdetail.city}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.state}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.zipcode}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.country}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.monthOfPassing}" /> </td>
+                                                                    <td> <c:out value="${certificationdetail.yearOfPassing}" /> </td>
+                                                                    
                                                                 </tr>
 															</c:forEach>
                                                             </tbody>
                                     </table>
-                                    
+                                 
                                 </div>
                             </div>
+                                                </div>
+                                                </div>
 												<!--tab_1_2-->
 											</div>
 										</div>

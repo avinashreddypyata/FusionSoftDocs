@@ -45,9 +45,9 @@ public class UserServiceImpl implements UserService {
 	 @Autowired
 	    private PasswordEncoder passwordEncoder;
 //	 private static  String destination = "/usr/local/tomcat9/Documents";
-        private static  String destination = "C:/Users/abhi/Documents/GitHub/Documents";
+//        private static  String destination = "C:/Users/abhi/Documents/GitHub/Documents";
 	 /*For Server in Amazon Web Services*/
-//        private static  String destination = "C:/Tomcat/apache-tomcat-9.0.0.M15/Docs";
+        private static  String destination = "C:/Tomcat/apache-tomcat-9.0.0.M15/Docs";
 	 
     public void  emailapplicant(Email email){
     	MimeMessagePreparator preparator = getMessagePreparator(email);
@@ -630,6 +630,7 @@ public class UserServiceImpl implements UserService {
 		updatedcustomuser.setSubmission("pending");
 		updatedcustomuser.setUserrole(2);
 		updatedcustomuser.setFirstlogin(1);
+		updatedcustomuser.setUserstatus(1);
 		updatedcustomuser.setAdminnotes(customuser.getAdminnotes());
         userDao.savecustomuser(updatedcustomuser);
 		return password;
@@ -838,6 +839,7 @@ public class UserServiceImpl implements UserService {
 			customuser.setSubmission("pending");
 			customuser.setUserrole(3);
 			customuser.setFirstlogin(1);
+			customuser.setUserstatus(1);
 			customuser.setUsername(attorney.getEmail());
 		    customuser.setAttorney(attorney);
 		    attorney.setCustomuser(customuser);
@@ -871,8 +873,9 @@ public class UserServiceImpl implements UserService {
 		 String password = generateRandomPassword();
 			customuser.setPassword(passwordEncoder.encode(password));
 			customuser.setSubmission("pending");
-			customuser.setUserrole(4);
+			customuser.setUserrole(6);
 			customuser.setFirstlogin(1);
+			customuser.setUserstatus(1);
 			customuser.setUsername(educationevaluation.getEmail());
 		    customuser.setEducationevaluation(educationevaluation);
 		    educationevaluation.setCustomuser(customuser);
@@ -928,6 +931,11 @@ public class UserServiceImpl implements UserService {
 	public List<Document> finddocumentsbydoctype(int userid, String doctype) {
 		// TODO Auto-generated method stub
 		return userDao.findparticulardocuments(userid, doctype);
+	}
+	@Override
+	public void updateuserstatus(CustomUser customuser) {
+		// TODO Auto-generated method stub
+		userDao.updateuserstatus(customuser);
 	}
 	
 	

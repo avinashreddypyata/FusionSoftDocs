@@ -114,8 +114,9 @@ public class VerifiedApplicantController {
 			model.addObject("certificationdetails",certificationdetails);
 		return model;
 		}
-		@RequestMapping(value = "/downloadDoc",method = RequestMethod.POST)
-		public void downloaddocument(@ModelAttribute("docid") int docid, HttpServletResponse response) throws IOException{
+		@RequestMapping(value = "/downloadDoc",method = RequestMethod.GET)
+		public void downloaddocument(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		int docid = Integer.parseInt(request.getParameter("docid"));
 		System.out.println("The Docid is"+docid);
 		
 		Document document = null;
@@ -142,12 +143,14 @@ public class VerifiedApplicantController {
 		fileInputStream.close();
 		System.out.println("File downloaded at client successfully");
 		}
-		@RequestMapping(value="/logout", method = RequestMethod.GET)
-		public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-		    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		    if (auth != null){    
-		        new SecurityContextLogoutHandler().logout(request, response, auth);
-		    }
-		    return "redirect:/login";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
+		@RequestMapping(value = "/logout", method = RequestMethod.GET)
+		public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			if (auth != null) {
+				new SecurityContextLogoutHandler().logout(request, response, auth);
+			}
+			return "redirect:/login";// You can redirect wherever you want, but
+										// generally it's a good practice to show
+										// login screen again.
 		}
 	}

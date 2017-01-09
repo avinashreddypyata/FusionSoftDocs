@@ -240,7 +240,7 @@
                                                                                   <div class="form-group"> 
                                                <label for="exampleInputFile1">Add Document</label> 
 <form:input type="file" id="exampleInputFile1" path="file"/>
-                                                <p class="help-block"> Attach All The Documents Concerned To This Entry</p> 
+                                                <p class="help-block"> Please Attach All The Pages In A Single PDF File</p> 
                                       </div>
                                                                                 </div>
                                                                                   <div class="col-md-6">
@@ -314,7 +314,7 @@
 
         <jsp:include page="include/jsIncludes.jsp" />
       <!-- BEGIN PAGE LEVEL SCRIPTS -->   
-<script src="http://localhost:80/LoginPage/assets/experienceformjsfile/experienceformjs.js" type="text/javascript"></script>
+<script src="/FSDocs/assets/experienceformjsfile/experienceformjs.js" type="text/javascript"></script>
  <!-- END PAGE LEVEL SCRIPTS -->
     </body>
 

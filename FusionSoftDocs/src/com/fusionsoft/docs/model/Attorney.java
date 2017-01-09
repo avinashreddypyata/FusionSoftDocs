@@ -36,7 +36,15 @@ public class Attorney {
 	private List<Applicant> applicants;
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userid")
-	private CustomUser customuser;	
+	private CustomUser customuser;
+	@Column(name = "deleted",columnDefinition = "int default 0") 
+	private int deleted;
+	public int getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(int deleted) {
+		this.deleted = deleted;
+	}
 	public CustomUser getCustomuser() {
 		return customuser;
 	}

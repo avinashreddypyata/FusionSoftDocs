@@ -36,9 +36,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     }
      
     /*Variables For the Document That is Uploaded*/
-      private static final String LOCATION = "C:/Users/abhi/";
+//      private static final String LOCATION = "C:/Users/abhi/";
 //    private static final String LOCATION = "/usr/local/tomcat9/Documents";/*Path In Server*/
-//      private static final String LOCATION = " C:/Tomcat/apache-tomcat-9.0.0.M15/Docs";/*Path In Amazon Web Services Server */
+      private static final String LOCATION = "Location";/*Path In Amazon Web Services Server */
  
     private static final long MAX_FILE_SIZE = 1024 * 1024 * 2000;//20 GigaBytes
     

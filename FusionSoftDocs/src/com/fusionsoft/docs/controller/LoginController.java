@@ -42,6 +42,11 @@ public class LoginController {
 			model.setViewName("redirect:/verifiedapplicant/home");
 			return model;
 		}
+	else if(user.getUserrole() == 6) {
+		System.out.println("The Control Came to Controller Of The Login"+user.getUserrole());
+		model.setViewName("redirect:/educationevaluator/home");
+		return model;
+	}
 		else{
 			model.setViewName("redirect:/attorney/home");
 			return model;

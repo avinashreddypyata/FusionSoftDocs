@@ -285,7 +285,7 @@
                                                                                   <div class="form-group"> 
                                                <label for="exampleInputFile1">Add Document</label> 
 <form:input type="file" id="exampleInputFile1" path="file"/>
-                                                <p class="help-block"> Please Attach All The Pages Of The Passport In A Single Pdf File </p> 
+                                                <p class="help-block"> Please Attach All The Pages In A Single PDF File </p> 
                                       </div>
                                                                                 </div>
                                                                                   <div class="col-md-6">

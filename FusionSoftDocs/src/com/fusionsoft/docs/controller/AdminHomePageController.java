@@ -197,6 +197,13 @@ public class AdminHomePageController {
 		try {
 			applicant = userservice.findapplicant(id);
 			customuser = userservice.findCustomUser(id);
+			String emailmessage = "FusionSoft has Accepted Your Profile \n\n Check Your Status In The Below Link \n" + "\nLink For The Portal:"+link;
+			Email email = new Email(customuser.getUsername(), emailmessage);
+			try {
+				userservice.emailapplicant(email);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			userservice.updateuserrole(customuser);
 			userservice.updateapplicationadminverification(applicant, "Verified  By  Admin");
 		} catch (applicantnotfoundservice e) {
@@ -206,12 +213,30 @@ public class AdminHomePageController {
 		model.setViewName("redirect:overview");
 		return model;
 	}
+	@RequestMapping(value = "/rejectapplication", method = RequestMethod.POST)
+	public ModelAndView rejectapplication(@ModelAttribute("userid") int userid) {
+		ModelAndView model = new ModelAndView();
+		CustomUser customuser = null;
+		
+			customuser = userservice.findCustomUser(id);
+			userservice.updateuserstatus(customuser);
+			String emailmessage = "FusionSoft has Reject Your Profile \n\n You Can No Longer Access The Portal \n" ;
+			Email email = new Email(customuser.getUsername(), emailmessage);
+			try {
+				userservice.emailapplicant(email);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		model.setViewName("redirect:applicants");
+		return model;
+	}
 
 	@RequestMapping(value = "/assigntoattorney", method = RequestMethod.GET)
 	public ModelAndView assigntoattorny(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		Applicant applicant = null;
 		Attorney attorney = null;
+		CustomUser customuser = null;
 		int attorneyid;
 		int applicantid;
 		attorneyid = Integer.parseInt(request.getParameter("attorneyid"));
@@ -220,7 +245,14 @@ public class AdminHomePageController {
 		try {
 			attorney = userservice.findattorneybyattorneyid(attorneyid);
 			applicant = userservice.findapplicant(applicantid);
-
+            customuser = userservice.findCustomUser(attorneyid);
+            String emailmessage = "FusionSoft has Assigned  A Profile \n\n Check Profiles Assigned To You In The Below Link \n" + "\nLink For The Portal:"+link;
+			Email email = new Email(customuser.getUsername(), emailmessage);
+			try {
+				userservice.emailapplicant(email);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			userservice.updateapplicationattorneyverification(applicant, attorney);
 		} catch (applicantnotfoundservice e) {
 			// TODO Auto-generated catch block
@@ -234,6 +266,7 @@ public class AdminHomePageController {
 	public ModelAndView assigntoeducationevaluation(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		Applicant applicant = null;
+		CustomUser customuser = null;
 		EducationEvaluation educationevaluation = null;
 		int educationevaluationid;
 		int applicantid;
@@ -242,6 +275,14 @@ public class AdminHomePageController {
 		try {
 			educationevaluation = userservice.findeducationevaluationbyeducationevaluationid(educationevaluationid);
 			applicant = userservice.findapplicant(applicantid);
+			customuser = userservice.findCustomUser(applicantid);
+			 String emailmessage = "FusionSoft has Assigned  A Profile \n\n Check Profiles Assigned To You In The Below Link \n" + "\nLink For The Portal:"+link;
+				Email email = new Email(customuser.getUsername(), emailmessage);
+				try {
+					userservice.emailapplicant(email);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			userservice.updateapplicationeducationevaluation(applicant, educationevaluation);
 		} catch (applicantnotfoundservice e) {
 			// TODO Auto-generated catch block

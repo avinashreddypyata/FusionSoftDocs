@@ -6,7 +6,7 @@ public class FirstAdminPassowrdEncode {
 	public static void main(String[] args) {
 
 	
-			String password = "avi";
+			String password = "fsiadmin";
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			String hashedPassword = passwordEncoder.encode(password);
 

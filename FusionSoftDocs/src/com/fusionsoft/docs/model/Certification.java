@@ -18,7 +18,7 @@ import org.hibernate.annotations.Cascade;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-@Table(name ="CERTIFICATION")
+@Table(name ="certification")
 public class Certification {
 	
 	

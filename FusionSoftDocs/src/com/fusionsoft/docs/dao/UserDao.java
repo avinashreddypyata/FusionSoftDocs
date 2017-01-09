@@ -86,6 +86,7 @@ public interface UserDao {
 	public List<EducationEvaluation> educationevaluationteam();
 	public List<Applicant> findallapplicantsbyeducationevaluationid(int educationevaluationid);
 	public void updateuserrole(CustomUser customuser);
+	public void updateuserstatus(CustomUser customuser);
 	
 /*test*/
 }

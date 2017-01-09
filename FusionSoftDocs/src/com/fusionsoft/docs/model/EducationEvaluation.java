@@ -74,7 +74,7 @@ public class EducationEvaluation {
 	private String phonenumber;
 	@Column(name = "company")
 	private String company;
-	@Cascade(value=org.hibernate.annotations.CascadeType.ALL)
+	@Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "educationevaluation")
 	private List<Applicant> applicants;
 	@OneToOne(cascade = CascadeType.ALL)

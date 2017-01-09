@@ -14,7 +14,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>FusionSoft Inc. | Contact Information</title>
+        <title>FusionSoft Inc...... | Contact</title>
         <link rel="shortcut icon" href="favicon.ico" />
 
         <jsp:include page="include/metaIncludes.jsp" />
@@ -43,8 +43,8 @@
                                 <div class="container">
                                     <!-- BEGIN PAGE TITLE -->
                                     <div class="page-title">
-                                        <h1>Contact Information
-                                            <small>Contact Information and Address proof.</small>
+                                        <h1>Contact
+                                            <small>Enter The Contact Information</small>
                                         </h1>
                                     </div>
                                     <!-- END PAGE TITLE -->
@@ -61,29 +61,40 @@
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Contact Information</span>
+                                            <span>Contact</span>
                                         </li>
                                     </ul>
+   
                                     <!-- END PAGE BREADCRUMBS -->
                                     <!-- BEGIN PAGE CONTENT INNER -->
                                     <div class="page-content-inner">
 
                                         <div class="row">
+                                                                           <div class= "alert alert-success alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+ Your Contact Information Is Saved Successfully !!!<a href="viewpassport" class="alert-link">Proceed To Next Section</a>.
+</div>
                                             <div class="col-md-12">
                                                 <!-- BEGIN VALIDATION STATES-->
+                            </div>
                                                 <div class="portlet light portlet-fit portlet-form ">
                                                     <div class="portlet-title">
                                                         <div class="caption">
-                                                            <i class="icon-envelope font-green"></i>
-                                                            <span class="caption-subject font-green bold uppercase">Contact Information</span>
+                                                            <i class="icon-note font-green"></i>
+                                                            <span class="caption-subject font-green bold uppercase">Contact</span>
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body">
                                                         <!-- BEGIN FORM-->
-                                                        <form:form action="saveorupdatecontact" id="form_sample_2" class="horizontal-form" method="post" modelAttribute="contact" enctype="multipart/form-data">
+                                                       <form:form action="saveorupdatecontact" id="form_sample_2" class="horizontal-form" method="post" modelAttribute="contact" enctype="multipart/form-data">
                                                         <form:hidden path="userid" value="${contact.userid}" />
                                                             <div class="form-body">
-                                                                
+                                                                <div class="alert alert-danger display-hide">
+                                                                    <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                                                                </div>
+                                                                <div class="alert alert-success display-hide">
+                                                                    <button class="close" data-close="alert"></button> Your form validation is successful!
+                                                                </div>
 
                                                                 <div class="row">
                                                                     <div class="col-md-6">
@@ -339,9 +350,9 @@
                                                     </div>
                                                 </div>
                                                 <!-- END VALIDATION STATES-->
-                                            </div>
-                                        </div>
+                                        
 
+                                    </div>
                                     </div>
                                     <!-- END PAGE CONTENT INNER -->
                                 </div>

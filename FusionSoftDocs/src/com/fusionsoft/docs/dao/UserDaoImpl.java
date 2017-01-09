@@ -638,7 +638,7 @@ public class UserDaoImpl implements UserDao {
 			updatedtravel.setTotalmonthsoutsideus(travel.getTotalmonthsoutsideus());
 			updatedtravel.setCurrententry(travel.getCurrententry());
 			updatedtravel.setDocumentdescription(travel.getDocumentdescription());
-			updatedtravel.setDocumenttitle(travel.getDocumenttitle());
+			
 			session.getTransaction().commit();
 	}catch(Exception e){
 		session.getTransaction().rollback();
@@ -692,7 +692,6 @@ public class UserDaoImpl implements UserDao {
 			updateeducation.setYearofpassing(education.getYearofpassing());
 			updateeducation.setZipcode(education.getZipcode());
 			updateeducation.setDocumentdescription(education.getDocumentdescription());
-			updateeducation.setDocumenttitle(education.getDocumenttitle());
 			session.save(updateeducation);
 			session.getTransaction().commit();
 		}catch(Exception e){
@@ -720,8 +719,7 @@ public class UserDaoImpl implements UserDao {
 			updatedexperience.setJoineddate(experience.getJoineddate());
 			updatedexperience.setState(experience.getState());
 			updatedexperience.setTotalmonthsworked(experience.getTotalmonthsworked());
-			updatedexperience.setDocumenttitle(experience.getDocumenttitle());
-			updatedexperience.setDocumentdescription(experience.getDocumentdescription());
+			updatedexperience.setDocumentdescription(experience.getDocumentdescription());;
 			session.save(updatedexperience);
 			session.getTransaction().commit();
 		}catch(Exception e){
@@ -773,7 +771,6 @@ public class UserDaoImpl implements UserDao {
 					updatedcertification.setYearOfPassing(certification.getYearOfPassing());
 					updatedcertification.setZipcode(certification.getZipcode());
 					updatedcertification.setDocumentdescription(certification.getDocumentdescription());
-					updatedcertification.setDocumenttitle(certification.getDocumenttitle());
 					session.getTransaction().commit();
 			}catch(Exception e){
 				session.getTransaction().rollback();

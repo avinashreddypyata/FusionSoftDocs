@@ -67,21 +67,14 @@ public class Education {
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
+	@Transient
 	@Column(name = "documentdescription")
 	private String documentdescription;
-	@Column(name = "documenttitle")
-	private String documenttitle;
 	public String getDocumentdescription() {
 		return documentdescription;
 	}
 	public void setDocumentdescription(String documentdescription) {
 		this.documentdescription = documentdescription;
-	}
-	public String getDocumenttitle() {
-		return documenttitle;
-	}
-	public void setDocumenttitle(String documenttitle) {
-		this.documenttitle = documenttitle;
 	}
 	public String getAddress() {
 		return address;

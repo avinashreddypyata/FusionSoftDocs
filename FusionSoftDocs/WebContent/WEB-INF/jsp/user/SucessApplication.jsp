@@ -64,13 +64,19 @@
                                             <span>Application</span>
                                         </li>
                                     </ul>
+   
                                     <!-- END PAGE BREADCRUMBS -->
                                     <!-- BEGIN PAGE CONTENT INNER -->
                                     <div class="page-content-inner">
 
                                         <div class="row">
+                                                                           <div class= "alert alert-success alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+ Your Application Information Is Saved Successfully !!!<a href="viewcontact" class="alert-link">Proceed To Next Section</a>.
+</div>
                                             <div class="col-md-12">
                                                 <!-- BEGIN VALIDATION STATES-->
+                            </div>
                                                 <div class="portlet light portlet-fit portlet-form ">
                                                     <div class="portlet-title">
                                                         <div class="caption">
@@ -197,7 +203,7 @@
                                                                             </label>
                                                                             <form:select class="form-control" name="prefix" path="countryofbirth" data-required="data-required">
                                                                                 <form:option value=""></form:option>
-                                                                                <form:option value="India">India</form:option>
+                                                                                <form:option value="IN">India</form:option>
                                                                                 <form:option value="US">United States of America</form:option>
                                                                             </form:select>
                                                                         </div>
@@ -227,7 +233,7 @@
                                                                             </label>
                                                                             <form:select class="form-control" name="prefix" path="citizenship" data-required="data-required">
                                                                                 <form:option value=""></form:option>
-                                                                                <form:option value="India">India</form:option>
+                                                                                <form:option value="IN">India</form:option>
                                                                                 <form:option value="US">United States of America</form:option>
                                                                             </form:select>
                                                                             <span class="help-block"> Passport issued by Country</span>
@@ -252,7 +258,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="row">
                                                                     <div class="col-md-3">
                                                                         <div class="form-group">
@@ -310,7 +315,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Current Visa Status (If Applicable)
                                                                             </label>
-                                                                            <form:select class="form-control"  path="currentvisastatus" id="currentvisastatus">
+                                                                            <form:select class="form-control"  path="currentvisastatus">
                                                                                 <form:option value=""></form:option>
                                                                                 <form:option value="H1">H1</form:option>
                                                                                 <form:option value="H4">H4</form:option>
@@ -457,9 +462,9 @@
                                                     </div>
                                                 </div>
                                                 <!-- END VALIDATION STATES-->
-                                            </div>
-                                        </div>
+                                        
 
+                                    </div>
                                     </div>
                                     <!-- END PAGE CONTENT INNER -->
                                 </div>

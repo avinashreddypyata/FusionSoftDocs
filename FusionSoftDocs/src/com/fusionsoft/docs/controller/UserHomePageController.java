@@ -153,7 +153,7 @@ public class UserHomePageController {
 		ModelAndView model = new ModelAndView();
 		 CustomUser user = getCustomUser();
 		 Applicant applicant = new Applicant();
-		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Other");
          try {
         	 applicant = userservice.findapplicant(user.getUserid());
 		} catch (applicantnotfoundservice e) {
@@ -179,7 +179,31 @@ public class UserHomePageController {
 	public ModelAndView editorcreatenewapplication(@ModelAttribute("applicant") Applicant applicant,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("user/ApplicationForm");
 		 CustomUser user = getCustomUser();
-		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Other");
+         try {
+			applicant = userservice.findapplicant(user.getUserid());
+		} catch (applicantnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(applicant == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Applicant());
+         }
+         else{
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("applicant", applicant);
+		model.addObject("documents", documents);
+		
+         }
+        return model;
+        
+	}
+	@RequestMapping(value = "/sucessfullysavedapplication", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView sucessfullysavedapplication(@ModelAttribute("applicant") Applicant applicant,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("user/SucessApplication");
+		 CustomUser user = getCustomUser();
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Other");
          try {
 			applicant = userservice.findapplicant(user.getUserid());
 		} catch (applicantnotfoundservice e) {
@@ -208,9 +232,10 @@ public class UserHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant*/
 	@RequestMapping(value = "/saveorupdateapplication", method = RequestMethod.POST)
 	public ModelAndView saveorupdateapplication(@ModelAttribute("applicant") Applicant applicant, BindingResult result) {
-		ModelAndView model = new ModelAndView("redirect:viewcontact");
+		ModelAndView model = new ModelAndView("redirect:sucessfullysavedapplication");
 		
 		CustomUser customuser = getCustomUser();
+		
 		
 		if(applicant.getUserid() == 0){
 		    
@@ -226,7 +251,7 @@ public class UserHomePageController {
 		ModelAndView model = new ModelAndView();
 		 CustomUser user = getCustomUser();
 		 Contact contact = new Contact();
-		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Contact");
          try {
 			contact = userservice.findcontact(user.getUserid());
 		} catch (contactnotfoundservice e) {
@@ -252,7 +277,31 @@ public class UserHomePageController {
 	public ModelAndView editorcreatenewcontact(@ModelAttribute("contact") Contact contact) {
 		ModelAndView model = new ModelAndView("user/ContactForm");
 		 CustomUser user = getCustomUser();
-		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Contact");
+         try {
+			contact = userservice.findcontact(user.getUserid());
+		} catch (contactnotfoundservice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(contact == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Contact());
+         }
+         else{
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+        	 model.addObject("documents", documents);
+        	 model.addObject("contact", contact);
+         }
+        return model;
+        
+	}
+	/*create a new application or edit existing contact details based on the changes made by the user*/
+	@RequestMapping(value = "/sucessfullysavedcontact", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView sucessfullysavedcontact(@ModelAttribute("contact") Contact contact) {
+		ModelAndView model = new ModelAndView("user/SucessContact");
+		 CustomUser user = getCustomUser();
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Contact");
          try {
 			contact = userservice.findcontact(user.getUserid());
 		} catch (contactnotfoundservice e) {
@@ -274,7 +323,7 @@ public class UserHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
 	@RequestMapping(value = "/saveorupdatecontact", method = RequestMethod.POST)
 	public ModelAndView saveorupdatecontact(@ModelAttribute("contact") Contact contact) {
-		ModelAndView model = new ModelAndView("redirect:viewpassport");
+		ModelAndView model = new ModelAndView("redirect:sucessfullysavedcontact");
 		CustomUser customuser = getCustomUser();
 		if(contact.getUserid() == 0){
 		    
@@ -291,7 +340,7 @@ public class UserHomePageController {
 		ModelAndView model = new ModelAndView();
 		 CustomUser user = getCustomUser();
 		 Passport passport = new Passport();
-		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Passport");
          try {
 			passport = userservice.findpassport(user.getUserid());
 		} catch (PassportNotFoundInService e) {
@@ -313,11 +362,35 @@ public class UserHomePageController {
         
 	}
 	/*create a new application or edit existing contact details based on the changes made by the user*/
+	@RequestMapping(value = "/sucessfullysavedpassport", method = {RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView sucessfullysavedpassport(@ModelAttribute("passport") Passport passport) {
+		ModelAndView model = new ModelAndView("user/SucessPassport");
+		 CustomUser user = getCustomUser();
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Passport");
+		 System.out.println("The passport id is"+passport.getUserid());
+         try {
+			passport = userservice.findpassport(user.getUserid());
+		} catch (PassportNotFoundInService e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         if(passport == null){
+        	 /*If Entering First Time new Applicant Object is sent as a Object as a model to the view Page*/
+        	 model.addObject(new Passport());
+         }
+         else{
+        	 /*If applicant wants to edit already present information then existing applicant object is taken from the database and sent back to view*/
+		model.addObject("passport", passport);
+		model.addObject("documents", documents);
+         }
+        return model;
+        
+	}
 	@RequestMapping(value = "/editorcreatenewpassport", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView editorcreatenewpassport(@ModelAttribute("passport") Passport passport) {
 		ModelAndView model = new ModelAndView("user/PassportForm");
 		 CustomUser user = getCustomUser();
-		 HashMap<String,List<Document>> documents=userservice.findparticulardocuments(user.getUserid());
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Passport");
 		 System.out.println("The passport id is"+passport.getUserid());
          try {
 			passport = userservice.findpassport(user.getUserid());
@@ -340,7 +413,7 @@ public class UserHomePageController {
 	/*Saving Or Updating The Changes Made By Applicant To Contact Details*/
 	@RequestMapping(value = "/saveorupdatepassport", method = RequestMethod.POST)
 	public ModelAndView saveorupdatepassport(@ModelAttribute("passport") Passport passport) {
-		ModelAndView model = new ModelAndView("redirect:traveldetails");
+		ModelAndView model = new ModelAndView("redirect:sucessfullysavedpassport");
 		CustomUser customuser = getCustomUser();
 		if(passport.getUserid() == 0){
 		    
@@ -357,6 +430,7 @@ public class UserHomePageController {
 	public ModelAndView traveldetails() {
 		ModelAndView model = new ModelAndView();
 		 CustomUser user = getCustomUser();
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Travel");
          List<Travel> traveldetails = null;
 		try {
 			traveldetails = userservice.findtraveldetails(user.getUserid());
@@ -372,6 +446,7 @@ public class UserHomePageController {
         	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
 		model.setViewName("user/TravelHistory");
 		model.addObject("traveldetails", traveldetails);
+		model.addObject("documents", documents);
          }
         return model;
         
@@ -431,6 +506,7 @@ public class UserHomePageController {
 		ModelAndView model = new ModelAndView();
 		 CustomUser user = getCustomUser();
          List<Education> educationdetails = userservice.findqualifications(user.getUserid());
+         List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Education");
          if(educationdetails.isEmpty()){
         	 /*If Entering First Time redirects to empty form with travel form*/
         	 model.setViewName("redirect:editorcreateneweducation");
@@ -440,6 +516,7 @@ public class UserHomePageController {
 		model.setViewName("user/EducationDetails");
 		System.out.println("The size is"+educationdetails.size());
 		model.addObject("educationdetails", educationdetails);
+		model.addObject("documents",documents);
          }
         return model;
         
@@ -500,6 +577,7 @@ public class UserHomePageController {
 	public ModelAndView experiencedetails() {
 		ModelAndView model = new ModelAndView();
 		 CustomUser user = getCustomUser();
+		 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Experience");
          List<Experience> experiencedetails = null;
 		try {
 			experiencedetails = userservice.findexperiences(user.getUserid());
@@ -515,6 +593,7 @@ public class UserHomePageController {
         	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
 		model.setViewName("user/ExperienceHistory");
 		model.addObject("experiencedetails", experiencedetails);
+		model.addObject("documents",documents);
          }
         return model;
         
@@ -576,6 +655,7 @@ public class UserHomePageController {
 		public ModelAndView certificateDetails() {
 			ModelAndView model = new ModelAndView();
 			 CustomUser user = getCustomUser();
+			 List<Document> documents = userservice.finddocumentsbydoctype(user.getUserid(), "Certification");
 	         List<Certification> certificationdetails = null;
 			try {
 				certificationdetails = userservice.findcertificationdetails(user.getUserid());
@@ -591,6 +671,7 @@ public class UserHomePageController {
 	        	 /*If applicant had already entered atleast one entry sent back to view with Travel History Table in it and list is sent as a model object*/
 			model.setViewName("user/CertificationDetails");
 			model.addObject("certificationdetails", certificationdetails);
+			model.addObject("documents",documents);
 	         }
 	        return model;
 	        
@@ -672,8 +753,9 @@ public class UserHomePageController {
 	return model;	
 		
 	}
-	@RequestMapping(value = "/downloadDoc",method = RequestMethod.POST)
-	public void downloaddocument(@ModelAttribute("docid") int docid, HttpServletResponse response) throws IOException{
+	@RequestMapping(value = "/downloadDoc",method = RequestMethod.GET)
+	public void downloaddocument(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	int docid = Integer.parseInt(request.getParameter("docid"));
 	System.out.println("The Docid is"+docid);
 	
 	Document document = null;
@@ -700,15 +782,16 @@ public class UserHomePageController {
 	fileInputStream.close();
 	System.out.println("File downloaded at client successfully");
 	}
-	@RequestMapping(value = "/deleteDoc",method = RequestMethod.POST)
-	public ModelAndView deleteDoc(@ModelAttribute("docid") int docid) throws IOException{
+	@RequestMapping(value = "/deleteDoc",method = RequestMethod.GET)
+	public ModelAndView deleteDoc(HttpServletRequest request) throws IOException{
+		int docid = Integer.parseInt(request.getParameter("docid"));
 		ModelAndView model = new ModelAndView();
 	try {
 		Document document = userservice.finddocument(docid);
 		System.out.println("The Doctype To Redirect is"+document.getDoctype());
 		System.out.println(document.getDoctype().equals("Passport"));
 		if(document.getDoctype().equals("Passport")){
-			model.setViewName("redirect:editorcreatenewpassport");
+		   model.setViewName("redirect:editorcreatenewpassport");
 		}else if (document.getDoctype().equals("Contact")){
 			model.setViewName("redirect:editorcreatenewcontact");
 		}else if (document.getDoctype().equals("Travel")){

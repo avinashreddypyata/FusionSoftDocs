@@ -61,7 +61,7 @@ public class AdminHomePageController {
 	@Autowired
 	public UserDao userDao;
 	private static int id;
-    private static String link = "http://localhost:8080/FusionSoftDocs/";
+    private static String link = "https://ec2-54-244-208-223.us-west-2.compute.amazonaws.com";
 	@Autowired
 	private UserService userservice;
 
@@ -262,7 +262,7 @@ public class AdminHomePageController {
 	public ModelAndView viewapplication() {
 		ModelAndView model = new ModelAndView();
 		Applicant applicant = new Applicant();
-		HashMap<String, List<Document>> documents = userservice.findparticulardocuments(id);
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Other");
 		try {
 			applicant = userservice.findapplicant(id);
 		} catch (applicantnotfoundservice e) {
@@ -293,7 +293,7 @@ public class AdminHomePageController {
 	public ModelAndView editorcreatenewapplication(@ModelAttribute("applicant") Applicant applicant,
 			HttpServletRequest request, BindingResult result) {
 		ModelAndView model = new ModelAndView("admin/ApplicationInfo");
-		HashMap<String, List<Document>> documents = userservice.findparticulardocuments(id);
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Other");
 		try {
 			applicant = userservice.findapplicant(id);
 		} catch (applicantnotfoundservice e) {
@@ -339,7 +339,7 @@ public class AdminHomePageController {
 	public ModelAndView viewcontact() {
 		ModelAndView model = new ModelAndView();
 		Contact contact = new Contact();
-		HashMap<String, List<Document>> documents = userservice.findparticulardocuments(id);
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Contact");
 		try {
 			contact = userservice.findcontact(id);
 		} catch (contactnotfoundservice e) {
@@ -374,7 +374,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/editorcreatenewcontact", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView editorcreatenewcontact(@ModelAttribute("contact") Contact contact, BindingResult result) {
 		ModelAndView model = new ModelAndView("admin/ContactInfo");
-		HashMap<String, List<Document>> documents = userservice.findparticulardocuments(id);
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Contact");
 		try {
 			contact = userservice.findcontact(id);
 		} catch (contactnotfoundservice e) {
@@ -418,7 +418,7 @@ public class AdminHomePageController {
 	public ModelAndView viewpassport() {
 		ModelAndView model = new ModelAndView();
 		Passport passport = new Passport();
-		HashMap<String, List<Document>> documents = userservice.findparticulardocuments(id);
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Passport");
 		try {
 			passport = userservice.findpassport(id);
 		} catch (PassportNotFoundInService e) {
@@ -453,7 +453,7 @@ public class AdminHomePageController {
 	@RequestMapping(value = "/editorcreatenewpassport", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView editorcreatenewpassport(@ModelAttribute("passport") Passport passport) {
 		ModelAndView model = new ModelAndView("admin/PassportInfo");
-		HashMap<String, List<Document>> documents = userservice.findparticulardocuments(id);
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Passport");
 		System.out.println("The passport id is" + passport.getUserid());
 		try {
 			passport = userservice.findpassport(id);
@@ -499,9 +499,11 @@ public class AdminHomePageController {
 		ModelAndView model = new ModelAndView();
 		// CustomUser user = getCustomUser();
 		List<Travel> traveldetails;
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Travel");
 		try {
 			traveldetails = userservice.findtraveldetails(id);
 			model.addObject("traveldetails", traveldetails);
+			model.addObject("documents", documents);
 		} catch (FindTravelDetailsNotFoundService e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -584,9 +586,11 @@ public class AdminHomePageController {
 			 * view with Travel History Table in it and list is sent as a model
 			 * object
 			 */
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Education");
 			model.setViewName("admin/EducationDetails");
 			System.out.println("The size is" + educationdetails.size());
 			model.addObject("educationdetails", educationdetails);
+			model.addObject("documents", documents);
 		return model;
 
 	}
@@ -653,6 +657,7 @@ public class AdminHomePageController {
 		ModelAndView model = new ModelAndView();
 		// CustomUser user = getCustomUser();
 		List<Experience> experiencedetails;
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Experience");
 		try {
 			experiencedetails = userservice.findexperiences(id);
 		
@@ -663,6 +668,7 @@ public class AdminHomePageController {
 				 */
 				model.setViewName("admin/ExperienceHistory");
 				model.addObject("experiencedetails", experiencedetails);
+				model.addObject("documents", documents);
 		} catch (experiencesnotfoundbyid e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -733,6 +739,7 @@ public class AdminHomePageController {
 		ModelAndView model = new ModelAndView();
 		// CustomUser user = getCustomUser();
 		List<Certification> certificationdetails = null;
+		List<Document> documents = userservice.finddocumentsbydoctype(id, "Certification");
 		try {
 			certificationdetails = userservice.findcertificationdetails(id);
 		} catch (CertificateDetailsNotFound e) {
@@ -747,6 +754,7 @@ public class AdminHomePageController {
 			 */
 			model.setViewName("admin/CertificationDetails");
 			model.addObject("certificationdetails", certificationdetails);
+			model.addObject("documents", documents);
 		return model;
 
 	}
@@ -832,8 +840,9 @@ public class AdminHomePageController {
 
 	}
 
-	@RequestMapping(value = "/downloadDoc", method = RequestMethod.POST)
-	public void downloaddocument(@ModelAttribute("docid") int docid, HttpServletResponse response) throws IOException {
+	@RequestMapping(value = "/downloadDoc", method = RequestMethod.GET)
+	public void downloaddocument(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		int docid = Integer.parseInt(request.getParameter("docid"));
 		System.out.println("The Docid is" + docid);
 
 		Document document = null;
@@ -861,8 +870,9 @@ public class AdminHomePageController {
 		System.out.println("File downloaded at client successfully");
 	}
 
-	@RequestMapping(value = "/deleteDoc", method = RequestMethod.POST)
-	public ModelAndView deleteDoc(@ModelAttribute("docid") int docid) throws IOException {
+	@RequestMapping(value = "/deleteDoc", method = RequestMethod.GET)
+	public ModelAndView deleteDoc(HttpServletRequest request) throws IOException {
+		int docid = Integer.parseInt(request.getParameter("docid"));
 		System.out.println("The Docid in delete doc controller " + docid);
 		userservice.deletedoc(docid);
 		System.out.println("The document id is " + docid);
@@ -916,7 +926,7 @@ public class AdminHomePageController {
 		if (attorney.getAttorneyid() == 0) {
 			String password = userservice.saveattorney(attorney);
 			String emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n" + "Username:"
-					+ attorney.getEmail() + "\nPassword:" + password +"The Link To The Portal:"+link;
+					+ attorney.getEmail() + "\nPassword:" + password +"\nThe Link To The Portal:"+link;
 			Email email = new Email(attorney.getEmail(), emailmessage);
 			try {
 				userservice.emailapplicant(email);
@@ -973,7 +983,7 @@ public class AdminHomePageController {
 		if (educationevaluation.getEducationevaluationid() == 0) {
 			String password = userservice.saveeducationevaluation(educationevaluation);
 			String emailmessage = "FusionSoft has Created a new Profile \n\n The Credentials are as follows\n" + "Username:"
-					+ educationevaluation.getEmail() + "\nPassword:" + password +"The Link To The Portal:"+link;;
+					+ educationevaluation.getEmail() + "\nPassword:" + password +"\nThe Link To The Portal:"+link;;
 			Email email = new Email(educationevaluation.getEmail(), emailmessage);
 			try {
 				userservice.emailapplicant(email);

@@ -162,5 +162,7 @@ public List<Applicant> findallapplicantsbyeducationevaluationid(int educationeva
 
 public void updateuserrole(CustomUser customuser);
 
+public List<Document> finddocumentsbydoctype(int userid, String doctype);
+
 
 }

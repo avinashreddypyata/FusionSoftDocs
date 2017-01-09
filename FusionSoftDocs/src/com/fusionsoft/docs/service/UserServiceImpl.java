@@ -46,6 +46,8 @@ public class UserServiceImpl implements UserService {
 	    private PasswordEncoder passwordEncoder;
 //	 private static  String destination = "/usr/local/tomcat9/Documents";
         private static  String destination = "C:/Users/abhi/Documents/GitHub/Documents";
+	 /*For Server in Amazon Web Services*/
+//        private static  String destination = "C:/Tomcat/apache-tomcat-9.0.0.M15/Docs";
 	 
     public void  emailapplicant(Email email){
     	MimeMessagePreparator preparator = getMessagePreparator(email);
@@ -91,6 +93,7 @@ public class UserServiceImpl implements UserService {
 		return customuser;
 	}
 	public String saveFile(MultipartFile multipartFile,String doctype, String username, String discription) throws Exception {
+		String filename = multipartFile.getOriginalFilename(); 
 		String directory = destination + username;
 		File theDir = new File(directory);
 		if (!theDir.exists()) {
@@ -142,7 +145,12 @@ public class UserServiceImpl implements UserService {
 		        System.out.println("DIR created");  
 		    }
 		}
-		String path = discriptdirectory + "/" + multipartFile.getOriginalFilename();
+		if(filename.contains("C:")){
+			filename = filename.substring(3);
+			filename = filename.replace("\\", "");
+			System.out.println("The filename is"+filename);
+		}
+		String path = discriptdirectory + "/" + filename;
 	    File file = new File(path);
 	    multipartFile.transferTo(file);
 	    return path;
@@ -226,7 +234,6 @@ public class UserServiceImpl implements UserService {
 			userDao.saveexperience(experience);
 		}
 		else{
-			experience.setDocumenttitle(experience.getFile().getOriginalFilename());
 			experience.setCustomuser(customuser);
 			userDao.saveexperience(experience);
 			filebucket.setFile(experience.getFile());
@@ -245,7 +252,6 @@ public class UserServiceImpl implements UserService {
 			userDao.saveeducation(education);
 		}
 		else{
-			education.setDocumenttitle(education.getFile().getOriginalFilename());
 			education.setCustomuser(customuser);
 			userDao.saveeducation(education);
 			filebucket.setFile(education.getFile());
@@ -456,7 +462,7 @@ public class UserServiceImpl implements UserService {
 					userDao.savetravel(travel);
 				}
 				else{
-					travel.setDocumenttitle(travel.getFile().getOriginalFilename());
+					
 					travel.setCustomuser(customuser);
 					userDao.savetravel(travel);
 					filebucket.setFile(travel.getFile());
@@ -478,7 +484,6 @@ public class UserServiceImpl implements UserService {
 		}
 		else{
 			
-			travel.setDocumenttitle(travel.getFile().getOriginalFilename());
 			userDao.updatetravel(travel);
 			
 			filebucket.setFile(travel.getFile());
@@ -508,7 +513,6 @@ public class UserServiceImpl implements UserService {
 			userDao.savecertification(certification);
 		}
 		else{
-			certification.setDocumenttitle(certification.getFile().getOriginalFilename());
 			certification.setCustomuser(customuser);
 			userDao.savecertification(certification);
 			filebucket.setFile(certification.getFile());
@@ -551,8 +555,6 @@ public class UserServiceImpl implements UserService {
 			userDao.updatecertification(certification);;
 		}
 		else{
-			
-			certification.setDocumenttitle(certification.getFile().getOriginalFilename());
 			userDao.updatecertification(certification);
 			
 			filebucket.setFile(certification.getFile());
@@ -571,8 +573,6 @@ public class UserServiceImpl implements UserService {
 			userDao.updateeducation(education);
 		}
 		else{
-			
-			education.setDocumenttitle(education.getFile().getOriginalFilename());
 			userDao.updateeducation(education);
 			
 			filebucket.setFile(education.getFile());
@@ -590,12 +590,11 @@ public class UserServiceImpl implements UserService {
 			userDao.updateexperience(experience);
 		}
 		else{
-			
-			experience.setDocumenttitle(experience.getFile().getOriginalFilename());
+		
 			userDao.updateexperience(experience);
-			
-			filebucket.setFile(experience.getFile());
 			filebucket.setDescription(experience.getDocumentdescription());
+			filebucket.setFile(experience.getFile());
+			
 			filebucket.setDoctype("Experience");
 			saveDocument(filebucket, experience, customuser);
 		}
@@ -924,6 +923,11 @@ public class UserServiceImpl implements UserService {
 	public void updateuserrole(CustomUser customuser) {
 		// TODO Auto-generated method stub
 		userDao.updateuserrole(customuser);
+	}
+	@Override
+	public List<Document> finddocumentsbydoctype(int userid, String doctype) {
+		// TODO Auto-generated method stub
+		return userDao.findparticulardocuments(userid, doctype);
 	}
 	
 	

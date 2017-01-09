@@ -2,6 +2,7 @@ package com.fusionsoft.docs.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -82,6 +83,7 @@ public class Applicant implements Serializable{
 	}
 	@Transient
 	MultipartFile file;
+
 	public MultipartFile getFile() {
 		return file;
 	}

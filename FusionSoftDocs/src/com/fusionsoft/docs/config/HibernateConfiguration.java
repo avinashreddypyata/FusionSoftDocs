@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 	@Configuration
 	@EnableTransactionManagement
 	@ComponentScan({ "com.fusionsoft.docs.*" })
-	@PropertySource(value = { "classpath:application.properties" })
+	@PropertySource("file:${FSDOCS_CONF_DIR}/dbconfig.properties")
 	public class HibernateConfiguration {
 	 
 	    @Autowired
